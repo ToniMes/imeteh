@@ -1,0 +1,43 @@
+[gd_scene load_steps=5 format=3 uid="uid://cxeo2k8b644o7"]
+
+[ext_resource type="Script" uid="uid://c2p1fe67rvr24" path="res://Scripts/lever.gd" id="1_wv1st"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_ejj7v"]
+radius = 0.05
+height = 1.0
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_wv1st"]
+radius = 0.05
+height = 1.0
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_6kuia"]
+radius = 0.15
+height = 0.4
+
+[node name="Lever" type="Node3D"]
+
+[node name="PhysicalLever" type="RigidBody3D" parent="."]
+axis_lock_linear_x = true
+axis_lock_linear_y = true
+axis_lock_linear_z = true
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="PhysicalLever"]
+transform = Transform3D(0.5, 0, 0, 0, -2.18557e-08, 0.5, 0, -0.5, -2.18557e-08, 0, 0, 0)
+mesh = SubResource("CapsuleMesh_ejj7v")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PhysicalLever"]
+transform = Transform3D(0.5, 0, 0, 0, -2.18557e-08, 0.5, 0, -0.5, -2.18557e-08, 0, 0, 0)
+shape = SubResource("CapsuleShape3D_wv1st")
+
+[node name="InteractiveLever" type="Area3D" parent="PhysicalLever"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, -0.2)
+script = ExtResource("1_wv1st")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PhysicalLever/InteractiveLever"]
+shape = SubResource("CapsuleShape3D_6kuia")
+
+[connection signal="body_entered" from="PhysicalLever/InteractiveLever" to="PhysicalLever/InteractiveLever" method="onHandEnter"]
+[connection signal="body_exited" from="PhysicalLever/InteractiveLever" to="PhysicalLever/InteractiveLever" method="onHandExit"]

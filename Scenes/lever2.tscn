@@ -1,0 +1,49 @@
+[gd_scene load_steps=6 format=3 uid="uid://cfpuogvflnsas"]
+
+[ext_resource type="Script" uid="uid://c61m04lkimt5f" path="res://Scripts/interaction_object.gd" id="1_myofs"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_oynrs"]
+radius = 0.05
+height = 1.0
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_4h778"]
+radius = 0.05
+height = 1.0
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_myofs"]
+radius = 0.15
+height = 0.4
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_myofs"]
+radius = 0.2
+
+[node name="Lever2" type="Node3D"]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+rotation_edit_mode = 1
+mesh = SubResource("CapsuleMesh_oynrs")
+skeleton = NodePath("")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+shape = SubResource("CapsuleShape3D_4h778")
+
+[node name="InteractiveLever" type="Area3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.312477, 0.2, 0)
+script = ExtResource("1_myofs")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D/InteractiveLever"]
+shape = SubResource("CapsuleShape3D_myofs")
+
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.287607, 0.2, 0)
+script = ExtResource("1_myofs")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("SphereShape3D_myofs")
+
+[connection signal="body_entered" from="StaticBody3D/InteractiveLever" to="StaticBody3D/InteractiveLever" method="onHandEnter"]
+[connection signal="body_entered" from="Area3D" to="Area3D" method="onHandEnter"]

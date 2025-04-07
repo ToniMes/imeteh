@@ -1,0 +1,49 @@
+[gd_scene load_steps=4 format=3 uid="uid://cbjtjqc57eqfq"]
+
+[ext_resource type="Script" uid="uid://c11v7diwiecth" path="res://Scripts/controler.gd" id="1_v0iea"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_f60y1"]
+size = Vector3(0.1, 0.1, 0.1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_v0iea"]
+size = Vector3(0.1, 0.1, 0.1)
+
+[node name="Player" type="Node3D"]
+
+[node name="XROrigin3D" type="XROrigin3D" parent="."]
+
+[node name="XRCamera3D" type="XRCamera3D" parent="XROrigin3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8, 0)
+
+[node name="LeftHandXR" type="XRController3D" parent="XROrigin3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 1, 0.5)
+tracker = &"left_hand"
+script = ExtResource("1_v0iea")
+
+[node name="Hand" type="StaticBody3D" parent="XROrigin3D/LeftHandXR"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="XROrigin3D/LeftHandXR/Hand"]
+mesh = SubResource("BoxMesh_f60y1")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="XROrigin3D/LeftHandXR/Hand"]
+shape = SubResource("BoxShape3D_v0iea")
+
+[node name="RightHandXR" type="XRController3D" parent="XROrigin3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1, 0.5)
+tracker = &"right_hand"
+script = ExtResource("1_v0iea")
+
+[node name="Hand" type="StaticBody3D" parent="XROrigin3D/RightHandXR"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="XROrigin3D/RightHandXR/Hand"]
+mesh = SubResource("BoxMesh_f60y1")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="XROrigin3D/RightHandXR/Hand"]
+shape = SubResource("BoxShape3D_v0iea")
+
+[connection signal="button_pressed" from="XROrigin3D/LeftHandXR" to="XROrigin3D/LeftHandXR" method="onButtonPressed"]
+[connection signal="button_released" from="XROrigin3D/LeftHandXR" to="XROrigin3D/LeftHandXR" method="onButtonReleased"]
+[connection signal="button_pressed" from="XROrigin3D/RightHandXR" to="XROrigin3D/LeftHandXR" method="onButtonPressed"]
+[connection signal="button_released" from="XROrigin3D/RightHandXR" to="XROrigin3D/LeftHandXR" method="onButtonReleased"]
