@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://dbd0fj080bycn"]
+[gd_scene load_steps=10 format=3 uid="uid://dbd0fj080bycn"]
 
 [ext_resource type="Script" uid="uid://bp8krlumtrs6l" path="res://Scripts/main.gd" id="1_jjgbg"]
 [ext_resource type="PackedScene" uid="uid://cbjtjqc57eqfq" path="res://Scenes/player.tscn" id="2_bo1nx"]
 [ext_resource type="PackedScene" uid="uid://cxeo2k8b644o7" path="res://Scenes/lever.tscn" id="3_8gbba"]
+[ext_resource type="PackedScene" uid="uid://c2j7c64ojidai" path="res://Scenes/button.tscn" id="4_jjvhh"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_0xm2m"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -85,3 +86,6 @@ shape = SubResource("BoxShape3D_ig7tw")
 
 [node name="Lever" parent="." instance=ExtResource("3_8gbba")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.46157, -0.96852)
+
+[node name="Button" parent="." instance=ExtResource("4_jjvhh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.735237, 1.47713, -0.296799)
