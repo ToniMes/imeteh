@@ -1,6 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://cbjtjqc57eqfq"]
+[gd_scene load_steps=7 format=3 uid="uid://cbjtjqc57eqfq"]
 
 [ext_resource type="Script" uid="uid://c11v7diwiecth" path="res://Scripts/controler.gd" id="1_v0iea"]
+[ext_resource type="PackedScene" uid="uid://bq86r4yll8po" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/left_fullglove_low.tscn" id="2_vgqql"]
+[ext_resource type="Material" uid="uid://mvlskvh4s6aj" path="res://Resources/Materials/Hands/hand_material.tres" id="3_fkybt"]
+[ext_resource type="PackedScene" uid="uid://xqimcf20s2jp" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/right_fullglove_low.tscn" id="4_x3wgy"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_f60y1"]
 size = Vector3(0.1, 0.1, 0.1)
@@ -21,6 +24,7 @@ tracker = &"left_hand"
 script = ExtResource("1_v0iea")
 
 [node name="Hand" type="StaticBody3D" parent="XROrigin3D/LeftHandXR"]
+visible = false
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="XROrigin3D/LeftHandXR/Hand"]
 mesh = SubResource("BoxMesh_f60y1")
@@ -29,12 +33,16 @@ skeleton = NodePath("../..")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="XROrigin3D/LeftHandXR/Hand"]
 shape = SubResource("BoxShape3D_v0iea")
 
+[node name="LeftHand" parent="XROrigin3D/LeftHandXR" instance=ExtResource("2_vgqql")]
+hand_material_override = ExtResource("3_fkybt")
+
 [node name="RightHandXR" type="XRController3D" parent="XROrigin3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1, 0.5)
 tracker = &"right_hand"
 script = ExtResource("1_v0iea")
 
 [node name="Hand" type="StaticBody3D" parent="XROrigin3D/RightHandXR"]
+visible = false
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="XROrigin3D/RightHandXR/Hand"]
 mesh = SubResource("BoxMesh_f60y1")
@@ -42,6 +50,9 @@ skeleton = NodePath("../..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="XROrigin3D/RightHandXR/Hand"]
 shape = SubResource("BoxShape3D_v0iea")
+
+[node name="RightHand" parent="XROrigin3D/RightHandXR" instance=ExtResource("4_x3wgy")]
+hand_material_override = ExtResource("3_fkybt")
 
 [connection signal="button_pressed" from="XROrigin3D/LeftHandXR" to="XROrigin3D/LeftHandXR" method="onButtonPressed"]
 [connection signal="button_released" from="XROrigin3D/LeftHandXR" to="XROrigin3D/LeftHandXR" method="onButtonReleased"]
