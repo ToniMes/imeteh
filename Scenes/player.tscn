@@ -1,5 +1,10 @@
+<<<<<<< Updated upstream
 [gd_scene load_steps=4 format=3 uid="uid://cbjtjqc57eqfq"]
+=======
+[gd_scene load_steps=8 format=3 uid="uid://cbjtjqc57eqfq"]
+>>>>>>> Stashed changes
 
+[ext_resource type="Script" uid="uid://ctjygd2osf40a" path="res://Scripts/Player/player_controller.gd" id="1_fkybt"]
 [ext_resource type="Script" uid="uid://c11v7diwiecth" path="res://Scripts/controler.gd" id="1_v0iea"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_f60y1"]
@@ -9,14 +14,13 @@ size = Vector3(0.1, 0.1, 0.1)
 size = Vector3(0.1, 0.1, 0.1)
 
 [node name="Player" type="Node3D"]
+script = ExtResource("1_fkybt")
 
 [node name="XROrigin3D" type="XROrigin3D" parent="."]
 
 [node name="XRCamera3D" type="XRCamera3D" parent="XROrigin3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8, 0)
 
 [node name="LeftHandXR" type="XRController3D" parent="XROrigin3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 1, 0.5)
 tracker = &"left_hand"
 script = ExtResource("1_v0iea")
 
@@ -30,7 +34,6 @@ skeleton = NodePath("../..")
 shape = SubResource("BoxShape3D_v0iea")
 
 [node name="RightHandXR" type="XRController3D" parent="XROrigin3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1, 0.5)
 tracker = &"right_hand"
 script = ExtResource("1_v0iea")
 

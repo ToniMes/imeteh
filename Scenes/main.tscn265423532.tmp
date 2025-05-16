@@ -1,10 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://dbd0fj080bycn"]
+[gd_scene load_steps=10 format=3 uid="uid://dbd0fj080bycn"]
 
 [ext_resource type="Script" uid="uid://bp8krlumtrs6l" path="res://Scripts/main.gd" id="1_jjgbg"]
-<<<<<<< Updated upstream
 [ext_resource type="PackedScene" uid="uid://cbjtjqc57eqfq" path="res://Scenes/player.tscn" id="2_bo1nx"]
 [ext_resource type="PackedScene" uid="uid://cxeo2k8b644o7" path="res://Scenes/lever.tscn" id="3_8gbba"]
-[ext_resource type="PackedScene" uid="uid://c2j7c64ojidai" path="res://Scenes/button.tscn" id="4_jjvhh"]
+[ext_resource type="ArrayMesh" uid="uid://6tvn3amsrln6" path="res://Resources/Models/Trolley/trolley.obj" id="4_jjvhh"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_0xm2m"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -23,40 +22,34 @@ size = Vector2(3, 3)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ig7tw"]
 size = Vector3(3, 0.1, 3)
-=======
-[ext_resource type="PackedScene" uid="uid://bq86r4yll8po" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/left_fullglove_low.tscn" id="2_jjvhh"]
-[ext_resource type="PackedScene" uid="uid://cqhw276realc" path="res://addons/godot-xr-tools/functions/function_pointer.tscn" id="3_kry3j"]
-[ext_resource type="PackedScene" uid="uid://xqimcf20s2jp" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/right_fullglove_low.tscn" id="4_21xkr"]
-[ext_resource type="PackedScene" uid="uid://clujaf3u776a3" path="res://addons/godot-xr-tools/objects/viewport_2d_in_3d.tscn" id="5_kry3j"]
-[ext_resource type="PackedScene" uid="uid://d182bf0fxnbjp" path="res://Scenes/UI/main_menu_ui.tscn" id="6_21xkr"]
->>>>>>> Stashed changes
 
 [node name="Main" type="Node3D"]
 script = ExtResource("1_jjgbg")
 
-[node name="XROrigin3D" type="XROrigin3D" parent="."]
+[node name="Player" parent="." instance=ExtResource("2_bo1nx")]
 
-[node name="XRCamera3D" type="XRCamera3D" parent="XROrigin3D"]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_1bvp3")
 
-[node name="XRController3D" type="XRController3D" parent="XROrigin3D"]
-tracker = &"left_hand"
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+shadow_enabled = true
 
-[node name="LeftHand" parent="XROrigin3D/XRController3D" instance=ExtResource("2_jjvhh")]
+[node name="Floor" type="StaticBody3D" parent="."]
 
-[node name="FunctionPointer" parent="XROrigin3D/XRController3D" instance=ExtResource("3_kry3j")]
-show_laser = 2
-laser_length = 1
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor"]
+mesh = SubResource("PlaneMesh_ig7tw")
 
-[node name="XRController3D2" type="XRController3D" parent="XROrigin3D"]
-tracker = &"right_hand"
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.05, 0)
+shape = SubResource("BoxShape3D_ig7tw")
 
-[node name="RightHand" parent="XROrigin3D/XRController3D2" instance=ExtResource("4_21xkr")]
+[node name="Wall1" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.5, -1.5)
 
-[node name="FunctionPointer" parent="XROrigin3D/XRController3D2" instance=ExtResource("3_kry3j")]
-show_laser = 2
-laser_length = 1
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Wall1"]
+mesh = SubResource("PlaneMesh_ig7tw")
 
-<<<<<<< Updated upstream
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Wall1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.05, 0)
 shape = SubResource("BoxShape3D_ig7tw")
@@ -94,14 +87,6 @@ shape = SubResource("BoxShape3D_ig7tw")
 [node name="Lever" parent="." instance=ExtResource("3_8gbba")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.46157, -0.96852)
 
-[node name="Button" parent="." instance=ExtResource("4_jjvhh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.735237, 1.47713, -0.296799)
-=======
-[node name="MainMenuPanel" parent="." groups=["MainMenuPanel"] instance=ExtResource("5_kry3j")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.61534)
-scene = ExtResource("6_21xkr")
-viewport_size = Vector2(1125, 648)
-transparent = 0
-unshaded = true
-scene_properties_keys = PackedStringArray()
->>>>>>> Stashed changes
+[node name="Trolley" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.28128, 0, 0.139927)
+mesh = ExtResource("4_jjvhh")

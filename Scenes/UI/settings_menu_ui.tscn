@@ -1,0 +1,133 @@
+[gd_scene load_steps=2 format=3 uid="uid://d24cbux5ubf8m"]
+
+[ext_resource type="Script" uid="uid://8fmhxjfhpddm" path="res://Scripts/Menus and UI/Main Menu/settings_menu_ui.gd" id="1_a682q"]
+
+[node name="SettingsMenuUi" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_a682q")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.306472, 0.449723, 0.460326, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="ColorRect/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 70
+text = "Settings"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="SoundSettings" type="VBoxContainer" parent="ColorRect/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="ColorRect/VBoxContainer/VBoxContainer/SoundSettings"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 23
+text = "SOUND SETTINGS"
+
+[node name="Master" type="HBoxContainer" parent="ColorRect/VBoxContainer/VBoxContainer/SoundSettings"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="Label" type="Label" parent="ColorRect/VBoxContainer/VBoxContainer/SoundSettings/Master"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 20
+text = "Master"
+
+[node name="HSlider" type="HSlider" parent="ColorRect/VBoxContainer/VBoxContainer/SoundSettings/Master"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+
+[node name="SFX" type="HBoxContainer" parent="ColorRect/VBoxContainer/VBoxContainer/SoundSettings"]
+layout_mode = 2
+theme_override_constants/separation = 48
+
+[node name="Label" type="Label" parent="ColorRect/VBoxContainer/VBoxContainer/SoundSettings/SFX"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 20
+text = "SFX"
+
+[node name="HSlider" type="HSlider" parent="ColorRect/VBoxContainer/VBoxContainer/SoundSettings/SFX"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+
+[node name="Voice" type="HBoxContainer" parent="ColorRect/VBoxContainer/VBoxContainer/SoundSettings"]
+layout_mode = 2
+theme_override_constants/separation = 31
+
+[node name="Label" type="Label" parent="ColorRect/VBoxContainer/VBoxContainer/SoundSettings/Voice"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 20
+text = "Voice"
+
+[node name="HSlider" type="HSlider" parent="ColorRect/VBoxContainer/VBoxContainer/SoundSettings/Voice"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+
+[node name="Accesibility" type="VBoxContainer" parent="ColorRect/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="ColorRect/VBoxContainer/VBoxContainer/Accesibility"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 23
+text = "ACCESIBILITY"
+
+[node name="DisplayCC" type="HBoxContainer" parent="ColorRect/VBoxContainer/VBoxContainer/Accesibility"]
+layout_mode = 2
+theme_override_constants/separation = 62
+
+[node name="Label" type="Label" parent="ColorRect/VBoxContainer/VBoxContainer/Accesibility/DisplayCC"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Display subtitles"
+
+[node name="CheckBox" type="CheckBox" parent="ColorRect/VBoxContainer/VBoxContainer/Accesibility/DisplayCC"]
+layout_mode = 2
+
+[node name="Tunneling" type="HBoxContainer" parent="ColorRect/VBoxContainer/VBoxContainer/Accesibility"]
+layout_mode = 2
+theme_override_constants/separation = 125
+
+[node name="Label" type="Label" parent="ColorRect/VBoxContainer/VBoxContainer/Accesibility/Tunneling"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Tunneling"
+
+[node name="CheckBox" type="CheckBox" parent="ColorRect/VBoxContainer/VBoxContainer/Accesibility/Tunneling"]
+layout_mode = 2
+
+[node name="Back" type="Button" parent="ColorRect/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Back"
