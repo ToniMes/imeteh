@@ -15,8 +15,6 @@ run/main_scene="res://Scenes/main.tscn"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://Other/icon.svg"
 
-<<<<<<< Updated upstream
-=======
 [autoload]
 
 XRToolsUserSettings="*res://addons/godot-xr-tools/user_settings/user_settings.gd"
@@ -50,7 +48,6 @@ player/standard_height=1.8
 3d_physics/layer_22="Hand Pose Areas"
 3d_physics/layer_23="UI Objects"
 
->>>>>>> Stashed changes
 [rendering]
 
 renderer/rendering_method="mobile"
