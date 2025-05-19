@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://7p562hvbyx17"]
+
+[ext_resource type="Script" uid="uid://dahnaw12v5v6t" path="res://Scripts/Railway/railway_spawner.gd" id="1_by6ym"]
+
+[node name="RailwaySpawner" type="Node3D"]
+script = ExtResource("1_by6ym")

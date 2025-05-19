@@ -1,0 +1,119 @@
+[gd_scene load_steps=5 format=3 uid="uid://han7ypq5xxce"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_8w8my"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kkktx"]
+albedo_color = Color(0.518351, 0.249832, 0.126982, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_bnyfr"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_akdfo"]
+albedo_color = Color(0.617455, 0.617455, 0.617455, 1)
+
+[node name="Railway" type="Node3D"]
+
+[node name="Rail" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.67624)
+
+[node name="Planks" type="Node3D" parent="Rail"]
+
+[node name="plank" type="MeshInstance3D" parent="Rail/Planks"]
+transform = Transform3D(1.29176, 0, 0, 0, 0.0828296, 0, 0, 0, 0.204215, 0.0135641, 0, 0)
+mesh = SubResource("BoxMesh_8w8my")
+skeleton = NodePath("../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_kkktx")
+
+[node name="plank2" type="MeshInstance3D" parent="Rail/Planks"]
+transform = Transform3D(1.29176, 0, 0, 0, 0.0828296, 0, 0, 0, 0.204215, -0.0164007, 0, -0.307874)
+mesh = SubResource("BoxMesh_8w8my")
+skeleton = NodePath("../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_kkktx")
+
+[node name="plank3" type="MeshInstance3D" parent="Rail/Planks"]
+transform = Transform3D(1.29176, 0, 0, 0, 0.0828296, 0, 0, 0, 0.204215, 0, 0, -0.614025)
+mesh = SubResource("BoxMesh_8w8my")
+skeleton = NodePath("../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_kkktx")
+
+[node name="plank4" type="MeshInstance3D" parent="Rail/Planks"]
+transform = Transform3D(1.29176, 0, 0, 0, 0.0828296, 0, 0, 0, 0.204215, 0.0404402, 0, -0.921072)
+mesh = SubResource("BoxMesh_8w8my")
+skeleton = NodePath("../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_kkktx")
+
+[node name="plank5" type="MeshInstance3D" parent="Rail/Planks"]
+transform = Transform3D(1.29176, 0, 0, 0, 0.0828296, 0, 0, 0, 0.204215, 0, 0, -1.21871)
+mesh = SubResource("BoxMesh_8w8my")
+skeleton = NodePath("../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_kkktx")
+
+[node name="plank6" type="MeshInstance3D" parent="Rail/Planks"]
+transform = Transform3D(1.29176, 0, 0, 0, 0.0828296, 0, 0, 0, 0.204215, 0.0286746, 0, -1.5351)
+mesh = SubResource("BoxMesh_8w8my")
+skeleton = NodePath("../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_kkktx")
+
+[node name="Tracks" type="Node3D" parent="Rail"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Rail/Tracks"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 1.8, -0.411482, 0.0902002, -0.769363)
+mesh = SubResource("BoxMesh_bnyfr")
+surface_material_override/0 = SubResource("StandardMaterial3D_akdfo")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Rail/Tracks"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 1.8, 0.385909, 0.0902002, -0.769363)
+mesh = SubResource("BoxMesh_bnyfr")
+surface_material_override/0 = SubResource("StandardMaterial3D_akdfo")
+
+[node name="Rail2" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.2216)
+
+[node name="Planks" type="Node3D" parent="Rail2"]
+
+[node name="plank" type="MeshInstance3D" parent="Rail2/Planks"]
+transform = Transform3D(1.29176, 0, 0, 0, 0.0828296, 0, 0, 0, 0.204215, 0.0135641, 0, 0)
+mesh = SubResource("BoxMesh_8w8my")
+skeleton = NodePath("../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_kkktx")
+
+[node name="plank2" type="MeshInstance3D" parent="Rail2/Planks"]
+transform = Transform3D(1.29176, 0, 0, 0, 0.0828296, 0, 0, 0, 0.204215, -0.0164007, 0, -0.307874)
+mesh = SubResource("BoxMesh_8w8my")
+skeleton = NodePath("../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_kkktx")
+
+[node name="plank3" type="MeshInstance3D" parent="Rail2/Planks"]
+transform = Transform3D(1.29176, 0, 0, 0, 0.0828296, 0, 0, 0, 0.204215, 0, 0, -0.614025)
+mesh = SubResource("BoxMesh_8w8my")
+skeleton = NodePath("../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_kkktx")
+
+[node name="plank4" type="MeshInstance3D" parent="Rail2/Planks"]
+transform = Transform3D(1.29176, 0, 0, 0, 0.0828296, 0, 0, 0, 0.204215, 0.0404402, 0, -0.921072)
+mesh = SubResource("BoxMesh_8w8my")
+skeleton = NodePath("../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_kkktx")
+
+[node name="plank5" type="MeshInstance3D" parent="Rail2/Planks"]
+transform = Transform3D(1.29176, 0, 0, 0, 0.0828296, 0, 0, 0, 0.204215, 0, 0, -1.21871)
+mesh = SubResource("BoxMesh_8w8my")
+skeleton = NodePath("../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_kkktx")
+
+[node name="plank6" type="MeshInstance3D" parent="Rail2/Planks"]
+transform = Transform3D(1.29176, 0, 0, 0, 0.0828296, 0, 0, 0, 0.204215, 0.0286746, 0, -1.5351)
+mesh = SubResource("BoxMesh_8w8my")
+skeleton = NodePath("../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_kkktx")
+
+[node name="Tracks" type="Node3D" parent="Rail2"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Rail2/Tracks"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 1.8, -0.411482, 0.0902002, -0.769363)
+mesh = SubResource("BoxMesh_bnyfr")
+surface_material_override/0 = SubResource("StandardMaterial3D_akdfo")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Rail2/Tracks"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 1.8, 0.385909, 0.0902002, -0.769363)
+mesh = SubResource("BoxMesh_bnyfr")
+surface_material_override/0 = SubResource("StandardMaterial3D_akdfo")
