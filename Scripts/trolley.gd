@@ -1,59 +1,34 @@
 extends MeshInstance3D
 class_name Trolley
 
-@onready var playerCamera: XRCamera3D = $Player/XROrigin3D/XRCamera3D
+@onready var lever: Lever = $Lever
 @onready var railWaySpawner: RailWaySpawner = $RailwaySpawner
 
 var currentTrack: int = 1 #center
 
 func _process(delta):
   pass
-  position.z += delta * 20
-  turn(railWaySpawner.getKnot())
+  position.z += delta * 10
 
 
 func switchTrack(track: int):
   currentTrack = track
-  global_position.x = currentTrack * 3 - 3
+  global_position.x = 3 - currentTrack * 3
 
-func turn(knot: Array[int]):
-  #no knot
-  if knot[0] == knot[3] and knot[1] == knot[4] and knot[2] == knot[5]:
-    return
+func turn():
   
-  if playerCamera.rotation.y > 0.5:
-    if knot[3] == 1:
-      switchTrack(0)
-    elif knot[4] == 1:
-      switchTrack(1)
-    else:
-      switchTrack(2)
-    return
+  if lever.state == -1:
+    print("turning left")
+    switchTrack(0)
   
-  elif playerCamera.rotation.y < -0.5:
-    if knot[5] == 1:
-      switchTrack(2)
-    elif knot[4] == 1:
-      switchTrack(1)
-    else:
-      switchTrack(0)
-    return
-  
+  elif lever.state == 1:
+    print("turning right")
+    switchTrack(2)
+
   else:
-    if knot[currentTrack+3] == 0:
-      if playerCamera.rotation.y < 0:
-        if knot[5] == 1:
-          switchTrack(2)
-        elif knot[4] == 1:
-          switchTrack(1)
-        else:
-          switchTrack(0)
-        return
-      elif playerCamera.rotation.y > 0:
-        if knot[5] == 1:
-          switchTrack(2)
-        elif knot[4] == 1:
-          switchTrack(1)
-        else:
-          switchTrack(0)
-        return
+    if RandomNumberGenerator.new().randf() < 0.5:
+      switchTrack(2)
+      print("turning right random")
+    else:
+      switchTrack(0)
+      print("turning left random")

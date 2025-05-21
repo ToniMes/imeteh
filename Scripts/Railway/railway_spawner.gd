@@ -21,22 +21,6 @@ func _ready():
   for i in range(20):
     spawnNextRail()
 
-#old process function
-#func _process(_delta):
-  ##for rail in rail_parts:
-    ##rail.position.z -= movement_speed
-  #crossed_distance += movement_speed
-  #if crossed_distance >= rail_length:
-    #var rail_front = RAILWAY.instantiate()
-    #rail_front.position.z += 10 * rail_length
-    #rail_parent.add_child(rail_front)
-    #rail_parts.insert(0, rail_front)
-    #var rail_back = rail_parts.get(rail_parts.size()-1)
-    #rail_parts.resize(rail_parts.size()-1)
-    #rail_parent.remove_child(rail_back)
-    #crossed_distance = 0
-  #await get_tree().create_timer(0.5).timeout
-
 
 func _process(delta):
   var distance_to_front = rail_parts_center[0].global_position.distance_to(global_position)
@@ -55,11 +39,11 @@ func spawnNextRail():
   var rail_center
   var rail_right
   
-  if railCount <= 50 or railCount > 60:
+  if railCount <= 50:
     rail_left = Node3D.new()
     rail_center = RAILWAY.instantiate()
     rail_right = Node3D.new()
-  elif railCount > 50 and railCount <= 60:
+  else:
     rail_left = RAILWAY.instantiate()
     rail_center = Node3D.new()
     rail_right = RAILWAY.instantiate()
@@ -77,47 +61,5 @@ func spawnNextRail():
   rail_parts_right.insert(0, rail_right)
   
   railCount+=1
-
-
-func getKnot() -> Array[int]:
-  var knot: Array[int]
-  if rail_parts_left[rail_parts_left.size()-1].name == "Railway":
-    knot.append(1)
-  else:
-    knot.append(0)
-  if rail_parts_center[rail_parts_center.size()-1].name == "Railway":
-    knot.append(1)
-  else:
-    knot.append(0)
-  if rail_parts_right[rail_parts_right.size()-1].name == "Railway":
-    knot.append(1)
-  else:
-    knot.append(0)
-  
-  if rail_parts_left[rail_parts_left.size()-2].name == "Railway":
-    knot.append(1)
-  else:
-    knot.append(0)
-  if rail_parts_center[rail_parts_center.size()-2].name == "Railway":
-    knot.append(1)
-  else:
-    knot.append(0)
-  if rail_parts_right[rail_parts_right.size()-2].name == "Railway":
-    knot.append(1)
-  else:
-    knot.append(0)
-  
-  return knot
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  if railCount == 70:
+    get_parent().turn()

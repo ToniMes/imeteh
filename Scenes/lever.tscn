@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://cxeo2k8b644o7"]
+[gd_scene load_steps=9 format=3 uid="uid://cxeo2k8b644o7"]
 
-[ext_resource type="Script" uid="uid://c2p1fe67rvr24" path="res://Scripts/lever.gd" id="1_wv1st"]
+[ext_resource type="Script" uid="uid://b5myyfycvquhb" path="res://Scripts/lever.gd" id="1_wv1st"]
+[ext_resource type="Script" uid="uid://c2p1fe67rvr24" path="res://Scripts/interactive_lever.gd" id="2_6kuia"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_ejj7v"]
 radius = 0.05
@@ -25,6 +26,7 @@ radius = 0.05
 height = 0.1
 
 [node name="Lever" type="Node3D"]
+script = ExtResource("1_wv1st")
 
 [node name="PhysicalLever" type="RigidBody3D" parent="."]
 axis_lock_linear_x = true
@@ -44,7 +46,7 @@ shape = SubResource("CapsuleShape3D_wv1st")
 
 [node name="InteractiveLever" type="Area3D" parent="PhysicalLever"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, -0.2)
-script = ExtResource("1_wv1st")
+script = ExtResource("2_6kuia")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PhysicalLever/InteractiveLever"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.025, 0)
