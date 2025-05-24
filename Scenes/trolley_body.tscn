@@ -44,7 +44,6 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_atuq7")
 
 [node name="TrolleyBody" type="MeshInstance3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 mesh = SubResource("ArrayMesh_n4sbs")
 script = ExtResource("1_54p42")
 
