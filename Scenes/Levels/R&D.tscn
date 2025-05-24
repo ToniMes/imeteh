@@ -1,10 +1,12 @@
-[gd_scene load_steps=10 format=4 uid="uid://cb1cu4wrlrijw"]
+[gd_scene load_steps=12 format=4 uid="uid://cb1cu4wrlrijw"]
 
+[ext_resource type="Script" uid="uid://dwlukweeqroje" path="res://Scripts/trolley_body.gd" id="1_fsjya"]
 [ext_resource type="ArrayMesh" uid="uid://j5427occ3uv7" path="res://Resources/Models/Trolley/control_panel_speed_lever.obj" id="2_6h8pu"]
 [ext_resource type="ArrayMesh" uid="uid://dw4ikh4350kof" path="res://Resources/Models/Trolley/control_panel_body_1.obj" id="2_n4sbs"]
 [ext_resource type="ArrayMesh" uid="uid://cvrv4c1mb1u3n" path="res://Resources/Models/Trolley/control_panel_door.obj" id="3_6h8pu"]
 [ext_resource type="PackedScene" uid="uid://2ikbp3ayxqae" path="res://Scenes/player.tscn" id="4_6h8pu"]
 [ext_resource type="PackedScene" uid="uid://7p562hvbyx17" path="res://Scenes/Railway/RailwaySpawner.tscn" id="5_g8bfl"]
+[ext_resource type="PackedScene" uid="uid://1ef711qtf5t8" path="res://Scenes/audio_player.tscn" id="7_k8k0u"]
 
 [sub_resource type="Environment" id="Environment_6h8pu"]
 
@@ -51,6 +53,7 @@ environment = SubResource("Environment_6h8pu")
 [node name="TrolleyBody" type="MeshInstance3D" parent="."]
 transform = Transform3D(-0.999764, 0, 0.0217275, 0, 1, 0, -0.0217275, 0, -0.999764, -0.0179275, 0.22952, 0.0833967)
 mesh = SubResource("ArrayMesh_n4sbs")
+script = ExtResource("1_fsjya")
 
 [node name="ControlPanel" type="Node3D" parent="TrolleyBody"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0675641, 0.420758, -1.14409)
@@ -80,3 +83,5 @@ transform = Transform3D(1, 0, 0, 0, 0.000890092, 1, 0, -1, 0.000890092, 0, 2.209
 
 [node name="RailwaySpawner" parent="." node_paths=PackedStringArray("rail_parent") instance=ExtResource("5_g8bfl")]
 rail_parent = NodePath("../RailParent")
+
+[node name="Audio" parent="." instance=ExtResource("7_k8k0u")]

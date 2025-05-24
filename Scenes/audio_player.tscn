@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://1ef711qtf5t8"]
+
+[ext_resource type="AudioStream" uid="uid://rucsss5ic3ux" path="res://Resources/SFX/lever_clank.mp3" id="1_0jh2j"]
+[ext_resource type="Script" uid="uid://cln8lyhc27ycx" path="res://Scripts/audio_stream_player.gd" id="2_3ni7s"]
+
+[node name="Audio" type="Node"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_0jh2j")
+script = ExtResource("2_3ni7s")
+
+[connection signal="play_sound" from="AudioStreamPlayer" to="AudioStreamPlayer" method="_on_play_sound"]
+[connection signal="ready" from="AudioStreamPlayer" to="AudioStreamPlayer" method="_on_ready"]

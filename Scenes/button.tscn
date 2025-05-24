@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://c2j7c64ojidai"]
+[gd_scene load_steps=9 format=3 uid="uid://c2j7c64ojidai"]
 
 [ext_resource type="Script" uid="uid://dltsl12v7qoe0" path="res://Scripts/button.gd" id="1_1cmwl"]
+[ext_resource type="PackedScene" uid="uid://1ef711qtf5t8" path="res://Scenes/audio_player.tscn" id="2_0kpiu"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_smycg"]
 height = 0.04
@@ -54,6 +55,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00457452, 0)
 mesh = SubResource("BoxMesh_lkjnc")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_1cmwl")
+
+[node name="Audio" parent="." instance=ExtResource("2_0kpiu")]
 
 [connection signal="body_entered" from="ButtonRigidBody/ButtonTop" to="ButtonRigidBody/ButtonTop" method="onHandEnter"]
 [connection signal="body_exited" from="ButtonRigidBody/ButtonTop" to="ButtonRigidBody/ButtonTop" method="onHandExit"]

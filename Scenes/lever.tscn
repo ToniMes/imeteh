@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://cxeo2k8b644o7"]
+[gd_scene load_steps=9 format=3 uid="uid://cxeo2k8b644o7"]
 
 [ext_resource type="Script" uid="uid://c2p1fe67rvr24" path="res://Scripts/lever.gd" id="1_wv1st"]
+[ext_resource type="PackedScene" uid="uid://1ef711qtf5t8" path="res://Scenes/audio_player.tscn" id="2_6kuia"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_ejj7v"]
 radius = 0.05
@@ -58,6 +59,8 @@ surface_material_override/0 = SubResource("StandardMaterial3D_6kuia")
 [node name="LeverSphere" type="MeshInstance3D" parent="."]
 mesh = SubResource("SphereMesh_wv1st")
 surface_material_override/0 = SubResource("StandardMaterial3D_6kuia")
+
+[node name="Audio" parent="." instance=ExtResource("2_6kuia")]
 
 [connection signal="body_entered" from="PhysicalLever/InteractiveLever" to="PhysicalLever/InteractiveLever" method="onHandEnter"]
 [connection signal="body_exited" from="PhysicalLever/InteractiveLever" to="PhysicalLever/InteractiveLever" method="onHandExit"]
