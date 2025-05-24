@@ -6,7 +6,3 @@ var state: int = 0:
     return state
   set(value):
     state = value
-  
-func _process(delta):
-  pass
-  print(state)

@@ -253,5 +253,5 @@ skin = SubResource("Skin_vgqql")
 
 [connection signal="button_pressed" from="XROrigin3D/LeftHandXR" to="XROrigin3D/LeftHandXR" method="onButtonPressed"]
 [connection signal="button_released" from="XROrigin3D/LeftHandXR" to="XROrigin3D/LeftHandXR" method="onButtonReleased"]
-[connection signal="button_pressed" from="XROrigin3D/RightHandXR" to="XROrigin3D/LeftHandXR" method="onButtonPressed"]
-[connection signal="button_released" from="XROrigin3D/RightHandXR" to="XROrigin3D/LeftHandXR" method="onButtonReleased"]
+[connection signal="button_pressed" from="XROrigin3D/RightHandXR" to="XROrigin3D/RightHandXR" method="onButtonPressed"]
+[connection signal="button_released" from="XROrigin3D/RightHandXR" to="XROrigin3D/RightHandXR" method="onButtonReleased"]
