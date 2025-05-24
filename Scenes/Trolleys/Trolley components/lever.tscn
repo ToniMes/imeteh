@@ -1,7 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://cxeo2k8b644o7"]
+[gd_scene load_steps=8 format=3 uid="uid://cxeo2k8b644o7"]
 
-[ext_resource type="Script" uid="uid://b5myyfycvquhb" path="res://Scripts/lever.gd" id="1_wv1st"]
-[ext_resource type="Script" uid="uid://c2p1fe67rvr24" path="res://Scripts/interactive_lever.gd" id="2_6kuia"]
+[ext_resource type="Script" uid="uid://b5myyfycvquhb" path="res://Scripts/Trolleys/Trolley components/lever.gd" id="1_wv1st"]
+[ext_resource type="Script" uid="uid://c2p1fe67rvr24" path="res://Scripts/Trolleys/Trolley components/interactive_lever.gd" id="2_6kuia"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_ejj7v"]
 radius = 0.05
@@ -15,20 +15,18 @@ height = 1.0
 radius = 0.1
 height = 0.25
 
-[sub_resource type="BoxMesh" id="BoxMesh_wv1st"]
-size = Vector3(0.5, 0.2, 0.3)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6kuia"]
-albedo_color = Color(9.02452e-08, 0, 0.127647, 1)
-
 [sub_resource type="SphereMesh" id="SphereMesh_wv1st"]
 radius = 0.05
 height = 0.1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6kuia"]
+albedo_color = Color(9.02452e-08, 0, 0.127647, 1)
 
 [node name="Lever" type="Node3D"]
 script = ExtResource("1_wv1st")
 
 [node name="PhysicalLever" type="RigidBody3D" parent="."]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, 0, 0)
 axis_lock_linear_x = true
 axis_lock_linear_y = true
 axis_lock_linear_z = true
@@ -51,11 +49,6 @@ script = ExtResource("2_6kuia")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PhysicalLever/InteractiveLever"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.025, 0)
 shape = SubResource("CapsuleShape3D_6kuia")
-
-[node name="LeverBox" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.142717)
-mesh = SubResource("BoxMesh_wv1st")
-surface_material_override/0 = SubResource("StandardMaterial3D_6kuia")
 
 [node name="LeverSphere" type="MeshInstance3D" parent="."]
 mesh = SubResource("SphereMesh_wv1st")

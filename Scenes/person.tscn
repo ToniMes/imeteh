@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://co1hwpmwpjdf4"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_mxpfa"]
+radius = 0.4
+
+[node name="Person" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_mxpfa")

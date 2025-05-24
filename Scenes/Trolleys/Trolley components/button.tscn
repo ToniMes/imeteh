@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://c2j7c64ojidai"]
 
-[ext_resource type="Script" uid="uid://dltsl12v7qoe0" path="res://Scripts/button.gd" id="1_1cmwl"]
+[ext_resource type="Script" uid="uid://dltsl12v7qoe0" path="res://Scripts/Trolleys/Trolley components/button.gd" id="1_1cmwl"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_smycg"]
 height = 0.04
