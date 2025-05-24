@@ -1,11 +1,19 @@
 extends InteractiveObject
 class_name  ClickableButton
+
+@onready var trolley: Trolley = $"../../.."
 var button_pressed = false
+signal buttonPressed
 
 func _process(delta):
 # when gripped, button gets pressed down and comes back up
   if isGripped:
     start_button_press_animation()
+  
+  
+func _ready():
+  connect("buttonPressed", trolley.prepareLever)
+  
   
 func start_button_press_animation():
   # skipping animation if button animation is in progress
@@ -13,6 +21,7 @@ func start_button_press_animation():
     return
   
   button_pressed = true
+  buttonPressed.emit()
   var buttonMesh = $ButtonTopMesh
   var original_y = buttonMesh.global_position.y
   
