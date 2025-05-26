@@ -1,13 +1,31 @@
 [gd_scene load_steps=3 format=3 uid="uid://1ef711qtf5t8"]
 
-[ext_resource type="AudioStream" uid="uid://rucsss5ic3ux" path="res://Resources/SFX/lever_clank.mp3" id="1_0jh2j"]
-[ext_resource type="Script" uid="uid://cln8lyhc27ycx" path="res://Scripts/audio_stream_player.gd" id="2_3ni7s"]
+[ext_resource type="AudioStream" uid="uid://brelp36feh1op" path="res://Resources/Audio/sfx_lever_clank.mp3" id="1_0jh2j"]
+[ext_resource type="Script" uid="uid://b2m33rldgau8t" path="res://Scripts/Audio/audio_stream_player.gd" id="2_3ni7s"]
 
 [node name="Audio" type="Node"]
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="SfxPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("1_0jh2j")
+max_polyphony = 90
+bus = &"SFX"
 script = ExtResource("2_3ni7s")
 
-[connection signal="play_sound" from="AudioStreamPlayer" to="AudioStreamPlayer" method="_on_play_sound"]
-[connection signal="ready" from="AudioStreamPlayer" to="AudioStreamPlayer" method="_on_ready"]
+[node name="NarratorPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_0jh2j")
+max_polyphony = 90
+bus = &"Narrator"
+script = ExtResource("2_3ni7s")
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_0jh2j")
+max_polyphony = 90
+bus = &"Music"
+script = ExtResource("2_3ni7s")
+
+[connection signal="play_sound" from="SfxPlayer" to="SfxPlayer" method="_on_play_sound"]
+[connection signal="ready" from="SfxPlayer" to="SfxPlayer" method="_on_ready"]
+[connection signal="play_sound" from="NarratorPlayer" to="NarratorPlayer" method="_on_play_sound"]
+[connection signal="ready" from="NarratorPlayer" to="NarratorPlayer" method="_on_ready"]
+[connection signal="play_sound" from="MusicPlayer" to="MusicPlayer" method="_on_play_sound"]
+[connection signal="ready" from="MusicPlayer" to="MusicPlayer" method="_on_ready"]

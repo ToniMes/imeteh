@@ -1,11 +1,12 @@
 extends InteractiveObject
 class_name  ClickableButton
 
-@onready var audio_player = get_node("/root/R&d/Audio/AudioStreamPlayer")
+@onready var sfxStreamPlayer = get_node("/root/R&d/Audio/SfxStreamPlayer")
+const AudioEnum = preload("res://Scripts/Audio/audio_enum.gd").AudioEnum
 var button_pressed = false
 
 func _process(delta):
-# when gripped, button gets pressed down and comes back up
+	# when gripped, button gets pressed down and comes back up
 	if isGripped:
 		start_button_press_animation()
 	
@@ -21,6 +22,6 @@ func start_button_press_animation():
 	# creating button animation that pushes it down slightly and then back up
 	var tween = create_tween()
 	tween.tween_property(buttonMesh, "global_position:y", original_y - 0.01, 0.1)
-	audio_player.emit_signal("play_sound", "button_press.mp3")
+	sfxStreamPlayer.emit_signal("play_sound", AudioEnum.sfx_button_press, false)
 	tween.tween_property(buttonMesh, "global_position:y", original_y, 0.1).set_delay(0.15)
 	tween.tween_callback(func(): button_pressed = false)

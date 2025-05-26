@@ -1,7 +1,8 @@
 # class decribing the behaviour of a lever
 extends InteractiveObject
 class_name InteractiveLever
-@onready var audio_player = get_node("/root/R&d/Audio/AudioStreamPlayer")
+@onready var audio_player = get_node("/root/R&d/Audio/SfxPlayer")
+const AudioEnum = preload("res://Scripts/Audio/audio_enum.gd").AudioEnum
 
 func _process(delta):
   # while griped, the lever rotates in the Y plane to follow the hand
@@ -24,7 +25,7 @@ func _process(delta):
   
   # otherwise, snap it to left/right
 	else:
-		audio_player.emit_signal("play_sound", "lever_clank.mp3")
+		audio_player.emit_signal("play_sound", AudioEnum.sfx_lever_clank)
 		if physParent.rotation_degrees.y > 40:
 			physParent.rotation.y = lerp_angle(physParent.rotation.y, PI/4, delta*8)
   

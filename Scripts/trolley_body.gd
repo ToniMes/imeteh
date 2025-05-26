@@ -1,6 +1,7 @@
 extends MeshInstance3D
 
-@onready var audio_player = get_node("/root/R&d/Audio/AudioStreamPlayer")
+@onready var sfxStreamPlayer = get_node("/root/R&d/Audio/SfxPlayer")
+const AudioEnum = preload("res://Scripts/Audio/audio_enum.gd").AudioEnum
 
 func _ready() -> void:
-	audio_player.emit_signal("play_sound", "trolley_running_ambiance.mp3")
+	sfxStreamPlayer.emit_signal("play_sound", AudioEnum.sfx_trolley_running_ambiance, true)
