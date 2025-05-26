@@ -1,6 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://cb1cu4wrlrijw"]
+[gd_scene load_steps=3 format=3 uid="uid://ytafeg0f0hci"]
 
-[ext_resource type="PackedScene" uid="uid://bwmwcclirpgvi" path="res://Scenes/Trolleys/trolley1.tscn" id="1_8jkk8"]
+[ext_resource type="PackedScene" uid="uid://cd3nuoym3pjy7" path="res://Scenes/Trolleys/trolley2.tscn" id="1_bv1f1"]
 
 [sub_resource type="Environment" id="Environment_6h8pu"]
 
@@ -9,8 +9,8 @@
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_6h8pu")
 
-[node name="TrolleyBody" parent="." instance=ExtResource("1_8jkk8")]
-transform = Transform3D(-0.999764, 0, 0.0217274, 0, 1, 0, -0.0217274, 0, -0.999764, 0, 0, 0)
+[node name="TrolleyBody" parent="." instance=ExtResource("1_bv1f1")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
 
 [node name="RailParentRight" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 0)

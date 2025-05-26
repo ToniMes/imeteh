@@ -5,7 +5,7 @@ extends Control
 @onready var exit: Button = $ColorRect/VBoxContainer/VBoxContainer/Exit
 
 const SETTINGS_MENU_UI_PATH = "res://Scenes/UI/settings_menu_ui.tscn"
-const R_D_PATH = "res://Scenes/Levels/R&D.tscn"
+const R_D_PATH = "res://Scenes/Levels/lvl1.tscn"
 
 func _ready():
   play.pressed.connect(switch_to_gameplay)

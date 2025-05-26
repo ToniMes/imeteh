@@ -1,0 +1,44 @@
+[gd_scene load_steps=6 format=3 uid="uid://yiiwdyu0ycad"]
+
+[ext_resource type="Script" uid="uid://bxraihwt83ejl" path="res://Scripts/Trolleys/Trolley components/cabinet_door.gd" id="1_6fme5"]
+[ext_resource type="ArrayMesh" uid="uid://cvrv4c1mb1u3n" path="res://Resources/Models/Trolley/control_panel_door.obj" id="1_eaeyh"]
+[ext_resource type="Script" uid="uid://bhiwnqs8i0236" path="res://Scripts/Trolleys/Trolley components/interactive_cabinet_door.gd" id="3_8rps4"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_uep84"]
+size = Vector3(0.649182, 0.386328, 0.10752)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8rps4"]
+size = Vector3(0.365234, 0.207703, 0.455994)
+
+[node name="CabinetDoor" type="Node3D"]
+script = ExtResource("1_6fme5")
+
+[node name="PhysicalCabinetDoor" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+axis_lock_linear_x = true
+axis_lock_linear_y = true
+axis_lock_linear_z = true
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
+
+[node name="Mesh" type="MeshInstance3D" parent="PhysicalCabinetDoor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+mesh = ExtResource("1_eaeyh")
+skeleton = NodePath("../../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PhysicalCabinetDoor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.313006, 0.000195317, 0.0214355)
+visible = false
+shape = SubResource("BoxShape3D_uep84")
+
+[node name="InteractiveCabinetDoor" type="Area3D" parent="PhysicalCabinetDoor"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, -0.2)
+script = ExtResource("3_8rps4")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PhysicalCabinetDoor/InteractiveCabinetDoor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.492608, -0.24743, -0.00057983)
+shape = SubResource("BoxShape3D_8rps4")
+
+[connection signal="body_entered" from="PhysicalCabinetDoor/InteractiveCabinetDoor" to="PhysicalCabinetDoor/InteractiveCabinetDoor" method="onHandEnter"]
+[connection signal="body_exited" from="PhysicalCabinetDoor/InteractiveCabinetDoor" to="PhysicalCabinetDoor/InteractiveCabinetDoor" method="onHandExit"]
