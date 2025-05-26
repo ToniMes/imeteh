@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=4 uid="uid://bwmwcclirpgvi"]
+[gd_scene load_steps=12 format=4 uid="uid://bwmwcclirpgvi"]
 
 [ext_resource type="Script" uid="uid://dduokwtci7wxb" path="res://Scripts/trolley.gd" id="1_54p42"]
 [ext_resource type="ArrayMesh" uid="uid://dw4ikh4350kof" path="res://Resources/Models/Trolley/control_panel_body_1.obj" id="2_pk6wa"]
 [ext_resource type="ArrayMesh" uid="uid://cvrv4c1mb1u3n" path="res://Resources/Models/Trolley/control_panel_door.obj" id="3_yjg5m"]
 [ext_resource type="ArrayMesh" uid="uid://j5427occ3uv7" path="res://Resources/Models/Trolley/control_panel_speed_lever.obj" id="4_kekw7"]
 [ext_resource type="PackedScene" uid="uid://2ikbp3ayxqae" path="res://Scenes/player.tscn" id="5_mbrm1"]
+[ext_resource type="PackedScene" uid="uid://c2j7c64ojidai" path="res://Scenes/button.tscn" id="5_yjg5m"]
 [ext_resource type="PackedScene" uid="uid://7p562hvbyx17" path="res://Scenes/Railway/RailwaySpawner.tscn" id="6_vap8r"]
 [ext_resource type="PackedScene" uid="uid://cxeo2k8b644o7" path="res://Scenes/lever.tscn" id="7_pk6wa"]
 
@@ -44,7 +45,6 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_atuq7")
 
 [node name="TrolleyBody" type="MeshInstance3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 mesh = SubResource("ArrayMesh_n4sbs")
 script = ExtResource("1_54p42")
 
@@ -66,8 +66,11 @@ transform = Transform3D(1, 0, 0, 0, 0.959299, 0.282392, 0, -0.282392, 0.959299, 
 mesh = ExtResource("4_kekw7")
 skeleton = NodePath("../..")
 
+[node name="Button" parent="ControlPanel" instance=ExtResource("5_yjg5m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.408102, 0.371449, -0.0564095)
+
 [node name="Player" parent="." instance=ExtResource("5_mbrm1")]
-transform = Transform3D(0.999999, 0, -1.11759e-08, 0, 1, 0, 1.11759e-08, 0, 0.999999, 0.0530863, -0.227827, -0.56868)
+transform = Transform3D(0.999999, 0, -1.11759e-08, 0, 1, 0, 1.11759e-08, 0, 0.999999, 0.0530863, 1.3505, -0.795419)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.000890092, 1, 0, -1, 0.000890092, 0, 2.2095, 0)

@@ -18,48 +18,48 @@ var crossed_distance: float = 0
 var should_move_railing: float = true
 
 func _ready():
-  for i in range(20):
-    spawnNextRail()
+	for i in range(20):
+		spawnNextRail()
 
 
 func _process(delta):
-  var distance_to_front = rail_parts_center[0].global_position.distance_to(global_position)
-  if distance_to_front <= 18 * rail_length:
-    spawnNextRail()
-    while rail_parts_left.size() > 20:
-      rail_parent_left.remove_child(rail_parts_left.pop_back())
-    while rail_parts_center.size() > 20:
-      rail_parent_center.remove_child(rail_parts_center.pop_back())
-    while rail_parts_left.size() > 20:
-      rail_parent_right.remove_child(rail_parts_right.pop_back())
+	var distance_to_front = rail_parts_center[0].global_position.distance_to(global_position)
+	if distance_to_front <= 18 * rail_length:
+		spawnNextRail()
+	while rail_parts_left.size() > 20:
+		rail_parent_left.remove_child(rail_parts_left.pop_back())
+	while rail_parts_center.size() > 20:
+		rail_parent_center.remove_child(rail_parts_center.pop_back())
+	while rail_parts_left.size() > 20:
+		rail_parent_right.remove_child(rail_parts_right.pop_back())
 
 
 func spawnNextRail():
-  var rail_left
-  var rail_center
-  var rail_right
+	var rail_left
+	var rail_center
+	var rail_right
   
-  if railCount <= 50:
-    rail_left = Node3D.new()
-    rail_center = RAILWAY.instantiate()
-    rail_right = Node3D.new()
-  else:
-    rail_left = RAILWAY.instantiate()
-    rail_center = Node3D.new()
-    rail_right = RAILWAY.instantiate()
-    
-  rail_left.position.z = railCount * rail_length
-  rail_parent_left.add_child(rail_left)
-  rail_parts_left.insert(0, rail_left)
+	if railCount <= 50:
+		rail_left = Node3D.new()
+		rail_center = RAILWAY.instantiate()
+		rail_right = Node3D.new()
+	else:
+		rail_left = RAILWAY.instantiate()
+		rail_center = Node3D.new()
+		rail_right = RAILWAY.instantiate()
+	
+	rail_left.position.z = railCount * rail_length
+	rail_parent_left.add_child(rail_left)
+	rail_parts_left.insert(0, rail_left)
   
-  rail_center.position.z = railCount * rail_length
-  rail_parent_center.add_child(rail_center)
-  rail_parts_center.insert(0, rail_center)
+	rail_center.position.z = railCount * rail_length
+	rail_parent_center.add_child(rail_center)
+	rail_parts_center.insert(0, rail_center)
   
-  rail_right.position.z = railCount * rail_length
-  rail_parent_right.add_child(rail_right)
-  rail_parts_right.insert(0, rail_right)
+	rail_right.position.z = railCount * rail_length
+	rail_parent_right.add_child(rail_right)
+	rail_parts_right.insert(0, rail_right)
   
-  railCount+=1
-  if railCount == 70:
-    get_parent().turn()
+	railCount+=1
+	if railCount == 70:
+		get_parent().turn()
