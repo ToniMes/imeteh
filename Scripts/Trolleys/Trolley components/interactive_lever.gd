@@ -37,4 +37,6 @@ func _process(delta):
   
   elif physParent.rotation_degrees.y <= 0:
     physParent.rotation.y = lerp_angle(physParent.rotation.y, -PI/6, delta*8)
+    if lever.name == "AccLever":
+      lever.prepared = false
     lever.state = 1
