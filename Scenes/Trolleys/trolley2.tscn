@@ -63,7 +63,7 @@ mesh = ExtResource("4_yuinj")
 skeleton = NodePath("../..")
 
 [node name="CabinetDoor" parent="ControlPanel" instance=ExtResource("4_ahij2")]
-transform = Transform3D(-0.544815, 0, -0.838557, 0, 1, 0, 0.838557, 0, -0.544815, -0.265176, -0.033088, 0.240205)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.265176, -0.033088, 0.240205)
 
 [node name="Player" parent="." instance=ExtResource("5_18y1h")]
 transform = Transform3D(0.999999, 0, -1.11759e-08, 0, 1, 0, 1.11759e-08, 0, 0.999999, 0.0530863, -0.227827, -0.56868)
