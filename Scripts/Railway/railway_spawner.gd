@@ -3,6 +3,7 @@ class_name RailWaySpawner
 
 const RAILWAY = preload("res://Scenes/Railway/Railway.tscn")
 const RAILWAYPERSON = preload("res://Scenes/Railway/railway_person.tscn")
+const SPLIT = preload("res://Scenes/Railway/RailWayYsplit.tscn")
 @onready var rail_parent_left: Node3D = $"../../RailParentLeft"
 @onready var rail_parent_center: Node3D = $"../../RailParentCenter"
 @onready var rail_parent_right: Node3D = $"../../RailParentRight"
@@ -48,6 +49,8 @@ func spawnNextRail():
     rail_left = RAILWAY.instantiate()
     rail_center = Node3D.new()
     rail_right = RAILWAY.instantiate()
+    if railCount == 51:
+      rail_center = SPLIT.instantiate()
     if railCount == 52:
       rail_left = RAILWAYPERSON.instantiate()
     
