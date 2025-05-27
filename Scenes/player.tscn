@@ -1,8 +1,10 @@
-[gd_scene load_steps=11 format=4 uid="uid://2ikbp3ayxqae"]
+[gd_scene load_steps=13 format=4 uid="uid://2ikbp3ayxqae"]
 
 [ext_resource type="Script" uid="uid://ctjygd2osf40a" path="res://Scripts/Player/player_controller.gd" id="1_fkybt"]
 [ext_resource type="Script" uid="uid://c11v7diwiecth" path="res://Scripts/controler.gd" id="1_v0iea"]
 [ext_resource type="Material" uid="uid://ds2dpvbpht0ea" path="res://addons/godot-xr-tools/hands/materials/labglove.tres" id="3_6t5aa"]
+[ext_resource type="PackedScene" uid="uid://bq86r4yll8po" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/left_fullglove_low.tscn" id="4_fkybt"]
+[ext_resource type="PackedScene" uid="uid://xqimcf20s2jp" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/right_fullglove_low.tscn" id="5_x3wgy"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_v0iea"]
 size = Vector3(0.075, 0.15, 0.2)
@@ -232,9 +234,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0183099, -0.0619497)
 shape = SubResource("BoxShape3D_v0iea")
 
 [node name="mesh_Hand_low_L" type="MeshInstance3D" parent="XROrigin3D/LeftHandXR/Hand"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0147755, 0.00802098, 0.0223743)
 mesh = SubResource("ArrayMesh_vgqql")
 skin = SubResource("Skin_fkybt")
 surface_material_override/0 = ExtResource("3_6t5aa")
+
+[node name="LeftHand" parent="XROrigin3D/LeftHandXR/Hand" instance=ExtResource("4_fkybt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.015408, 0.0582822, -0.127283)
+visible = false
 
 [node name="RightHandXR" type="XRController3D" parent="XROrigin3D"]
 tracker = &"right_hand"
@@ -248,8 +255,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0183099, -0.0619497)
 shape = SubResource("BoxShape3D_v0iea")
 
 [node name="mesh_Hand_low_R" type="MeshInstance3D" parent="XROrigin3D/RightHandXR/Hand"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0151976, 0.00633235, 0.0219522)
 mesh = SubResource("ArrayMesh_6t5aa")
 skin = SubResource("Skin_vgqql")
+
+[node name="RightHand" parent="XROrigin3D/RightHandXR/Hand" instance=ExtResource("5_x3wgy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.015, 0.058, -0.129)
+visible = false
 
 [connection signal="button_pressed" from="XROrigin3D/LeftHandXR" to="XROrigin3D/LeftHandXR" method="onButtonPressed"]
 [connection signal="button_released" from="XROrigin3D/LeftHandXR" to="XROrigin3D/LeftHandXR" method="onButtonReleased"]
