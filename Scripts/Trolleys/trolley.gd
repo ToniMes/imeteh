@@ -10,6 +10,8 @@ const AudioEnum = preload("res://Scripts/Audio/audio_enum.gd").AudioEnum
 var currentTrack: int = 1 #center
 var speed: float = 0
 var started: bool = false
+var target_x: float = 0
+var target_y: float = 0
 
 
 func _ready():
@@ -23,6 +25,8 @@ func _process(delta):
   speed = lerp(speed, 10.0 * accLever.state, delta)
   pass
   position.z += delta * speed
+  global_position.x = lerp(global_position.x, target_x, delta * 10)
+  global_position.y = lerp(global_position.y, target_y, delta * 10)
   if speed > 2 and !started:
     started = true
     sfxStreamPlayer.emit_signal("play_sound", AudioEnum.sfx_trolley_running_ambiance, true)
@@ -34,7 +38,7 @@ func _process(delta):
 
 func switchTrack(track: int):
   currentTrack = track
-  global_position.x = 2.355 - currentTrack * 2.355
+  target_x = 2.355 - currentTrack * 2.355
 
 
 func turn():
@@ -63,3 +67,9 @@ func narrate(line: String):
   narratorStreamPlayer.stop()
   narratorStreamPlayer.stream = load("res://Resources/Audio/Narrator lines/"+line+".mp3")
   narratorStreamPlayer.play()
+
+
+func bump():
+  target_y = 20
+  await get_tree().create_timer(0.1).timeout
+  target_y = 0

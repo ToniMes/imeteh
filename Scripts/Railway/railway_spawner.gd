@@ -73,6 +73,8 @@ func spawnNextRail():
     get_parent().narrate("y_split")
   if railCount == 192:
     get_parent().turn()
+  if railCount == 193 and get_parent().currentTrack == 0:
+    get_parent().bump()
   if railCount == 198:
     if get_parent().currentTrack == 0:
       get_parent().narrate("lose")
