@@ -1,7 +1,8 @@
 extends MeshInstance3D
 class_name Trolley
 
-@onready var lever: Lever = $Lever
+@onready var turnLever: Lever = $TurnLever
+@onready var accLever: Lever = $AccLever
 @onready var railWaySpawner: RailWaySpawner = $RailwaySpawner
 var leverReady: bool = false
 @onready var sfxStreamPlayer = $"../Audio/SfxPlayer"
@@ -11,6 +12,8 @@ var currentTrack: int = 1 #center
 
 func _ready():
   sfxStreamPlayer.emit_signal("play_sound", AudioEnum.sfx_trolley_running_ambiance, true)
+  accLever.prepared = true
+  #turnLever.prepared = true
 
 
 func _process(delta):
@@ -24,10 +27,10 @@ func switchTrack(track: int):
 
 
 func turn():
-  if lever.state == -1:
+  if turnLever.state == -1:
     switchTrack(0)
   
-  elif lever.state == 1:
+  elif turnLever.state == 1:
     switchTrack(2)
 
   else:
@@ -38,9 +41,9 @@ func turn():
   
   
 func prepareLever():
-  if lever.prepared:
+  if turnLever.prepared:
     return
     
-  lever.prepared = true
-  lever.targetPosition = lever.position + Vector3(0,0.19,0)
+  turnLever.prepared = true
+  turnLever.targetPosition = turnLever.position + Vector3(0,0.19,0)
   

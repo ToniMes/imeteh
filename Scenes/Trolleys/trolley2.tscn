@@ -58,6 +58,7 @@ skeleton = NodePath("../..")
 
 [node name="ControlPanelSpeedLever" type="MeshInstance3D" parent="ControlPanel"]
 transform = Transform3D(1, 0, 0, 0, 0.959299, 0.282392, 0, -0.282392, 0.959299, 0.540421, 0.265626, -0.08639)
+visible = false
 mesh = ExtResource("4_yuinj")
 skeleton = NodePath("../..")
 
@@ -73,8 +74,11 @@ transform = Transform3D(1, 0, 0, 0, 0.000890092, 1, 0, -1, 0.000890092, 0, 2.209
 [node name="RailwaySpawner" parent="." instance=ExtResource("6_dbpg3")]
 transform = Transform3D(-0.999764, 0, -0.0217275, 0, 1, 0, 0.0217275, 0, -0.999764, -0.0161113, -0.22952, 0.0837665)
 
-[node name="Lever" parent="." instance=ExtResource("7_lojdc")]
+[node name="TurnLever" parent="." instance=ExtResource("7_lojdc")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.59, -1.209)
 
 [node name="Button" parent="." instance=ExtResource("8_f4x8e")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.201788, -1.07058)
+
+[node name="AccLever" parent="." instance=ExtResource("7_lojdc")]
+transform = Transform3D(-4.37114e-08, 1, 0, 4.37114e-08, 1.91069e-15, -1, -1, -4.37114e-08, -4.37114e-08, 0.470127, 0.752809, -1.21074)

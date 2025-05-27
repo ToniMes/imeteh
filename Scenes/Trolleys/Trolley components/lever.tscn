@@ -28,7 +28,7 @@ albedo_color = Color(1.56425e-07, 0, 0.19701, 1)
 script = ExtResource("1_wv1st")
 
 [node name="PhysicalLever" type="RigidBody3D" parent="."]
-transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, 0, 0)
+transform = Transform3D(0.866026, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866026, 0, 0, 0)
 axis_lock_linear_x = true
 axis_lock_linear_y = true
 axis_lock_linear_z = true
