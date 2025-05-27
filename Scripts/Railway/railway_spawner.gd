@@ -41,18 +41,20 @@ func spawnNextRail():
   var rail_center
   var rail_right
   
-  if railCount <= 50:
+  if railCount <= 2:
     rail_left = Node3D.new()
     rail_center = RAILWAY.instantiate()
+    rail_right = Node3D.new()
+  elif railCount == 3:
+    rail_left = Node3D.new()
+    rail_center = SPLIT.instantiate()
     rail_right = Node3D.new()
   else:
     rail_left = RAILWAY.instantiate()
     rail_center = Node3D.new()
     rail_right = RAILWAY.instantiate()
-    if railCount == 51:
-      rail_center = SPLIT.instantiate()
-    if railCount == 52:
-      rail_left = RAILWAYPERSON.instantiate()
+  if railCount == 4:
+    rail_left = RAILWAYPERSON.instantiate()
     
   rail_left.position.z = railCount * rail_length
   rail_parent_left.add_child(rail_left)
