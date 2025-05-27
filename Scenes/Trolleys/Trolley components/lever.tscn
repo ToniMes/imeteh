@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://cxeo2k8b644o7"]
+[gd_scene load_steps=10 format=3 uid="uid://cxeo2k8b644o7"]
 
 [ext_resource type="Script" uid="uid://b5myyfycvquhb" path="res://Scripts/Trolleys/Trolley components/lever.gd" id="1_wv1st"]
 [ext_resource type="Script" uid="uid://c2p1fe67rvr24" path="res://Scripts/Trolleys/Trolley components/interactive_lever.gd" id="2_6kuia"]
+[ext_resource type="ArrayMesh" uid="uid://j5427occ3uv7" path="res://Resources/Models/Trolley/control_panel_speed_lever.obj" id="2_aebua"]
 [ext_resource type="PackedScene" uid="uid://digpwor5hndod" path="res://Scenes/audio_player.tscn" id="3_djiyg"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_ejj7v"]
@@ -35,8 +36,14 @@ axis_lock_angular_x = true
 axis_lock_angular_y = true
 axis_lock_angular_z = true
 
+[node name="ControlPanelSpeedLever" type="MeshInstance3D" parent="PhysicalLever"]
+transform = Transform3D(1.14641e-15, 2.62268e-08, -0.6, 0.6, -2.62268e-08, 0, -2.62268e-08, -0.6, -2.62268e-08, 0, 0, 0)
+mesh = ExtResource("2_aebua")
+skeleton = NodePath("../..")
+
 [node name="MeshInstance3D" type="MeshInstance3D" parent="PhysicalLever"]
 transform = Transform3D(0.5, 0, 0, 0, -2.18557e-08, 0.5, 0, -0.5, -2.18557e-08, 0, 0, -0.12)
+visible = false
 mesh = SubResource("CapsuleMesh_ejj7v")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PhysicalLever"]
@@ -52,6 +59,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.025, 0)
 shape = SubResource("CapsuleShape3D_6kuia")
 
 [node name="Ball" type="MeshInstance3D" parent="."]
+visible = false
 mesh = SubResource("SphereMesh_2yhwd")
 surface_material_override/0 = SubResource("StandardMaterial3D_djiyg")
 
