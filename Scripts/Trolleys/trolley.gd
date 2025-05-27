@@ -5,6 +5,7 @@ class_name Trolley
 @onready var accLever: Lever = $AccLever
 @onready var railWaySpawner: RailWaySpawner = $RailwaySpawner
 @onready var sfxStreamPlayer: AudioStreamPlayer = $"../Audio/SfxPlayer"
+@onready var narratorStreamPlayer: AudioStreamPlayer = $"../Audio/NarratorPlayer"
 const AudioEnum = preload("res://Scripts/Audio/audio_enum.gd").AudioEnum
 var currentTrack: int = 1 #center
 var speed: float = 0
@@ -13,6 +14,8 @@ var started: bool = false
 
 func _ready():
   accLever.prepared = true
+  narratorStreamPlayer.stream = load("res://Resources/Audio/Narrator lines/intro.mp3")
+  narratorStreamPlayer.play()
   #turnLever.prepared = true
 
 
@@ -21,9 +24,13 @@ func _process(delta):
   pass
   position.z += delta * speed
   if speed > 2 and !started:
-    sfxStreamPlayer.emit_signal("play_sound", AudioEnum.sfx_trolley_running_ambiance, true)
     started = true
-
+    sfxStreamPlayer.emit_signal("play_sound", AudioEnum.sfx_trolley_running_ambiance, true)
+    narratorStreamPlayer.stop()
+    narratorStreamPlayer.stream = load("res://Resources/Audio/Narrator lines/tram_start.mp3")
+    narratorStreamPlayer.play()
+    
+    
 
 func switchTrack(track: int):
   currentTrack = track
@@ -52,3 +59,7 @@ func prepareLever():
   turnLever.prepared = true
   turnLever.targetPosition = turnLever.position + Vector3(0,0.19,0)
   
+func narrate(line: String):
+  narratorStreamPlayer.stop()
+  narratorStreamPlayer.stream = load("res://Resources/Audio/Narrator lines/"+line+".mp3")
+  narratorStreamPlayer.play()

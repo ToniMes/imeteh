@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dxfrpnu4wmfll"
+path="res://.godot/imported/New Recording 9.mp3-43e3e3442ab6f2b8a60300df40dae6bf.mp3str"
+
+[deps]
+
+source_file="res://Resources/Audio/Narrator lines/New Recording 9.mp3"
+dest_files=["res://.godot/imported/New Recording 9.mp3-43e3e3442ab6f2b8a60300df40dae6bf.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

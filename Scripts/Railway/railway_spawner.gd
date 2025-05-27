@@ -41,11 +41,11 @@ func spawnNextRail():
   var rail_center
   var rail_right
   
-  if railCount <= 2:
+  if railCount <= 172:
     rail_left = Node3D.new()
     rail_center = RAILWAY.instantiate()
     rail_right = Node3D.new()
-  elif railCount == 3:
+  elif railCount == 173:
     rail_left = Node3D.new()
     rail_center = SPLIT.instantiate()
     rail_right = Node3D.new()
@@ -53,7 +53,7 @@ func spawnNextRail():
     rail_left = RAILWAY.instantiate()
     rail_center = Node3D.new()
     rail_right = RAILWAY.instantiate()
-  if railCount == 4:
+  if railCount == 174:
     rail_left = RAILWAYPERSON.instantiate()
     
   rail_left.position.z = railCount * rail_length
@@ -69,5 +69,12 @@ func spawnNextRail():
   rail_parts_right.insert(0, rail_right)
   
   railCount+=1
-  if railCount == 70:
+  if railCount == 100:
+    get_parent().narrate("y_split")
+  if railCount == 192:
     get_parent().turn()
+  if railCount == 198:
+    if get_parent().currentTrack == 0:
+      get_parent().narrate("lose")
+    if get_parent().currentTrack == 2:
+      get_parent().narrate("win")

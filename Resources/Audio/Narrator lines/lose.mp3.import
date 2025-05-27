@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cskwyi724l26s"
+path="res://.godot/imported/lose.mp3-fe48907397dcac33dc2a9ecdd43d380a.mp3str"
+
+[deps]
+
+source_file="res://Resources/Audio/Narrator lines/lose.mp3"
+dest_files=["res://.godot/imported/lose.mp3-fe48907397dcac33dc2a9ecdd43d380a.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
