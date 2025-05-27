@@ -8,7 +8,7 @@ const AudioEnum = preload("res://Scripts/Audio/audio_enum.gd").AudioEnum
 
 func _process(delta):
   # while griped, the lever rotates in the Y plane to follow the hand
-  if isGripped and lever.prepared:
+  if isGripped and lever.prepared and hand:
     physParent.look_at(hand.global_position)
     physParent.rotation.x = 0
     physParent.rotation.z = 0

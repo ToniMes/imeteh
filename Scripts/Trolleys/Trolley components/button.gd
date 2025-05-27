@@ -9,7 +9,7 @@ const AudioEnum = preload("res://Scripts/Audio/audio_enum.gd").AudioEnum
 
 func _process(delta):
 # when gripped, button gets pressed down and comes back up
-  if isGripped:
+  if isGripped and hand:
     start_button_press_animation()
   
   

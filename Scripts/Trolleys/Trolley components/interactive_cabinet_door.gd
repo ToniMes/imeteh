@@ -5,7 +5,7 @@ class_name InteractiveCabinetDoor
 
 func _process(delta):
   # while griped, the lever rotates in the Y plane to follow the hand
-  if isGripped:
+  if isGripped and hand:
     physParent.look_at(hand.global_position)
     physParent.rotation.y += PI/2
     physParent.rotation.x = 0
