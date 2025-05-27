@@ -17,7 +17,7 @@ func _process(delta):
     # to 30 degrees in each direction
     if physParent.rotation.y > PI/6:
       physParent.rotation.y = PI/6
-      lever.state = -1
+      lever.state = 0
     elif physParent.rotation.y < -PI/6:
       physParent.rotation.y = -PI/6
       lever.state = 1
@@ -33,7 +33,7 @@ func _process(delta):
   # otherwise, snap it to left/right
   elif physParent.rotation_degrees.y > 0:
     physParent.rotation.y = lerp_angle(physParent.rotation.y, PI/6, delta*8)
-    lever.state = -1
+    lever.state = 0
   
   elif physParent.rotation_degrees.y <= 0:
     physParent.rotation.y = lerp_angle(physParent.rotation.y, -PI/6, delta*8)

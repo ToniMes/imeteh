@@ -4,10 +4,10 @@ class_name Trolley
 @onready var turnLever: Lever = $TurnLever
 @onready var accLever: Lever = $AccLever
 @onready var railWaySpawner: RailWaySpawner = $RailwaySpawner
-var leverReady: bool = false
 @onready var sfxStreamPlayer = $"../Audio/SfxPlayer"
 const AudioEnum = preload("res://Scripts/Audio/audio_enum.gd").AudioEnum
 var currentTrack: int = 1 #center
+var speed: float = 0
 
 
 func _ready():
@@ -17,8 +17,9 @@ func _ready():
 
 
 func _process(delta):
+  speed = lerp(speed, 10.0 * accLever.state, delta)
   pass
-  position.z += delta * 10
+  position.z += delta * speed
 
 
 func switchTrack(track: int):
@@ -27,7 +28,7 @@ func switchTrack(track: int):
 
 
 func turn():
-  if turnLever.state == -1:
+  if turnLever.state == 0:
     switchTrack(0)
   
   elif turnLever.state == 1:
@@ -44,6 +45,7 @@ func prepareLever():
   if turnLever.prepared:
     return
     
+  turnLever.visible = true
   turnLever.prepared = true
   turnLever.targetPosition = turnLever.position + Vector3(0,0.19,0)
   
