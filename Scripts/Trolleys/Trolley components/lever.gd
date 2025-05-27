@@ -4,6 +4,7 @@ class_name Lever
 @onready var targetPosition: Vector3 = position
 var prepared: bool = false
 
+
 var state: int = 0:
   get:
     return state

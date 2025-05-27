@@ -12,7 +12,6 @@ func _ready():
   settings.pressed.connect(switch_to_settings_menu)
   
 func switch_to_gameplay():
-  Naration.playLine("prva")
   get_tree().change_scene_to_file(R_D_PATH)
   
 func switch_to_settings_menu():

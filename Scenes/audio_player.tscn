@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=3 uid="uid://digpwor5hndod"]
+
+[ext_resource type="AudioStream" uid="uid://68mwy1xv86p1" path="res://Resources/Audio/sfx_lever_clank.mp3" id="1_0jh2j"]
+[ext_resource type="Script" uid="uid://b35fqo4q25aot" path="res://Scripts/Audio/audio_stream_player.gd" id="2_3ni7s"]
+
+[node name="Audio" type="AudioStreamPlayer"]
+script = ExtResource("2_3ni7s")
+
+[node name="SfxPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_0jh2j")
+max_polyphony = 90
+script = ExtResource("2_3ni7s")
+
+[node name="NarratorPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_0jh2j")
+max_polyphony = 90
+script = ExtResource("2_3ni7s")
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_0jh2j")
+max_polyphony = 90
+script = ExtResource("2_3ni7s")
+
+[connection signal="play_sound" from="SfxPlayer" to="SfxPlayer" method="_on_play_sound"]
+[connection signal="ready" from="SfxPlayer" to="SfxPlayer" method="_on_ready"]
+[connection signal="play_sound" from="NarratorPlayer" to="NarratorPlayer" method="_on_play_sound"]
+[connection signal="ready" from="NarratorPlayer" to="NarratorPlayer" method="_on_ready"]
+[connection signal="play_sound" from="MusicPlayer" to="MusicPlayer" method="_on_play_sound"]
+[connection signal="ready" from="MusicPlayer" to="MusicPlayer" method="_on_ready"]

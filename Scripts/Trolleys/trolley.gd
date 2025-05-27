@@ -4,8 +4,13 @@ class_name Trolley
 @onready var lever: Lever = $Lever
 @onready var railWaySpawner: RailWaySpawner = $RailwaySpawner
 var leverReady: bool = false
-
+@onready var sfxStreamPlayer = $"../Audio/SfxPlayer"
+const AudioEnum = preload("res://Scripts/Audio/audio_enum.gd").AudioEnum
 var currentTrack: int = 1 #center
+
+
+func _ready():
+  sfxStreamPlayer.emit_signal("play_sound", AudioEnum.sfx_trolley_running_ambiance, true)
 
 
 func _process(delta):
