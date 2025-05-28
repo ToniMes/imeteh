@@ -3,8 +3,7 @@ extends InteractiveObject
 class_name InteractiveLever
 
 @onready var lever: Lever = $"../.."
-@onready var audio_player = $"../../Audio/SfxPlayer"
-const AudioEnum = preload("res://Scripts/Audio/audio_enum.gd").AudioEnum
+@onready var sfxPlayer = $"../../Audio/SfxPlayer"
 
 func _process(delta):
   # while griped, the lever rotates in the Y plane to follow the hand

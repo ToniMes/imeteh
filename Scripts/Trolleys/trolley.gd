@@ -4,9 +4,8 @@ class_name Trolley
 @onready var turnLever: Lever = $TurnLever
 @onready var accLever: Lever = $AccLever
 @onready var railWaySpawner: RailWaySpawner = $RailwaySpawner
-@onready var sfxStreamPlayer: AudioStreamPlayer = $"../Audio/SfxPlayer"
-@onready var narratorStreamPlayer: AudioStreamPlayer = $"../Audio/NarratorPlayer"
-const AudioEnum = preload("res://Scripts/Audio/audio_enum.gd").AudioEnum
+@onready var narratorPlayer: AudioStreamPlayer = $"../Audio/NarratorPlayer"
+@onready var sfxPlayer: AudioStreamPlayer = $"../Audio/SfxPlayer"
 var currentTrack: int = 1 #center
 var speed: float = 0
 var started: bool = false
@@ -16,8 +15,7 @@ var target_y: float = 0
 
 func _ready():
   accLever.prepared = true
-  narratorStreamPlayer.stream = load("res://Resources/Audio/Narrator lines/intro.mp3")
-  narratorStreamPlayer.play()
+  narratorPlayer.emit_signal("play_sound", "narrator/intro.mp3")
   #turnLever.prepared = true
 
 
@@ -29,10 +27,7 @@ func _process(delta):
   global_position.y = lerp(global_position.y, target_y, delta * 10)
   if speed > 2 and !started:
     started = true
-    sfxStreamPlayer.emit_signal("play_sound", AudioEnum.sfx_trolley_running_ambiance, true)
-    narratorStreamPlayer.stop()
-    narratorStreamPlayer.stream = load("res://Resources/Audio/Narrator lines/tram_start.mp3")
-    narratorStreamPlayer.play()
+    sfxPlayer.emit_signal("play_sound", "sfx/trolley_running_ambiance.mp3", true)
     
     
 
@@ -62,11 +57,6 @@ func prepareLever():
   turnLever.visible = true
   turnLever.prepared = true
   turnLever.targetPosition = turnLever.position + Vector3(0,0.19,0)
-  
-func narrate(line: String):
-  narratorStreamPlayer.stop()
-  narratorStreamPlayer.stream = load("res://Resources/Audio/Narrator lines/"+line+".mp3")
-  narratorStreamPlayer.play()
 
 
 func bump():
