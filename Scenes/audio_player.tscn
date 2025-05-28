@@ -9,16 +9,19 @@ script = ExtResource("2_3ni7s")
 [node name="SfxPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("1_0jh2j")
 max_polyphony = 90
+bus = &"SFX"
 script = ExtResource("2_3ni7s")
 
 [node name="NarratorPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("1_0jh2j")
 max_polyphony = 90
+bus = &"Narrator"
 script = ExtResource("2_3ni7s")
 
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("1_0jh2j")
 max_polyphony = 90
+bus = &"Music"
 script = ExtResource("2_3ni7s")
 
 [connection signal="play_sound" from="SfxPlayer" to="SfxPlayer" method="_on_play_sound"]
