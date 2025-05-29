@@ -1,10 +1,15 @@
-[gd_scene load_steps=13 format=4 uid="uid://2ikbp3ayxqae"]
+[gd_scene load_steps=20 format=4 uid="uid://2ikbp3ayxqae"]
 
 [ext_resource type="Script" uid="uid://ctjygd2osf40a" path="res://Scripts/Player/player_controller.gd" id="1_fkybt"]
 [ext_resource type="Script" uid="uid://c11v7diwiecth" path="res://Scripts/controler.gd" id="1_v0iea"]
 [ext_resource type="Material" uid="uid://ds2dpvbpht0ea" path="res://addons/godot-xr-tools/hands/materials/labglove.tres" id="3_6t5aa"]
 [ext_resource type="PackedScene" uid="uid://bq86r4yll8po" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/left_fullglove_low.tscn" id="4_fkybt"]
+[ext_resource type="Animation" uid="uid://dgfeikrugfewi" path="res://addons/godot-xr-tools/hands/animations/left/Cup.res" id="5_tx1dd"]
 [ext_resource type="PackedScene" uid="uid://xqimcf20s2jp" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/right_fullglove_low.tscn" id="5_x3wgy"]
+[ext_resource type="Animation" uid="uid://nq3xh1olqipq" path="res://addons/godot-xr-tools/hands/animations/left/Grip Shaft.res" id="6_f1ek2"]
+[ext_resource type="Script" uid="uid://45f7hqo2rphl" path="res://addons/godot-xr-tools/hands/poses/hand_pose_settings.gd" id="7_tx1dd"]
+[ext_resource type="Animation" uid="uid://do01jton6rk42" path="res://addons/godot-xr-tools/hands/animations/right/Cup.res" id="9_tx1dd"]
+[ext_resource type="Animation" uid="uid://c8dghcftg1thx" path="res://addons/godot-xr-tools/hands/animations/right/Grip Shaft.res" id="10_gymyn"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_v0iea"]
 size = Vector3(0.075, 0.15, 0.2)
@@ -112,6 +117,12 @@ bind/25/name = &"Palm_L"
 bind/25/bone = -1
 bind/25/pose = Transform3D(1, -3.12371e-06, 3.13855e-06, 3.12364e-06, 1, 1.98203e-05, -3.13861e-06, -1.9828e-05, 1, -0.0307808, 0.0419728, 0.0399498)
 
+[sub_resource type="Resource" id="Resource_gymyn"]
+script = ExtResource("7_tx1dd")
+open_pose = ExtResource("6_f1ek2")
+closed_pose = ExtResource("5_tx1dd")
+metadata/_custom_type_script = "uid://45f7hqo2rphl"
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_52mbg"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_6t5aa"]
@@ -215,6 +226,12 @@ bind/25/name = &"Palm_R"
 bind/25/bone = -1
 bind/25/pose = Transform3D(1, 3.12371e-06, -3.13855e-06, -3.12364e-06, 1, 1.98203e-05, 3.13861e-06, -1.9828e-05, 1, 0.0307808, 0.0419728, 0.0399498)
 
+[sub_resource type="Resource" id="Resource_pu2lt"]
+script = ExtResource("7_tx1dd")
+open_pose = ExtResource("10_gymyn")
+closed_pose = ExtResource("9_tx1dd")
+metadata/_custom_type_script = "uid://45f7hqo2rphl"
+
 [node name="Player" type="Node3D"]
 script = ExtResource("1_fkybt")
 
@@ -235,13 +252,14 @@ shape = SubResource("BoxShape3D_v0iea")
 
 [node name="mesh_Hand_low_L" type="MeshInstance3D" parent="XROrigin3D/LeftHandXR/Hand"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0147755, 0.00802098, 0.0223743)
+visible = false
 mesh = SubResource("ArrayMesh_vgqql")
 skin = SubResource("Skin_fkybt")
 surface_material_override/0 = ExtResource("3_6t5aa")
 
 [node name="LeftHand" parent="XROrigin3D/LeftHandXR/Hand" instance=ExtResource("4_fkybt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.015408, 0.0582822, -0.127283)
-visible = false
+default_pose = SubResource("Resource_gymyn")
 
 [node name="RightHandXR" type="XRController3D" parent="XROrigin3D"]
 tracker = &"right_hand"
@@ -256,12 +274,13 @@ shape = SubResource("BoxShape3D_v0iea")
 
 [node name="mesh_Hand_low_R" type="MeshInstance3D" parent="XROrigin3D/RightHandXR/Hand"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0151976, 0.00633235, 0.0219522)
+visible = false
 mesh = SubResource("ArrayMesh_6t5aa")
 skin = SubResource("Skin_vgqql")
 
 [node name="RightHand" parent="XROrigin3D/RightHandXR/Hand" instance=ExtResource("5_x3wgy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.015, 0.058, -0.129)
-visible = false
+default_pose = SubResource("Resource_pu2lt")
 
 [connection signal="button_pressed" from="XROrigin3D/LeftHandXR" to="XROrigin3D/LeftHandXR" method="onButtonPressed"]
 [connection signal="button_released" from="XROrigin3D/LeftHandXR" to="XROrigin3D/LeftHandXR" method="onButtonReleased"]
