@@ -1,11 +1,18 @@
-[gd_scene load_steps=9 format=3 uid="uid://c2j7c64ojidai"]
+[gd_scene load_steps=10 format=3 uid="uid://c2j7c64ojidai"]
 
 [ext_resource type="Script" uid="uid://dltsl12v7qoe0" path="res://Scripts/Trolleys/Trolley components/button.gd" id="1_1cmwl"]
+[ext_resource type="Script" uid="uid://c61m04lkimt5f" path="res://Scripts/Interaction/interaction_object.gd" id="1_xeg4x"]
 [ext_resource type="PackedScene" uid="uid://digpwor5hndod" path="res://Scenes/audio_player.tscn" id="2_xeg4x"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_smycg"]
 height = 0.04
 radius = 0.035
+
+[sub_resource type="BoxMesh" id="BoxMesh_lkjnc"]
+size = Vector3(0.1, 0.05, 0.1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1cmwl"]
+albedo_color = Color(0.241156, 0.241156, 0.241156, 1)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_iju5o"]
 radius = 0.15
@@ -18,13 +25,8 @@ height = 0.03
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0kpiu"]
 albedo_color = Color(0.733002, 1.64848e-06, 3.85046e-07, 1)
 
-[sub_resource type="BoxMesh" id="BoxMesh_lkjnc"]
-size = Vector3(0.1, 0.05, 0.1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1cmwl"]
-albedo_color = Color(0.241156, 0.241156, 0.241156, 1)
-
 [node name="Button" type="Node3D"]
+script = ExtResource("1_1cmwl")
 
 [node name="ButtonRigidBody" type="RigidBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.00457452, 0)
@@ -36,25 +38,26 @@ gravity_scale = 0.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0389582, 0)
 shape = SubResource("CylinderShape3D_smycg")
 
-[node name="ButtonTop" type="Area3D" parent="ButtonRigidBody"]
-script = ExtResource("1_1cmwl")
-metadata/_custom_type_script = "uid://dltsl12v7qoe0"
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="ButtonRigidBody/ButtonTop"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000719011, 0.024882, -0.000884593)
-shape = SubResource("SphereShape3D_iju5o")
-
-[node name="ButtonTopMesh" type="MeshInstance3D" parent="ButtonRigidBody/ButtonTop"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0401893, 0)
-mesh = SubResource("CylinderMesh_0kpiu")
-skeleton = NodePath("../..")
-surface_material_override/0 = SubResource("StandardMaterial3D_0kpiu")
-
 [node name="ButtonBottomMesh" type="MeshInstance3D" parent="ButtonRigidBody"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00457452, 0)
 mesh = SubResource("BoxMesh_lkjnc")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_1cmwl")
+
+[node name="ButtonTop" type="Area3D" parent="ButtonRigidBody"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00457452, 0)
+script = ExtResource("1_xeg4x")
+metadata/_custom_type_script = "uid://c61m04lkimt5f"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ButtonRigidBody/ButtonTop"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000719011, 0.0203075, -0.000884593)
+shape = SubResource("SphereShape3D_iju5o")
+
+[node name="ButtonTopMesh" type="MeshInstance3D" parent="ButtonRigidBody/ButtonTop"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0356148, 0)
+mesh = SubResource("CylinderMesh_0kpiu")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_0kpiu")
 
 [node name="Audio" parent="." instance=ExtResource("2_xeg4x")]
 

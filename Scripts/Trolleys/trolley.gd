@@ -6,6 +6,7 @@ class_name Trolley
 @onready var railWaySpawner: RailWaySpawner = $RailwaySpawner
 @onready var narratorPlayer: AudioStreamPlayer = $"../../Audio/NarratorPlayer"
 @onready var sfxPlayer: AudioStreamPlayer = $"../../Audio/SfxPlayer"
+@onready var turnLeverButton: ClickableButton = $TurnLeverButton
 var currentTrack: int = 1 #center
 var speed: float = 0
 var started: bool = false
@@ -16,6 +17,7 @@ var max_speed: float = 10
 
 func _ready():
   accLever.prepared = true
+  turnLeverButton.connect("buttonPressed", func(): prepareLever())
   narratorPlayer.emit_signal("play_sound", "narrator/intro.mp3")
 
 

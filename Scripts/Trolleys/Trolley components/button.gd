@@ -1,19 +1,15 @@
-extends InteractiveObject
+extends Node3D
 class_name  ClickableButton
 
-@onready var trolley: Trolley = $"../../.."
 var button_pressed = false
 signal buttonPressed
-@onready var sfxPlayer = $"../../Audio/SfxPlayer"
+@onready var sfxPlayer = $Audio/SfxPlayer
+@onready var buttonTop = $ButtonRigidBody/ButtonTop
 
 func _process(delta):
 # when gripped, button gets pressed down and comes back up
-  if isGripped and hand:
+  if buttonTop.isGripped and buttonTop.hand:
     start_button_press_animation()
-  
-  
-func _ready():
-  connect("buttonPressed", trolley.prepareLever)
   
   
 func start_button_press_animation():
@@ -23,7 +19,7 @@ func start_button_press_animation():
   
   button_pressed = true
   buttonPressed.emit()
-  var buttonMesh = $ButtonTopMesh
+  var buttonMesh = buttonTop.get_node("ButtonTopMesh")
   var original_y = buttonMesh.global_position.y
   
   # creating button animation that pushes it down slightly and then back up

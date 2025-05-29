@@ -71,7 +71,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.265176, -0.033088, 0.24020
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.59, -1.209)
 visible = false
 
-[node name="Button" parent="TrolleyBody" instance=ExtResource("8_f4x8e")]
+[node name="TurnLeverButton" parent="TrolleyBody" instance=ExtResource("8_f4x8e")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.201788, -1.07058)
 
 [node name="AccLever" parent="TrolleyBody" instance=ExtResource("7_lojdc")]
