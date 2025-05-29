@@ -48,6 +48,13 @@ player/standard_height=1.8
 3d_physics/layer_22="Hand Pose Areas"
 3d_physics/layer_23="UI Objects"
 
+[physics]
+
+common/physics_ticks_per_second=120
+common/max_physics_steps_per_frame=16
+common/physics_jitter_fix=1.5
+common/physics_interpolation=true
+
 [rendering]
 
 renderer/rendering_method="mobile"

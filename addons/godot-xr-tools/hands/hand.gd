@@ -137,9 +137,7 @@ func _ready() -> void:
   _update_hand_material_override()
   _update_pose()
   _update_target()
-
-func _process(delta: float) -> void:
-    global_transform = _target.global_transform * _transform
+    
 
 ## This method checks for world-scale changes and scales itself causing the
 ## hand mesh and skeleton to scale appropriately. It then reads the grip and
@@ -168,6 +166,7 @@ func _physics_process(_delta: float) -> void:
     $AnimationTree.set("parameters/Trigger/blend_amount", trigger)
 
   # Move to target
+  global_transform = _target.global_transform * _transform
   force_update_transform()
 
 
