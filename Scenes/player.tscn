@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=4 uid="uid://2ikbp3ayxqae"]
+[gd_scene load_steps=22 format=4 uid="uid://2ikbp3ayxqae"]
 
 [ext_resource type="Script" uid="uid://ctjygd2osf40a" path="res://Scripts/Player/player_controller.gd" id="1_fkybt"]
 [ext_resource type="Script" uid="uid://c11v7diwiecth" path="res://Scripts/controler.gd" id="1_v0iea"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://xqimcf20s2jp" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/right_fullglove_low.tscn" id="5_x3wgy"]
 [ext_resource type="Animation" uid="uid://nq3xh1olqipq" path="res://addons/godot-xr-tools/hands/animations/left/Grip Shaft.res" id="6_f1ek2"]
 [ext_resource type="Script" uid="uid://45f7hqo2rphl" path="res://addons/godot-xr-tools/hands/poses/hand_pose_settings.gd" id="7_tx1dd"]
+[ext_resource type="PackedScene" uid="uid://b4ysuy43poobf" path="res://addons/godot-xr-tools/functions/function_pickup.tscn" id="9_pu2lt"]
 [ext_resource type="Animation" uid="uid://do01jton6rk42" path="res://addons/godot-xr-tools/hands/animations/right/Cup.res" id="9_tx1dd"]
 [ext_resource type="Animation" uid="uid://c8dghcftg1thx" path="res://addons/godot-xr-tools/hands/animations/right/Grip Shaft.res" id="10_gymyn"]
 
@@ -263,6 +264,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.015408, 0.0582822, -0.12728
 hand_material_override = ExtResource("5_gymyn")
 default_pose = SubResource("Resource_gymyn")
 
+[node name="FunctionPickup" parent="XROrigin3D/LeftHandXR" instance=ExtResource("9_pu2lt")]
+
 [node name="RightHandXR" type="XRController3D" parent="XROrigin3D"]
 tracker = &"right_hand"
 script = ExtResource("1_v0iea")
@@ -284,6 +287,8 @@ skin = SubResource("Skin_vgqql")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.015, 0.058, -0.129)
 hand_material_override = ExtResource("5_gymyn")
 default_pose = SubResource("Resource_pu2lt")
+
+[node name="FunctionPickup" parent="XROrigin3D/RightHandXR" instance=ExtResource("9_pu2lt")]
 
 [connection signal="button_pressed" from="XROrigin3D/LeftHandXR" to="XROrigin3D/LeftHandXR" method="onButtonPressed"]
 [connection signal="button_released" from="XROrigin3D/LeftHandXR" to="XROrigin3D/LeftHandXR" method="onButtonReleased"]
