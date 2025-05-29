@@ -50,9 +50,7 @@ player/standard_height=1.8
 
 [physics]
 
-common/physics_ticks_per_second=120
-common/max_physics_steps_per_frame=16
-common/physics_jitter_fix=1.5
+common/physics_jitter_fix=1.0
 common/physics_interpolation=true
 
 [rendering]
