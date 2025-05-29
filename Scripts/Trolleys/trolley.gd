@@ -4,8 +4,8 @@ class_name Trolley
 @onready var turnLever: Lever = $TurnLever
 @onready var accLever: Lever = $AccLever
 @onready var railWaySpawner: RailWaySpawner = $RailwaySpawner
-@onready var narratorPlayer: AudioStreamPlayer = $"../Audio/NarratorPlayer"
-@onready var sfxPlayer: AudioStreamPlayer = $"../Audio/SfxPlayer"
+@onready var narratorPlayer: AudioStreamPlayer = $"../../Audio/NarratorPlayer"
+@onready var sfxPlayer: AudioStreamPlayer = $"../../Audio/SfxPlayer"
 var currentTrack: int = 1 #center
 var speed: float = 0
 var started: bool = false
@@ -22,7 +22,7 @@ func _ready():
 func _process(delta):
   speed = lerp(speed, 10.0 * accLever.state, delta)
   pass
-  position.z += delta * speed
+  position.z -= delta * speed
   global_position.x = lerp(global_position.x, target_x, delta * 10)
   global_position.y = lerp(global_position.y, target_y, delta * 10)
   if speed > 2 and !started:

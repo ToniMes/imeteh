@@ -4,10 +4,10 @@ class_name RailWaySpawner
 const RAILWAY = preload("res://Scenes/Railway/Railway.tscn")
 const RAILWAYPERSON = preload("res://Scenes/Railway/railway_person.tscn")
 const SPLIT = preload("res://Scenes/Railway/RailWayYsplit.tscn")
-@onready var rail_parent_left: Node3D = $"../../RailParentLeft"
-@onready var rail_parent_center: Node3D = $"../../RailParentCenter"
-@onready var rail_parent_right: Node3D = $"../../RailParentRight"
-@onready var narrator_stream_player: AudioStreamPlayer = $"../../Audio/NarratorPlayer"
+@onready var rail_parent_left: Node3D = $"../../../RailParentLeft"
+@onready var rail_parent_center: Node3D = $"../../../RailParentCenter"
+@onready var rail_parent_right: Node3D = $"../../../RailParentRight"
+@onready var narrator_stream_player: AudioStreamPlayer = $"../../../Audio/NarratorPlayer"
 # when spawing in the railway, we have to keep in mind the offset,
 # also making sure that when the railway spawns in, there is an overlap on the first and last plank
 var rail_length: float = 3.123
