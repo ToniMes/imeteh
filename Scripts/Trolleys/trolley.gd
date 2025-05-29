@@ -11,16 +11,17 @@ var speed: float = 0
 var started: bool = false
 var target_x: float = 0
 var target_y: float = 0
+var max_speed: float = 10
 
 
 func _ready():
   accLever.prepared = true
   narratorPlayer.emit_signal("play_sound", "narrator/intro.mp3")
-  #turnLever.prepared = true
 
 
 func _process(delta):
-  speed = lerp(speed, 10.0 * accLever.state, delta)
+  var target_speed = max_speed * accLever.state if accLever.breakingEnabled else max_speed
+  speed = lerp(speed, target_speed, delta)
   pass
   position.z -= delta * speed
   global_position.x = lerp(global_position.x, target_x, delta * 10)
