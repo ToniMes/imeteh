@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://dbd0fj080bycn"]
+[gd_scene load_steps=8 format=3 uid="uid://dbd0fj080bycn"]
 
 [ext_resource type="Script" uid="uid://bp8krlumtrs6l" path="res://Scripts/main.gd" id="1_jjgbg"]
 [ext_resource type="PackedScene" uid="uid://bq86r4yll8po" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/left_fullglove_low.tscn" id="2_jjvhh"]
+[ext_resource type="Material" uid="uid://dy6nhifvvmm73" path="res://addons/godot-xr-tools/hands/materials/caucasian_hand.tres" id="3_6bp64"]
 [ext_resource type="PackedScene" uid="uid://cqhw276realc" path="res://addons/godot-xr-tools/functions/function_pointer.tscn" id="3_kry3j"]
 [ext_resource type="PackedScene" uid="uid://xqimcf20s2jp" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/right_fullglove_low.tscn" id="4_21xkr"]
 [ext_resource type="PackedScene" uid="uid://clujaf3u776a3" path="res://addons/godot-xr-tools/objects/viewport_2d_in_3d.tscn" id="5_kry3j"]
@@ -19,6 +20,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.29593, 0)
 tracker = &"left_hand"
 
 [node name="LeftHand" parent="XROrigin3D/XRController3D" instance=ExtResource("2_jjvhh")]
+hand_material_override = ExtResource("3_6bp64")
 
 [node name="FunctionPointer" parent="XROrigin3D/XRController3D" instance=ExtResource("3_kry3j")]
 show_laser = 2
@@ -28,6 +30,7 @@ laser_length = 1
 tracker = &"right_hand"
 
 [node name="RightHand" parent="XROrigin3D/XRController3D2" instance=ExtResource("4_21xkr")]
+hand_material_override = ExtResource("3_6bp64")
 
 [node name="FunctionPointer" parent="XROrigin3D/XRController3D2" instance=ExtResource("3_kry3j")]
 show_laser = 2
