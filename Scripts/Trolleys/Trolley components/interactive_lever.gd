@@ -31,10 +31,14 @@ func _process(delta):
   
   # otherwise, snap it to left/right
   elif physParent.rotation_degrees.y > 0:
+    if lever.state == 1:
+        sfxPlayer.emit_signal("play_sound", "sfx/lever_clank.mp3")
     physParent.rotation.y = lerp_angle(physParent.rotation.y, PI/6, delta*8)
     lever.state = 0
   
   elif physParent.rotation_degrees.y <= 0:
+    if lever.state == 0:
+        sfxPlayer.emit_signal("play_sound", "sfx/lever_clank.mp3")
     physParent.rotation.y = lerp_angle(physParent.rotation.y, -PI/6, delta*8)
     if lever.name == "AccLever":
       lever.prepared = false
