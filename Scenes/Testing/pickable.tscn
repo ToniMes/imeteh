@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://45f7hqo2rphl" path="res://addons/godot-xr-tools/hands/poses/hand_pose_settings.gd" id="4_54oxe"]
 [ext_resource type="Animation" uid="uid://c8dghcftg1thx" path="res://addons/godot-xr-tools/hands/animations/right/Grip Shaft.res" id="5_54oxe"]
 [ext_resource type="Script" uid="uid://bv2d1r7ven1av" path="res://addons/godot-xr-tools/objects/highlight/highlight_visible.gd" id="6_duae1"]
+[ext_resource type="Material" uid="uid://c5w55f1opcxl5" path="res://Resources/Materials/highlight_material_transparent.tres" id="7_afp0y"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dkgap"]
 albedo_color = Color(0.376471, 0.427451, 1, 1)
@@ -27,12 +28,8 @@ script = ExtResource("4_54oxe")
 closed_pose = ExtResource("5_54oxe")
 metadata/_custom_type_script = "uid://45f7hqo2rphl"
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_duae1"]
-shading_mode = 0
-albedo_color = Color(1, 0.341176, 0.619608, 1)
-
 [sub_resource type="BoxMesh" id="BoxMesh_duae1"]
-material = SubResource("StandardMaterial3D_duae1")
+material = ExtResource("7_afp0y")
 flip_faces = true
 size = Vector3(0.21, 0.21, 0.21)
 

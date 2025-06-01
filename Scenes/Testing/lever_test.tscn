@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://c2p1fe67rvr24" path="res://Scripts/Trolleys/Trolley components/interactive_lever.gd" id="7_xmhy1"]
 [ext_resource type="PackedScene" uid="uid://digpwor5hndod" path="res://Scenes/audio_player.tscn" id="8_xmhy1"]
 [ext_resource type="Script" uid="uid://bv2d1r7ven1av" path="res://addons/godot-xr-tools/objects/highlight/highlight_visible.gd" id="9_avcy4"]
+[ext_resource type="Material" uid="uid://c5w55f1opcxl5" path="res://Resources/Materials/highlight_material_transparent.tres" id="10_bayjb"]
 
 [sub_resource type="Resource" id="Resource_duae1"]
 script = ExtResource("4_xmhy1")
@@ -28,11 +29,6 @@ height = 0.2
 script = ExtResource("4_xmhy1")
 closed_pose = ExtResource("5_h6ctf")
 metadata/_custom_type_script = "uid://45f7hqo2rphl"
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bayjb"]
-transparency = 1
-shading_mode = 0
-albedo_color = Color(1, 0.341176, 0.619608, 0.2)
 
 [sub_resource type="SphereMesh" id="SphereMesh_h6ctf"]
 radius = 0.04
@@ -87,9 +83,9 @@ script = ExtResource("9_avcy4")
 metadata/_custom_type_script = "uid://bv2d1r7ven1av"
 
 [node name="HiglightMesh" type="MeshInstance3D" parent="PickableObject/XRToolsHighlightVisible"]
-transform = Transform3D(2.03231e-08, 2.67499e-08, -0.638916, 0.681931, -5.43536e-16, 1.90412e-08, 0, -0.611967, -2.79279e-08, -0.000163332, 0.000591218, -0.000298977)
+transform = Transform3D(2.03888e-08, 2.68901e-08, -0.640981, 0.684135, -5.46385e-16, 1.91027e-08, 0, -0.615175, -2.80182e-08, 0.00132884, 0.000591278, 0.000793338)
 mesh = ExtResource("6_1sqdi")
-surface_material_override/0 = SubResource("StandardMaterial3D_bayjb")
+surface_material_override/0 = ExtResource("10_bayjb")
 
 [node name="Ball" type="MeshInstance3D" parent="."]
 visible = false

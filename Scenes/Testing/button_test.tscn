@@ -1,0 +1,111 @@
+[gd_scene load_steps=20 format=3 uid="uid://c31mawf43hvjw"]
+
+[ext_resource type="Script" uid="uid://ipgq1xtt6inr" path="res://addons/godot-xr-tools/objects/pickable.gd" id="1_wgfsd"]
+[ext_resource type="Script" uid="uid://b5myyfycvquhb" path="res://Scripts/Trolleys/Trolley components/lever.gd" id="1_xum3u"]
+[ext_resource type="Script" uid="uid://0jp0ir4lmpvc" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand.gd" id="2_xum3u"]
+[ext_resource type="Animation" uid="uid://nq3xh1olqipq" path="res://addons/godot-xr-tools/hands/animations/left/Grip Shaft.res" id="3_e07dj"]
+[ext_resource type="Script" uid="uid://45f7hqo2rphl" path="res://addons/godot-xr-tools/hands/poses/hand_pose_settings.gd" id="4_vgc73"]
+[ext_resource type="Animation" uid="uid://c8dghcftg1thx" path="res://addons/godot-xr-tools/hands/animations/right/Grip Shaft.res" id="5_75la2"]
+[ext_resource type="Script" uid="uid://bv2d1r7ven1av" path="res://addons/godot-xr-tools/objects/highlight/highlight_visible.gd" id="6_vudpg"]
+[ext_resource type="Script" uid="uid://c61m04lkimt5f" path="res://Scripts/Interaction/interaction_object.gd" id="8_vgc73"]
+[ext_resource type="PackedScene" uid="uid://digpwor5hndod" path="res://Scenes/audio_player.tscn" id="9_75la2"]
+[ext_resource type="Material" uid="uid://g8njdjfj8y2b" path="res://Resources/Materials/highlight_material.tres" id="10_75la2"]
+
+[sub_resource type="Resource" id="Resource_duae1"]
+script = ExtResource("4_vgc73")
+closed_pose = ExtResource("3_e07dj")
+metadata/_custom_type_script = "uid://45f7hqo2rphl"
+
+[sub_resource type="Resource" id="Resource_afp0y"]
+script = ExtResource("4_vgc73")
+closed_pose = ExtResource("5_75la2")
+metadata/_custom_type_script = "uid://45f7hqo2rphl"
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_vudpg"]
+height = 0.04
+radius = 0.035
+
+[sub_resource type="BoxMesh" id="BoxMesh_6s22m"]
+size = Vector3(0.1, 0.05, 0.1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qbtng"]
+albedo_color = Color(0.241156, 0.241156, 0.241156, 1)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_1oryy"]
+radius = 0.15
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_we4d2"]
+top_radius = 0.025
+bottom_radius = 0.035
+height = 0.03
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6bema"]
+albedo_color = Color(0.733002, 1.64848e-06, 3.85046e-07, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_75la2"]
+material = ExtResource("10_75la2")
+flip_faces = true
+size = Vector3(0.11, 0.051, 0.11)
+
+[node name="ButtonTest" type="Node3D"]
+script = ExtResource("1_xum3u")
+
+[node name="PickableObject" type="RigidBody3D" parent="."]
+collision_layer = 4
+collision_mask = 196615
+gravity_scale = 0.0
+freeze_mode = 1
+script = ExtResource("1_wgfsd")
+metadata/_custom_type_script = "uid://ipgq1xtt6inr"
+
+[node name="XRToolsGrabPointHandLeft" type="Marker3D" parent="PickableObject"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0.00494789, -0.0274699, 0.0831951)
+script = ExtResource("2_xum3u")
+hand_pose = SubResource("Resource_duae1")
+metadata/_custom_type_script = "uid://0jp0ir4lmpvc"
+
+[node name="XRToolsGrabPointHandRight" type="Marker3D" parent="PickableObject"]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0.0155985, -0.0238591, 0.0792673)
+script = ExtResource("2_xum3u")
+hand = 1
+hand_pose = SubResource("Resource_afp0y")
+metadata/_custom_type_script = "uid://0jp0ir4lmpvc"
+
+[node name="CollisionShape" type="CollisionShape3D" parent="PickableObject"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0389582, 0)
+shape = SubResource("CylinderShape3D_vudpg")
+
+[node name="ButtonBottomMesh" type="MeshInstance3D" parent="PickableObject"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00457452, 0)
+mesh = SubResource("BoxMesh_6s22m")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_qbtng")
+
+[node name="ButtonTop" type="Area3D" parent="PickableObject"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00457452, 0)
+script = ExtResource("8_vgc73")
+metadata/_custom_type_script = "uid://c61m04lkimt5f"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PickableObject/ButtonTop"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000719011, 0.0203075, -0.000884593)
+shape = SubResource("SphereShape3D_1oryy")
+
+[node name="ButtonTopMesh" type="MeshInstance3D" parent="PickableObject/ButtonTop"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0356148, 0)
+mesh = SubResource("CylinderMesh_we4d2")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_6bema")
+
+[node name="Audio" parent="PickableObject" instance=ExtResource("9_75la2")]
+
+[node name="ButtonBottomHighlight" type="Node3D" parent="PickableObject"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000602722, 0.0010252, -0.000512034)
+script = ExtResource("6_vudpg")
+metadata/_custom_type_script = "uid://bv2d1r7ven1av"
+
+[node name="HiglightMesh" type="MeshInstance3D" parent="PickableObject/ButtonBottomHighlight"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00498918, 0)
+mesh = SubResource("BoxMesh_75la2")
+
+[connection signal="body_entered" from="PickableObject/ButtonTop" to="PickableObject/ButtonTop" method="onHandEnter"]
+[connection signal="body_exited" from="PickableObject/ButtonTop" to="PickableObject/ButtonTop" method="onHandExit"]

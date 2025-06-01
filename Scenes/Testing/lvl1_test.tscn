@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://ceywse5pwvsd2"]
+[gd_scene load_steps=7 format=3 uid="uid://ceywse5pwvsd2"]
 
 [ext_resource type="PackedScene" uid="uid://cd3nuoym3pjy7" path="res://Scenes/Trolleys/trolley2.tscn" id="1_3ly0e"]
 [ext_resource type="PackedScene" uid="uid://digpwor5hndod" path="res://Scenes/audio_player.tscn" id="2_edknk"]
 [ext_resource type="PackedScene" uid="uid://tykc6lvqmkhw" path="res://Scenes/Testing/lever_test.tscn" id="3_le67i"]
 [ext_resource type="PackedScene" uid="uid://mg0r2s7flru5" path="res://Scenes/Testing/pickable.tscn" id="4_gcucl"]
+[ext_resource type="PackedScene" uid="uid://c31mawf43hvjw" path="res://Scenes/Testing/button_test.tscn" id="5_5jvok"]
 
 [sub_resource type="Environment" id="Environment_6h8pu"]
 
@@ -30,3 +31,6 @@ transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0.2717
 
 [node name="Node3D" parent="." instance=ExtResource("4_gcucl")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.638785, 1.10863, 0.612824)
+
+[node name="ButtonTest" parent="." instance=ExtResource("5_5jvok")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.236925, 1.12542, 0.572211)
