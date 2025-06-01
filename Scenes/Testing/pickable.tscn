@@ -1,13 +1,14 @@
-[gd_scene load_steps=11 format=3 uid="uid://mg0r2s7flru5"]
+[gd_scene load_steps=14 format=3 uid="uid://mg0r2s7flru5"]
 
 [ext_resource type="Script" uid="uid://ipgq1xtt6inr" path="res://addons/godot-xr-tools/objects/pickable.gd" id="1_dkgap"]
 [ext_resource type="Script" uid="uid://0jp0ir4lmpvc" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand.gd" id="2_sot1v"]
 [ext_resource type="Animation" uid="uid://nq3xh1olqipq" path="res://addons/godot-xr-tools/hands/animations/left/Grip Shaft.res" id="3_fghua"]
 [ext_resource type="Script" uid="uid://45f7hqo2rphl" path="res://addons/godot-xr-tools/hands/poses/hand_pose_settings.gd" id="4_54oxe"]
 [ext_resource type="Animation" uid="uid://c8dghcftg1thx" path="res://addons/godot-xr-tools/hands/animations/right/Grip Shaft.res" id="5_54oxe"]
+[ext_resource type="Script" uid="uid://bv2d1r7ven1av" path="res://addons/godot-xr-tools/objects/highlight/highlight_visible.gd" id="6_duae1"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dkgap"]
-albedo_color = Color(1, 0.427451, 1, 1)
+albedo_color = Color(0.376471, 0.427451, 1, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_sot1v"]
 material = SubResource("StandardMaterial3D_dkgap")
@@ -26,7 +27,18 @@ script = ExtResource("4_54oxe")
 closed_pose = ExtResource("5_54oxe")
 metadata/_custom_type_script = "uid://45f7hqo2rphl"
 
-[node name="PickableObject" type="RigidBody3D"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_duae1"]
+shading_mode = 0
+albedo_color = Color(1, 0.341176, 0.619608, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_duae1"]
+material = SubResource("StandardMaterial3D_duae1")
+flip_faces = true
+size = Vector3(0.21, 0.21, 0.21)
+
+[node name="Node3D" type="Node3D"]
+
+[node name="PickableObject" type="RigidBody3D" parent="."]
 collision_layer = 4
 collision_mask = 196615
 gravity_scale = 0.0
@@ -34,21 +46,28 @@ freeze_mode = 1
 script = ExtResource("1_dkgap")
 metadata/_custom_type_script = "uid://ipgq1xtt6inr"
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="PickableObject"]
 mesh = SubResource("BoxMesh_sot1v")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PickableObject"]
 shape = SubResource("BoxShape3D_k6mac")
 
-[node name="XRToolsGrabPointHand" type="Marker3D" parent="."]
+[node name="XRToolsGrabPointHand" type="Marker3D" parent="PickableObject"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.115214, 0, 0.124217)
 script = ExtResource("2_sot1v")
 hand_pose = SubResource("Resource_duae1")
 metadata/_custom_type_script = "uid://0jp0ir4lmpvc"
 
-[node name="XRToolsGrabPointHand2" type="Marker3D" parent="."]
+[node name="XRToolsGrabPointHand2" type="Marker3D" parent="PickableObject"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0998435, 0, 0.106251)
 script = ExtResource("2_sot1v")
 hand = 1
 hand_pose = SubResource("Resource_afp0y")
 metadata/_custom_type_script = "uid://0jp0ir4lmpvc"
+
+[node name="XRToolsHighlightVisible" type="Node3D" parent="PickableObject"]
+script = ExtResource("6_duae1")
+metadata/_custom_type_script = "uid://bv2d1r7ven1av"
+
+[node name="HiglightMesh" type="MeshInstance3D" parent="PickableObject/XRToolsHighlightVisible"]
+mesh = SubResource("BoxMesh_duae1")
