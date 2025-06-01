@@ -4,8 +4,12 @@ class_name InteractiveLever
 
 @onready var lever: Lever = $"../.."
 @onready var sfxPlayer = $"../../Audio/SfxPlayer"
+var enabled = true
 
 func _process(delta):
+  if enabled == false:
+    return
+    
   # while griped, the lever rotates in the Y plane to follow the hand
   if isGripped and lever.prepared and hand:
     physParent.look_at(hand.global_position)

@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://ceywse5pwvsd2"]
+
+[ext_resource type="PackedScene" uid="uid://cd3nuoym3pjy7" path="res://Scenes/Trolleys/trolley2.tscn" id="1_3ly0e"]
+[ext_resource type="PackedScene" uid="uid://digpwor5hndod" path="res://Scenes/audio_player.tscn" id="2_edknk"]
+[ext_resource type="PackedScene" uid="uid://mg0r2s7flru5" path="res://Scenes/Testing/pickable.tscn" id="3_le67i"]
+
+[sub_resource type="Environment" id="Environment_6h8pu"]
+
+[node name="Lvl1" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_6h8pu")
+
+[node name="TrolleyBody" parent="." instance=ExtResource("1_3ly0e")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="RailParentRight" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.355, 0, 0)
+
+[node name="RailParentCenter" type="Node3D" parent="."]
+
+[node name="RailParentLeft" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.355, 0, 0)
+
+[node name="Audio" parent="." instance=ExtResource("2_edknk")]
+
+[node name="PickableObject" parent="." instance=ExtResource("3_le67i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25087, 0.780094)
