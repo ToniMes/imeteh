@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://tykc6lvqmkhw"]
+[gd_scene load_steps=23 format=3 uid="uid://tykc6lvqmkhw"]
 
 [ext_resource type="Script" uid="uid://ipgq1xtt6inr" path="res://addons/godot-xr-tools/objects/pickable.gd" id="1_ffs8t"]
 [ext_resource type="Script" uid="uid://b5myyfycvquhb" path="res://Scripts/Trolleys/Trolley components/lever.gd" id="1_h6ctf"]
@@ -7,7 +7,9 @@
 [ext_resource type="Script" uid="uid://45f7hqo2rphl" path="res://addons/godot-xr-tools/hands/poses/hand_pose_settings.gd" id="4_xmhy1"]
 [ext_resource type="Animation" uid="uid://c8dghcftg1thx" path="res://addons/godot-xr-tools/hands/animations/right/Grip Shaft.res" id="5_h6ctf"]
 [ext_resource type="ArrayMesh" uid="uid://j5427occ3uv7" path="res://Resources/Models/Trolley/control_panel_speed_lever.obj" id="6_1sqdi"]
+[ext_resource type="Animation" uid="uid://dgfeikrugfewi" path="res://addons/godot-xr-tools/hands/animations/left/Cup.res" id="6_ao1h7"]
 [ext_resource type="Script" uid="uid://c2p1fe67rvr24" path="res://Scripts/Trolleys/Trolley components/interactive_lever.gd" id="7_xmhy1"]
+[ext_resource type="Animation" uid="uid://do01jton6rk42" path="res://addons/godot-xr-tools/hands/animations/right/Cup.res" id="8_ao1h7"]
 [ext_resource type="PackedScene" uid="uid://digpwor5hndod" path="res://Scenes/audio_player.tscn" id="8_xmhy1"]
 [ext_resource type="Script" uid="uid://bv2d1r7ven1av" path="res://addons/godot-xr-tools/objects/highlight/highlight_visible.gd" id="9_avcy4"]
 [ext_resource type="Material" uid="uid://c5w55f1opcxl5" path="res://Resources/Materials/highlight_material_transparent.tres" id="10_bayjb"]
@@ -17,6 +19,21 @@ script = ExtResource("4_xmhy1")
 closed_pose = ExtResource("3_1sqdi")
 metadata/_custom_type_script = "uid://45f7hqo2rphl"
 
+[sub_resource type="Resource" id="Resource_fvbde"]
+script = ExtResource("4_xmhy1")
+closed_pose = ExtResource("6_ao1h7")
+metadata/_custom_type_script = "uid://45f7hqo2rphl"
+
+[sub_resource type="Resource" id="Resource_aee0r"]
+script = ExtResource("4_xmhy1")
+closed_pose = ExtResource("5_h6ctf")
+metadata/_custom_type_script = "uid://45f7hqo2rphl"
+
+[sub_resource type="Resource" id="Resource_04dgk"]
+script = ExtResource("4_xmhy1")
+closed_pose = ExtResource("8_ao1h7")
+metadata/_custom_type_script = "uid://45f7hqo2rphl"
+
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_h6ctf"]
 radius = 0.05
 height = 0.5
@@ -24,11 +41,6 @@ height = 0.5
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_avcy4"]
 radius = 0.08
 height = 0.2
-
-[sub_resource type="Resource" id="Resource_h6ctf"]
-script = ExtResource("4_xmhy1")
-closed_pose = ExtResource("5_h6ctf")
-metadata/_custom_type_script = "uid://45f7hqo2rphl"
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bayjb"]
 
@@ -49,10 +61,37 @@ freeze_mode = 1
 script = ExtResource("1_ffs8t")
 metadata/_custom_type_script = "uid://ipgq1xtt6inr"
 
-[node name="XRToolsGrabPointHand" type="Marker3D" parent="PickableObject"]
+[node name="LeftGrabPointShaft" type="Marker3D" parent="PickableObject"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.00467928, 0.0566656, -0.150694)
+visible = false
+gizmo_extents = 0.12
 script = ExtResource("2_agei0")
 hand_pose = SubResource("Resource_duae1")
+metadata/_custom_type_script = "uid://0jp0ir4lmpvc"
+
+[node name="LeftGrabPointTip" type="Marker3D" parent="PickableObject"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.0397386, -0.0121557, -0.228524)
+visible = false
+gizmo_extents = 0.12
+script = ExtResource("2_agei0")
+hand_pose = SubResource("Resource_fvbde")
+metadata/_custom_type_script = "uid://0jp0ir4lmpvc"
+
+[node name="RightGrabPointShaft" type="Marker3D" parent="PickableObject"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.00107425, 0.0660332, -0.119719)
+visible = false
+gizmo_extents = 0.12
+script = ExtResource("2_agei0")
+hand = 1
+hand_pose = SubResource("Resource_aee0r")
+metadata/_custom_type_script = "uid://0jp0ir4lmpvc"
+
+[node name="RightGrabPointTip" type="Marker3D" parent="PickableObject"]
+transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, 0.0670291, 0, -0.259693)
+gizmo_extents = 0.12
+script = ExtResource("2_agei0")
+hand = 1
+hand_pose = SubResource("Resource_04dgk")
 metadata/_custom_type_script = "uid://0jp0ir4lmpvc"
 
 [node name="ControlPanelSpeedLever" type="MeshInstance3D" parent="PickableObject"]
@@ -71,13 +110,6 @@ script = ExtResource("7_xmhy1")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PickableObject/InteractiveLever"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.025, 0)
 shape = SubResource("CapsuleShape3D_avcy4")
-
-[node name="XRToolsGrabPointHand2" type="Marker3D" parent="PickableObject"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.0657245, 0.0223847, -0.250312)
-script = ExtResource("2_agei0")
-hand = 1
-hand_pose = SubResource("Resource_h6ctf")
-metadata/_custom_type_script = "uid://0jp0ir4lmpvc"
 
 [node name="XRToolsHighlightVisible" type="Node3D" parent="PickableObject"]
 script = ExtResource("9_avcy4")
