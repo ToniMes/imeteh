@@ -4,7 +4,6 @@
 [ext_resource type="Script" uid="uid://b35fqo4q25aot" path="res://Scripts/Audio/audio_stream_player.gd" id="2_3ni7s"]
 
 [node name="Audio" type="AudioStreamPlayer"]
-script = ExtResource("2_3ni7s")
 
 [node name="SfxPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("1_0jh2j")

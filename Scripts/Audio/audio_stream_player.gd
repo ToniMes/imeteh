@@ -8,6 +8,7 @@ func _init() -> void:
   # Adding a certain amount of stream players that will be used to play sound
   for i in range(self.max_polyphony):
     var streamPlayer = AudioStreamPlayer.new()
+    streamPlayer.bus = bus
     stream_players.append(streamPlayer)
     add_child(streamPlayer)
 

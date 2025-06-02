@@ -104,7 +104,7 @@ metadata/_custom_type_script = "uid://bv2d1r7ven1av"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00498918, 0)
 mesh = SubResource("BoxMesh_75la2")
 
-[node name="Audio" parent="PickableObject" instance=ExtResource("9_75la2")]
+[node name="Audio" parent="." instance=ExtResource("9_75la2")]
 
 [connection signal="body_entered" from="PickableObject/ButtonTop" to="PickableObject/ButtonTop" method="onHandEnter"]
 [connection signal="body_exited" from="PickableObject/ButtonTop" to="PickableObject/ButtonTop" method="onHandExit"]
