@@ -4,11 +4,11 @@ class_name  ClickableButton
 var button_pressed = false
 signal buttonPressed
 @onready var sfxPlayer = $Audio/SfxPlayer
-@onready var buttonTop = $ButtonRigidBody/ButtonTop
+@onready var buttonTop = $PickableObject/ButtonTop
 
 func _process(delta):
 # when gripped, button gets pressed down and comes back up
-  if buttonTop.isGripped and buttonTop.hand:
+  if buttonTop and buttonTop.isGripped and buttonTop.hand:
     start_button_press_animation()
   
   

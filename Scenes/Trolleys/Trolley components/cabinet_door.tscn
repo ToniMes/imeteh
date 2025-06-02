@@ -14,7 +14,6 @@ size = Vector3(0.365234, 0.207703, 0.455994)
 script = ExtResource("1_6fme5")
 
 [node name="PhysicalCabinetDoor" type="RigidBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 axis_lock_linear_x = true
 axis_lock_linear_y = true
 axis_lock_linear_z = true
@@ -23,7 +22,6 @@ axis_lock_angular_y = true
 axis_lock_angular_z = true
 
 [node name="Mesh" type="MeshInstance3D" parent="PhysicalCabinetDoor"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 mesh = ExtResource("1_eaeyh")
 skeleton = NodePath("../../..")
 
