@@ -3,8 +3,8 @@ class_name Lever
 
 @onready var targetPosition: Vector3 = position
 @onready var breakingEnabled: bool = true # used to determine if user is allowed to break with the acceleration lever
-@onready var highlightMesh: MeshInstance3D = $PickableObject/XRToolsHighlightVisible/HiglightMesh
-@onready var interactiveLever: InteractiveLever = $PickableObject/InteractiveLever
+@onready var highlightMesh: MeshInstance3D = $PickableLever/Highlight/HiglightMesh
+@onready var interactiveLever: InteractiveLever = $PickableLever/InteractiveLever
 var prepared: bool = false
 
 var state: int = 0:

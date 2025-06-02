@@ -14,6 +14,23 @@
 [ext_resource type="Script" uid="uid://bv2d1r7ven1av" path="res://addons/godot-xr-tools/objects/highlight/highlight_visible.gd" id="9_avcy4"]
 [ext_resource type="Material" uid="uid://c5w55f1opcxl5" path="res://Resources/Materials/highlight_material_transparent.tres" id="10_bayjb"]
 
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_h6ctf"]
+radius = 0.05
+height = 0.5
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_avcy4"]
+radius = 0.08
+height = 0.2
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bayjb"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_h6ctf"]
+radius = 0.04
+height = 0.08
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_avcy4"]
+albedo_color = Color(1.56425e-07, 0, 0.19701, 1)
+
 [sub_resource type="Resource" id="Resource_duae1"]
 script = ExtResource("4_xmhy1")
 closed_pose = ExtResource("3_1sqdi")
@@ -34,59 +51,77 @@ script = ExtResource("4_xmhy1")
 closed_pose = ExtResource("8_ao1h7")
 metadata/_custom_type_script = "uid://45f7hqo2rphl"
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_h6ctf"]
-radius = 0.05
-height = 0.5
-
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_avcy4"]
-radius = 0.08
-height = 0.2
-
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bayjb"]
-
-[sub_resource type="SphereMesh" id="SphereMesh_h6ctf"]
-radius = 0.04
-height = 0.08
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_avcy4"]
-albedo_color = Color(1.56425e-07, 0, 0.19701, 1)
-
 [node name="LeverTest" type="Node3D"]
 script = ExtResource("1_h6ctf")
 
-[node name="PickableObject" type="RigidBody3D" parent="."]
+[node name="PickableLever" type="RigidBody3D" parent="."]
 collision_layer = 4
 collision_mask = 196615
 freeze_mode = 1
 script = ExtResource("1_ffs8t")
 metadata/_custom_type_script = "uid://ipgq1xtt6inr"
 
-[node name="LeftGrabPointShaft" type="Marker3D" parent="PickableObject"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.00467928, 0.0566656, -0.150694)
+[node name="LeverMesh" type="MeshInstance3D" parent="PickableLever"]
+transform = Transform3D(1.14641e-15, 2.62268e-08, -0.6, 0.6, -2.62268e-08, 0, -2.62268e-08, -0.6, -2.62268e-08, 0, 0, 0)
+mesh = ExtResource("6_1sqdi")
+skeleton = NodePath("../..")
+
+[node name="LeverShaftCollision" type="CollisionShape3D" parent="PickableLever"]
+transform = Transform3D(0.5, 0, 0, 0, -2.18557e-08, 0.5, 0, -0.5, -2.18557e-08, 0, 0, -0.12)
+shape = SubResource("CapsuleShape3D_h6ctf")
+
+[node name="InteractiveLever" type="Area3D" parent="PickableLever"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, -0.2)
+script = ExtResource("7_xmhy1")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PickableLever/InteractiveLever"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.025, 0)
+shape = SubResource("CapsuleShape3D_avcy4")
+
+[node name="Highlight" type="Node3D" parent="PickableLever"]
+script = ExtResource("9_avcy4")
+metadata/_custom_type_script = "uid://bv2d1r7ven1av"
+
+[node name="HiglightMesh" type="MeshInstance3D" parent="PickableLever/Highlight"]
+transform = Transform3D(2.03888e-08, 2.68901e-08, -0.640981, 0.684135, -5.46385e-16, 1.91027e-08, 0, -0.615175, -2.80182e-08, 0.00132884, 0.000591278, 0.000793338)
+mesh = ExtResource("6_1sqdi")
+surface_material_override/0 = ExtResource("10_bayjb")
+
+[node name="HiglightArea" type="Area3D" parent="PickableLever/Highlight"]
+
+[node name="HighlightCollisionShape" type="CollisionShape3D" parent="PickableLever/Highlight/HiglightArea"]
+transform = Transform3D(0.187982, 0, 0, 0, -8.21695e-09, 0.187982, 0, -0.187982, -8.21695e-09, 0, 0, -0.101999)
+shape = SubResource("CapsuleShape3D_bayjb")
+
+[node name="Ball" type="MeshInstance3D" parent="PickableLever"]
 visible = false
+mesh = SubResource("SphereMesh_h6ctf")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_avcy4")
+
+[node name="LeftGrabPointShaft" type="Marker3D" parent="PickableLever"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.00467928, 0.0566656, -0.150694)
 gizmo_extents = 0.12
 script = ExtResource("2_agei0")
 hand_pose = SubResource("Resource_duae1")
 metadata/_custom_type_script = "uid://0jp0ir4lmpvc"
 
-[node name="LeftGrabPointTip" type="Marker3D" parent="PickableObject"]
+[node name="LeftGrabPointTip" type="Marker3D" parent="PickableLever"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.0397386, -0.0121557, -0.228524)
-visible = false
 gizmo_extents = 0.12
 script = ExtResource("2_agei0")
 hand_pose = SubResource("Resource_fvbde")
 metadata/_custom_type_script = "uid://0jp0ir4lmpvc"
 
-[node name="RightGrabPointShaft" type="Marker3D" parent="PickableObject"]
+[node name="RightGrabPointShaft" type="Marker3D" parent="PickableLever"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.00107425, 0.0660332, -0.119719)
-visible = false
 gizmo_extents = 0.12
 script = ExtResource("2_agei0")
 hand = 1
 hand_pose = SubResource("Resource_aee0r")
 metadata/_custom_type_script = "uid://0jp0ir4lmpvc"
 
-[node name="RightGrabPointTip" type="Marker3D" parent="PickableObject"]
+[node name="RightGrabPointTip" type="Marker3D" parent="PickableLever"]
 transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, 0.0670291, 0, -0.259693)
 gizmo_extents = 0.12
 script = ExtResource("2_agei0")
@@ -94,46 +129,9 @@ hand = 1
 hand_pose = SubResource("Resource_04dgk")
 metadata/_custom_type_script = "uid://0jp0ir4lmpvc"
 
-[node name="ControlPanelSpeedLever" type="MeshInstance3D" parent="PickableObject"]
-transform = Transform3D(1.14641e-15, 2.62268e-08, -0.6, 0.6, -2.62268e-08, 0, -2.62268e-08, -0.6, -2.62268e-08, 0, 0, 0)
-mesh = ExtResource("6_1sqdi")
-skeleton = NodePath("../..")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="PickableObject"]
-transform = Transform3D(0.5, 0, 0, 0, -2.18557e-08, 0.5, 0, -0.5, -2.18557e-08, 0, 0, -0.12)
-shape = SubResource("CapsuleShape3D_h6ctf")
-
-[node name="InteractiveLever" type="Area3D" parent="PickableObject"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, -0.2)
-script = ExtResource("7_xmhy1")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="PickableObject/InteractiveLever"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.025, 0)
-shape = SubResource("CapsuleShape3D_avcy4")
-
-[node name="XRToolsHighlightVisible" type="Node3D" parent="PickableObject"]
-script = ExtResource("9_avcy4")
-metadata/_custom_type_script = "uid://bv2d1r7ven1av"
-
-[node name="HiglightMesh" type="MeshInstance3D" parent="PickableObject/XRToolsHighlightVisible"]
-transform = Transform3D(2.03888e-08, 2.68901e-08, -0.640981, 0.684135, -5.46385e-16, 1.91027e-08, 0, -0.615175, -2.80182e-08, 0.00132884, 0.000591278, 0.000793338)
-mesh = ExtResource("6_1sqdi")
-surface_material_override/0 = ExtResource("10_bayjb")
-
-[node name="HiglightArea" type="Area3D" parent="PickableObject/XRToolsHighlightVisible"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="PickableObject/XRToolsHighlightVisible/HiglightArea"]
-transform = Transform3D(0.187982, 0, 0, 0, -8.21695e-09, 0.187982, 0, -0.187982, -8.21695e-09, 0, 0, -0.101999)
-shape = SubResource("CapsuleShape3D_bayjb")
-
-[node name="Ball" type="MeshInstance3D" parent="."]
-visible = false
-mesh = SubResource("SphereMesh_h6ctf")
-surface_material_override/0 = SubResource("StandardMaterial3D_avcy4")
-
 [node name="Audio" parent="." instance=ExtResource("8_xmhy1")]
 
-[connection signal="body_entered" from="PickableObject/InteractiveLever" to="PickableObject/InteractiveLever" method="onHandEnter"]
-[connection signal="body_exited" from="PickableObject/InteractiveLever" to="PickableObject/InteractiveLever" method="onHandExit"]
-[connection signal="body_entered" from="PickableObject/XRToolsHighlightVisible/HiglightArea" to="." method="_on_higlight_area_body_entered"]
-[connection signal="body_exited" from="PickableObject/XRToolsHighlightVisible/HiglightArea" to="." method="_on_higlight_area_body_exited"]
+[connection signal="body_entered" from="PickableLever/InteractiveLever" to="PickableLever/InteractiveLever" method="onHandEnter"]
+[connection signal="body_exited" from="PickableLever/InteractiveLever" to="PickableLever/InteractiveLever" method="onHandExit"]
+[connection signal="body_entered" from="PickableLever/Highlight/HiglightArea" to="." method="_on_higlight_area_body_entered"]
+[connection signal="body_exited" from="PickableLever/Highlight/HiglightArea" to="." method="_on_higlight_area_body_exited"]
