@@ -4,17 +4,12 @@ class_name InteractiveLever
 signal lever_switched(state: bool)
 
 var enabled = true
-var prev_rotation_y: float
-var prev_rotation_y_set: bool = false
+enum LeverDirectionEnum { LEFT, NONE, RIGHT }
+var lever_direction: LeverDirectionEnum = LeverDirectionEnum.NONE
 
 func _process(delta):
   if enabled == false:
     return
-    
-  # setting previous y rotation if not set
-  if prev_rotation_y_set == false:
-    prev_rotation_y = physParent.rotation.y
-    prev_rotation_y_set = true
     
   # while griped, the lever rotates in the Y plane to follow the hand
   if isGripped and hand:
@@ -35,8 +30,11 @@ func _process(delta):
   elif physParent.rotation_degrees.y <= 0:
     physParent.rotation.y = lerp_angle(physParent.rotation.y, -PI/6, delta*8)
 
-  # lever switched if angle is reverse polarity of last one
-  if (prev_rotation_y < 0 and physParent.rotation.y > 0) or (prev_rotation_y > 0 and physParent.rotation.y < 0):
-    emit_signal("lever_switched", 0 if physParent.rotation.y >= 0 else 1)
-
-  prev_rotation_y = physParent.rotation.y
+  # if lever is fully left or right
+  if abs(physParent.rotation.y) - PI/6 < 0.01:
+    var new_direction = LeverDirectionEnum.RIGHT if physParent.rotation.y > 0 else LeverDirectionEnum.LEFT
+    
+    # emitting lever_switched if lever switched from left to right or the opposite
+    if lever_direction != LeverDirectionEnum.NONE and new_direction != lever_direction:
+      emit_signal("lever_switched", 0 if physParent.rotation.y >= 0 else 1)
+    lever_direction = new_direction
