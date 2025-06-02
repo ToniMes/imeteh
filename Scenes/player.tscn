@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://c11v7diwiecth" path="res://Scripts/controler.gd" id="1_v0iea"]
 [ext_resource type="Material" uid="uid://ds2dpvbpht0ea" path="res://addons/godot-xr-tools/hands/materials/labglove.tres" id="3_6t5aa"]
 [ext_resource type="PackedScene" uid="uid://bq86r4yll8po" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/left_fullglove_low.tscn" id="4_fkybt"]
-[ext_resource type="Material" uid="uid://dy6nhifvvmm73" path="res://addons/godot-xr-tools/hands/materials/caucasian_hand.tres" id="5_gymyn"]
+[ext_resource type="Material" uid="uid://b1k302fipny8t" path="res://Resources/Materials/hand_material.tres" id="5_pu2lt"]
 [ext_resource type="Animation" uid="uid://dgfeikrugfewi" path="res://addons/godot-xr-tools/hands/animations/left/Cup.res" id="5_tx1dd"]
 [ext_resource type="PackedScene" uid="uid://xqimcf20s2jp" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/right_fullglove_low.tscn" id="5_x3wgy"]
 [ext_resource type="Animation" uid="uid://nq3xh1olqipq" path="res://addons/godot-xr-tools/hands/animations/left/Grip Shaft.res" id="6_f1ek2"]
@@ -261,7 +261,7 @@ surface_material_override/0 = ExtResource("3_6t5aa")
 
 [node name="LeftHand" parent="XROrigin3D/LeftHandXR/Hand" instance=ExtResource("4_fkybt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.015408, 0.0582822, -0.127283)
-hand_material_override = ExtResource("5_gymyn")
+hand_material_override = ExtResource("5_pu2lt")
 default_pose = SubResource("Resource_gymyn")
 
 [node name="FunctionPickup" parent="XROrigin3D/LeftHandXR" instance=ExtResource("9_pu2lt")]
@@ -285,7 +285,7 @@ skin = SubResource("Skin_vgqql")
 
 [node name="RightHand" parent="XROrigin3D/RightHandXR/Hand" instance=ExtResource("5_x3wgy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.015, 0.058, -0.129)
-hand_material_override = ExtResource("5_gymyn")
+hand_material_override = ExtResource("5_pu2lt")
 default_pose = SubResource("Resource_pu2lt")
 
 [node name="FunctionPickup" parent="XROrigin3D/RightHandXR" instance=ExtResource("9_pu2lt")]
