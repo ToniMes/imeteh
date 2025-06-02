@@ -14,7 +14,7 @@ var state: int = 0:
     state = value
 
 func _process(delta):
-  if interactiveLever and interactiveLever.enabled == true:
+  if self.name == "LeverTest" and interactiveLever and interactiveLever.enabled == true:
     interactiveLever.enabled = false
   
   if position.is_equal_approx(targetPosition):
