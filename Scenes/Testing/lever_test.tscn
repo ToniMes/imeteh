@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://tykc6lvqmkhw"]
+[gd_scene load_steps=19 format=3 uid="uid://tykc6lvqmkhw"]
 
 [ext_resource type="Script" uid="uid://ipgq1xtt6inr" path="res://addons/godot-xr-tools/objects/pickable.gd" id="1_ffs8t"]
 [ext_resource type="Script" uid="uid://b5myyfycvquhb" path="res://Scripts/Trolleys/Trolley components/lever.gd" id="1_h6ctf"]
@@ -29,6 +29,8 @@ height = 0.2
 script = ExtResource("4_xmhy1")
 closed_pose = ExtResource("5_h6ctf")
 metadata/_custom_type_script = "uid://45f7hqo2rphl"
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bayjb"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_h6ctf"]
 radius = 0.04
@@ -87,6 +89,12 @@ transform = Transform3D(2.03888e-08, 2.68901e-08, -0.640981, 0.684135, -5.46385e
 mesh = ExtResource("6_1sqdi")
 surface_material_override/0 = ExtResource("10_bayjb")
 
+[node name="HiglightArea" type="Area3D" parent="PickableObject/XRToolsHighlightVisible"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PickableObject/XRToolsHighlightVisible/HiglightArea"]
+transform = Transform3D(0.187982, 0, 0, 0, -8.21695e-09, 0.187982, 0, -0.187982, -8.21695e-09, 0, 0, -0.101999)
+shape = SubResource("CapsuleShape3D_bayjb")
+
 [node name="Ball" type="MeshInstance3D" parent="."]
 visible = false
 mesh = SubResource("SphereMesh_h6ctf")
@@ -96,3 +104,5 @@ surface_material_override/0 = SubResource("StandardMaterial3D_avcy4")
 
 [connection signal="body_entered" from="PickableObject/InteractiveLever" to="PickableObject/InteractiveLever" method="onHandEnter"]
 [connection signal="body_exited" from="PickableObject/InteractiveLever" to="PickableObject/InteractiveLever" method="onHandExit"]
+[connection signal="body_entered" from="PickableObject/XRToolsHighlightVisible/HiglightArea" to="." method="_on_higlight_area_body_entered"]
+[connection signal="body_exited" from="PickableObject/XRToolsHighlightVisible/HiglightArea" to="." method="_on_higlight_area_body_exited"]
