@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://cd3nuoym3pjy7"]
+[gd_scene load_steps=14 format=4 uid="uid://cd3nuoym3pjy7"]
 
 [ext_resource type="Script" uid="uid://dduokwtci7wxb" path="res://Scripts/Trolleys/trolley.gd" id="1_ahij2"]
 [ext_resource type="ArrayMesh" uid="uid://dw4ikh4350kof" path="res://Resources/Models/Trolley/control_panel_body_1.obj" id="2_f4x8e"]
@@ -6,6 +6,7 @@
 [ext_resource type="ArrayMesh" uid="uid://j5427occ3uv7" path="res://Resources/Models/Trolley/control_panel_speed_lever.obj" id="4_yuinj"]
 [ext_resource type="PackedScene" uid="uid://2ikbp3ayxqae" path="res://Scenes/player.tscn" id="5_18y1h"]
 [ext_resource type="PackedScene" uid="uid://7p562hvbyx17" path="res://Scenes/Trolleys/Trolley components/RailwaySpawner.tscn" id="6_dbpg3"]
+[ext_resource type="Script" uid="uid://c14xw2qm5m0eq" path="res://Scripts/Trolleys/Trolley components/static_lever.gd" id="6_es21w"]
 [ext_resource type="PackedScene" uid="uid://cxeo2k8b644o7" path="res://Scenes/Trolleys/Trolley components/lever.tscn" id="7_lojdc"]
 [ext_resource type="PackedScene" uid="uid://c2j7c64ojidai" path="res://Scenes/Trolleys/Trolley components/button.tscn" id="8_f4x8e"]
 
@@ -73,12 +74,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.265176, -0.033088, 0.24020
 [node name="TurnLever" parent="TrolleyBody" instance=ExtResource("7_lojdc")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.59, -1.209)
 visible = false
+script = ExtResource("6_es21w")
 
 [node name="TurnLeverButton" parent="TrolleyBody" instance=ExtResource("8_f4x8e")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.201788, -1.07058)
 
 [node name="AccLever" parent="TrolleyBody" instance=ExtResource("7_lojdc")]
 transform = Transform3D(-4.37114e-08, 1, 0, 4.37114e-08, 1.91069e-15, -1, -1, -4.37114e-08, -4.37114e-08, 0.470127, 0.752809, -1.21074)
+script = ExtResource("6_es21w")
 
 [node name="Player" parent="TrolleyBody" instance=ExtResource("5_18y1h")]
 transform = Transform3D(0.999999, 0, -1.11759e-08, 0, 1, 0, 1.11759e-08, 0, 0.999999, 0.0530863, -0.227827, -0.56868)

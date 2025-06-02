@@ -1,17 +1,12 @@
-extends Node3D
+extends Lever
 class_name StaticLever
 
 @onready var targetPosition: Vector3 = position
 @onready var breakingEnabled: bool = true # used to determine if user is allowed to break with the acceleration lever
 @onready var highlightMesh: MeshInstance3D = $Lever/HiglightArea/HighlightMesh
 @onready var interactiveLever: InteractiveLever = $Lever/InteractiveLever
-var prepared: bool = false
 
-var state: int = 0:
-  get:
-    return state
-  set(value):
-    state = value
+var state: int = 0
 
 func _process(delta):
   if self.name == "LeverTest" and interactiveLever and interactiveLever.enabled == true:

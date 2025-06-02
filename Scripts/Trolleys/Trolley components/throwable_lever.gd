@@ -1,4 +1,4 @@
-extends Node3D
+extends Lever
 class_name ThrowableLever
 
 @onready var highlightMesh: MeshInstance3D = $Lever/Highlight/HighlightArea/HighlightMesh

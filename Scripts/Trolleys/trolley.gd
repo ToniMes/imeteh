@@ -1,8 +1,8 @@
 extends MeshInstance3D
 class_name Trolley
 
-@onready var turnLever: Lever = $TurnLever
-@onready var accLever: Lever = $AccLever
+@onready var turnLever: StaticLever = $TurnLever
+@onready var accLever: StaticLever = $AccLever
 @onready var railWaySpawner: RailWaySpawner = $RailwaySpawner
 @onready var narratorPlayer: AudioStreamPlayer = $"../../Audio/NarratorPlayer"
 @onready var sfxPlayer: AudioStreamPlayer = $"../../Audio/SfxPlayer"

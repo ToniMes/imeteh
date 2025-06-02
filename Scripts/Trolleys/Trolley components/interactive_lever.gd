@@ -2,8 +2,8 @@
 extends InteractiveObject
 class_name InteractiveLever
 
-@onready var lever: Lever = $"../.."
 @onready var sfxPlayer = $"../../Audio/SfxPlayer"
+@onready var lever:StaticLever = $"../.."
 var enabled = true
 
 func _process(delta):
@@ -11,7 +11,7 @@ func _process(delta):
     return
     
   # while griped, the lever rotates in the Y plane to follow the hand
-  if isGripped and lever.prepared and hand:
+  if isGripped and hand:
     physParent.look_at(hand.global_position)
     physParent.rotation.x = 0
     physParent.rotation.z = 0
