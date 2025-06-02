@@ -52,7 +52,6 @@ player/standard_height=1.8
 [physics]
 
 common/physics_jitter_fix=1.0
-common/physics_interpolation=true
 
 [rendering]
 
