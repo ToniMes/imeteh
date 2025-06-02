@@ -1,0 +1,123 @@
+[gd_scene load_steps=21 format=3 uid="uid://tykc6lvqmkhw"]
+
+[ext_resource type="Script" uid="uid://dvuiq35otlilh" path="res://Scenes/Testing/throwable_lever.gd" id="1_hxcdq"]
+[ext_resource type="Script" uid="uid://ipgq1xtt6inr" path="res://addons/godot-xr-tools/objects/pickable.gd" id="2_6r5ig"]
+[ext_resource type="ArrayMesh" uid="uid://j5427occ3uv7" path="res://Resources/Models/Trolley/control_panel_speed_lever.obj" id="3_ykovv"]
+[ext_resource type="Script" uid="uid://bv2d1r7ven1av" path="res://addons/godot-xr-tools/objects/highlight/highlight_visible.gd" id="5_fc0km"]
+[ext_resource type="Material" uid="uid://c5w55f1opcxl5" path="res://Resources/Materials/highlight_material_transparent.tres" id="6_odcf6"]
+[ext_resource type="Script" uid="uid://0jp0ir4lmpvc" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand.gd" id="7_bv76e"]
+[ext_resource type="Animation" uid="uid://nq3xh1olqipq" path="res://addons/godot-xr-tools/hands/animations/left/Grip Shaft.res" id="8_38xpb"]
+[ext_resource type="Script" uid="uid://45f7hqo2rphl" path="res://addons/godot-xr-tools/hands/poses/hand_pose_settings.gd" id="9_ex07i"]
+[ext_resource type="Animation" uid="uid://dgfeikrugfewi" path="res://addons/godot-xr-tools/hands/animations/left/Cup.res" id="10_ic72q"]
+[ext_resource type="Animation" uid="uid://c8dghcftg1thx" path="res://addons/godot-xr-tools/hands/animations/right/Grip Shaft.res" id="11_tjhd1"]
+[ext_resource type="Animation" uid="uid://do01jton6rk42" path="res://addons/godot-xr-tools/hands/animations/right/Cup.res" id="12_5fxrt"]
+[ext_resource type="PackedScene" uid="uid://digpwor5hndod" path="res://Scenes/audio_player.tscn" id="13_doscs"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_h6ctf"]
+radius = 0.05
+height = 0.5
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bayjb"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_h6ctf"]
+radius = 0.04
+height = 0.08
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_avcy4"]
+albedo_color = Color(1.56425e-07, 0, 0.19701, 1)
+
+[sub_resource type="Resource" id="Resource_duae1"]
+script = ExtResource("9_ex07i")
+closed_pose = ExtResource("8_38xpb")
+metadata/_custom_type_script = "uid://45f7hqo2rphl"
+
+[sub_resource type="Resource" id="Resource_fvbde"]
+script = ExtResource("9_ex07i")
+closed_pose = ExtResource("10_ic72q")
+metadata/_custom_type_script = "uid://45f7hqo2rphl"
+
+[sub_resource type="Resource" id="Resource_aee0r"]
+script = ExtResource("9_ex07i")
+closed_pose = ExtResource("11_tjhd1")
+metadata/_custom_type_script = "uid://45f7hqo2rphl"
+
+[sub_resource type="Resource" id="Resource_04dgk"]
+script = ExtResource("9_ex07i")
+closed_pose = ExtResource("12_5fxrt")
+metadata/_custom_type_script = "uid://45f7hqo2rphl"
+
+[node name="ThrowableLeverTest" type="Node3D"]
+script = ExtResource("1_hxcdq")
+
+[node name="Lever" type="RigidBody3D" parent="."]
+collision_layer = 4
+collision_mask = 196615
+freeze_mode = 1
+script = ExtResource("2_6r5ig")
+metadata/_custom_type_script = "uid://ipgq1xtt6inr"
+
+[node name="LeverMesh" type="MeshInstance3D" parent="Lever"]
+transform = Transform3D(1.14641e-15, 2.62268e-08, -0.6, 0.6, -2.62268e-08, 0, -2.62268e-08, -0.6, -2.62268e-08, 0, 0, 0)
+mesh = ExtResource("3_ykovv")
+skeleton = NodePath("../..")
+
+[node name="LeverShaftCollision" type="CollisionShape3D" parent="Lever"]
+transform = Transform3D(0.5, 0, 0, 0, -2.18557e-08, 0.5, 0, -0.5, -2.18557e-08, 0, 0, -0.12)
+shape = SubResource("CapsuleShape3D_h6ctf")
+
+[node name="Highlight" type="Node3D" parent="Lever"]
+script = ExtResource("5_fc0km")
+metadata/_custom_type_script = "uid://bv2d1r7ven1av"
+
+[node name="HighlightArea" type="Area3D" parent="Lever/Highlight"]
+
+[node name="HighlightCollisionShape" type="CollisionShape3D" parent="Lever/Highlight/HighlightArea"]
+transform = Transform3D(0.187982, 0, 0, 0, -8.21695e-09, 0.187982, 0, -0.187982, -8.21695e-09, 0, 0, -0.101999)
+shape = SubResource("CapsuleShape3D_bayjb")
+
+[node name="HighlightMesh" type="MeshInstance3D" parent="Lever/Highlight/HighlightArea"]
+transform = Transform3D(2.03888e-08, 2.68901e-08, -0.640981, 0.684135, -5.46385e-16, 1.91027e-08, 0, -0.615175, -2.80182e-08, 0.00132884, 0.000591278, 0.000793338)
+mesh = ExtResource("3_ykovv")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("6_odcf6")
+
+[node name="Ball" type="MeshInstance3D" parent="Lever"]
+visible = false
+mesh = SubResource("SphereMesh_h6ctf")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_avcy4")
+
+[node name="LeftGrabPointShaft" type="Marker3D" parent="Lever"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.00467928, 0.0566656, -0.150694)
+gizmo_extents = 0.12
+script = ExtResource("7_bv76e")
+hand_pose = SubResource("Resource_duae1")
+metadata/_custom_type_script = "uid://0jp0ir4lmpvc"
+
+[node name="LeftGrabPointTip" type="Marker3D" parent="Lever"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.0397386, -0.0121557, -0.228524)
+gizmo_extents = 0.12
+script = ExtResource("7_bv76e")
+hand_pose = SubResource("Resource_fvbde")
+metadata/_custom_type_script = "uid://0jp0ir4lmpvc"
+
+[node name="RightGrabPointShaft" type="Marker3D" parent="Lever"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.00107425, 0.0660332, -0.119719)
+gizmo_extents = 0.12
+script = ExtResource("7_bv76e")
+hand = 1
+hand_pose = SubResource("Resource_aee0r")
+metadata/_custom_type_script = "uid://0jp0ir4lmpvc"
+
+[node name="RightGrabPointTip" type="Marker3D" parent="Lever"]
+transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, 0.0670291, 0, -0.259693)
+gizmo_extents = 0.12
+script = ExtResource("7_bv76e")
+hand = 1
+hand_pose = SubResource("Resource_04dgk")
+metadata/_custom_type_script = "uid://0jp0ir4lmpvc"
+
+[node name="Audio" parent="." instance=ExtResource("13_doscs")]
+
+[connection signal="body_entered" from="Lever/Highlight/HighlightArea" to="." method="_on_higlight_area_body_entered"]
+[connection signal="body_exited" from="Lever/Highlight/HighlightArea" to="." method="_on_higlight_area_body_exited"]

@@ -1,5 +1,5 @@
 extends Node3D
-class_name Lever
+class_name StaticLever
 
 @onready var targetPosition: Vector3 = position
 @onready var breakingEnabled: bool = true # used to determine if user is allowed to break with the acceleration lever

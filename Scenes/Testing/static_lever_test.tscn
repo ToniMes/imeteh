@@ -1,0 +1,80 @@
+[gd_scene load_steps=11 format=3 uid="uid://fxrdjxq50p37"]
+
+[ext_resource type="ArrayMesh" uid="uid://j5427occ3uv7" path="res://Resources/Models/Trolley/control_panel_speed_lever.obj" id="1_2h03h"]
+[ext_resource type="Script" uid="uid://dxyvonn3ky16g" path="res://Scenes/Testing/static_lever.gd" id="1_85fio"]
+[ext_resource type="Script" uid="uid://c2p1fe67rvr24" path="res://Scripts/Trolleys/Trolley components/interactive_lever.gd" id="2_teghp"]
+[ext_resource type="PackedScene" uid="uid://digpwor5hndod" path="res://Scenes/audio_player.tscn" id="3_85fio"]
+[ext_resource type="Material" uid="uid://c5w55f1opcxl5" path="res://Resources/Materials/highlight_material_transparent.tres" id="6_4s62t"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_v8yis"]
+radius = 0.05
+height = 0.5
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_tgob0"]
+radius = 0.08
+height = 0.2
+
+[sub_resource type="SphereMesh" id="SphereMesh_wf0kr"]
+radius = 0.04
+height = 0.08
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p358s"]
+albedo_color = Color(1.56425e-07, 0, 0.19701, 1)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_kh52o"]
+
+[node name="StaticLeverTest" type="Node3D"]
+script = ExtResource("1_85fio")
+
+[node name="Lever" type="RigidBody3D" parent="."]
+collision_layer = 4
+collision_mask = 196615
+axis_lock_linear_x = true
+axis_lock_linear_y = true
+axis_lock_linear_z = true
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
+
+[node name="LeverMesh" type="MeshInstance3D" parent="Lever"]
+transform = Transform3D(1.14641e-15, 2.62268e-08, -0.6, 0.6, -2.62268e-08, 0, -2.62268e-08, -0.6, -2.62268e-08, 0, 0, 0)
+mesh = ExtResource("1_2h03h")
+skeleton = NodePath("../..")
+
+[node name="LeverShaftCollision" type="CollisionShape3D" parent="Lever"]
+transform = Transform3D(0.5, 0, 0, 0, -2.18557e-08, 0.5, 0, -0.5, -2.18557e-08, 0, 0, -0.12)
+shape = SubResource("CapsuleShape3D_v8yis")
+
+[node name="InteractiveLever" type="Area3D" parent="Lever"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, -0.2)
+script = ExtResource("2_teghp")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Lever/InteractiveLever"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.025, 0)
+shape = SubResource("CapsuleShape3D_tgob0")
+
+[node name="Ball" type="MeshInstance3D" parent="Lever"]
+visible = false
+mesh = SubResource("SphereMesh_wf0kr")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_p358s")
+
+[node name="HiglightArea" type="Area3D" parent="Lever"]
+
+[node name="HighlightCollisionShape" type="CollisionShape3D" parent="Lever/HiglightArea"]
+transform = Transform3D(0.187982, 0, 0, 0, -8.21695e-09, 0.187982, 0, -0.187982, -8.21695e-09, 0, 0, -0.101999)
+shape = SubResource("CapsuleShape3D_kh52o")
+
+[node name="HighlightMesh" type="MeshInstance3D" parent="Lever/HiglightArea"]
+transform = Transform3D(2.03888e-08, 2.68901e-08, -0.640981, 0.684135, -5.46385e-16, 1.91027e-08, 0, -0.615175, -2.80182e-08, 0.00132884, 0.000591278, 0.000793338)
+visible = false
+mesh = ExtResource("1_2h03h")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("6_4s62t")
+
+[node name="Audio" parent="." instance=ExtResource("3_85fio")]
+
+[connection signal="body_entered" from="Lever/InteractiveLever" to="Lever/InteractiveLever" method="onHandEnter"]
+[connection signal="body_exited" from="Lever/InteractiveLever" to="Lever/InteractiveLever" method="onHandExit"]
+[connection signal="body_entered" from="Lever/HiglightArea" to="." method="_on_higlight_area_body_entered"]
+[connection signal="body_exited" from="Lever/HiglightArea" to="." method="_on_higlight_area_body_exited"]
