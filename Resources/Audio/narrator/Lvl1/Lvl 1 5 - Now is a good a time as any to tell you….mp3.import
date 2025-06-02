@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cfuhlhxx4kb5s"
+path="res://.godot/imported/Lvl 1 5 - Now is a good a time as any to tell you….mp3-47f9d88259d5333047c22682e92e2a5d.mp3str"
+
+[deps]
+
+source_file="res://Resources/Audio/narrator/Lvl1/Lvl 1 5 - Now is a good a time as any to tell you….mp3"
+dest_files=["res://.godot/imported/Lvl 1 5 - Now is a good a time as any to tell you….mp3-47f9d88259d5333047c22682e92e2a5d.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

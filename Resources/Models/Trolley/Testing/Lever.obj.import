@@ -4,14 +4,14 @@ importer="wavefront_obj"
 importer_version=1
 type="Mesh"
 uid="uid://b1i14h4jjfw4a"
-path="res://.godot/imported/Lever.obj-d87b67265fbea0911fab790c0fb3bc23.mesh"
+path="res://.godot/imported/Lever.obj-1beaeeeb635763a9541a9de06bc46bb4.mesh"
 
 [deps]
 
-files=["res://.godot/imported/Lever.obj-d87b67265fbea0911fab790c0fb3bc23.mesh"]
+files=["res://.godot/imported/Lever.obj-1beaeeeb635763a9541a9de06bc46bb4.mesh"]
 
-source_file="res://Resources/Models/Updated Models/Lever.obj"
-dest_files=["res://.godot/imported/Lever.obj-d87b67265fbea0911fab790c0fb3bc23.mesh", "res://.godot/imported/Lever.obj-d87b67265fbea0911fab790c0fb3bc23.mesh"]
+source_file="res://Resources/Models/Trolley/Testing/Lever.obj"
+dest_files=["res://.godot/imported/Lever.obj-1beaeeeb635763a9541a9de06bc46bb4.mesh", "res://.godot/imported/Lever.obj-1beaeeeb635763a9541a9de06bc46bb4.mesh"]
 
 [params]
 

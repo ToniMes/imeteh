@@ -4,14 +4,14 @@ importer="wavefront_obj"
 importer_version=1
 type="Mesh"
 uid="uid://c0mo71xj0ljpu"
-path="res://.godot/imported/IndicatorBase.obj-8466b0f7c024ebffb4e54dfcdabe4511.mesh"
+path="res://.godot/imported/IndicatorBase.obj-5dc082f329b574e4e655820ef8315007.mesh"
 
 [deps]
 
-files=["res://.godot/imported/IndicatorBase.obj-8466b0f7c024ebffb4e54dfcdabe4511.mesh"]
+files=["res://.godot/imported/IndicatorBase.obj-5dc082f329b574e4e655820ef8315007.mesh"]
 
-source_file="res://Resources/Models/Updated Models/IndicatorBase.obj"
-dest_files=["res://.godot/imported/IndicatorBase.obj-8466b0f7c024ebffb4e54dfcdabe4511.mesh", "res://.godot/imported/IndicatorBase.obj-8466b0f7c024ebffb4e54dfcdabe4511.mesh"]
+source_file="res://Resources/Models/Trolley/Testing/IndicatorBase.obj"
+dest_files=["res://.godot/imported/IndicatorBase.obj-5dc082f329b574e4e655820ef8315007.mesh", "res://.godot/imported/IndicatorBase.obj-5dc082f329b574e4e655820ef8315007.mesh"]
 
 [params]
 

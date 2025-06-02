@@ -4,14 +4,14 @@ importer="wavefront_obj"
 importer_version=1
 type="Mesh"
 uid="uid://hyx4s0nhr7si"
-path="res://.godot/imported/Trolley.obj-0f70218964578700cb5656bd956d9170.mesh"
+path="res://.godot/imported/Trolley.obj-a14c45fdf07ecc581d96640c94c238b7.mesh"
 
 [deps]
 
-files=["res://.godot/imported/Trolley.obj-0f70218964578700cb5656bd956d9170.mesh"]
+files=["res://.godot/imported/Trolley.obj-a14c45fdf07ecc581d96640c94c238b7.mesh"]
 
-source_file="res://Resources/Models/Updated Models/Trolley.obj"
-dest_files=["res://.godot/imported/Trolley.obj-0f70218964578700cb5656bd956d9170.mesh", "res://.godot/imported/Trolley.obj-0f70218964578700cb5656bd956d9170.mesh"]
+source_file="res://Resources/Models/Trolley/Testing/Trolley.obj"
+dest_files=["res://.godot/imported/Trolley.obj-a14c45fdf07ecc581d96640c94c238b7.mesh", "res://.godot/imported/Trolley.obj-a14c45fdf07ecc581d96640c94c238b7.mesh"]
 
 [params]
 
