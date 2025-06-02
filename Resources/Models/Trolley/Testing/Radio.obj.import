@@ -4,14 +4,14 @@ importer="wavefront_obj"
 importer_version=1
 type="Mesh"
 uid="uid://bjo8jo0p0x2jh"
-path="res://.godot/imported/Radio.obj-8ce2e51b90017548ad0bee0d1f59370f.mesh"
+path="res://.godot/imported/Radio.obj-99245283728ff205e9d39c67c6d6c433.mesh"
 
 [deps]
 
-files=["res://.godot/imported/Radio.obj-8ce2e51b90017548ad0bee0d1f59370f.mesh"]
+files=["res://.godot/imported/Radio.obj-99245283728ff205e9d39c67c6d6c433.mesh"]
 
-source_file="res://Resources/Models/Updated Models/Radio.obj"
-dest_files=["res://.godot/imported/Radio.obj-8ce2e51b90017548ad0bee0d1f59370f.mesh", "res://.godot/imported/Radio.obj-8ce2e51b90017548ad0bee0d1f59370f.mesh"]
+source_file="res://Resources/Models/Trolley/Testing/Radio.obj"
+dest_files=["res://.godot/imported/Radio.obj-99245283728ff205e9d39c67c6d6c433.mesh", "res://.godot/imported/Radio.obj-99245283728ff205e9d39c67c6d6c433.mesh"]
 
 [params]
 

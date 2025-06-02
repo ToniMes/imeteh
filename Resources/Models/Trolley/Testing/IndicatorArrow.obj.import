@@ -4,14 +4,14 @@ importer="wavefront_obj"
 importer_version=1
 type="Mesh"
 uid="uid://crwglvytt84pi"
-path="res://.godot/imported/IndicatorArrow.obj-0e6c5a3f263dc0f3ade99373fc949fa0.mesh"
+path="res://.godot/imported/IndicatorArrow.obj-87633ffff909812aded03afa4eb778f9.mesh"
 
 [deps]
 
-files=["res://.godot/imported/IndicatorArrow.obj-0e6c5a3f263dc0f3ade99373fc949fa0.mesh"]
+files=["res://.godot/imported/IndicatorArrow.obj-87633ffff909812aded03afa4eb778f9.mesh"]
 
-source_file="res://Resources/Models/Updated Models/IndicatorArrow.obj"
-dest_files=["res://.godot/imported/IndicatorArrow.obj-0e6c5a3f263dc0f3ade99373fc949fa0.mesh", "res://.godot/imported/IndicatorArrow.obj-0e6c5a3f263dc0f3ade99373fc949fa0.mesh"]
+source_file="res://Resources/Models/Trolley/Testing/IndicatorArrow.obj"
+dest_files=["res://.godot/imported/IndicatorArrow.obj-87633ffff909812aded03afa4eb778f9.mesh", "res://.godot/imported/IndicatorArrow.obj-87633ffff909812aded03afa4eb778f9.mesh"]
 
 [params]
 

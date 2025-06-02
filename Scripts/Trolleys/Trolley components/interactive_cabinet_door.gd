@@ -11,9 +11,12 @@ func _process(delta):
     physParent.rotation.x = 0
     physParent.rotation.z = 0
   
-    # the following limits the door's range of motion
-    #if physParent.rotation.y > 0 and physParent.rotation.y < 45:
-      #physParent.rotation.y = 0
+    #the following limits the door's range of motion
+    var posRotY: float = Util.positiveDeg(physParent.rotation_degrees.y)
+    if posRotY < 90:
+      physParent.rotation_degrees.y = 0
+    elif posRotY < 225:
+      physParent.rotation_degrees.y = 225
 
   # if the lever is released in the -40 to 40 degree range,
   # return it to neutral state
