@@ -67,3 +67,4 @@ surface_material_override/0 = SubResource("StandardMaterial3D_djiyg")
 
 [connection signal="body_entered" from="PhysicalLever/InteractiveLever" to="PhysicalLever/InteractiveLever" method="onHandEnter"]
 [connection signal="body_exited" from="PhysicalLever/InteractiveLever" to="PhysicalLever/InteractiveLever" method="onHandExit"]
+[connection signal="lever_switched" from="PhysicalLever/InteractiveLever" to="." method="_on_interactive_lever_lever_switched"]

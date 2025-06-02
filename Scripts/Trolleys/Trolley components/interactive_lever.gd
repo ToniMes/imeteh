@@ -1,14 +1,20 @@
-# class decribing the behaviour of a lever
 extends InteractiveObject
 class_name InteractiveLever
 
-@onready var sfxPlayer = $"../../Audio/SfxPlayer"
-@onready var lever:StaticLever = $"../.."
+signal lever_switched(state: bool)
+
 var enabled = true
+var prev_rotation_y: float
+var prev_rotation_y_set: bool = false
 
 func _process(delta):
   if enabled == false:
     return
+    
+  # setting previous y rotation if not set
+  if prev_rotation_y_set == false:
+    prev_rotation_y = physParent.rotation.y
+    prev_rotation_y_set = true
     
   # while griped, the lever rotates in the Y plane to follow the hand
   if isGripped and hand:
@@ -20,23 +26,17 @@ func _process(delta):
     # to 30 degrees in each direction
     if physParent.rotation.y > PI/6:
       physParent.rotation.y = PI/6
-      lever.state = 0
     elif physParent.rotation.y < -PI/6:
       physParent.rotation.y = -PI/6
-      lever.state = 1
   
   # otherwise, snap it to left/right
   elif physParent.rotation_degrees.y > 0:
-    if lever.state == 1:
-        sfxPlayer.emit_signal("play_sound", "sfx/lever_clank.mp3")
     physParent.rotation.y = lerp_angle(physParent.rotation.y, PI/6, delta*8)
-    lever.state = 0
-  
   elif physParent.rotation_degrees.y <= 0:
-    if lever.state == 0:
-        sfxPlayer.emit_signal("play_sound", "sfx/lever_clank.mp3")
     physParent.rotation.y = lerp_angle(physParent.rotation.y, -PI/6, delta*8)
-    lever.state = 1
-    if lever.name == "AccLever" and lever.breakingEnabled == true:
-        sfxPlayer.emit_signal("play_sound", "sfx/broken_breaks.mp3", true)
-        lever.breakingEnabled = false
+
+  # lever switched if angle is reverse polarity of last one
+  if (prev_rotation_y < 0 and physParent.rotation.y > 0) or (prev_rotation_y > 0 and physParent.rotation.y < 0):
+    emit_signal("lever_switched", 0 if physParent.rotation.y >= 0 else 1)
+
+  prev_rotation_y = physParent.rotation.y

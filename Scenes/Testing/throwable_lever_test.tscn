@@ -1,6 +1,6 @@
 [gd_scene load_steps=21 format=3 uid="uid://tykc6lvqmkhw"]
 
-[ext_resource type="Script" uid="uid://dvuiq35otlilh" path="res://Scenes/Testing/throwable_lever.gd" id="1_hxcdq"]
+[ext_resource type="Script" uid="uid://8peletdargx3" path="res://Scripts/Trolleys/Trolley components/throwable_lever.gd" id="1_hxcdq"]
 [ext_resource type="Script" uid="uid://ipgq1xtt6inr" path="res://addons/godot-xr-tools/objects/pickable.gd" id="2_6r5ig"]
 [ext_resource type="ArrayMesh" uid="uid://j5427occ3uv7" path="res://Resources/Models/Trolley/control_panel_speed_lever.obj" id="3_ykovv"]
 [ext_resource type="Script" uid="uid://bv2d1r7ven1av" path="res://addons/godot-xr-tools/objects/highlight/highlight_visible.gd" id="5_fc0km"]
@@ -77,6 +77,7 @@ shape = SubResource("CapsuleShape3D_bayjb")
 
 [node name="HighlightMesh" type="MeshInstance3D" parent="Lever/Highlight/HighlightArea"]
 transform = Transform3D(2.03888e-08, 2.68901e-08, -0.640981, 0.684135, -5.46385e-16, 1.91027e-08, 0, -0.615175, -2.80182e-08, 0.00132884, 0.000591278, 0.000793338)
+visible = false
 mesh = ExtResource("3_ykovv")
 skeleton = NodePath("../..")
 surface_material_override/0 = ExtResource("6_odcf6")

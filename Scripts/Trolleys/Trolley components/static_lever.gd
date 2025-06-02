@@ -3,24 +3,19 @@ class_name StaticLever
 
 @onready var targetPosition: Vector3 = position
 @onready var breakingEnabled: bool = true # used to determine if user is allowed to break with the acceleration lever
-@onready var highlightMesh: MeshInstance3D = $Lever/HiglightArea/HighlightMesh
 @onready var interactiveLever: InteractiveLever = $Lever/InteractiveLever
 
-var state: int = 0
+func _ready() -> void:
+    highlightMesh = $Lever/HiglightArea/HighlightMesh
 
-func _process(delta):
-  if self.name == "LeverTest" and interactiveLever and interactiveLever.enabled == true:
-    interactiveLever.enabled = false
-  
+func _process(delta):  
   if position.is_equal_approx(targetPosition):
     return
   
   position = position.lerp(targetPosition, delta * 5)
 
 
-func _on_higlight_area_body_entered(body: Node3D) -> void:
-  highlightMesh.visible = true
-
-
-func _on_higlight_area_body_exited(body: Node3D) -> void:
-  highlightMesh.visible = false
+func disable_breaking_if_acc(state: bool) -> void:
+     if self.name == "AccLever" and self.breakingEnabled == true:
+        sfxPlayer.emit_signal("play_sound", "sfx/broken_breaks.mp3", true)
+        breakingEnabled = false

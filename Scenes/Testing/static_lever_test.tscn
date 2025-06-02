@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://fxrdjxq50p37"]
 
 [ext_resource type="ArrayMesh" uid="uid://j5427occ3uv7" path="res://Resources/Models/Trolley/control_panel_speed_lever.obj" id="1_2h03h"]
-[ext_resource type="Script" uid="uid://dxyvonn3ky16g" path="res://Scenes/Testing/static_lever.gd" id="1_85fio"]
+[ext_resource type="Script" uid="uid://c14xw2qm5m0eq" path="res://Scripts/Trolleys/Trolley components/static_lever.gd" id="1_85fio"]
 [ext_resource type="Script" uid="uid://c2p1fe67rvr24" path="res://Scripts/Trolleys/Trolley components/interactive_lever.gd" id="2_teghp"]
 [ext_resource type="PackedScene" uid="uid://digpwor5hndod" path="res://Scenes/audio_player.tscn" id="3_85fio"]
 [ext_resource type="Material" uid="uid://c5w55f1opcxl5" path="res://Resources/Materials/highlight_material_transparent.tres" id="6_4s62t"]
@@ -76,5 +76,7 @@ surface_material_override/0 = ExtResource("6_4s62t")
 
 [connection signal="body_entered" from="Lever/InteractiveLever" to="Lever/InteractiveLever" method="onHandEnter"]
 [connection signal="body_exited" from="Lever/InteractiveLever" to="Lever/InteractiveLever" method="onHandExit"]
+[connection signal="lever_switched" from="Lever/InteractiveLever" to="." method="disable_breaking_if_acc"]
+[connection signal="lever_switched" from="Lever/InteractiveLever" to="." method="_on_interactive_lever_lever_switched"]
 [connection signal="body_entered" from="Lever/HiglightArea" to="." method="_on_higlight_area_body_entered"]
 [connection signal="body_exited" from="Lever/HiglightArea" to="." method="_on_higlight_area_body_exited"]

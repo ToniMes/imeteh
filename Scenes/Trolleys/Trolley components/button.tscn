@@ -28,32 +28,32 @@ albedo_color = Color(0.733002, 1.64848e-06, 3.85046e-07, 1)
 [node name="Button" type="Node3D"]
 script = ExtResource("1_1cmwl")
 
-[node name="ButtonRigidBody" type="RigidBody3D" parent="."]
+[node name="PickableObject" type="RigidBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.00457452, 0)
 collision_layer = 3
 collision_mask = 2
 gravity_scale = 0.0
 
-[node name="CollisionShape" type="CollisionShape3D" parent="ButtonRigidBody"]
+[node name="CollisionShape" type="CollisionShape3D" parent="PickableObject"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0389582, 0)
 shape = SubResource("CylinderShape3D_smycg")
 
-[node name="ButtonBottomMesh" type="MeshInstance3D" parent="ButtonRigidBody"]
+[node name="ButtonBottomMesh" type="MeshInstance3D" parent="PickableObject"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00457452, 0)
 mesh = SubResource("BoxMesh_lkjnc")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_1cmwl")
 
-[node name="ButtonTop" type="Area3D" parent="ButtonRigidBody"]
+[node name="ButtonTop" type="Area3D" parent="PickableObject"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00457452, 0)
 script = ExtResource("1_xeg4x")
 metadata/_custom_type_script = "uid://c61m04lkimt5f"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="ButtonRigidBody/ButtonTop"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PickableObject/ButtonTop"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000719011, 0.0203075, -0.000884593)
 shape = SubResource("SphereShape3D_iju5o")
 
-[node name="ButtonTopMesh" type="MeshInstance3D" parent="ButtonRigidBody/ButtonTop"]
+[node name="ButtonTopMesh" type="MeshInstance3D" parent="PickableObject/ButtonTop"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0356148, 0)
 mesh = SubResource("CylinderMesh_0kpiu")
 skeleton = NodePath("../..")
@@ -61,5 +61,5 @@ surface_material_override/0 = SubResource("StandardMaterial3D_0kpiu")
 
 [node name="Audio" parent="." instance=ExtResource("2_xeg4x")]
 
-[connection signal="body_entered" from="ButtonRigidBody/ButtonTop" to="ButtonRigidBody/ButtonTop" method="onHandEnter"]
-[connection signal="body_exited" from="ButtonRigidBody/ButtonTop" to="ButtonRigidBody/ButtonTop" method="onHandExit"]
+[connection signal="body_entered" from="PickableObject/ButtonTop" to="PickableObject/ButtonTop" method="onHandEnter"]
+[connection signal="body_exited" from="PickableObject/ButtonTop" to="PickableObject/ButtonTop" method="onHandExit"]
