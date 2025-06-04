@@ -2,6 +2,8 @@
 extends InteractiveObject
 class_name InteractiveCabinetDoor
 
+var doorState = Global.DoorState.CLOSED
+var prevDoorState = Global.DoorState.CLOSED
 
 func _process(delta):
   # while griped, the lever rotates in the Y plane to follow the hand
@@ -10,6 +12,15 @@ func _process(delta):
     physParent.rotation.y += PI/2
     physParent.rotation.x = 0
     physParent.rotation.z = 0
+    
+    # emitting event if door opened/closed
+    if physParent.global_rotation_degrees.y < 170:
+      doorState = Global.DoorState.CLOSED
+    else:
+      doorState = Global.DoorState.OPEN
+    if prevDoorState != doorState:
+      Global.cabinet_door_state_changed.emit(doorState)
+    prevDoorState = doorState
   
     #the following limits the door's range of motion
     var posRotY: float = Util.positiveDeg(physParent.rotation_degrees.y)
