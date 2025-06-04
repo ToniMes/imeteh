@@ -7,8 +7,7 @@ extends Node3D
 var acc_lever_switch_counter = 0
 
 func _ready() -> void:
-  GlobalSignalBus.current_level = 2
-  GlobalSignalBus.turning_left.emit()
+  Global.current_level = 2
 
 
 func _on_trolley_acc_lever_switched(state: bool) -> void:

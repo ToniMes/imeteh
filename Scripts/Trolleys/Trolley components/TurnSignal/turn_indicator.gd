@@ -4,15 +4,14 @@ extends Node3D
 @onready var arrow_right: Node3D = $Arrows/ArrowRight
 
 func _ready() -> void:
-  GlobalSignalBus.connect("turning_left", turning_left)
-  GlobalSignalBus.connect("turning_right", turning_right)
+  Global.connect("trolley_direction_changed", _on_trolley_direction_changed)
   
-func turning_left():
-  print("turning left")
-  arrow_left.flash()
-  arrow_right.turn_off()
-
-func turning_right():
-  print("turning right")
-  arrow_left.turn_off()
-  arrow_right.flash()
+func _on_trolley_direction_changed(direction: Global.TrolleyDirection):
+  if direction == Global.TrolleyDirection.RIGHT:
+    print("turning right")
+    arrow_left.turn_off()
+    arrow_right.flash()
+  else:
+    print("turning left")
+    arrow_left.flash()
+    arrow_right.turn_off()
