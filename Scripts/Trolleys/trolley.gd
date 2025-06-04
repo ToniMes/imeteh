@@ -9,7 +9,7 @@ signal acc_lever_switched(state: bool)
 @onready var turnLeverButton: ClickableButton = $TrolleyBody/TurnLeverButton
 @onready var narratorPlayer: AudioStreamPlayer = $"../Audio/NarratorPlayer"
 @onready var sfxPlayer: AudioStreamPlayer = $"../Audio/SfxPlayer"
-var currentTrack: int = 1 #center
+var currentTrack: int = 0
 var speed: float = 0
 var started: bool = false
 var target_x: float = 0
@@ -32,7 +32,6 @@ func _process(delta):
   global_position.y = lerp(global_position.y, target_y, delta * 10)
   if speed > 2 and !started:
     started = true
-    GlobalSignalBus.turning_left.emit()
     sfxPlayer.emit_signal("play_sound", "sfx/trolley_running_ambiance.mp3", true)
     
     
@@ -43,17 +42,13 @@ func switchTrack(track: int):
 
 
 func turn():
-  if turnLever.state == 0:
+  # turning left if current direction is left or center
+  if turnLever.state < 2:
     switchTrack(0)
-  
-  elif turnLever.state == 1:
-    switchTrack(2)
-
+    
+  # turning right if current direction is right
   else:
-    if RandomNumberGenerator.new().randf() < 0.5:
-      switchTrack(2)
-    else:
-      switchTrack(0)
+    switchTrack(2)
   
   
 func prepareLever():
@@ -75,8 +70,14 @@ func _on_acc_lever_lever_switched(state: bool) -> void:
   acc_lever_switched.emit(state)
 
 
+func _on_turn_lever_button_pressed() -> void:
+    Global.trolley_direction_changed.emit(turnLever.state)
+
+
 func _on_turn_lever_switched(state: bool) -> void:
+  var direction: Global.TrolleyDirection
   if state == false:
-    GlobalSignalBus.turning_left.emit()
+    direction = Global.TrolleyDirection.LEFT
   else:
-    GlobalSignalBus.turning_right.emit()
+    direction = Global.TrolleyDirection.RIGHT
+  Global.trolley_direction_changed.emit(direction)
