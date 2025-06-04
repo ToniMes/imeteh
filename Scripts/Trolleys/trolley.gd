@@ -32,6 +32,7 @@ func _process(delta):
   global_position.y = lerp(global_position.y, target_y, delta * 10)
   if speed > 2 and !started:
     started = true
+    GlobalSignalBus.turning_left.emit()
     sfxPlayer.emit_signal("play_sound", "sfx/trolley_running_ambiance.mp3", true)
     
     
