@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cm57i0psuuk3r"
+path="res://.godot/imported/Lvl 2 2a - (player did not listen) Please, slow us down now.mp3-92ffefbc3546d6313bea0f9f8ab7b737.mp3str"
+
+[deps]
+
+source_file="res://Resources/Audio/narrator/Lvl 2/Lvl 2 2a - (player did not listen) Please, slow us down now.mp3"
+dest_files=["res://.godot/imported/Lvl 2 2a - (player did not listen) Please, slow us down now.mp3-92ffefbc3546d6313bea0f9f8ab7b737.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

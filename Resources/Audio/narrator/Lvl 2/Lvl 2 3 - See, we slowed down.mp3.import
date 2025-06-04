@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bwgacgewpluce"
+path="res://.godot/imported/Lvl 2 3 - See, we slowed down.mp3-6d5c1f4a6ee9795dc9bf0d398e6657cd.mp3str"
+
+[deps]
+
+source_file="res://Resources/Audio/narrator/Lvl 2/Lvl 2 3 - See, we slowed down.mp3"
+dest_files=["res://.godot/imported/Lvl 2 3 - See, we slowed down.mp3-6d5c1f4a6ee9795dc9bf0d398e6657cd.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
