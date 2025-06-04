@@ -44,6 +44,7 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_atuq7")
 
 [node name="TrolleyBody" type="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0635903, 0.0775682, -0.0135472)
 mesh = SubResource("ArrayMesh_n4sbs")
 script = ExtResource("1_54p42")
 
@@ -64,7 +65,7 @@ skeleton = NodePath("../..")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.265, -0.033, 0.24)
 
 [node name="Player" parent="." instance=ExtResource("5_mbrm1")]
-transform = Transform3D(0.999999, 0, -1.11759e-08, 0, 1, 0, 1.11759e-08, 0, 0.999999, 0.0530863, -0.227827, -0.56868)
+transform = Transform3D(0.999999, 0, -1.11759e-08, 0, 1, 0, 1.11759e-08, 0, 0.999999, -0.0739801, 1.18371, 0.085215)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.000890092, 1, 0, -1, 0.000890092, 0, 2.2095, 0)

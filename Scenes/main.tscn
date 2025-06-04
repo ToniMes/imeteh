@@ -14,13 +14,16 @@ script = ExtResource("1_jjgbg")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.29593, 0)
 
 [node name="XRCamera3D" type="XRCamera3D" parent="XROrigin3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.252133, 1.27735, 0.71353)
 
 [node name="XRController3D" type="XRController3D" parent="XROrigin3D"]
 tracker = &"left_hand"
 
 [node name="LeftHand" parent="XROrigin3D/XRController3D" instance=ExtResource("2_jjvhh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.305179, 1.35146, -0.171484)
 
 [node name="FunctionPointer" parent="XROrigin3D/XRController3D" instance=ExtResource("3_kry3j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.305179, 1.35146, -0.171484)
 show_laser = 2
 laser_length = 1
 
@@ -28,8 +31,10 @@ laser_length = 1
 tracker = &"right_hand"
 
 [node name="RightHand" parent="XROrigin3D/XRController3D2" instance=ExtResource("4_21xkr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.305179, 1.35146, -0.171484)
 
 [node name="FunctionPointer" parent="XROrigin3D/XRController3D2" instance=ExtResource("3_kry3j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.305179, 1.35146, -0.171484)
 show_laser = 2
 laser_length = 1
 
