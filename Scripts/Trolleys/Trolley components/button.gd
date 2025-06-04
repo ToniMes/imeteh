@@ -3,7 +3,6 @@ class_name  ClickableButton
 
 var button_pressed = false
 signal buttonPressed
-@onready var sfxPlayer = $Audio/SfxPlayer
 @onready var buttonTop = $PickableObject/ButtonTop
 
 func _process(delta):
@@ -25,6 +24,6 @@ func start_button_press_animation():
   # creating button animation that pushes it down slightly and then back up
   var tween = create_tween()
   tween.tween_property(buttonMesh, "global_position:y", original_y - 0.01, 0.1)
-  sfxPlayer.emit_signal("play_sound", "sfx/button_press.mp3")
+  Audio.sfxPlayer.emit_signal("play_sound", "sfx/button_press.mp3")
   tween.tween_property(buttonMesh, "global_position:y", original_y, 0.1).set_delay(0.15)
   tween.tween_callback(func(): button_pressed = false)

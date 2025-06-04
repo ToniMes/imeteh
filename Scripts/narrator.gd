@@ -1,4 +1,5 @@
 extends CanvasLayer
+class_name Narrator
 
 # How to use:
 # Each voice line has the following naming scheme:

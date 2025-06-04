@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://tykc6lvqmkhw"]
+[gd_scene load_steps=20 format=3 uid="uid://tykc6lvqmkhw"]
 
 [ext_resource type="Script" uid="uid://8peletdargx3" path="res://Scripts/Trolleys/Trolley components/throwable_lever.gd" id="1_hxcdq"]
 [ext_resource type="Script" uid="uid://ipgq1xtt6inr" path="res://addons/godot-xr-tools/objects/pickable.gd" id="2_6r5ig"]
@@ -11,7 +11,6 @@
 [ext_resource type="Animation" uid="uid://dgfeikrugfewi" path="res://addons/godot-xr-tools/hands/animations/left/Cup.res" id="10_ic72q"]
 [ext_resource type="Animation" uid="uid://c8dghcftg1thx" path="res://addons/godot-xr-tools/hands/animations/right/Grip Shaft.res" id="11_tjhd1"]
 [ext_resource type="Animation" uid="uid://do01jton6rk42" path="res://addons/godot-xr-tools/hands/animations/right/Cup.res" id="12_5fxrt"]
-[ext_resource type="PackedScene" uid="uid://digpwor5hndod" path="res://Scenes/audio_player.tscn" id="13_doscs"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_h6ctf"]
 radius = 0.05
@@ -116,8 +115,6 @@ script = ExtResource("7_bv76e")
 hand = 1
 hand_pose = SubResource("Resource_04dgk")
 metadata/_custom_type_script = "uid://0jp0ir4lmpvc"
-
-[node name="Audio" parent="." instance=ExtResource("13_doscs")]
 
 [connection signal="body_entered" from="Lever/Highlight/HighlightArea" to="." method="_on_higlight_area_body_entered"]
 [connection signal="body_exited" from="Lever/Highlight/HighlightArea" to="." method="_on_higlight_area_body_exited"]

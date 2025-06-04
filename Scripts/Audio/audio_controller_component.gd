@@ -1,6 +1,5 @@
 extends AudioStreamPlayer
-
-signal play_sound(sfx)
+class_name AudioControllerComponent
 
 var stream_players: Array[AudioStreamPlayer] = []
 
@@ -12,7 +11,7 @@ func _init() -> void:
     stream_players.append(streamPlayer)
     add_child(streamPlayer)
 
-func _on_play_sound(audioPath: String, loop: bool = false, freeUpPlayer: bool = true) -> void:
+func play_sound(audioPath: String, loop: bool = false, freeUpPlayer: bool = true) -> void:
   if stream_players.is_empty():
     # Not playing the sound if no stream players are available
     if freeUpPlayer == false:

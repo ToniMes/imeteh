@@ -1,8 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://c2j7c64ojidai"]
+[gd_scene load_steps=9 format=3 uid="uid://c2j7c64ojidai"]
 
 [ext_resource type="Script" uid="uid://dltsl12v7qoe0" path="res://Scripts/Trolleys/Trolley components/button.gd" id="1_1cmwl"]
 [ext_resource type="Script" uid="uid://c61m04lkimt5f" path="res://Scripts/Interaction/interaction_object.gd" id="1_xeg4x"]
-[ext_resource type="PackedScene" uid="uid://digpwor5hndod" path="res://Scenes/audio_player.tscn" id="2_xeg4x"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_smycg"]
 height = 0.04
@@ -58,8 +57,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0356148, 0)
 mesh = SubResource("CylinderMesh_0kpiu")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_0kpiu")
-
-[node name="Audio" parent="." instance=ExtResource("2_xeg4x")]
 
 [connection signal="body_entered" from="PickableObject/ButtonTop" to="PickableObject/ButtonTop" method="onHandEnter"]
 [connection signal="body_exited" from="PickableObject/ButtonTop" to="PickableObject/ButtonTop" method="onHandExit"]

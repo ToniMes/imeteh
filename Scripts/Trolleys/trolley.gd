@@ -1,14 +1,10 @@
 extends StaticBody3D
 class_name Trolley
 
-signal acc_lever_switched(state: bool)
-
 @onready var turnLever: StaticLever = $TrolleyBody/TurnLever
 @onready var accLever: StaticLever = $TrolleyBody/AccLever
 @onready var railWaySpawner: RailWaySpawner = $TrolleyBody/RailwaySpawner
 @onready var turnLeverButton: ClickableButton = $TrolleyBody/TurnLeverButton
-@onready var narratorPlayer: AudioStreamPlayer = $"../Audio/NarratorPlayer"
-@onready var sfxPlayer: AudioStreamPlayer = $"../Audio/SfxPlayer"
 var currentTrack: int = 0
 var speed: float = 0
 var started: bool = false
@@ -20,7 +16,6 @@ var max_speed: float = 10
 func _ready():
   accLever.prepared = true
   turnLeverButton.connect("buttonPressed", func(): prepareLever())
-  narratorPlayer.emit_signal("play_sound", "narrator/intro.mp3")
 
 
 func _process(delta):
@@ -32,7 +27,7 @@ func _process(delta):
   global_position.y = lerp(global_position.y, target_y, delta * 10)
   if speed > 2 and !started:
     started = true
-    sfxPlayer.emit_signal("play_sound", "sfx/trolley_running_ambiance.mp3", true)
+    Audio.sfxPlayer.play_sound("sfx/trolley_running_ambiance.mp3", true)
     
     
 
@@ -67,7 +62,7 @@ func bump():
 
 
 func _on_acc_lever_lever_switched(state: bool) -> void:
-  acc_lever_switched.emit(state)
+  Global.acc_lever_switched.emit(state)
 
 
 func _on_turn_lever_button_pressed() -> void:

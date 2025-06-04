@@ -8,7 +8,7 @@
 [ext_resource type="Animation" uid="uid://c8dghcftg1thx" path="res://addons/godot-xr-tools/hands/animations/right/Grip Shaft.res" id="5_75la2"]
 [ext_resource type="Script" uid="uid://bv2d1r7ven1av" path="res://addons/godot-xr-tools/objects/highlight/highlight_visible.gd" id="6_vudpg"]
 [ext_resource type="Script" uid="uid://c61m04lkimt5f" path="res://Scripts/Interaction/interaction_object.gd" id="8_vgc73"]
-[ext_resource type="PackedScene" uid="uid://digpwor5hndod" path="res://Scenes/audio_player.tscn" id="9_75la2"]
+[ext_resource type="PackedScene" uid="uid://digpwor5hndod" path="res://Scenes/audio_controller.tscn" id="9_75la2"]
 [ext_resource type="Material" uid="uid://g8njdjfj8y2b" path="res://Resources/Materials/highlight_material.tres" id="10_75la2"]
 
 [sub_resource type="Resource" id="Resource_duae1"]

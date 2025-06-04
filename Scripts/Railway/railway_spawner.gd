@@ -8,7 +8,6 @@ const SPLIT = preload("res://Scenes/Railway/RailWayYsplit.tscn")
 @onready var rail_parent_left: Node3D = $"../../../RailParentLeft"
 @onready var rail_parent_center: Node3D = $"../../../RailParentCenter"
 @onready var rail_parent_right: Node3D = $"../../../RailParentRight"
-@onready var narratorPlayer: AudioStreamPlayer = $"../../../Audio/NarratorPlayer"
 # when spawing in the railway, we have to keep in mind the offset,
 # also making sure that when the railway spawns in, there is an overlap on the first and last plank
 var rail_length: float = 3.123
@@ -72,13 +71,13 @@ func spawnNextRail():
   
   railCount+=1
   if railCount == 100:
-    narratorPlayer.emit_signal("play_sound", "narrator/y_split.mp3")
+    Audio.narrator.play_voiceline("1_5") # Lvl15-NowIsAGoodATimeAsAnyToTellYou…
   if railCount == 192:
     trolley.turn()
   if railCount == 193 and trolley.currentTrack == 0:
     trolley.bump()
   if railCount == 198:
     if trolley.currentTrack == 0:
-      narratorPlayer.emit_signal("play_sound", "narrator/lose.mp3")
+      Audio.narrator.play_voiceline("1_9b") # Lvl19b-YouRanHerOver
     if trolley.currentTrack == 2:
-      narratorPlayer.emit_signal("play_sound", "narrator/win.mp3")
+      Audio.narrator.play_voiceline("1_9a") # Lvl19a-GrandmaLives

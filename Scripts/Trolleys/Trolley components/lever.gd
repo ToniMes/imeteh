@@ -3,14 +3,13 @@ class_name Lever
 
 signal lever_switched(state: bool)
 
-@onready var sfxPlayer: AudioStreamPlayer = $Audio/SfxPlayer
 var prepared: bool = false
 var state: int = 0
 var highlightMesh: MeshInstance3D
 
 func _on_interactive_lever_lever_switched(state: bool) -> void:
     self.state = state
-    sfxPlayer.emit_signal("play_sound", "sfx/lever_clank.mp3")
+    Audio.sfxPlayer.play_sound("sfx/lever_clank.mp3")
     lever_switched.emit(state)
 
 

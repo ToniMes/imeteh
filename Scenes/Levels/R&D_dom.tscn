@@ -5,7 +5,7 @@
 [ext_resource type="ArrayMesh" uid="uid://cvrv4c1mb1u3n" path="res://Resources/Models/Trolley/control_panel_door.obj" id="3_6h8pu"]
 [ext_resource type="PackedScene" uid="uid://2ikbp3ayxqae" path="res://Scenes/player.tscn" id="4_6h8pu"]
 [ext_resource type="PackedScene" uid="uid://7p562hvbyx17" path="res://Scenes/Trolleys/Trolley components/RailwaySpawner.tscn" id="5_g8bfl"]
-[ext_resource type="PackedScene" uid="uid://digpwor5hndod" path="res://Scenes/audio_player.tscn" id="7_k8k0u"]
+[ext_resource type="PackedScene" uid="uid://digpwor5hndod" path="res://Scenes/audio_controller.tscn" id="7_k8k0u"]
 
 [sub_resource type="Environment" id="Environment_6h8pu"]
 

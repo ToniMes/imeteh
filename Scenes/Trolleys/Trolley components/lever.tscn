@@ -1,9 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://cxeo2k8b644o7"]
+[gd_scene load_steps=9 format=3 uid="uid://cxeo2k8b644o7"]
 
 [ext_resource type="Script" uid="uid://b5myyfycvquhb" path="res://Scripts/Trolleys/Trolley components/lever.gd" id="1_wv1st"]
 [ext_resource type="Script" uid="uid://c2p1fe67rvr24" path="res://Scripts/Trolleys/Trolley components/interactive_lever.gd" id="2_6kuia"]
 [ext_resource type="ArrayMesh" uid="uid://j5427occ3uv7" path="res://Resources/Models/Trolley/control_panel_speed_lever.obj" id="2_aebua"]
-[ext_resource type="PackedScene" uid="uid://digpwor5hndod" path="res://Scenes/audio_player.tscn" id="3_djiyg"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_ejj7v"]
 radius = 0.05
@@ -62,8 +61,6 @@ shape = SubResource("CapsuleShape3D_6kuia")
 visible = false
 mesh = SubResource("SphereMesh_2yhwd")
 surface_material_override/0 = SubResource("StandardMaterial3D_djiyg")
-
-[node name="Audio" parent="." instance=ExtResource("3_djiyg")]
 
 [connection signal="body_entered" from="PhysicalLever/InteractiveLever" to="PhysicalLever/InteractiveLever" method="onHandEnter"]
 [connection signal="body_exited" from="PhysicalLever/InteractiveLever" to="PhysicalLever/InteractiveLever" method="onHandExit"]

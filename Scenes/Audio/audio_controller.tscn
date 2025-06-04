@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://chjknist6875l"]
+
+[ext_resource type="Script" uid="uid://qltcll8rx2rf" path="res://autoloads/Audio_controller.gd" id="1_pxycn"]
+[ext_resource type="AudioStream" uid="uid://68mwy1xv86p1" path="res://Resources/Audio/sfx/lever_clank.mp3" id="2_jqavn"]
+[ext_resource type="Script" uid="uid://b35fqo4q25aot" path="res://Scripts/Audio/audio_controller_component.gd" id="3_ardbo"]
+[ext_resource type="PackedScene" uid="uid://dp07bx5qmqn8o" path="res://Scenes/Audio/narrator.tscn" id="4_m8uh1"]
+
+[node name="AudioController" type="Node"]
+script = ExtResource("1_pxycn")
+
+[node name="SfxPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_jqavn")
+max_polyphony = 12
+bus = &"SFX"
+script = ExtResource("3_ardbo")
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_jqavn")
+max_polyphony = 3
+bus = &"Music"
+script = ExtResource("3_ardbo")
+
+[node name="Narrator" parent="." instance=ExtResource("4_m8uh1")]
+
+[connection signal="ready" from="SfxPlayer" to="SfxPlayer" method="_on_ready"]
+[connection signal="ready" from="MusicPlayer" to="MusicPlayer" method="_on_ready"]

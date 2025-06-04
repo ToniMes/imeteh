@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://ceywse5pwvsd2"]
 
 [ext_resource type="PackedScene" uid="uid://cd3nuoym3pjy7" path="res://Scenes/Trolleys/trolley2.tscn" id="1_3ly0e"]
-[ext_resource type="PackedScene" uid="uid://digpwor5hndod" path="res://Scenes/audio_player.tscn" id="2_edknk"]
+[ext_resource type="PackedScene" uid="uid://digpwor5hndod" path="res://Scenes/audio_controller.tscn" id="2_edknk"]
 [ext_resource type="PackedScene" uid="uid://tykc6lvqmkhw" path="res://Scenes/Trolleys/Trolley components/throwable_lever.tscn" id="3_le67i"]
 [ext_resource type="PackedScene" uid="uid://mg0r2s7flru5" path="res://Scenes/Testing/pickable.tscn" id="4_gcucl"]
 [ext_resource type="PackedScene" uid="uid://c31mawf43hvjw" path="res://Scenes/Testing/button_test.tscn" id="5_5jvok"]
