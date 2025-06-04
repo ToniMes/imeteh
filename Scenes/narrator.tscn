@@ -1,0 +1,612 @@
+[gd_scene load_steps=37 format=3 uid="uid://dw684t7f6lrey"]
+
+[ext_resource type="Script" uid="uid://csb80qnbfhur4" path="res://Scripts/narrator.gd" id="1_dd1pa"]
+[ext_resource type="AudioStream" uid="uid://beca6ij76jorw" path="res://Resources/Audio/narrator/Lvl1/Lvl 1 1 - fiddle with the lever.mp3" id="2_18b45"]
+[ext_resource type="AudioStream" uid="uid://xfpr8s7uha6n" path="res://Resources/Audio/narrator/Lvl1/Lvl 1 2  - now we’re speeding up.mp3" id="3_i656x"]
+[ext_resource type="AudioStream" uid="uid://brqlqwqx1d5nl" path="res://Resources/Audio/narrator/Lvl1/Lvl 1 3 - okay, now try slowing down.mp3" id="4_pfmkl"]
+[ext_resource type="AudioStream" uid="uid://diwidjxkychc5" path="res://Resources/Audio/narrator/Lvl1/Lvl 1 4 - you’re supposed to be slowing down.mp3" id="5_pegxl"]
+[ext_resource type="AudioStream" uid="uid://cfuhlhxx4kb5s" path="res://Resources/Audio/narrator/Lvl1/Lvl 1 5 - Now is a good a time as any to tell you….mp3" id="6_j4svu"]
+[ext_resource type="AudioStream" uid="uid://dga5jmcfj4a5q" path="res://Resources/Audio/narrator/Lvl1/Lvl 1 6 - I’m here for you.mp3" id="7_mw0vf"]
+[ext_resource type="AudioStream" uid="uid://bmbnyyrnhe7yu" path="res://Resources/Audio/narrator/Lvl1/Lvl 1 7 - you figured out the cabinet door.mp3" id="8_xxq3u"]
+[ext_resource type="AudioStream" uid="uid://dnajcyxvc34kq" path="res://Resources/Audio/narrator/Lvl1/Lvl 1 8- you’ve found a way to turn.mp3" id="9_3w3vl"]
+[ext_resource type="AudioStream" uid="uid://dmfushpbkqamj" path="res://Resources/Audio/narrator/Lvl1/Lvl 1 8a - Now this is interesting, you’re still going left… hmm….mp3" id="10_21emf"]
+[ext_resource type="AudioStream" uid="uid://ewvak4h7ygil" path="res://Resources/Audio/narrator/Lvl1/Lvl 1 9a - Grandma lives.mp3" id="11_ym5mg"]
+[ext_resource type="AudioStream" uid="uid://dl6pwpk1vefgk" path="res://Resources/Audio/narrator/Lvl1/Lvl 1 9b - you ran her over.mp3" id="12_0oyqt"]
+[ext_resource type="AudioStream" uid="uid://d4if36ncefffo" path="res://Resources/Audio/narrator/Lvl 2/Lvl 2 2 - Okay, now we are speeding up, now please, slow us down.mp3" id="13_xbqli"]
+[ext_resource type="AudioStream" uid="uid://cm57i0psuuk3r" path="res://Resources/Audio/narrator/Lvl 2/Lvl 2 2a - (player did not listen) Please, slow us down now.mp3" id="14_0dxa6"]
+[ext_resource type="AudioStream" uid="uid://bwgacgewpluce" path="res://Resources/Audio/narrator/Lvl 2/Lvl 2 3 - See, we slowed down.mp3" id="15_3crfa"]
+[ext_resource type="AudioStream" uid="uid://b3gu2mi08ts8e" path="res://Resources/Audio/narrator/Lvl 2/Lvl 2 4 - Please, give this puppy some juice.mp3" id="16_nse6q"]
+[ext_resource type="AudioStream" uid="uid://wo0s0llqg4la" path="res://Resources/Audio/narrator/Lvl 2/Lvl 2 5 - Well that wasn’t supposed to happen.mp3" id="17_h8p8v"]
+[ext_resource type="AudioStream" uid="uid://cmtrh3fidfxv3" path="res://Resources/Audio/narrator/Lvl 2/Lvl 2 6 - There will be kittens in front of you.mp3" id="18_024ty"]
+[ext_resource type="AudioStream" uid="uid://b4gw7xv62ltvg" path="res://Resources/Audio/narrator/Lvl 2/Lvl 2 7 - Hmm.. It seems that when you press those little buttons….mp3" id="19_ld5ub"]
+[ext_resource type="AudioStream" uid="uid://dsrpl7w778c4i" path="res://Resources/Audio/narrator/Lvl 2/Lvl 2 8 - Ah! A way to turn! That’s good..mp3" id="20_2tdqk"]
+[ext_resource type="AudioStream" uid="uid://dr2l0784facb1" path="res://Resources/Audio/narrator/Lvl 2/Lvl 2 8a - Just making sure you’re aware that you’re still headed to the left, right_.mp3" id="21_ben2q"]
+[ext_resource type="AudioStream" uid="uid://dywmbntspdmv8" path="res://Resources/Audio/narrator/Lvl 2/Lvl 2 9a - You know what they say….mp3" id="22_wy1ry"]
+[ext_resource type="AudioStream" uid="uid://dnof6rs1sv7jr" path="res://Resources/Audio/narrator/Lvl 2/Lvl 2 9b - The kittens live.mp3" id="23_5sw8k"]
+
+[sub_resource type="Animation" id="Animation_upn4r"]
+resource_name = "1_1"
+length = 19.0
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Lvl1/Lvl11-FiddleWithTheLever:playing")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Subtitles:text")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.1, 1.5, 7.8, 15.7, 19),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": ["", "Hi. Yeah, you there. Right. Yes, you. See that control board looking thing in front of you? ", "See that little lever to your right? Maybe you should try fiddling with it, you know, 
+just like pushing it forward or, you know, seeing what happens. ", "Maybe you can get this puppy on the road. Maybe we can start moving. ", ""]
+}
+
+[sub_resource type="Animation" id="Animation_18b45"]
+resource_name = "1_2"
+length = 4.0
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Lvl1/Lvl12-NowWe’reSpeedingUp:playing")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Subtitles:text")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 3.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": ["", "Oh, yeah, now we're speeding up!", ""]
+}
+
+[sub_resource type="Animation" id="Animation_i656x"]
+resource_name = "1_3"
+length = 5.0
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Lvl1/Lvl13-Okay,NowTrySlowingDown:playing")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Subtitles:text")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.2, 3.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": ["", "Okay, now try slowing down. ", ""]
+}
+
+[sub_resource type="Animation" id="Animation_pfmkl"]
+resource_name = "1_4"
+length = 20.0
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Lvl1/Lvl14-You’reSupposedToBeSlowingDown:playing")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Subtitles:text")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.9, 6.4, 12.2, 14.5, 15.8, 17.9, 19.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": ["", "I mean, I see that you're pulling it backwards. We're supposed to be slowing down,", "so unless you're doing something horribly, horribly wrong, something WENT horribly, 
+horribly wrong.", " Either way, you're on a runaway train now...", "So um...", "There's that...", "Bit of a pickle...", ""]
+}
+
+[sub_resource type="Animation" id="Animation_pegxl"]
+resource_name = "1_5"
+length = 22.0
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Lvl1/Lvl15-NowIsAGoodATimeAsAnyToTellYou…:playing")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Subtitles:text")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.1, 1.3, 7.5, 7.8, 8.1, 11, 13.6, 15.9, 17, 20.7, 21.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": ["", "Now would be a good time to tell you that in front of you in about.. oooh two or three 
+minutes there will be a Y split.", "", "", "To your left there is a grandma on the tracks.", "Why? I'm not quite sure - but she's there", "and you WILL run her over", "given that you are 
+headed to the left", "- unless you find a way to turn to the right.", "", ""]
+}
+
+[sub_resource type="Animation" id="Animation_0522o"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Lvl1/Lvl11-FiddleWithTheLever:playing")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Subtitles:text")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [""]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Lvl1/Lvl12-NowWe’reSpeedingUp:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Lvl1/Lvl13-Okay,NowTrySlowingDown:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Lvl1/Lvl14-You’reSupposedToBeSlowingDown:playing")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Lvl1/Lvl15-NowIsAGoodATimeAsAnyToTellYou…:playing")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Lvl1/Lvl16-I’mHereForYou:playing")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Lvl1/Lvl17-YouFiguredOutTheCabinetDoor:playing")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Lvl1/Lvl18-You’veFoundAWayToTurn:playing")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Lvl1/Lvl18a-NowThisIsInteresting,You’reStillGoingLeft…Hmm…:playing")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Lvl1/Lvl19a-GrandmaLives:playing")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Lvl1/Lvl19b-YouRanHerOver:playing")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_j4svu"]
+resource_name = "1_6"
+length = 26.0
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Lvl1/Lvl16-I’mHereForYou:playing")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Subtitles:text")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.1, 1, 5.6, 7.8, 13.2, 14.4, 17.7, 18.1, 20.8, 22.9, 23.8, 24.4, 25.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": ["", "If you're thinking to yourself, well why is this set up that way? Well, I'm not quite sure.", "The engineers just made it that way.", "And, well, the choice is yours, right? Find a way, or you're 
+going to run over the grandma.", "", "Either way, I'm here.  Um.. to witness it.", "", "I can't really help you.
+I'm just a disembodied voice.", "But I'm here...", "Watching...", "", "Observing...", ""]
+}
+
+[sub_resource type="Animation" id="Animation_mw0vf"]
+resource_name = "1_7"
+length = 7.0
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Lvl1/Lvl17-YouFiguredOutTheCabinetDoor:playing")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Subtitles:text")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.9, 4.3, 4.8, 6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": ["", "Ah, I see. You've found out how to open up a cabinet door.
+", "", "Good on you. ", ""]
+}
+
+[sub_resource type="Animation" id="Animation_xxq3u"]
+resource_name = "1_8"
+length = 5.0
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Lvl1/Lvl18-You’veFoundAWayToTurn:playing")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Subtitles:text")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.1, 0.6, 3.5, 4.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": ["", "Ha. Huzaah! You've found a way to turn this puppy..", "very nice.", ""]
+}
+
+[sub_resource type="Animation" id="Animation_3w3vl"]
+resource_name = "1_8a"
+length = 6.0
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Lvl1/Lvl18a-NowThisIsInteresting,You’reStillGoingLeft…Hmm…:playing")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Subtitles:text")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.1, 0.7, 2, 2.4, 3.9, 4.4, 5.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": ["", "Now, this is interesting.", "", "You're still going left.", "", "Hmm.
+", ""]
+}
+
+[sub_resource type="Animation" id="Animation_21emf"]
+resource_name = "1_9a"
+length = 22.0
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Lvl1/Lvl19a-GrandmaLives:playing")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Subtitles:text")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.6, 4.1, 4.5, 5.2, 9.2, 16.8, 18.1, 19.8, 21.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": ["", "Huzzah! The grandma lives to see another day.", "", "Congrats!", "You just made three very 
+little grandkids very, very happy.", "She's going to take them to the park tomorrow 
+and they will enjoy the sunshine, the sand, and the pleasant company of other children. ", "", "You did that.", "Congrats. ", ""]
+}
+
+[sub_resource type="Animation" id="Animation_ym5mg"]
+resource_name = "1_9b"
+length = 22.0
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Lvl1/Lvl19b-YouRanHerOver:playing")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Subtitles:text")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.9, 3.1, 5.4, 6, 8.2, 12, 12.7, 13.8, 14.6, 16.6, 18.4, 21.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": ["", "Oh, oh, well, did you feel that little bump?", "Yeah, that was the grandma you just ran over. ", "", "She WAS going to take her grandkids to the park tomorrow,", "but that will not be happening 
+giving that she is CONFETTI now!", "", "Congrats.", "", "I hope you can live with this decision of yours. ", "", "Although I will give it to you - that was entertaining. ", ""]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_uljr8"]
+_data = {
+&"1_1": SubResource("Animation_upn4r"),
+&"1_2": SubResource("Animation_18b45"),
+&"1_3": SubResource("Animation_i656x"),
+&"1_4": SubResource("Animation_pfmkl"),
+&"1_5": SubResource("Animation_pegxl"),
+&"1_6": SubResource("Animation_j4svu"),
+&"1_7": SubResource("Animation_mw0vf"),
+&"1_8": SubResource("Animation_xxq3u"),
+&"1_8a": SubResource("Animation_3w3vl"),
+&"1_9a": SubResource("Animation_21emf"),
+&"1_9b": SubResource("Animation_ym5mg"),
+&"RESET": SubResource("Animation_0522o")
+}
+
+[node name="Narrator" type="CanvasLayer"]
+script = ExtResource("1_dd1pa")
+
+[node name="Subtitles" type="Label" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -486.0
+offset_top = -136.0
+offset_right = 487.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 23
+horizontal_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_uljr8")
+}
+
+[node name="Lvl1" type="Node" parent="."]
+
+[node name="Lvl11-FiddleWithTheLever" type="AudioStreamPlayer" parent="Lvl1"]
+stream = ExtResource("2_18b45")
+
+[node name="Lvl12-NowWe’reSpeedingUp" type="AudioStreamPlayer" parent="Lvl1"]
+stream = ExtResource("3_i656x")
+
+[node name="Lvl13-Okay,NowTrySlowingDown" type="AudioStreamPlayer" parent="Lvl1"]
+stream = ExtResource("4_pfmkl")
+
+[node name="Lvl14-You’reSupposedToBeSlowingDown" type="AudioStreamPlayer" parent="Lvl1"]
+stream = ExtResource("5_pegxl")
+
+[node name="Lvl15-NowIsAGoodATimeAsAnyToTellYou…" type="AudioStreamPlayer" parent="Lvl1"]
+stream = ExtResource("6_j4svu")
+
+[node name="Lvl16-I’mHereForYou" type="AudioStreamPlayer" parent="Lvl1"]
+stream = ExtResource("7_mw0vf")
+
+[node name="Lvl17-YouFiguredOutTheCabinetDoor" type="AudioStreamPlayer" parent="Lvl1"]
+stream = ExtResource("8_xxq3u")
+
+[node name="Lvl18-You’veFoundAWayToTurn" type="AudioStreamPlayer" parent="Lvl1"]
+stream = ExtResource("9_3w3vl")
+
+[node name="Lvl18a-NowThisIsInteresting,You’reStillGoingLeft…Hmm…" type="AudioStreamPlayer" parent="Lvl1"]
+stream = ExtResource("10_21emf")
+
+[node name="Lvl19a-GrandmaLives" type="AudioStreamPlayer" parent="Lvl1"]
+stream = ExtResource("11_ym5mg")
+
+[node name="Lvl19b-YouRanHerOver" type="AudioStreamPlayer" parent="Lvl1"]
+stream = ExtResource("12_0oyqt")
+
+[node name="Lvl2" type="Node" parent="."]
+
+[node name="Lvl22-Okay,NowWeAreSpeedingUp,NowPlease,SlowUsDown" type="AudioStreamPlayer" parent="Lvl2"]
+stream = ExtResource("13_xbqli")
+
+[node name="Lvl22a-(playerDidNotListen)Please,SlowUsDownNow" type="AudioStreamPlayer" parent="Lvl2"]
+stream = ExtResource("14_0dxa6")
+
+[node name="Lvl23-See,WeSlowedDown" type="AudioStreamPlayer" parent="Lvl2"]
+stream = ExtResource("15_3crfa")
+
+[node name="Lvl24-Please,GiveThisPuppySomeJuice" type="AudioStreamPlayer" parent="Lvl2"]
+stream = ExtResource("16_nse6q")
+
+[node name="Lvl25-WellThatWasn’tSupposedToHappen" type="AudioStreamPlayer" parent="Lvl2"]
+stream = ExtResource("17_h8p8v")
+
+[node name="Lvl26-ThereWillBeKittensInFrontOfYou" type="AudioStreamPlayer" parent="Lvl2"]
+stream = ExtResource("18_024ty")
+
+[node name="Lvl27-Hmm__ItSeemsThatWhenYouPressThoseLittleButtons…" type="AudioStreamPlayer" parent="Lvl2"]
+stream = ExtResource("19_ld5ub")
+
+[node name="Lvl28-Ah!AWayToTurn!That’sGood_" type="AudioStreamPlayer" parent="Lvl2"]
+stream = ExtResource("20_2tdqk")
+
+[node name="Lvl28a-JustMakingSureYou’reAwareThatYou’reStillHeadedToTheLeft,Right" type="AudioStreamPlayer" parent="Lvl2"]
+stream = ExtResource("21_ben2q")
+
+[node name="Lvl29a-YouKnowWhatTheySay…" type="AudioStreamPlayer" parent="Lvl2"]
+stream = ExtResource("22_wy1ry")
+
+[node name="Lvl29b-TheKittensLive" type="AudioStreamPlayer" parent="Lvl2"]
+stream = ExtResource("23_5sw8k")
+
+[node name="Lvl3" type="Node" parent="."]

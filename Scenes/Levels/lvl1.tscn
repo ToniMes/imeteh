@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://ytafeg0f0hci"]
+[gd_scene load_steps=5 format=3 uid="uid://ytafeg0f0hci"]
 
 [ext_resource type="PackedScene" uid="uid://cd3nuoym3pjy7" path="res://Scenes/Trolleys/trolley2.tscn" id="1_bv1f1"]
 [ext_resource type="PackedScene" uid="uid://digpwor5hndod" path="res://Scenes/audio_player.tscn" id="2_x5hv6"]
+[ext_resource type="PackedScene" uid="uid://dw684t7f6lrey" path="res://Scenes/narrator.tscn" id="3_2c3dr"]
 
 [sub_resource type="Environment" id="Environment_6h8pu"]
 
@@ -22,3 +23,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.355, 0, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.355, 0, 0)
 
 [node name="Audio" parent="." instance=ExtResource("2_x5hv6")]
+
+[node name="Narrator" parent="." instance=ExtResource("3_2c3dr")]

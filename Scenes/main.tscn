@@ -12,7 +12,6 @@
 script = ExtResource("1_jjgbg")
 
 [node name="XROrigin3D" type="XROrigin3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.29593, 0)
 
 [node name="XRCamera3D" type="XRCamera3D" parent="XROrigin3D"]
 

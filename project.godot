@@ -22,6 +22,7 @@ XRToolsRumbleManager="*res://addons/godot-xr-tools/rumble/rumble_manager.gd"
 Naration="*res://Scripts/naration.gd"
 Util="*res://Scripts/util.gd"
 GlobalSignalBus="*res://autoloads/GlobalSignalBus.gd"
+XrSimulator="*res://addons/xr-simulator/XRSimulator.tscn"
 
 [editor_plugins]
 
