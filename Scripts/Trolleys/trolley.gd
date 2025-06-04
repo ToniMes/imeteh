@@ -73,3 +73,10 @@ func bump():
 
 func _on_acc_lever_lever_switched(state: bool) -> void:
   acc_lever_switched.emit(state)
+
+
+func _on_turn_lever_switched(state: bool) -> void:
+  if state == false:
+    GlobalSignalBus.turning_left.emit()
+  else:
+    GlobalSignalBus.turning_right.emit()

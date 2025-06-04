@@ -97,3 +97,4 @@ transform = Transform3D(1, 0, 0, 0, 0.000890092, 1, 0, -1, 0.000890092, 0, 2.209
 transform = Transform3D(-1, 3.39621e-08, -8.05563e-08, 0, 0.921457, 0.388481, 8.74228e-08, 0.388481, -0.921457, -0.00323083, 1.93927, -1.35843)
 
 [connection signal="lever_switched" from="TrolleyBody/AccLever" to="." method="_on_acc_lever_lever_switched"]
+[connection signal="lever_switched" from="TrolleyBody/TurnLever" to="." method="_on_turn_lever_switched"]
