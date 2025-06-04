@@ -46,35 +46,35 @@ signal request_quit
 ## Interface
 
 func _ready() -> void:
-	pass
+  pass
 
 
 # Add support for is_xr_class on XRTools classes
 func is_xr_class(name : String) -> bool:
-	return name == "XRToolsSceneBase"
+  return name == "XRToolsSceneBase"
 
 
 ## This method center the player on the [param p_transform] transform.
 func center_player_on(p_transform : Transform3D):
-	# In order to center our player so the players feet are at the location
-	# indicated by p_transform, and having our player looking in the required
-	# direction, we must offset this transform using the cameras transform.
+  # In order to center our player so the players feet are at the location
+  # indicated by p_transform, and having our player looking in the required
+  # direction, we must offset this transform using the cameras transform.
 
-	# So we get our current camera transform in local space
-	var camera_transform = $XROrigin3D/XRCamera3D.transform
+  # So we get our current camera transform in local space
+  var camera_transform = $XROrigin3D/XRCamera3D.transform
 
-	# We obtain our view direction and zero out our height
-	var view_direction = camera_transform.basis.z
-	view_direction.y = 0
+  # We obtain our view direction and zero out our height
+  var view_direction = camera_transform.basis.z
+  view_direction.y = 0
 
-	# Now create the transform that we will use to offset our input with
-	var transform : Transform3D
-	transform = transform.looking_at(-view_direction, Vector3.UP)
-	transform.origin = camera_transform.origin
-	transform.origin.y = 0
+  # Now create the transform that we will use to offset our input with
+  var transform : Transform3D
+  transform = transform.looking_at(-view_direction, Vector3.UP)
+  transform.origin = camera_transform.origin
+  transform.origin.y = 0
 
-	# And now update our origin point
-	$XROrigin3D.global_transform = (p_transform * transform.inverse()).orthonormalized()
+  # And now update our origin point
+  $XROrigin3D.global_transform = (p_transform * transform.inverse()).orthonormalized()
 
 
 ## This method is called when the scene is loaded, but before it becomes visible.
@@ -90,42 +90,42 @@ func center_player_on(p_transform : Transform3D):
 ## come from a field of an advanced user_data class-object, or from a game-state
 ## singleton.
 func scene_loaded(user_data = null):
-	# Called after scene is loaded
+  # Called after scene is loaded
 
-	# Make sure our camera becomes the current camera
-	$XROrigin3D/XRCamera3D.current = true
-	$XROrigin3D.current = true
+  # Make sure our camera becomes the current camera
+  $XROrigin3D/XRCamera3D.current = true
+  $XROrigin3D.current = true
 
-	# Start by assuming the user_data contains spawn position information.
-	var spawn_position = user_data
+  # Start by assuming the user_data contains spawn position information.
+  var spawn_position = user_data
 
-	# If the user_data is an object with a 'get_spawn_position' method then
-	# call it (with this [XRToolsSceneBase] allowing it to inspect the scene
-	# if necessary) and use the return value as the spawn position information.
-	if typeof(user_data) == TYPE_OBJECT and user_data.has_method("get_spawn_position"):
-		spawn_position = user_data.get_spawn_position(self)
+  # If the user_data is an object with a 'get_spawn_position' method then
+  # call it (with this [XRToolsSceneBase] allowing it to inspect the scene
+  # if necessary) and use the return value as the spawn position information.
+  if typeof(user_data) == TYPE_OBJECT and user_data.has_method("get_spawn_position"):
+    spawn_position = user_data.get_spawn_position(self)
 
-	# Get the spawn [Transform3D] by inspecting the spawn position value for
-	# standard types of spawn position information:
-	# - null to use the standard XROrigin3D location
-	# - String name of a Node3D to spawn at
-	# - Vector3 to spawn at
-	# - Transform3D to spawn at
-	var spawn_transform : Transform3D = $XROrigin3D.global_transform
-	match typeof(spawn_position):
-		TYPE_STRING: # Name of Node3D to spawn at
-			var node = find_child(spawn_position)
-			if node is Node3D:
-				spawn_transform = node.global_transform
+  # Get the spawn [Transform3D] by inspecting the spawn position value for
+  # standard types of spawn position information:
+  # - null to use the standard XROrigin3D location
+  # - String name of a Node3D to spawn at
+  # - Vector3 to spawn at
+  # - Transform3D to spawn at
+  var spawn_transform : Transform3D = $XROrigin3D.global_transform
+  match typeof(spawn_position):
+    TYPE_STRING: # Name of Node3D to spawn at
+      var node = find_child(spawn_position)
+      if node is Node3D:
+        spawn_transform = node.global_transform
 
-		TYPE_VECTOR3: # Vector3 to spawn at (rotation comes from XROrigin3D)
-			spawn_transform.origin = spawn_position
+    TYPE_VECTOR3: # Vector3 to spawn at (rotation comes from XROrigin3D)
+      spawn_transform.origin = spawn_position
 
-		TYPE_TRANSFORM3D: # Transform3D spawn location
-			spawn_transform = spawn_position
+    TYPE_TRANSFORM3D: # Transform3D spawn location
+      spawn_transform = spawn_position
 
-	# Center the player on the spawn location
-	center_player_on(spawn_transform)
+  # Center the player on the spawn location
+  center_player_on(spawn_transform)
 
 
 ## This method is called when the scene becomes fully visible to the user.
@@ -133,8 +133,8 @@ func scene_loaded(user_data = null):
 ## The [param user_data] parameter is an optional parameter passed in when the
 ## scene is loaded - usually from the previous scene.
 func scene_visible(user_data = null):
-	# Called after the scene becomes fully visible
-	pass
+  # Called after the scene becomes fully visible
+  pass
 
 
 ## This method is called before the start of transition from this scene to a
@@ -143,8 +143,8 @@ func scene_visible(user_data = null):
 ## The [param user_data] parameter is an optional parameter passed in when the
 ## scene transition is requested.
 func scene_pre_exiting(user_data = null):
-	# Called before we start fading out and removing our scene
-	pass
+  # Called before we start fading out and removing our scene
+  pass
 
 
 ## This method is called immediately before this scene is unloaded.
@@ -153,8 +153,8 @@ func scene_pre_exiting(user_data = null):
 ## The [param user_data] parameter is an optional parameter passed in when the
 ## scene transition is requested.
 func scene_exiting(user_data = null):
-	# called right before we remove this scene
-	pass
+  # called right before we remove this scene
+  pass
 
 
 ## Transition to the main menu scene
@@ -165,7 +165,7 @@ func scene_exiting(user_data = null):
 ## Custom scene classes can override this function to add their logic, but
 ## should usually call this super method.
 func exit_to_main_menu() -> void:
-	emit_signal("request_exit_to_main_menu")
+  emit_signal("request_exit_to_main_menu")
 
 
 ## This function is used to transition to the specified scene. The default
@@ -182,7 +182,7 @@ func exit_to_main_menu() -> void:
 ## See [method scene_loaded] for options to provide advanced scene-transition
 ## functionality.
 func load_scene(p_scene_path : String, user_data = null) -> void:
-	emit_signal("request_load_scene", p_scene_path, user_data)
+  emit_signal("request_load_scene", p_scene_path, user_data)
 
 
 ## This function is used to reset the current scene. The default
@@ -195,7 +195,7 @@ func load_scene(p_scene_path : String, user_data = null) -> void:
 ##
 ## Any [param user_data] provided is passed into the new scene.
 func reset_scene(user_data = null) -> void:
-	emit_signal("request_reset_scene", user_data)
+  emit_signal("request_reset_scene", user_data)
 
 
 ## This function is used to quit the XR experience. The default
@@ -204,4 +204,4 @@ func reset_scene(user_data = null) -> void:
 ##
 ## Custom scene classes can override this method to add their logic.
 func quit() -> void:
-	emit_signal("request_quit")
+  emit_signal("request_quit")

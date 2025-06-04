@@ -8,6 +8,7 @@ var acc_lever_switch_counter = 0
 
 func _ready() -> void:
   Global.current_level = 2
+  GlobalSignalBus.turning_left.emit()
 
 
 func _on_trolley_acc_lever_switched(state: bool) -> void:

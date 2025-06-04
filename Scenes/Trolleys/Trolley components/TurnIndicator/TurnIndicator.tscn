@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://jiclc63cgbgq"]
+
+[ext_resource type="Script" uid="uid://b7fjg8up51u7b" path="res://Scripts/Trolleys/Trolley components/TurnSignal/turn_indicator.gd" id="1_3a3oc"]
+[ext_resource type="ArrayMesh" uid="uid://c0mo71xj0ljpu" path="res://Resources/Models/Trolley/Testing/IndicatorBase.obj" id="1_egpnk"]
+[ext_resource type="Material" uid="uid://byis37k3bjubc" path="res://Resources/Materials/Grey.tres" id="2_ta3wf"]
+[ext_resource type="PackedScene" uid="uid://bysmel1bj3lje" path="res://Scenes/Trolleys/Trolley components/TurnIndicator/TurnArrow.tscn" id="3_ta3wf"]
+
+[node name="TurnIndicator" type="Node3D"]
+script = ExtResource("1_3a3oc")
+
+[node name="IndicatorBase" type="MeshInstance3D" parent="."]
+mesh = ExtResource("1_egpnk")
+surface_material_override/0 = ExtResource("2_ta3wf")
+
+[node name="Arrows" type="Node3D" parent="."]
+
+[node name="ArrowLeft" parent="Arrows" instance=ExtResource("3_ta3wf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.129564, 0, 0)
+
+[node name="ArrowRight" parent="Arrows" instance=ExtResource("3_ta3wf")]
+transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, 1, -0.13, 0, 0)
