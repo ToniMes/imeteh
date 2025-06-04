@@ -7,12 +7,13 @@ extends Node3D
 var acc_lever_switch_counter = 0
 
 func _ready() -> void:
-  Global.current_level = 2
+  GlobalSignalBus.current_level = 2
   GlobalSignalBus.turning_left.emit()
 
 
 func _on_trolley_acc_lever_switched(state: bool) -> void:
   acc_lever_switch_counter += 1
+  print("lever switched " + str(acc_lever_switch_counter) + " times")
   
    # breaking the lever if this this is the third lever switch
   if acc_lever_switch_counter == 3:

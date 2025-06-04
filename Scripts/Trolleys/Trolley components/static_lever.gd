@@ -16,6 +16,6 @@ func _process(delta):
 
 
 func disable_breaking_if_acc(state: bool) -> void:
-     if Global.current_level == 1 and name == "AccLever" and breakingEnabled == true:
+     if GlobalSignalBus.current_level == 1 and name == "AccLever" and breakingEnabled == true:
         sfxPlayer.emit_signal("play_sound", "sfx/broken_breaks.mp3", true)
         breakingEnabled = false

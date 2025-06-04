@@ -75,7 +75,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.265176, -0.033088, 0.24020
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.201788, -1.07058)
 
 [node name="Player" parent="TrolleyBody" instance=ExtResource("5_18y1h")]
-transform = Transform3D(0.999999, 0, -1.11759e-08, 0, 1, 0, 1.11759e-08, 0, 0.999999, 0.0530863, 1.32219, -0.56868)
+transform = Transform3D(0.999999, 0, -1.11759e-08, 0, 1, 0, 1.11759e-08, 0, 0.999999, 0, -0.393426, -0.441032)
 
 [node name="RailwaySpawner" parent="TrolleyBody" instance=ExtResource("6_dbpg3")]
 transform = Transform3D(-0.999764, 0, -0.0217275, 0, 1, 0, 0.0217275, 0, -0.999764, -0.0161113, -0.22952, 0.0837665)
