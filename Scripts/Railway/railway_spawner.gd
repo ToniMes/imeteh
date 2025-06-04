@@ -4,6 +4,7 @@ class_name RailWaySpawner
 const RAILWAY = preload("res://Scenes/Railway/Railway.tscn")
 const RAILWAYPERSON = preload("res://Scenes/Railway/railway_person.tscn")
 const SPLIT = preload("res://Scenes/Railway/RailWayYsplit.tscn")
+@onready var trolley: Trolley = $"../.."
 @onready var rail_parent_left: Node3D = $"../../../RailParentLeft"
 @onready var rail_parent_center: Node3D = $"../../../RailParentCenter"
 @onready var rail_parent_right: Node3D = $"../../../RailParentRight"
@@ -73,11 +74,11 @@ func spawnNextRail():
   if railCount == 100:
     narratorPlayer.emit_signal("play_sound", "narrator/y_split.mp3")
   if railCount == 192:
-    get_parent().turn()
-  if railCount == 193 and get_parent().currentTrack == 0:
-    get_parent().bump()
+    trolley.turn()
+  if railCount == 193 and trolley.currentTrack == 0:
+    trolley.bump()
   if railCount == 198:
-    if get_parent().currentTrack == 0:
+    if trolley.currentTrack == 0:
       narratorPlayer.emit_signal("play_sound", "narrator/lose.mp3")
-    if get_parent().currentTrack == 2:
+    if trolley.currentTrack == 2:
       narratorPlayer.emit_signal("play_sound", "narrator/win.mp3")

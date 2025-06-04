@@ -1,12 +1,14 @@
-extends MeshInstance3D
+extends StaticBody3D
 class_name Trolley
 
-@onready var turnLever: StaticLever = $TurnLever
-@onready var accLever: StaticLever = $AccLever
-@onready var railWaySpawner: RailWaySpawner = $RailwaySpawner
-@onready var narratorPlayer: AudioStreamPlayer = $"../../Audio/NarratorPlayer"
-@onready var sfxPlayer: AudioStreamPlayer = $"../../Audio/SfxPlayer"
-@onready var turnLeverButton: ClickableButton = $TurnLeverButton
+signal acc_lever_switched(state: bool)
+
+@onready var turnLever: StaticLever = $TrolleyBody/TurnLever
+@onready var accLever: StaticLever = $TrolleyBody/AccLever
+@onready var railWaySpawner: RailWaySpawner = $TrolleyBody/RailwaySpawner
+@onready var turnLeverButton: ClickableButton = $TrolleyBody/TurnLeverButton
+@onready var narratorPlayer: AudioStreamPlayer = $"../Audio/NarratorPlayer"
+@onready var sfxPlayer: AudioStreamPlayer = $"../Audio/SfxPlayer"
 var currentTrack: int = 1 #center
 var speed: float = 0
 var started: bool = false
@@ -22,7 +24,7 @@ func _ready():
 
 
 func _process(delta):
-  var target_speed = max_speed * accLever.state if accLever.breakingEnabled else max_speed
+  var target_speed = -(max_speed * accLever.state if accLever.breakingEnabled else max_speed)
   speed = lerp(speed, target_speed, delta)
   pass
   position.z -= delta * speed
@@ -66,3 +68,7 @@ func bump():
   target_y = 20
   await get_tree().create_timer(0.1).timeout
   target_y = 0
+
+
+func _on_acc_lever_lever_switched(state: bool) -> void:
+  acc_lever_switched.emit(state)

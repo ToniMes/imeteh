@@ -46,7 +46,7 @@ script = ExtResource("9_ex07i")
 closed_pose = ExtResource("12_5fxrt")
 metadata/_custom_type_script = "uid://45f7hqo2rphl"
 
-[node name="ThrowableLeverTest" type="Node3D"]
+[node name="ThrowableLever" type="Node3D"]
 script = ExtResource("1_hxcdq")
 
 [node name="Lever" type="RigidBody3D" parent="."]
@@ -76,8 +76,7 @@ transform = Transform3D(0.187982, 0, 0, 0, -8.21695e-09, 0.187982, 0, -0.187982,
 shape = SubResource("CapsuleShape3D_bayjb")
 
 [node name="HighlightMesh" type="MeshInstance3D" parent="Lever/Highlight/HighlightArea"]
-transform = Transform3D(2.03888e-08, 2.68901e-08, -0.640981, 0.684135, -5.46385e-16, 1.91027e-08, 0, -0.615175, -2.80182e-08, 0.00132884, 0.000591278, 0.000793338)
-visible = false
+transform = Transform3D(1.78814e-08, 2.62268e-08, -0.6, 0.6, -2.62268e-08, 1.78814e-08, -2.62268e-08, -0.6, -2.62268e-08, 0.00132884, 0.000591278, 0.000793338)
 mesh = ExtResource("3_ykovv")
 skeleton = NodePath("../..")
 surface_material_override/0 = ExtResource("6_odcf6")
