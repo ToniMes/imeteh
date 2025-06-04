@@ -6,6 +6,7 @@ signal lever_switched(state: bool)
 var enabled = true
 enum LeverDirectionEnum { LEFT, NONE, RIGHT }
 var lever_direction: LeverDirectionEnum = LeverDirectionEnum.NONE
+var initial_direction = LeverDirectionEnum.LEFT
 
 func _process(delta):
   if enabled == false:
@@ -25,9 +26,11 @@ func _process(delta):
       physParent.rotation.y = -PI/6
   
   # otherwise, snap it to left/right
+  elif physParent.rotation_degrees.y == 0:
+    physParent.rotation.y = lerp_angle(physParent.rotation.y, -PI/6 if initial_direction == LeverDirectionEnum.RIGHT else PI/6, delta*8)
   elif physParent.rotation_degrees.y > 0:
     physParent.rotation.y = lerp_angle(physParent.rotation.y, PI/6, delta*8)
-  elif physParent.rotation_degrees.y <= 0:
+  elif physParent.rotation_degrees.y < 0:
     physParent.rotation.y = lerp_angle(physParent.rotation.y, -PI/6, delta*8)
 
   # if lever is fully left or right
