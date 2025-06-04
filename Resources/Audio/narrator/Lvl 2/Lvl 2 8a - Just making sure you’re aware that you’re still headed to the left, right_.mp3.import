@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dr2l0784facb1"
+path="res://.godot/imported/Lvl 2 8a - Just making sure you’re aware that you’re still headed to the left, right_.mp3-a75e3ee328970eb9d0de29966b3d90dd.mp3str"
+
+[deps]
+
+source_file="res://Resources/Audio/narrator/Lvl 2/Lvl 2 8a - Just making sure you’re aware that you’re still headed to the left, right_.mp3"
+dest_files=["res://.godot/imported/Lvl 2 8a - Just making sure you’re aware that you’re still headed to the left, right_.mp3-a75e3ee328970eb9d0de29966b3d90dd.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

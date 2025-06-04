@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dsrpl7w778c4i"
+path="res://.godot/imported/Lvl 2 8 - Ah! A way to turn! That’s good..mp3-d101b9fe7423707b70d60d954431f944.mp3str"
+
+[deps]
+
+source_file="res://Resources/Audio/narrator/Lvl 2/Lvl 2 8 - Ah! A way to turn! That’s good..mp3"
+dest_files=["res://.godot/imported/Lvl 2 8 - Ah! A way to turn! That’s good..mp3-d101b9fe7423707b70d60d954431f944.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
