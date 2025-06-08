@@ -2,14 +2,12 @@
 
 [ext_resource type="Script" uid="uid://cs283upgtdy6e" path="res://Scripts/Levels/lvl_1.gd" id="1_2c3dr"]
 [ext_resource type="PackedScene" uid="uid://cd3nuoym3pjy7" path="res://Scenes/Trolleys/trolley2.tscn" id="1_bv1f1"]
-
-[sub_resource type="Environment" id="Environment_6h8pu"]
+[ext_resource type="PackedScene" uid="uid://cxhortlyew845" path="res://Scenes/EnvironmentChunks/ChunkMover.tscn" id="3_2c3dr"]
 
 [node name="Lvl1" type="Node3D"]
 script = ExtResource("1_2c3dr")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_6h8pu")
 
 [node name="TrolleyBody" parent="." instance=ExtResource("1_bv1f1")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
@@ -21,3 +19,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.355, 0, 0)
 
 [node name="RailParentLeft" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.355, 0, 0)
+
+[node name="ChunkMover" parent="." instance=ExtResource("3_2c3dr")]

@@ -19,15 +19,16 @@ func _ready():
 
 
 func _process(delta):
-  var target_speed = -(max_speed * accLever.state if accLever.breakingEnabled else max_speed)
-  speed = lerp(speed, target_speed, delta)
+  #var target_speed = -(max_speed * accLever.state if accLever.breakingEnabled else max_speed)
+  #speed = lerp(speed, target_speed, delta)
+  #pass
+  #position.z -= delta * speed
+  #global_position.x = lerp(global_position.x, target_x, delta * 10)
+  #global_position.y = lerp(global_position.y, target_y, delta * 10)
+  #if speed > 2 and !started:
+    #started = true
+    #Audio.sfxPlayer.play_sound("sfx/trolley_running_ambiance.mp3", true)
   pass
-  position.z -= delta * speed
-  global_position.x = lerp(global_position.x, target_x, delta * 10)
-  global_position.y = lerp(global_position.y, target_y, delta * 10)
-  if speed > 2 and !started:
-    started = true
-    Audio.sfxPlayer.play_sound("sfx/trolley_running_ambiance.mp3", true)
     
     
 

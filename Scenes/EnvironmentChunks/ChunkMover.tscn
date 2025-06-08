@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cxhortlyew845"]
+
+[ext_resource type="Script" uid="uid://c2q4arcllg5ap" path="res://Scripts/chunk_mover.gd" id="1_0ou4g"]
+
+[node name="ChunkMover" type="Node3D"]
+script = ExtResource("1_0ou4g")
+
+[node name="ChunkParent" type="Node3D" parent="."]
