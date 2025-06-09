@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://bx8mdo51yil6w"]
+
+[ext_resource type="PackedScene" uid="uid://15kl06rchejj" path="res://Scenes/nail.tscn" id="1_dn2gp"]
+[ext_resource type="Script" uid="uid://edmml5rxs0f5" path="res://Scenes/nail_board.gd" id="1_o0wxk"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_4rqem"]
+size = Vector3(0.2, 0.1, 0.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dn2gp"]
+size = Vector3(0.21, 0.12, 0.55)
+
+[node name="NailBoard" type="Node3D"]
+script = ExtResource("1_o0wxk")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+mesh = SubResource("BoxMesh_4rqem")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_dn2gp")
+
+[node name="Nail" parent="." instance=ExtResource("1_dn2gp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0888481, -0.167637)
+
+[node name="Nail2" parent="." instance=ExtResource("1_dn2gp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0888481, -0.00385351)
+
+[node name="Nail3" parent="." instance=ExtResource("1_dn2gp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0888481, 0.159688)
+
+[connection signal="nailed" from="Nail" to="." method="onNailed"]
+[connection signal="nailed" from="Nail2" to="." method="onNailed"]
+[connection signal="nailed" from="Nail3" to="." method="onNailed"]

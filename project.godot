@@ -23,7 +23,6 @@ Naration="*res://Scripts/naration.gd"
 Util="*res://Scripts/util.gd"
 Global="*res://autoloads/Global.gd"
 Audio="*res://Scenes/Audio/audio_controller.tscn"
-XrSimulator="*res://addons/xr-simulator/XRSimulator.tscn"
 
 [editor_plugins]
 

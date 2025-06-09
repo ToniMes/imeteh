@@ -1,0 +1,45 @@
+[gd_scene load_steps=6 format=3 uid="uid://15kl06rchejj"]
+
+[ext_resource type="Script" uid="uid://d0orny1yxqq2c" path="res://Scenes/nail.gd" id="1_ybgmx"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nupcq"]
+albedo_color = Color(0.227451, 0, 0, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_nupcq"]
+material = SubResource("StandardMaterial3D_nupcq")
+top_radius = 0.02
+bottom_radius = 0.02
+height = 0.005
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_ybgmx"]
+height = 0.01
+radius = 0.02
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_ybgmx"]
+top_radius = 0.005
+bottom_radius = 0.002
+height = 0.04
+
+[node name="Nail" type="Node3D"]
+script = ExtResource("1_ybgmx")
+
+[node name="Head" type="RigidBody3D" parent="."]
+axis_lock_linear_x = true
+axis_lock_linear_z = true
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
+mass = 0.02
+gravity_scale = 0.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Head"]
+mesh = SubResource("CylinderMesh_nupcq")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Head"]
+shape = SubResource("CylinderShape3D_ybgmx")
+
+[node name="Node3D" type="Node3D" parent="Head"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Head/Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0198793, 0)
+mesh = SubResource("CylinderMesh_ybgmx")

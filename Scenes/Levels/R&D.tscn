@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://cb1cu4wrlrijw"]
 
-[ext_resource type="PackedScene" uid="uid://bwmwcclirpgvi" path="res://Scenes/Trolleys/trolley1.tscn" id="1_8jkk8"]
+[ext_resource type="PackedScene" uid="uid://bwmwcclirpgvi" path="res://Scenes/Trolleys/trolleyproto.tscn" id="1_8jkk8"]
 
 [sub_resource type="Environment" id="Environment_6h8pu"]
 

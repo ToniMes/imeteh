@@ -8,7 +8,7 @@ const CHUNK_END = preload("res://Scenes/EnvironmentChunks/Chunk_end.tscn")
 
 @onready var chunk_parent: Node3D = $ChunkParent
 
-var should_move: bool = false
+var should_move: bool = true
 
 var chunks: Array[Node3D]
 
@@ -38,7 +38,7 @@ func _process(delta: float) -> void:
   for chunk in chunks:
     chunk.position.z -= movement_speed * delta
   
-  print_debug(chunks[0].position.z)
+  #print_debug(chunks[0].position.z)
   
   if chunks[0].position.z <= 0:
     print_debug("Crossed the length of a chunk")
