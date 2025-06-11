@@ -9,7 +9,7 @@ script = ExtResource("1_2c3dr")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 
-[node name="TrolleyBody" parent="." instance=ExtResource("1_bv1f1")]
+[node name="Trolley" parent="." instance=ExtResource("1_bv1f1")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
 
 [node name="ChunkMover" parent="." instance=ExtResource("3_2c3dr")]
