@@ -78,10 +78,10 @@ transform = Transform3D(0.999999, 0, -1.11759e-08, 0, 1, 0, 1.11759e-08, 0, 0.99
 [node name="RailwaySpawner" parent="TrolleyBody" instance=ExtResource("7_1m7lk")]
 transform = Transform3D(-0.999764, 0, -0.0217275, 0, 1, 0, 0.0217275, 0, -0.999764, -0.0161113, -0.22952, 0.0837665)
 
-[node name="VerticalMoveLever" parent="TrolleyBody" instance=ExtResource("8_wvfgl")]
+[node name="VerticalDirectionLever" parent="TrolleyBody" instance=ExtResource("8_wvfgl")]
 transform = Transform3D(2.12438e-10, 1, 4.37114e-08, 0.5, 3.7749e-08, -0.866025, -0.866025, 2.20397e-08, -0.5, 0.470127, 0.752809, -1.21074)
 
-[node name="HorizontalMoveLever" parent="TrolleyBody" instance=ExtResource("8_wvfgl")]
+[node name="HorizontalDirectionLever" parent="TrolleyBody" instance=ExtResource("8_wvfgl")]
 transform = Transform3D(1, 0, 0, 0, -0.5, -0.866025, 0, 0.866025, -0.5, -0.47, 0.753, -1.209)
 
 [node name="Maze" parent="TrolleyBody" instance=ExtResource("9_uie8p")]
@@ -96,5 +96,5 @@ transform = Transform3D(1, 0, 0, 0, 0.000890092, 1, 0, -1, 0.000890092, 0, 2.209
 [node name="TurnIndicator" parent="." instance=ExtResource("9_uca18")]
 transform = Transform3D(-1, 3.39621e-08, -8.05563e-08, 0, 0.921457, 0.388481, 8.74228e-08, 0.388481, -0.921457, -0.00323083, 1.93927, -1.35843)
 
-[connection signal="lever_switched" from="TrolleyBody/VerticalMoveLever" to="." method="_on_acc_lever_lever_switched"]
-[connection signal="lever_switched" from="TrolleyBody/HorizontalMoveLever" to="." method="_on_turn_lever_switched"]
+[connection signal="lever_switched" from="TrolleyBody/VerticalDirectionLever" to="." method="_on_acc_lever_lever_switched"]
+[connection signal="lever_switched" from="TrolleyBody/HorizontalDirectionLever" to="." method="_on_turn_lever_switched"]

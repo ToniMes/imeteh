@@ -1,138 +1,98 @@
-[gd_scene load_steps=17 format=3 uid="uid://b44m6vihrtt6u"]
+[gd_scene load_steps=12 format=3 uid="uid://b44m6vihrtt6u"]
 
-[ext_resource type="Script" uid="uid://ipgq1xtt6inr" path="res://addons/godot-xr-tools/objects/pickable.gd" id="1_aijfv"]
-[ext_resource type="Script" uid="uid://cyv3anbfi4n6o" path="res://Scripts/Trolleys/Trolley components/maze_ball.gd" id="2_bipei"]
-[ext_resource type="Script" uid="uid://0jp0ir4lmpvc" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand.gd" id="2_n3wyr"]
-[ext_resource type="Animation" uid="uid://nq3xh1olqipq" path="res://addons/godot-xr-tools/hands/animations/left/Grip Shaft.res" id="3_h3fbh"]
-[ext_resource type="Script" uid="uid://45f7hqo2rphl" path="res://addons/godot-xr-tools/hands/poses/hand_pose_settings.gd" id="4_6y6lf"]
-[ext_resource type="Animation" uid="uid://c8dghcftg1thx" path="res://addons/godot-xr-tools/hands/animations/right/Grip Shaft.res" id="5_7w845"]
+[ext_resource type="Script" uid="uid://dhnqkpwk31240" path="res://Scripts/Trolleys/Trolley components/maze.gd" id="1_h06ds"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_h3fbh"]
 size = Vector3(0.4, 0.01, 0.4)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_h3fbh"]
-size = Vector3(0.4, 0.1, 0.4)
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_aijfv"]
+data = PackedVector3Array(-0.2, 0.005, 0.2, 0.2, 0.005, 0.2, -0.2, -0.005, 0.2, 0.2, 0.005, 0.2, 0.2, -0.005, 0.2, -0.2, -0.005, 0.2, 0.2, 0.005, -0.2, -0.2, 0.005, -0.2, 0.2, -0.005, -0.2, -0.2, 0.005, -0.2, -0.2, -0.005, -0.2, 0.2, -0.005, -0.2, 0.2, 0.005, 0.2, 0.2, 0.005, -0.2, 0.2, -0.005, 0.2, 0.2, 0.005, -0.2, 0.2, -0.005, -0.2, 0.2, -0.005, 0.2, -0.2, 0.005, -0.2, -0.2, 0.005, 0.2, -0.2, -0.005, -0.2, -0.2, 0.005, 0.2, -0.2, -0.005, 0.2, -0.2, -0.005, -0.2, 0.2, 0.005, 0.2, -0.2, 0.005, 0.2, 0.2, 0.005, -0.2, -0.2, 0.005, 0.2, -0.2, 0.005, -0.2, 0.2, 0.005, -0.2, -0.2, -0.005, 0.2, 0.2, -0.005, 0.2, -0.2, -0.005, -0.2, 0.2, -0.005, 0.2, 0.2, -0.005, -0.2, -0.2, -0.005, -0.2)
 
 [sub_resource type="BoxMesh" id="BoxMesh_aijfv"]
 size = Vector3(0.41, 0.1, 0.01)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_aijfv"]
-size = Vector3(0.41, 0.1, 0.1)
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_h06ds"]
+data = PackedVector3Array(-0.205, 0.05, 0.005, 0.205, 0.05, 0.005, -0.205, -0.05, 0.005, 0.205, 0.05, 0.005, 0.205, -0.05, 0.005, -0.205, -0.05, 0.005, 0.205, 0.05, -0.005, -0.205, 0.05, -0.005, 0.205, -0.05, -0.005, -0.205, 0.05, -0.005, -0.205, -0.05, -0.005, 0.205, -0.05, -0.005, 0.205, 0.05, 0.005, 0.205, 0.05, -0.005, 0.205, -0.05, 0.005, 0.205, 0.05, -0.005, 0.205, -0.05, -0.005, 0.205, -0.05, 0.005, -0.205, 0.05, -0.005, -0.205, 0.05, 0.005, -0.205, -0.05, -0.005, -0.205, 0.05, 0.005, -0.205, -0.05, 0.005, -0.205, -0.05, -0.005, 0.205, 0.05, 0.005, -0.205, 0.05, 0.005, 0.205, 0.05, -0.005, -0.205, 0.05, 0.005, -0.205, 0.05, -0.005, 0.205, 0.05, -0.005, -0.205, -0.05, 0.005, 0.205, -0.05, 0.005, -0.205, -0.05, -0.005, 0.205, -0.05, 0.005, 0.205, -0.05, -0.005, -0.205, -0.05, -0.005)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_h06ds"]
-size = Vector3(0.42, 0.1, 0.42)
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_bipei"]
+data = PackedVector3Array(-0.205, 0.05, 0.005, 0.205, 0.05, 0.005, -0.205, -0.05, 0.005, 0.205, 0.05, 0.005, 0.205, -0.05, 0.005, -0.205, -0.05, 0.005, 0.205, 0.05, -0.005, -0.205, 0.05, -0.005, 0.205, -0.05, -0.005, -0.205, 0.05, -0.005, -0.205, -0.05, -0.005, 0.205, -0.05, -0.005, 0.205, 0.05, 0.005, 0.205, 0.05, -0.005, 0.205, -0.05, 0.005, 0.205, 0.05, -0.005, 0.205, -0.05, -0.005, 0.205, -0.05, 0.005, -0.205, 0.05, -0.005, -0.205, 0.05, 0.005, -0.205, -0.05, -0.005, -0.205, 0.05, 0.005, -0.205, -0.05, 0.005, -0.205, -0.05, -0.005, 0.205, 0.05, 0.005, -0.205, 0.05, 0.005, 0.205, 0.05, -0.005, -0.205, 0.05, 0.005, -0.205, 0.05, -0.005, 0.205, 0.05, -0.005, -0.205, -0.05, 0.005, 0.205, -0.05, 0.005, -0.205, -0.05, -0.005, 0.205, -0.05, 0.005, 0.205, -0.05, -0.005, -0.205, -0.05, -0.005)
 
-[sub_resource type="Resource" id="Resource_ihgha"]
-script = ExtResource("4_6y6lf")
-closed_pose = ExtResource("3_h3fbh")
-metadata/_custom_type_script = "uid://45f7hqo2rphl"
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_xk16s"]
+data = PackedVector3Array(-0.205, 0.05, 0.005, 0.205, 0.05, 0.005, -0.205, -0.05, 0.005, 0.205, 0.05, 0.005, 0.205, -0.05, 0.005, -0.205, -0.05, 0.005, 0.205, 0.05, -0.005, -0.205, 0.05, -0.005, 0.205, -0.05, -0.005, -0.205, 0.05, -0.005, -0.205, -0.05, -0.005, 0.205, -0.05, -0.005, 0.205, 0.05, 0.005, 0.205, 0.05, -0.005, 0.205, -0.05, 0.005, 0.205, 0.05, -0.005, 0.205, -0.05, -0.005, 0.205, -0.05, 0.005, -0.205, 0.05, -0.005, -0.205, 0.05, 0.005, -0.205, -0.05, -0.005, -0.205, 0.05, 0.005, -0.205, -0.05, 0.005, -0.205, -0.05, -0.005, 0.205, 0.05, 0.005, -0.205, 0.05, 0.005, 0.205, 0.05, -0.005, -0.205, 0.05, 0.005, -0.205, 0.05, -0.005, 0.205, 0.05, -0.005, -0.205, -0.05, 0.005, 0.205, -0.05, 0.005, -0.205, -0.05, -0.005, 0.205, -0.05, 0.005, 0.205, -0.05, -0.005, -0.205, -0.05, -0.005)
 
-[sub_resource type="Resource" id="Resource_1wmh5"]
-script = ExtResource("4_6y6lf")
-closed_pose = ExtResource("5_7w845")
-metadata/_custom_type_script = "uid://45f7hqo2rphl"
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_n3wyr"]
-size = Vector3(0.4, 0.1, 0.4)
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_xrau7"]
+data = PackedVector3Array(-0.205, 0.05, 0.005, 0.205, 0.05, 0.005, -0.205, -0.05, 0.005, 0.205, 0.05, 0.005, 0.205, -0.05, 0.005, -0.205, -0.05, 0.005, 0.205, 0.05, -0.005, -0.205, 0.05, -0.005, 0.205, -0.05, -0.005, -0.205, 0.05, -0.005, -0.205, -0.05, -0.005, 0.205, -0.05, -0.005, 0.205, 0.05, 0.005, 0.205, 0.05, -0.005, 0.205, -0.05, 0.005, 0.205, 0.05, -0.005, 0.205, -0.05, -0.005, 0.205, -0.05, 0.005, -0.205, 0.05, -0.005, -0.205, 0.05, 0.005, -0.205, -0.05, -0.005, -0.205, 0.05, 0.005, -0.205, -0.05, 0.005, -0.205, -0.05, -0.005, 0.205, 0.05, 0.005, -0.205, 0.05, 0.005, 0.205, 0.05, -0.005, -0.205, 0.05, 0.005, -0.205, 0.05, -0.005, 0.205, 0.05, -0.005, -0.205, -0.05, 0.005, 0.205, -0.05, 0.005, -0.205, -0.05, -0.005, 0.205, -0.05, 0.005, 0.205, -0.05, -0.005, -0.205, -0.05, -0.005)
 
 [sub_resource type="SphereMesh" id="SphereMesh_245un"]
-radius = 0.03
-height = 0.06
+radius = 0.02
+height = 0.04
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_aijfv"]
-margin = 0.1
-radius = 0.03
+radius = 0.02
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_aijfv"]
+size = Vector3(0.32, 0.02, 0.32)
 
 [node name="Maze" type="Node3D"]
+script = ExtResource("1_h06ds")
 
-[node name="Box" type="RigidBody3D" parent="."]
-collision_layer = 4
-collision_mask = 196615
-gravity_scale = 0.0
-freeze_mode = 1
-script = ExtResource("1_aijfv")
-picked_up_layer = 65544
-metadata/_custom_type_script = "uid://ipgq1xtt6inr"
+[node name="Box" type="StaticBody3D" parent="."]
+collision_layer = 8
+collision_mask = 196623
 
 [node name="BottomMesh" type="MeshInstance3D" parent="Box"]
 mesh = SubResource("BoxMesh_h3fbh")
 skeleton = NodePath("../..")
 
 [node name="BottomCollision" type="CollisionShape3D" parent="Box"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.036728, 0)
-shape = SubResource("BoxShape3D_h3fbh")
+visible = false
+shape = SubResource("ConcavePolygonShape3D_aijfv")
 
 [node name="MeshSide1" type="MeshInstance3D" parent="Box"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.005, 0.045, 0.205)
 mesh = SubResource("BoxMesh_aijfv")
 
 [node name="CollisionSide1" type="CollisionShape3D" parent="Box"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.005, 0.045, 0.243266)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.005, 0.045, 0.205)
 visible = false
-shape = SubResource("BoxShape3D_aijfv")
+shape = SubResource("ConcavePolygonShape3D_h06ds")
 
 [node name="MeshSide2" type="MeshInstance3D" parent="Box"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.005, 0.045, -0.205)
 mesh = SubResource("BoxMesh_aijfv")
 
 [node name="CollisionSide2" type="CollisionShape3D" parent="Box"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.005, 0.045, -0.246977)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.005, 0.045, -0.205)
 visible = false
-shape = SubResource("BoxShape3D_aijfv")
+shape = SubResource("ConcavePolygonShape3D_bipei")
 
 [node name="MeshSide3" type="MeshInstance3D" parent="Box"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.205, 0.045, -0.005)
 mesh = SubResource("BoxMesh_aijfv")
 
 [node name="CollisionSide3" type="CollisionShape3D" parent="Box"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.240716, 0.045, -0.005)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.205, 0.045, -0.005)
 visible = false
-shape = SubResource("BoxShape3D_aijfv")
+shape = SubResource("ConcavePolygonShape3D_xk16s")
 
 [node name="MeshSide4" type="MeshInstance3D" parent="Box"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.205, 0.045, 0.005)
 mesh = SubResource("BoxMesh_aijfv")
 
 [node name="CollisionSide4" type="CollisionShape3D" parent="Box"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.249232, 0.045, 0.005)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.205, 0.045, 0.005)
 visible = false
-shape = SubResource("BoxShape3D_aijfv")
+shape = SubResource("ConcavePolygonShape3D_xrau7")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Box"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.145412, 0)
+[node name="CollisionTop" type="CollisionShape3D" parent="Box"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
 visible = false
-shape = SubResource("BoxShape3D_h06ds")
+shape = SubResource("ConcavePolygonShape3D_aijfv")
 
-[node name="LeftGrabPointShaft" type="Marker3D" parent="Box"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.219569, -0.11101, 0.0381494)
-gizmo_extents = 0.12
-script = ExtResource("2_n3wyr")
-hand_pose = SubResource("Resource_ihgha")
-enabled = false
-metadata/_custom_type_script = "uid://0jp0ir4lmpvc"
-
-[node name="RightGrabPointShaft" type="Marker3D" parent="Box"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.224973, -0.0828881, 0.0544001)
-gizmo_extents = 0.12
-script = ExtResource("2_n3wyr")
-hand = 1
-hand_pose = SubResource("Resource_1wmh5")
-enabled = false
-metadata/_custom_type_script = "uid://0jp0ir4lmpvc"
-
-[node name="Area3D" type="Area3D" parent="Box"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Box/Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0602791, 0)
-shape = SubResource("BoxShape3D_n3wyr")
-
-[node name="Ball" type="RigidBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.048405, 0)
-collision_layer = 9
+[node name="Ball" type="CharacterBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.354012, 0)
+collision_layer = 8
 collision_mask = 15
-mass = 0.1
-gravity_scale = 0.1
-script = ExtResource("2_bipei")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Ball"]
 layers = 8
@@ -141,5 +101,12 @@ mesh = SubResource("SphereMesh_245un")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Ball"]
 shape = SubResource("SphereShape3D_aijfv")
 
-[connection signal="body_entered" from="Box/Area3D" to="Ball" method="_on_area_3d_body_entered"]
-[connection signal="body_exited" from="Box/Area3D" to="Ball" method="_on_area_3d_body_exited"]
+[node name="InnerArea" type="Area3D" parent="."]
+collision_layer = 8
+collision_mask = 15
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InnerArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05, 0)
+shape = SubResource("BoxShape3D_aijfv")
+
+[connection signal="body_exited" from="InnerArea" to="." method="_on_inner_area_body_exited"]
