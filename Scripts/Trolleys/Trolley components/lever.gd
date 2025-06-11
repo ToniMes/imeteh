@@ -3,7 +3,6 @@ class_name Lever
 
 signal lever_switched(state: bool)
 
-var prepared: bool = false
 var state: int = 0
 var highlightMesh: MeshInstance3D
 

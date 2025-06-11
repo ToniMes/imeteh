@@ -10,7 +10,8 @@ func _ready() -> void:
     Global.lever_switched.connect(_on_lever_switched)
     Global.cabinet_door_state_changed.connect(_on_cabinet_door_state_changed)
     Global.trolley_direction_changed.connect(_on_trolley_direction_changed)
-    turnLeverButton.connect("buttonPressed", func(): trolley.prepareLever())
+    turnLever.interactiveLever.enabled = false
+    turnLeverButton.connect("buttonPressed", prepareTurnLever)
     
 
 func play_speeding_up():
@@ -20,6 +21,13 @@ func play_speeding_up():
 func play_slow_down():
     if lever_switched_count == 1:
         Audio.narrator.play_voiceline("1_3") # Lvl13-Okay,NowTrySlowingDown
+
+
+func prepareTurnLever():
+  turnLever.interactiveLever.enabled = true
+  turnLever.visible = true
+  turnLever.targetPosition = turnLever.position + Vector3(0,0.19,0)
+
 
 func _on_lever_switched(name: String, state: bool):
     if name != "AccLever":

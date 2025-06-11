@@ -13,7 +13,6 @@ var max_speed: float = 10
 
 
 func _ready():
-  accLever.prepared = true
   Global.lever_switched.connect(_on_lever_switched)
 
 
@@ -33,15 +32,6 @@ func _process(delta):
 func switchTrack(track: int):
   currentTrack = track
   target_x = 2.355 - currentTrack * 2.355
-
-
-func prepareLever():
-  if turnLever.prepared:
-    return
-    
-  turnLever.visible = true
-  turnLever.prepared = true
-  turnLever.targetPosition = turnLever.position + Vector3(0,0.19,0)
   
 
 func turn():

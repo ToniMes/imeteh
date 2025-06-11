@@ -9,7 +9,6 @@ var acc_lever_switch_counter = 0
 func _ready() -> void:
   Global.current_level = 2
   Global.lever_switched.connect(_on_lever_switched)
-  trolley.prepareLever()
 
 
 func _on_lever_switched(name: String, state: bool) -> void:
