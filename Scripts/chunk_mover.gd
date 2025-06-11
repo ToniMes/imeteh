@@ -4,7 +4,8 @@ class_name ChunkMover
 const CHUNK_1 = preload("res://Scenes/EnvironmentChunks/Chunk1.tscn")
 const CHUNK_2 = preload("res://Scenes/EnvironmentChunks/Chunk2.tscn")
 const CHUNK_3 = preload("res://Scenes/EnvironmentChunks/Chunk3.tscn")
-const CHUNK_END = preload("res://Scenes/EnvironmentChunks/Chunk_end.tscn")
+const CHUNK_SPLIT = preload("res://Scenes/EnvironmentChunks/Chunk_split.tscn")
+const CHUNK_MERGE = preload("res://Scenes/EnvironmentChunks/Chunk_merge.tscn")
 
 @onready var chunk_parent: Node3D = $ChunkParent
 
@@ -12,10 +13,15 @@ var should_move: bool = false
 
 var chunks: Array[Node3D]
 
-var chunk_length: int = 50
+var force_split_count = 1
+var chunk_length: float = 49.5
 var current_speed: float = 0
 var target_speed: float = 0
-var max_speed: float = 5
+var max_speed: float = 20
+var chunk_count = 0
+
+var is_jover = false
+var merge = false
 # A class that moves, loads in and loads out chunks of the world
 
 func _ready():
@@ -45,10 +51,20 @@ func _process(delta: float) -> void:
   #print_debug(chunks[0].position.z)
   
   if chunks[0].position.z <= 0:
+    chunk_count += 1
     print_debug("Crossed the length of a chunk")
     var r = randi()
     var new_chunk
-    if r%3 == 0:
+    if merge:
+      new_chunk = CHUNK_MERGE.instantiate()
+      merge = false
+    elif is_jover or chunk_count == force_split_count:
+      new_chunk = CHUNK_SPLIT.instantiate()
+      merge = true
+      is_jover = false
+    elif chunk_count == 2:
+      new_chunk = CHUNK_MERGE.instantiate()
+    elif r%3 == 0:
       new_chunk = CHUNK_1.instantiate()
     elif r%3 == 1:
       new_chunk = CHUNK_2.instantiate()
