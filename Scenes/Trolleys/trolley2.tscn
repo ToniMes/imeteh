@@ -1,13 +1,13 @@
 [gd_scene load_steps=13 format=4 uid="uid://pfdtp3m2y8us"]
 
-[ext_resource type="Script" uid="uid://dduokwtci7wxb" path="res://Scripts/Trolleys/trolley.gd" id="1_f4x8e"]
+[ext_resource type="Script" path="res://Scripts/Trolleys/trolley2.gd" id="1_yuinj"]
 [ext_resource type="ArrayMesh" uid="uid://dw4ikh4350kof" path="res://Resources/Models/Trolley/control_panel_body_1.obj" id="2_f4x8e"]
 [ext_resource type="PackedScene" uid="uid://yiiwdyu0ycad" path="res://Scenes/Trolleys/Trolley components/cabinet_door.tscn" id="4_ahij2"]
 [ext_resource type="ArrayMesh" uid="uid://j5427occ3uv7" path="res://Resources/Models/Trolley/control_panel_speed_lever.obj" id="4_yuinj"]
 [ext_resource type="PackedScene" uid="uid://2ikbp3ayxqae" path="res://Scenes/player.tscn" id="5_18y1h"]
 [ext_resource type="PackedScene" uid="uid://fxrdjxq50p37" path="res://Scenes/Trolleys/Trolley components/static_lever.tscn" id="8_es21w"]
 [ext_resource type="PackedScene" uid="uid://jiclc63cgbgq" path="res://Scenes/Trolleys/Trolley components/TurnIndicator/TurnIndicator.tscn" id="9_es21w"]
-[ext_resource type="PackedScene" uid="uid://bx8mdo51yil6w" path="res://Scenes/nail_board.tscn" id="10_yuinj"]
+[ext_resource type="PackedScene" uid="uid://cgwjn36pa18tr" path="res://Scenes/nail_board.tscn" id="10_yuinj"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q2ap3"]
 resource_name = "none"

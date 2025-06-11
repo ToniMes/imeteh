@@ -6,7 +6,8 @@ class_name StaticLever
 @onready var interactiveLever: InteractiveLever = $Lever/InteractiveLever
 
 func _ready() -> void:
-    highlightMesh = $Lever/HiglightArea/HighlightMesh
+  super._ready()
+  highlightMesh = $Lever/HiglightArea/HighlightMesh
 
 func _process(delta):  
   if position.is_equal_approx(targetPosition):

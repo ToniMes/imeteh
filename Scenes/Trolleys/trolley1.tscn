@@ -1,11 +1,10 @@
-[gd_scene load_steps=14 format=4 uid="uid://bwmwcclirpgvi"]
+[gd_scene load_steps=13 format=4 uid="uid://cd3nuoym3pjy7"]
 
 [ext_resource type="Script" uid="uid://dduokwtci7wxb" path="res://Scripts/Trolleys/trolley.gd" id="1_ahij2"]
 [ext_resource type="ArrayMesh" uid="uid://dw4ikh4350kof" path="res://Resources/Models/Trolley/control_panel_body_1.obj" id="2_f4x8e"]
 [ext_resource type="PackedScene" uid="uid://yiiwdyu0ycad" path="res://Scenes/Trolleys/Trolley components/cabinet_door.tscn" id="4_ahij2"]
 [ext_resource type="ArrayMesh" uid="uid://j5427occ3uv7" path="res://Resources/Models/Trolley/control_panel_speed_lever.obj" id="4_yuinj"]
 [ext_resource type="PackedScene" uid="uid://2ikbp3ayxqae" path="res://Scenes/player.tscn" id="5_18y1h"]
-[ext_resource type="PackedScene" uid="uid://7p562hvbyx17" path="res://Scenes/Trolleys/Trolley components/RailwaySpawner.tscn" id="6_dbpg3"]
 [ext_resource type="PackedScene" uid="uid://fxrdjxq50p37" path="res://Scenes/Trolleys/Trolley components/static_lever.tscn" id="8_es21w"]
 [ext_resource type="PackedScene" uid="uid://c2j7c64ojidai" path="res://Scenes/Trolleys/Trolley components/button.tscn" id="8_f4x8e"]
 [ext_resource type="PackedScene" uid="uid://jiclc63cgbgq" path="res://Scenes/Trolleys/Trolley components/TurnIndicator/TurnIndicator.tscn" id="9_es21w"]
@@ -77,10 +76,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.265176, -0.033088, 0.24020
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.201788, -1.07058)
 
 [node name="Player" parent="TrolleyBody" instance=ExtResource("5_18y1h")]
-transform = Transform3D(0.999999, 0, -1.11759e-08, 0, 1, 0, 1.11759e-08, 0, 0.999999, 0, 1.28277, 1.93559)
-
-[node name="RailwaySpawner" parent="TrolleyBody" instance=ExtResource("6_dbpg3")]
-transform = Transform3D(-0.999764, 0, -0.0217275, 0, 1, 0, 0.0217275, 0, -0.999764, -0.0161113, -0.22952, 0.0837665)
+transform = Transform3D(0.999999, 0, -1.11759e-08, 0, 1, 0, 1.11759e-08, 0, 0.999999, 0, 1.28277, -0.441032)
 
 [node name="AccLever" parent="TrolleyBody" instance=ExtResource("8_es21w")]
 transform = Transform3D(-4.37114e-08, 1, 0, 0.5, 2.18557e-08, -0.866025, -0.866025, -3.78552e-08, -0.5, 0.470127, 0.752809, -1.21074)
