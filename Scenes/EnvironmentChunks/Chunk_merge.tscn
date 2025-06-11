@@ -131,7 +131,7 @@ skeleton = NodePath("../../..")
 surface_material_override/1 = ExtResource("2_8ab0h")
 
 [node name="Rocks-a" type="MeshInstance3D" parent="Details2/Parches"]
-transform = Transform3D(0.188325, 0, -0.982107, 0, 1, 0, 0.982107, 0, 0.188325, -72.2514, 0, -33.2148)
+transform = Transform3D(0.188325, 0, -0.982107, 0, 1, 0, 0.982107, 0, 0.188325, -72.1127, 0, -32.0499)
 mesh = ExtResource("4_ccpq3")
 surface_material_override/0 = ExtResource("2_8ab0h")
 
@@ -148,7 +148,7 @@ skeleton = NodePath("../..")
 surface_material_override/0 = ExtResource("2_8ab0h")
 
 [node name="Patch-grass4" type="MeshInstance3D" parent="Details2"]
-transform = Transform3D(-0.640833, 0, 0.76768, 0, 1, 0, -0.76768, 0, -0.640833, -62.6462, 0, -37.7595)
+transform = Transform3D(-0.640833, 0, 0.76768, 0, 1, 0, -0.76768, 0, -0.640833, -61.9857, 0, -32.2125)
 mesh = ExtResource("5_gnslh")
 skeleton = NodePath("../..")
 surface_material_override/0 = ExtResource("2_8ab0h")
