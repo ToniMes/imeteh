@@ -1,9 +1,15 @@
 extends Node3D
 
 @onready var head: RigidBody3D = $Head
+@onready var base = head.position.y
 
 var nailedFlag = false
 signal nailed
+
+
+func _ready():
+  print(base)
+
 
 func _process(delta):
   if head.position.y < -0.035:
@@ -13,4 +19,4 @@ func _process(delta):
       nailedFlag = true
       nailed.emit()
   elif head.position.y > 0:
-    head.position.y = -0
+    head.position.y = 0
