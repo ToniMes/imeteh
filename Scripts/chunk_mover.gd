@@ -63,4 +63,3 @@ func _process(delta: float) -> void:
 
 func on_acc_lever(state: bool):
   target_speed = max_speed if state else 0
-  print(target_speed)
