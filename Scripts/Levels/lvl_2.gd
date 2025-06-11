@@ -8,6 +8,7 @@ var acc_lever_switch_counter = 0
 
 func _ready() -> void:
   Global.current_level = 2
+  Global.connectGlobalSignal(Global.acc_lever_switched, _on_trolley_acc_lever_switched)
 
 
 func _on_trolley_acc_lever_switched(state: bool) -> void:

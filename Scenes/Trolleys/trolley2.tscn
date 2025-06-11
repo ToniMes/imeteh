@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://pfdtp3m2y8us"]
+[gd_scene load_steps=13 format=4 uid="uid://pfdtp3m2y8us"]
 
 [ext_resource type="Script" uid="uid://r8l7euhdbkba" path="res://Scripts/Trolleys/trolley2.gd" id="1_yuinj"]
 [ext_resource type="ArrayMesh" uid="uid://dw4ikh4350kof" path="res://Resources/Models/Trolley/control_panel_body_1.obj" id="2_f4x8e"]
@@ -6,10 +6,8 @@
 [ext_resource type="ArrayMesh" uid="uid://j5427occ3uv7" path="res://Resources/Models/Trolley/control_panel_speed_lever.obj" id="4_yuinj"]
 [ext_resource type="PackedScene" uid="uid://2ikbp3ayxqae" path="res://Scenes/player.tscn" id="5_18y1h"]
 [ext_resource type="PackedScene" uid="uid://fxrdjxq50p37" path="res://Scenes/Trolleys/Trolley components/static_lever.tscn" id="8_es21w"]
-[ext_resource type="PackedScene" uid="uid://c2j7c64ojidai" path="res://Scenes/Trolleys/Trolley components/button.tscn" id="8_f4x8e"]
 [ext_resource type="PackedScene" uid="uid://jiclc63cgbgq" path="res://Scenes/Trolleys/Trolley components/TurnIndicator/TurnIndicator.tscn" id="9_es21w"]
 [ext_resource type="PackedScene" uid="uid://bx8mdo51yil6w" path="res://Scenes/nail_board.tscn" id="10_yuinj"]
-[ext_resource type="PackedScene" uid="uid://tykc6lvqmkhw" path="res://Scenes/Trolleys/Trolley components/throwable_lever.tscn" id="11_18y1h"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q2ap3"]
 resource_name = "none"
@@ -73,9 +71,6 @@ skeleton = NodePath("../..")
 [node name="CabinetDoor" parent="TrolleyBody/ControlPanel" instance=ExtResource("4_ahij2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.265176, -0.033088, 0.240205)
 
-[node name="Button" parent="TrolleyBody" instance=ExtResource("8_f4x8e")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.201788, -1.07058)
-
 [node name="Player" parent="TrolleyBody" instance=ExtResource("5_18y1h")]
 transform = Transform3D(0.999999, 0, -1.11759e-08, 0, 1, 0, 1.11759e-08, 0, 0.999999, 0, 1.28277, 1.93559)
 
@@ -96,12 +91,8 @@ transform = Transform3D(1, 0, 0, 0, 0.000890092, 1, 0, -1, 0.000890092, 0, 2.209
 transform = Transform3D(-1, 3.39621e-08, -8.05563e-08, 0, 0.921457, 0.388481, 8.74228e-08, 0.388481, -0.921457, -0.00323083, 1.93927, -1.35843)
 
 [node name="NailBoard" parent="." instance=ExtResource("10_yuinj")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0.69574, -1.02976)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.846174, 0.906994, -0.305071)
 
-[node name="ThrowableLever" parent="." instance=ExtResource("11_18y1h")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.696908, 0.28623, -0.424817)
-
-[connection signal="buttonPressed" from="TrolleyBody/Button" to="." method="_on_turn_lever_button_pressed"]
 [connection signal="lever_switched" from="TrolleyBody/AccLever" to="." method="_on_acc_lever_lever_switched"]
 [connection signal="lever_switched" from="TrolleyBody/TurnLever" to="." method="_on_turn_lever_switched"]
 [connection signal="all_nailed" from="NailBoard" to="." method="prepareLever"]
