@@ -3,17 +3,17 @@ extends Node3D
 var lever_switched_count:int = 0
 @onready var trolley:Trolley = $Trolley1
 @onready var turnLeverButton:ClickableButton = $Trolley1/TrolleyBody/TurnLeverButton
+@onready var turnLever:StaticLever = $Trolley1/TrolleyBody/TurnLever
 
 func _ready() -> void:
     Audio.narrator.play_voiceline("1_1") # Lvl11-FiddleWithTheLever
-    Global.acc_lever_switched.connect(_on_acc_lever_switched)
+    Global.lever_switched.connect(_on_lever_switched)
     Global.cabinet_door_state_changed.connect(_on_cabinet_door_state_changed)
     Global.trolley_direction_changed.connect(_on_trolley_direction_changed)
     turnLeverButton.connect("buttonPressed", func(): trolley.prepareLever())
     
 
 func play_speeding_up():
-    print("speeding up")
     if lever_switched_count == 1:
         Audio.narrator.play_voiceline("1_2") # Lvl12-NowWe’reSpeedingUp
 
@@ -21,7 +21,10 @@ func play_slow_down():
     if lever_switched_count == 1:
         Audio.narrator.play_voiceline("1_3") # Lvl13-Okay,NowTrySlowingDown
 
-func _on_acc_lever_switched(state: bool):
+func _on_lever_switched(name: String, state: bool):
+    if name != "AccLever":
+      return
+  
     lever_switched_count += 1
     if lever_switched_count == 1:
         var timer12:Timer = Timer.new()
@@ -38,6 +41,10 @@ func _on_acc_lever_switched(state: bool):
         timer13.start()
     elif lever_switched_count == 2:
       Audio.narrator.play_voiceline("1_4") # Lvl14-You’reSupposedToBeSlowingDown
+
+func _on_button_pressed(name: String) -> void:
+  if name == "TurnLeverButton":
+    Global.trolley_direction_changed.emit(turnLever.state)
 
 var firstOpen = true
 func _on_cabinet_door_state_changed(state: Global.DoorState):

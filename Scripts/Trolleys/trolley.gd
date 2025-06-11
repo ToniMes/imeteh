@@ -14,6 +14,7 @@ var max_speed: float = 10
 
 func _ready():
   accLever.prepared = true
+  Global.lever_switched.connect(_on_lever_switched)
 
 
 func _process(delta):
@@ -59,18 +60,11 @@ func bump():
   target_y = 0
 
 
-func _on_acc_lever_lever_switched(state: bool) -> void:
-  Global.acc_lever_switched.emit(state)
-
-
-func _on_turn_lever_button_pressed() -> void:
-    Global.trolley_direction_changed.emit(turnLever.state)
-
-
-func _on_turn_lever_switched(state: bool) -> void:
-  var direction: Global.TrolleyDirection
-  if state == false:
-    direction = Global.TrolleyDirection.LEFT
-  else:
-    direction = Global.TrolleyDirection.RIGHT
-  Global.trolley_direction_changed.emit(direction)
+func _on_lever_switched(name: String, state: bool) -> void:
+  if name == "TurnLever":
+    var direction: Global.TrolleyDirection
+    if state == false:
+      direction = Global.TrolleyDirection.LEFT
+    else:
+      direction = Global.TrolleyDirection.RIGHT
+    Global.trolley_direction_changed.emit(direction)

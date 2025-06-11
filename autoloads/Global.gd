@@ -1,6 +1,7 @@
 extends Node2D
 
-signal acc_lever_switched(state: bool)
+signal lever_switched(name: String, state: bool)
+signal button_pressed(name: String)
 signal trolley_direction_changed(direction: TrolleyDirection)
 signal cabinet_door_state_changed(state: DoorState)
 enum TrolleyDirection { LEFT, NONE, RIGHT }

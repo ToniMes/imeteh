@@ -8,13 +8,15 @@ var acc_lever_switch_counter = 0
 
 func _ready() -> void:
   Global.current_level = 2
-  Global.acc_lever_switched.connect(_on_trolley_acc_lever_switched)
+  Global.lever_switched.connect(_on_lever_switched)
   trolley.prepareLever()
 
 
-func _on_trolley_acc_lever_switched(state: bool) -> void:
+func _on_lever_switched(name: String, state: bool) -> void:
+  if name != "AccLever":
+    return
+  
   acc_lever_switch_counter += 1
-  print("lever switched " + str(acc_lever_switch_counter) + " times")
   
    # breaking the lever if this this is the third lever switch
   if acc_lever_switch_counter == 3:

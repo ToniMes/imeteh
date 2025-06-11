@@ -10,6 +10,7 @@ var highlightMesh: MeshInstance3D
 func _on_interactive_lever_lever_switched(state: bool) -> void:
     self.state = state
     Audio.sfxPlayer.play_sound("sfx/lever_clank.mp3")
+    Global.lever_switched.emit(name, state)
     lever_switched.emit(state)
 
 
