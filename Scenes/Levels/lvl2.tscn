@@ -15,12 +15,4 @@ environment = SubResource("Environment_6h8pu")
 [node name="Trolley2" parent="." instance=ExtResource("2_3m47l")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
 
-[node name="RailParentRight" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.355, 0, 0)
-
-[node name="RailParentCenter" type="Node3D" parent="."]
-
-[node name="RailParentLeft" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.355, 0, 0)
-
 [node name="ChunkMover" parent="." instance=ExtResource("3_kkuei")]
