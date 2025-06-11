@@ -4,7 +4,6 @@ class_name Trolley
 @onready var turnLever: StaticLever = $TrolleyBody/TurnLever
 @onready var accLever: StaticLever = $TrolleyBody/AccLever
 @onready var railWaySpawner: RailWaySpawner = $TrolleyBody/RailwaySpawner
-@onready var turnLeverButton: ClickableButton = $TrolleyBody/TurnLeverButton
 var currentTrack: int = 0
 var speed: float = 0
 var started: bool = false
@@ -15,7 +14,6 @@ var max_speed: float = 10
 
 func _ready():
   accLever.prepared = true
-  turnLeverButton.connect("buttonPressed", func(): prepareLever())
 
 
 func _process(delta):
@@ -29,13 +27,21 @@ func _process(delta):
     #started = true
     #Audio.sfxPlayer.play_sound("sfx/trolley_running_ambiance.mp3", true)
   pass
-    
-    
+
 
 func switchTrack(track: int):
   currentTrack = track
   target_x = 2.355 - currentTrack * 2.355
 
+
+func prepareLever():
+  if turnLever.prepared:
+    return
+    
+  turnLever.visible = true
+  turnLever.prepared = true
+  turnLever.targetPosition = turnLever.position + Vector3(0,0.19,0)
+  
 
 func turn():
   # turning left if current direction is left or center
@@ -45,15 +51,6 @@ func turn():
   # turning right if current direction is right
   else:
     switchTrack(2)
-  
-  
-func prepareLever():
-  if turnLever.prepared:
-    return
-    
-  turnLever.visible = true
-  turnLever.prepared = true
-  turnLever.targetPosition = turnLever.position + Vector3(0,0.19,0)
 
 
 func bump():

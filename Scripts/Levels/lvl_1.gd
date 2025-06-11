@@ -1,12 +1,25 @@
 extends Node3D
 
 var lever_switched_count:int = 0
+@onready var trolley:Trolley = $Trolley1
+@onready var turnLeverButton:ClickableButton = $Trolley1/TrolleyBody/TurnLeverButton
 
 func _ready() -> void:
     Audio.narrator.play_voiceline("1_1") # Lvl11-FiddleWithTheLever
     Global.acc_lever_switched.connect(_on_acc_lever_switched)
     Global.cabinet_door_state_changed.connect(_on_cabinet_door_state_changed)
     Global.trolley_direction_changed.connect(_on_trolley_direction_changed)
+    turnLeverButton.connect("buttonPressed", func(): trolley.prepareLever())
+    
+
+func play_speeding_up():
+    print("speeding up")
+    if lever_switched_count == 1:
+        Audio.narrator.play_voiceline("1_2") # Lvl12-NowWe’reSpeedingUp
+
+func play_slow_down():
+    if lever_switched_count == 1:
+        Audio.narrator.play_voiceline("1_3") # Lvl13-Okay,NowTrySlowingDown
 
 func _on_acc_lever_switched(state: bool):
     lever_switched_count += 1
@@ -25,15 +38,6 @@ func _on_acc_lever_switched(state: bool):
         timer13.start()
     elif lever_switched_count == 2:
       Audio.narrator.play_voiceline("1_4") # Lvl14-You’reSupposedToBeSlowingDown
-
-func play_speeding_up():
-    print("speeding up")
-    if lever_switched_count == 1:
-        Audio.narrator.play_voiceline("1_2") # Lvl12-NowWe’reSpeedingUp
-
-func play_slow_down():
-    if lever_switched_count == 1:
-        Audio.narrator.play_voiceline("1_3") # Lvl13-Okay,NowTrySlowingDown
 
 var firstOpen = true
 func _on_cabinet_door_state_changed(state: Global.DoorState):

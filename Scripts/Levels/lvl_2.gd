@@ -1,13 +1,15 @@
 extends Node3D
 
-@onready var trolley:StaticBody3D  = $Trolley
-@onready var trolley_body:MeshInstance3D  = $Trolley/TrolleyBody
-@onready var acc_lever:StaticLever  = $Trolley/TrolleyBody/AccLever
-@onready var player:PlayerController = $Trolley/TrolleyBody/Player
+@onready var trolley:Trolley  = $Trolley2
+@onready var trolley_body:MeshInstance3D  = trolley.get_node("TrolleyBody")
+@onready var acc_lever:StaticLever  = trolley_body.get_node("AccLever")
+@onready var player:PlayerController = trolley_body.get_node("Player")
 var acc_lever_switch_counter = 0
 
 func _ready() -> void:
   Global.current_level = 2
+  Global.acc_lever_switched.connect(_on_trolley_acc_lever_switched)
+  trolley.prepareLever()
 
 
 func _on_trolley_acc_lever_switched(state: bool) -> void:

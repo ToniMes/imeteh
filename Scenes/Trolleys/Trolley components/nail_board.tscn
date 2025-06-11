@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://bx8mdo51yil6w"]
 
-[ext_resource type="PackedScene" uid="uid://15kl06rchejj" path="res://Scenes/nail.tscn" id="1_dn2gp"]
-[ext_resource type="Script" uid="uid://edmml5rxs0f5" path="res://Scenes/nail_board.gd" id="1_o0wxk"]
+[ext_resource type="PackedScene" uid="uid://15kl06rchejj" path="res://Scenes/Trolleys/Trolley components/nail.tscn" id="1_dn2gp"]
+[ext_resource type="Script" uid="uid://edmml5rxs0f5" path="res://Scripts/Trolleys/Trolley components/nail_board.gd" id="1_o0wxk"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_4rqem"]
 size = Vector3(0.2, 0.1, 0.5)
