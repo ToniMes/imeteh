@@ -20,7 +20,7 @@ var force_split_count = 1
 var chunk_length: float = 49.5
 var current_speed: float = 0
 var target_speed: float = 0
-var max_speed: float = 10
+var max_speed: float = 50
 var chunk_count = 0
 
 var target_offset: float = 0
@@ -86,6 +86,10 @@ func _process(delta: float) -> void:
       target_speed = max_speed
       target_rotation = turn_rotation * -turn_direction
       merge_check = false
+  
+  if !merge_tracker and !merge_check:
+    Global.start_next_level()
+    #queue_free()
       
   #print(posrad, " ~ ", sin(posrad))
   position.x = lerp(position.x, target_offset, delta * current_speed * abs(sin(posrad)))
@@ -112,7 +116,8 @@ func _process(delta: float) -> void:
       new_chunk = CHUNK_3.instantiate()
     new_chunk.position.z += chunk_length * 2
     chunk_parent.add_child(new_chunk)
-    var chunk_to_remove = chunks.pop_front()
+    var chunk_to_remove: Node = chunks.pop_front()
+    chunk_to_remove.queue_free()
     chunk_parent.remove_child(chunk_to_remove)
     chunks.append(new_chunk)
 
