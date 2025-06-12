@@ -14,11 +14,11 @@ func _ready() -> void:
   acc_lever.interactiveLever.snap(Global.LeverDirectionEnum.LEFT)
 
 
-func _on_lever_switched(name: String, state: int) -> void:
+func _on_lever_switched(name: String, direction: Global.LeverDirectionEnum) -> void:
   if name != "AccLever":
     return
   
-  Global.trolley_acceleration_changed.emit(state)
+  Global.trolley_acceleration_changed.emit(1 if direction == Global.LeverDirectionEnum.LEFT else 0)
   acc_lever_switch_counter += 1
   
    # breaking the lever if this this is the third lever switch

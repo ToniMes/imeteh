@@ -10,14 +10,14 @@ func _ready() -> void:
   Global.trolley_acceleration_changed.emit(1)
 
 
-func _on_lever_switched(name: String, state: bool) -> void:
+func _on_lever_switched(name: String, direction: Global.LeverDirectionEnum) -> void:
   if name == "HorizontalDirectionLever":
-    if state == false:
+    if direction == Global.LeverDirectionEnum.LEFT:
       maze.left()
     else:
       maze.right()
   elif name == "VerticalDirectionLever":
-    if state == false:
+    if direction == Global.LeverDirectionEnum.RIGHT:
       maze.down()
     else:
       maze.up()

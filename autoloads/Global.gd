@@ -1,6 +1,6 @@
 extends Node
 
-signal lever_switched(name: String, state: int)
+signal lever_switched(name: String, direction: LeverDirectionEnum)
 signal button_pressed(name: String)
 signal trolley_direction_changed(direction: TrolleyDirection)
 signal trolley_acceleration_changed(accelration: int)

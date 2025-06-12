@@ -35,7 +35,7 @@ func prepareTurnLever():
   turnLever.targetPosition = turnLever.position + Vector3(0,0.19,0)
 
 
-func _on_lever_switched(name: String, state: int):
+func _on_lever_switched(name: String, direction: Global.LeverDirectionEnum):
   print(name)
   if name != "AccLever":
     return

@@ -20,7 +20,7 @@ var force_split_count = 1
 var chunk_length: float = 49.5
 var current_speed: float = 0
 var target_speed: float = 0
-var max_speed: float = 40
+var max_speed: float = 10
 var chunk_count = 4
 
 var target_offset: float = 0

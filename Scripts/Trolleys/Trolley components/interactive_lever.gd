@@ -1,7 +1,7 @@
 extends InteractiveObject
 class_name InteractiveLever
 
-signal lever_switched(state: int)
+signal lever_switched(direction: Global.LeverDirectionEnum)
 
 var enabled = true
 var lever_direction: Global.LeverDirectionEnum = Global.LeverDirectionEnum.NONE
@@ -30,14 +30,14 @@ func _process(delta):
   elif physParent.rotation_degrees.y < -0.01:
     physParent.rotation.y = lerp_angle(physParent.rotation.y, -PI/6, delta*8)
 
-  # if lever is fully left or right
+  var new_direction = Global.LeverDirectionEnum.RIGHT if physParent.rotation.y < 0 else Global.LeverDirectionEnum.LEFT  
+  
+  # emitting lever_switched if lever switched from left to right or the opposite
   if abs(physParent.rotation.y) - PI/6 < 0.01:
-    var new_direction = Global.LeverDirectionEnum.RIGHT if physParent.rotation.y > 0 else Global.LeverDirectionEnum.LEFT
-    
-    # emitting lever_switched if lever switched from left to right or the opposite
     if lever_direction != Global.LeverDirectionEnum.NONE and new_direction != lever_direction:
-      emit_signal("lever_switched", 0 if new_direction == Global.LeverDirectionEnum.RIGHT else 1)
-    lever_direction = new_direction
+      lever_switched.emit(new_direction)
+  
+  lever_direction = new_direction
 
 
 func snap(direction: Global.LeverDirectionEnum):
