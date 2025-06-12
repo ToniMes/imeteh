@@ -1,6 +1,6 @@
 extends Node3D
 
-@onready var trolley:Trolley  = $Trolley3
+@onready var trolley:Trolley  = $Trolley
 @onready var trolley_body:MeshInstance3D  = trolley.get_node("TrolleyBody")
 @onready var maze:Maze = trolley_body.get_node("Maze")
 

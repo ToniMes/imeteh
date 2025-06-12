@@ -22,5 +22,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.355, 0, 0)
 
 [node name="ChunkMover" parent="." instance=ExtResource("3_nhpvq")]
 
-[node name="Trolley3" parent="." instance=ExtResource("2_psrpj")]
+[node name="Trolley" parent="." instance=ExtResource("2_psrpj")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)

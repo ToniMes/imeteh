@@ -90,7 +90,7 @@ visible = false
 shape = SubResource("ConcavePolygonShape3D_aijfv")
 
 [node name="Ball" type="CharacterBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.354012, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0273477, 0)
 collision_layer = 8
 collision_mask = 15
 

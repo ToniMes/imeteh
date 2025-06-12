@@ -16,6 +16,7 @@ func _on_interactive_lever_lever_switched(name: String, state: int) -> void:
   self.state = 1 if Global.current_level == 1 and lvl.lever_switched_count >= 1 else state
   Audio.sfxPlayer.play_sound("sfx/lever_clank.mp3")
   lever_switched.emit(name, self.state)
+  Global.lever_switched.emit(name, self.state)
 
 
 func _on_higlight_area_body_entered(body: Node3D) -> void:
