@@ -33,6 +33,7 @@ func prepareTurnLever():
   turnLever.interactiveLever.enabled = true
   turnLever.visible = true
   turnLever.targetPosition = turnLever.position + Vector3(0,0.19,0)
+  Global.trolley_direction_changed.emit(turnLever.interactiveLever.lever_direction)
 
 
 func _on_lever_switched(name: String, direction: Global.LeverDirectionEnum):
