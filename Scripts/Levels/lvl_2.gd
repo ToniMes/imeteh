@@ -18,6 +18,7 @@ func _on_lever_switched(name: String, state: int) -> void:
   if name != "AccLever":
     return
   
+  Global.trolley_acceleration_changed.emit(state)
   acc_lever_switch_counter += 1
   
    # breaking the lever if this this is the third lever switch

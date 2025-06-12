@@ -3,6 +3,7 @@ extends Node
 signal lever_switched(name: String, state: int)
 signal button_pressed(name: String)
 signal trolley_direction_changed(direction: TrolleyDirection)
+signal trolley_acceleration_changed(accelration: int)
 signal cabinet_door_state_changed(state: DoorState)
 enum TrolleyDirection { LEFT, NONE, RIGHT }
 enum LeverDirectionEnum { LEFT, NONE, RIGHT }

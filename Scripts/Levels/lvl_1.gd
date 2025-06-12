@@ -40,6 +40,8 @@ func _on_lever_switched(name: String, state: int):
   if name != "AccLever":
     return
 
+  Global.trolley_acceleration_changed.emit(1)
+
   lever_switched_count += 1
   if lever_switched_count == 1:
     var timer12:Timer = Timer.new()

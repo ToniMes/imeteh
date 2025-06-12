@@ -1,7 +1,7 @@
 extends InteractiveObject
 class_name InteractiveLever
 
-signal lever_switched(name: String, state: int)
+signal lever_switched(state: int)
 
 var enabled = true
 var lever_direction: Global.LeverDirectionEnum = Global.LeverDirectionEnum.NONE
@@ -36,7 +36,7 @@ func _process(delta):
     
     # emitting lever_switched if lever switched from left to right or the opposite
     if lever_direction != Global.LeverDirectionEnum.NONE and new_direction != lever_direction:
-      emit_signal("lever_switched", get_parent().get_parent().name ,0 if physParent.rotation.y >= 0 else 1)
+      emit_signal("lever_switched", 0 if new_direction == Global.LeverDirectionEnum.RIGHT else 1)
     lever_direction = new_direction
 
 

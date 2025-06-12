@@ -14,3 +14,7 @@ func _process(delta):
     return
   
   position = position.lerp(targetPosition, delta * 5)
+
+
+func _on_lever_switched(state: bool) -> void:
+  Global.lever_switched.emit(name, state)

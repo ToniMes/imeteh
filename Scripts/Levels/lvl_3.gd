@@ -7,6 +7,7 @@ extends Node3D
 func _ready() -> void:
   Global.current_level = 3
   Global.lever_switched.connect(_on_lever_switched)
+  Global.trolley_acceleration_changed.emit(1)
 
 
 func _on_lever_switched(name: String, state: bool) -> void:

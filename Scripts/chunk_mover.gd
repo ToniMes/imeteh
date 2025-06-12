@@ -20,7 +20,7 @@ var force_split_count = 1
 var chunk_length: float = 49.5
 var current_speed: float = 0
 var target_speed: float = 0
-var max_speed: float = 15
+var max_speed: float = 40
 var chunk_count = 4
 
 var target_offset: float = 0
@@ -51,7 +51,7 @@ func _ready():
   chunk_parent.add_child(chunk2)
   chunk_parent.add_child(chunk3)
   chunk_parent.add_child(chunk4)
-  Global.connectGlobalSignal(Global.lever_switched, on_acc_lever)
+  Global.connectGlobalSignal(Global.trolley_acceleration_changed, on_acc_change)
   Global.connectGlobalSignal(Global.trolley_direction_changed, on_direction_change)
   
 func _process(delta: float) -> void:
@@ -131,9 +131,8 @@ func _process(delta: float) -> void:
         else:
           Audio.narrator.play_voiceline("1_9a") # Lvl19a-GrandmaLives
           
-func on_acc_lever(name:String, state: bool):
-  if name == "AccLever":
-    target_speed = max_speed if state else 0
+func on_acc_change(acceleration: int):
+  target_speed = acceleration * max_speed
 
 func on_direction_change(direction: Global.TrolleyDirection):
   if turn_lock:
