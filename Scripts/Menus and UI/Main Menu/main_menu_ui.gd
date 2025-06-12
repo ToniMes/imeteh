@@ -11,7 +11,7 @@ func _ready():
   settings.pressed.connect(switch_to_settings_menu)
   
 func switch_to_gameplay():
-  Global.start_next_level()
+  Global.start_level(1)
   
 func switch_to_settings_menu():
   var main_menu_panel: XRToolsViewport2DIn3D

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://b44m6vihrtt6u"]
+[gd_scene load_steps=11 format=3 uid="uid://b44m6vihrtt6u"]
 
 [ext_resource type="Script" uid="uid://dhnqkpwk31240" path="res://Scripts/Trolleys/Trolley components/maze.gd" id="1_h06ds"]
 
@@ -29,9 +29,6 @@ height = 0.04
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_aijfv"]
 radius = 0.02
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_aijfv"]
-size = Vector3(0.32, 0.02, 0.32)
 
 [node name="Maze" type="Node3D"]
 script = ExtResource("1_h06ds")
@@ -89,10 +86,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
 visible = false
 shape = SubResource("ConcavePolygonShape3D_aijfv")
 
-[node name="Ball" type="CharacterBody3D" parent="."]
+[node name="Ball" type="RigidBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0273477, 0)
 collision_layer = 8
 collision_mask = 15
+gravity_scale = 0.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Ball"]
 layers = 8
@@ -100,13 +98,3 @@ mesh = SubResource("SphereMesh_245un")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Ball"]
 shape = SubResource("SphereShape3D_aijfv")
-
-[node name="InnerArea" type="Area3D" parent="."]
-collision_layer = 8
-collision_mask = 15
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="InnerArea"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05, 0)
-shape = SubResource("BoxShape3D_aijfv")
-
-[connection signal="body_exited" from="InnerArea" to="." method="_on_inner_area_body_exited"]

@@ -2,6 +2,7 @@ extends Node3D
 
 @onready var trolley:Trolley  = $Trolley
 @onready var trolley_body:MeshInstance3D  = trolley.get_node("TrolleyBody")
+@onready var turn_lever:StaticLever  = trolley_body.get_node("TurnLever")
 @onready var acc_lever:StaticLever  = trolley_body.get_node("AccLever")
 @onready var player:PlayerController = trolley_body.get_node("Player")
 var acc_lever_switch_counter = 0
@@ -9,6 +10,8 @@ var acc_lever_switch_counter = 0
 func _ready() -> void:
   Global.current_level = 2
   Global.connectGlobalSignal(Global.lever_switched, _on_lever_switched)
+  turn_lever.interactiveLever.snap(Global.LeverDirectionEnum.LEFT)
+  acc_lever.interactiveLever.snap(Global.LeverDirectionEnum.LEFT)
 
 
 func _on_lever_switched(name: String, state: int) -> void:

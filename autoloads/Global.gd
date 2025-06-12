@@ -5,6 +5,7 @@ signal button_pressed(name: String)
 signal trolley_direction_changed(direction: TrolleyDirection)
 signal cabinet_door_state_changed(state: DoorState)
 enum TrolleyDirection { LEFT, NONE, RIGHT }
+enum LeverDirectionEnum { LEFT, NONE, RIGHT }
 enum DoorState { OPEN, CLOSED }
 var current_level: int = 0:
   get:

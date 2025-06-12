@@ -4,6 +4,7 @@ var lever_switched_count:int = 0
 @onready var trolley:Trolley = $Trolley
 @onready var turnLeverButton:ClickableButton = $Trolley/TrolleyBody/TurnLeverButton
 @onready var turnLever:StaticLever = $Trolley/TrolleyBody/TurnLever
+@onready var accLever:StaticLever = $Trolley/TrolleyBody/AccLever
 
 func _ready() -> void:
     Audio.narrator.play_voiceline("1_1") # Lvl11-FiddleWithTheLever
@@ -11,6 +12,8 @@ func _ready() -> void:
     Global.cabinet_door_state_changed.connect(_on_cabinet_door_state_changed)
     Global.trolley_direction_changed.connect(_on_trolley_direction_changed)
     turnLever.interactiveLever.enabled = false
+    turnLever.interactiveLever.snap(Global.LeverDirectionEnum.LEFT)
+    accLever.interactiveLever.snap(Global.LeverDirectionEnum.LEFT)
     turnLeverButton.connect("buttonPressed", prepareTurnLever)
     
 

@@ -4,9 +4,8 @@ class_name InteractiveLever
 signal lever_switched(name: String, state: int)
 
 var enabled = true
-enum LeverDirectionEnum { LEFT, NONE, RIGHT }
-var lever_direction: LeverDirectionEnum = LeverDirectionEnum.NONE
-var initial_direction = LeverDirectionEnum.LEFT
+var lever_direction: Global.LeverDirectionEnum = Global.LeverDirectionEnum.NONE
+var initial_direction: Global.LeverDirectionEnum = Global.LeverDirectionEnum.NONE
 
 func _process(delta):
   if enabled == false:
@@ -26,18 +25,26 @@ func _process(delta):
       physParent.rotation.y = -PI/6
   
   # otherwise, snap it to left/right
-  elif physParent.rotation_degrees.y == 0:
-    physParent.rotation.y = lerp_angle(physParent.rotation.y, -PI/6 if initial_direction == LeverDirectionEnum.RIGHT else PI/6, delta*8)
-  elif physParent.rotation_degrees.y > 0:
+  elif physParent.rotation_degrees.y > 0.01:
     physParent.rotation.y = lerp_angle(physParent.rotation.y, PI/6, delta*8)
-  elif physParent.rotation_degrees.y < 0:
+  elif physParent.rotation_degrees.y < -0.01:
     physParent.rotation.y = lerp_angle(physParent.rotation.y, -PI/6, delta*8)
 
   # if lever is fully left or right
   if abs(physParent.rotation.y) - PI/6 < 0.01:
-    var new_direction = LeverDirectionEnum.RIGHT if physParent.rotation.y > 0 else LeverDirectionEnum.LEFT
+    var new_direction = Global.LeverDirectionEnum.RIGHT if physParent.rotation.y > 0 else Global.LeverDirectionEnum.LEFT
     
     # emitting lever_switched if lever switched from left to right or the opposite
-    if lever_direction != LeverDirectionEnum.NONE and new_direction != lever_direction:
+    if lever_direction != Global.LeverDirectionEnum.NONE and new_direction != lever_direction:
       emit_signal("lever_switched", get_parent().get_parent().name ,0 if physParent.rotation.y >= 0 else 1)
     lever_direction = new_direction
+
+
+func snap(direction: Global.LeverDirectionEnum):
+  lever_direction = direction
+  var rot = 0
+  if direction == Global.LeverDirectionEnum.RIGHT:
+    rot = -PI/6
+  elif direction == Global.LeverDirectionEnum.LEFT:
+    rot = PI/6
+  physParent.rotation.y = rot
