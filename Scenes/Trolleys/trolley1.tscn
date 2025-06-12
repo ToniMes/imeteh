@@ -77,10 +77,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.201788, -1.07058)
 transform = Transform3D(0.999999, 0, -1.11759e-08, 0, 1, 0, 1.11759e-08, 0, 0.999999, 0, 1.28277, -0.441032)
 
 [node name="AccLever" parent="TrolleyBody" instance=ExtResource("8_es21w")]
-transform = Transform3D(-4.37114e-08, 1, 0, 0.5, 2.18557e-08, -0.866025, -0.866025, -3.78552e-08, -0.5, 0.470127, 0.752809, -1.21074)
+transform = Transform3D(2.1244e-10, 1, 4.37114e-08, 0.5, 3.7749e-08, -0.866025, -0.866025, 2.20397e-08, -0.5, 0.470127, 0.752809, -1.21074)
 
 [node name="TurnLever" parent="TrolleyBody" instance=ExtResource("8_es21w")]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.59, -1.209)
+transform = Transform3D(-1, -8.74228e-08, 3.82137e-15, 0, -4.37114e-08, -1, 8.74228e-08, -1, 4.37114e-08, 0, 0.59, -1.209)
 visible = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

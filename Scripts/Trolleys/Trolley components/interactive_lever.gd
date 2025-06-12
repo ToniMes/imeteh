@@ -30,7 +30,7 @@ func _process(delta):
   elif physParent.rotation_degrees.y < -0.01:
     physParent.rotation.y = lerp_angle(physParent.rotation.y, -PI/6, delta*8)
 
-  var new_direction = Global.LeverDirectionEnum.RIGHT if physParent.rotation.y < 0 else Global.LeverDirectionEnum.LEFT  
+  var new_direction = Global.LeverDirectionEnum.RIGHT if physParent.rotation.y > 0 else Global.LeverDirectionEnum.LEFT
   
   # emitting lever_switched if lever switched from left to right or the opposite
   if abs(physParent.rotation.y) - PI/6 < 0.01:
@@ -43,7 +43,7 @@ func _process(delta):
 func snap(direction: Global.LeverDirectionEnum):
   var rot = 0
   if direction == Global.LeverDirectionEnum.RIGHT:
-    rot = -PI/6
-  elif direction == Global.LeverDirectionEnum.LEFT:
     rot = PI/6
+  elif direction == Global.LeverDirectionEnum.LEFT:
+    rot = -PI/6
   physParent.rotation.y = rot

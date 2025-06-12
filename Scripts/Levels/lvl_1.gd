@@ -13,7 +13,7 @@ func _ready() -> void:
     Global.trolley_direction_changed.connect(_on_trolley_direction_changed)
     turnLever.interactiveLever.enabled = false
     turnLever.interactiveLever.snap(Global.LeverDirectionEnum.LEFT)
-    accLever.interactiveLever.snap(Global.LeverDirectionEnum.LEFT)
+    accLever.interactiveLever.snap(Global.LeverDirectionEnum.RIGHT)
     turnLeverButton.connect("buttonPressed", prepareTurnLever)
     var chunkMover:ChunkMover = load("res://Scenes/EnvironmentChunks/ChunkMover.tscn").instantiate()
     chunkMover.force_split_count = 12
