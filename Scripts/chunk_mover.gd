@@ -13,6 +13,7 @@ const turn_offset: float = 2.355
 @onready var trolley: Node3D = $"../Trolley"
 
 var split_tracker: Node3D
+var merge_tracker: Node3D
 var chunks: Array[Node3D]
 
 var force_split_count = 1
@@ -25,10 +26,12 @@ var chunk_count = 0
 var target_offset: float = 0
 var target_rotation: float = 0
 var turn_direction: int = -1
+var turn_lock: bool = false
 
 var is_jover = false
 var merge = false
 var split_check = true
+var merge_check = true
 # A class that moves, loads in and loads out chunks of the world
 
 func _ready():
@@ -63,14 +66,27 @@ func _process(delta: float) -> void:
       target_rotation = 0
       if !split_check:
         target_speed = max_speed
+        
   if split_tracker:
     if split_tracker.position.z < 53 and split_check:
       target_speed = max_speed/6
     if split_tracker.position.z < 49.5 and split_check:
+      turn_lock = true
       target_offset = turn_offset * turn_direction
       target_speed = max_speed
       target_rotation = turn_rotation * turn_direction
       split_check = false
+  
+  if merge_tracker:
+    print (merge_tracker.position.z)
+    if merge_tracker.position.z < 11.5 and merge_check:
+      target_speed = max_speed/6
+    if merge_tracker.position.z < 7 and merge_check:
+      target_offset = 0
+      target_speed = max_speed
+      target_rotation = turn_rotation * -turn_direction
+      merge_check = false
+      
   #print(posrad, " ~ ", sin(posrad))
   position.x = lerp(position.x, target_offset, delta * current_speed * abs(sin(posrad)))
   rotation.y = lerp(rotation.y, target_rotation, delta * current_speed / 3.5)
@@ -81,14 +97,13 @@ func _process(delta: float) -> void:
     var new_chunk
     if merge:
       new_chunk = CHUNK_MERGE.instantiate()
+      merge_tracker = new_chunk
       merge = false
     elif is_jover or chunk_count == force_split_count:
       new_chunk = CHUNK_SPLIT.instantiate()
       split_tracker = new_chunk
       merge = true
       is_jover = false
-    elif chunk_count == 2:
-      new_chunk = CHUNK_MERGE.instantiate()
     elif r%3 == 0:
       new_chunk = CHUNK_1.instantiate()
     elif r%3 == 1:
@@ -107,6 +122,8 @@ func on_acc_lever(name:String, state: bool):
     target_speed = max_speed if state else 0
 
 func on_direction_change(direction: Global.TrolleyDirection):
+  if turn_lock:
+    return
   if direction == Global.TrolleyDirection.RIGHT:
     turn_direction = 1
   else:
