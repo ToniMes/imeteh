@@ -20,8 +20,8 @@ var force_split_count = 1
 var chunk_length: float = 49.5
 var current_speed: float = 0
 var target_speed: float = 0
-var max_speed: float = 50
-var chunk_count = 0
+var max_speed: float = 15
+var chunk_count = 4
 
 var target_offset: float = 0
 var target_rotation: float = 0
@@ -41,16 +41,16 @@ func _ready():
   var chunk4 = CHUNK_2.instantiate()
   chunk1.position.z += chunk_length
   chunk2.position.z += chunk_length * 2
-  #chunk3.position.z += chunk_length * 3
-  #chunk4.position.z += chunk_length * 4
+  chunk3.position.z += chunk_length * 3
+  chunk4.position.z += chunk_length * 4
   chunks.append(chunk1)
   chunks.append(chunk2)
-  #chunks.append(chunk3)
-  #chunks.append(chunk4)
+  chunks.append(chunk3)
+  chunks.append(chunk4)
   chunk_parent.add_child(chunk1)
   chunk_parent.add_child(chunk2)
-  #chunk_parent.add_child(chunk3)
-  #chunk_parent.add_child(chunk4)
+  chunk_parent.add_child(chunk3)
+  chunk_parent.add_child(chunk4)
   Global.connectGlobalSignal(Global.lever_switched, on_acc_lever)
   Global.connectGlobalSignal(Global.trolley_direction_changed, on_direction_change)
   
@@ -114,14 +114,23 @@ func _process(delta: float) -> void:
       new_chunk = CHUNK_2.instantiate()
     elif r%3 == 2:
       new_chunk = CHUNK_3.instantiate()
-    new_chunk.position.z += chunk_length * 2
+    new_chunk.position.z += chunk_length * 4
     chunk_parent.add_child(new_chunk)
     var chunk_to_remove: Node = chunks.pop_front()
     chunk_to_remove.queue_free()
     chunk_parent.remove_child(chunk_to_remove)
     chunks.append(new_chunk)
-
-
+    if Global.current_level == 1:
+      if chunk_count == 11:
+        Audio.narrator.play_voiceline("1_5") # Lvl15-NowIsAGoodATimeAsAnyToTellYou…
+      elif chunk_count == 13:
+        Audio.narrator.play_voiceline("1_6") # Lvl16-I’mHereForYou
+      elif chunk_count == 17:
+        if turn_direction == -1:
+          Audio.narrator.play_voiceline("1_9b") # Lvl19b-YouRanHerOver
+        else:
+          Audio.narrator.play_voiceline("1_9a") # Lvl19a-GrandmaLives
+          
 func on_acc_lever(name:String, state: bool):
   if name == "AccLever":
     target_speed = max_speed if state else 0

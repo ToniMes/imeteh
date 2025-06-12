@@ -15,6 +15,9 @@ func _ready() -> void:
     turnLever.interactiveLever.snap(Global.LeverDirectionEnum.LEFT)
     accLever.interactiveLever.snap(Global.LeverDirectionEnum.LEFT)
     turnLeverButton.connect("buttonPressed", prepareTurnLever)
+    var chunkMover:ChunkMover = load("res://Scenes/EnvironmentChunks/ChunkMover.tscn").instantiate()
+    chunkMover.force_split_count = 12
+    add_child(chunkMover)
     
 
 func play_speeding_up():

@@ -41,7 +41,6 @@ func _process(delta):
 
 
 func snap(direction: Global.LeverDirectionEnum):
-  lever_direction = direction
   var rot = 0
   if direction == Global.LeverDirectionEnum.RIGHT:
     rot = -PI/6

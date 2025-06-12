@@ -59,5 +59,3 @@ func _on_lever_switched(name: String, state: int) -> void:
     else:
       direction = Global.TrolleyDirection.RIGHT
     Global.trolley_direction_changed.emit(direction)
-  if name == "AccLever":
-    Global.lever_switched.emit(name, state)
