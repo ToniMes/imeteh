@@ -21,8 +21,10 @@ var current_speed: float = 0
 var target_speed: float = 0
 var max_speed: float = 10
 var chunk_count = 0
+
 var target_offset: float = 0
 var target_rotation: float = 0
+var turn_direction: int = -1
 
 var is_jover = false
 var merge = false
@@ -47,15 +49,17 @@ func _ready():
   #chunk_parent.add_child(chunk3)
   #chunk_parent.add_child(chunk4)
   Global.connectGlobalSignal(Global.lever_switched, on_acc_lever)
+  Global.connectGlobalSignal(Global.trolley_direction_changed, on_direction_change)
   
 func _process(delta: float) -> void:
   current_speed = lerp(current_speed, target_speed, delta)
   var posdeg = Util.positiveDeg(rotation_degrees.y)
   var posrad = deg_to_rad(posdeg)
+  #print(posdeg)
   for chunk in chunks:
     chunk.position.z -= current_speed * delta * cos(posrad)
   
-  if (posdeg > 35 and posdeg < 325) or posdeg > 325:
+  if (posdeg > 35 and posdeg < 325):
       target_rotation = 0
       if !split_check:
         target_speed = max_speed
@@ -63,11 +67,12 @@ func _process(delta: float) -> void:
     if split_tracker.position.z < 53 and split_check:
       target_speed = max_speed/6
     if split_tracker.position.z < 49.5 and split_check:
-      target_offset = turn_offset
+      target_offset = turn_offset * turn_direction
       target_speed = max_speed
-      target_rotation = turn_rotation
+      target_rotation = turn_rotation * turn_direction
       split_check = false
-  position.x = lerp(position.x, target_offset, delta * current_speed * sin(posrad))
+  #print(posrad, " ~ ", sin(posrad))
+  position.x = lerp(position.x, target_offset, delta * current_speed * abs(sin(posrad)))
   rotation.y = lerp(rotation.y, target_rotation, delta * current_speed / 3.5)
   
   if chunks[0].position.z <= 0:
@@ -100,3 +105,9 @@ func _process(delta: float) -> void:
 func on_acc_lever(name:String, state: bool):
   if name == "AccLever":
     target_speed = max_speed if state else 0
+
+func on_direction_change(direction: Global.TrolleyDirection):
+  if direction == Global.TrolleyDirection.RIGHT:
+    turn_direction = 1
+  else:
+    turn_direction = -1
