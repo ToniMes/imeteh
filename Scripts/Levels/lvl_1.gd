@@ -8,13 +8,19 @@ var lever_switched_count:int = 0
 
 func _ready() -> void:
     Audio.narrator.play_voiceline("1_1") # Lvl11-FiddleWithTheLever
+    
+    # Connecting all the signals
     Global.lever_switched.connect(_on_lever_switched)
     Global.cabinet_door_state_changed.connect(_on_cabinet_door_state_changed)
     Global.trolley_direction_changed.connect(_on_trolley_direction_changed)
+    turnLeverButton.connect("buttonPressed", trolley.prepareTurnLever)
+    
+    # Initializing levers
     turnLever.interactiveLever.enabled = false
     turnLever.interactiveLever.snap(Global.LeverDirectionEnum.LEFT)
     accLever.interactiveLever.snap(Global.LeverDirectionEnum.RIGHT)
-    turnLeverButton.connect("buttonPressed", prepareTurnLever)
+    
+    # Adding chunk mover to the scene
     var chunkMover:ChunkMover = load("res://Scenes/EnvironmentChunks/ChunkMover.tscn").instantiate()
     chunkMover.force_split_count = 12
     add_child(chunkMover)
@@ -27,13 +33,6 @@ func play_speeding_up():
 func play_slow_down():
     if lever_switched_count == 1:
         Audio.narrator.play_voiceline("1_3") # Lvl13-Okay,NowTrySlowingDown
-
-
-func prepareTurnLever():
-  turnLever.interactiveLever.enabled = true
-  turnLever.visible = true
-  turnLever.targetPosition = turnLever.position + Vector3(0,0.19,0)
-  Global.trolley_direction_changed.emit(turnLever.interactiveLever.lever_direction)
 
 
 func _on_lever_switched(name: String, direction: Global.LeverDirectionEnum):

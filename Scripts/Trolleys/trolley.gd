@@ -30,3 +30,12 @@ func bump():
   target_y = 20
   await get_tree().create_timer(0.1).timeout
   target_y = 0
+
+
+func prepareTurnLever():
+  if turnLever.interactiveLever.enabled == true:
+    return
+  turnLever.interactiveLever.enabled = true
+  turnLever.visible = true
+  turnLever.targetPosition = turnLever.position + Vector3(0,0.19,0)
+  Global.trolley_direction_changed.emit(turnLever.interactiveLever.lever_direction)
