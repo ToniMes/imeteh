@@ -12,6 +12,9 @@ const turn_offset: float = 2.355
 @onready var chunk_parent: Node3D = $ChunkParent
 @onready var trolley: Node3D = $"../Trolley"
 
+var runningSfxPlayer: AudioStreamPlayer
+var breakingSfxPlayer: AudioStreamPlayer
+
 var split_tracker: Node3D
 var merge_tracker: Node3D
 var chunks: Array[Node3D]
@@ -56,6 +59,12 @@ func _ready():
   
 func _process(delta: float) -> void:
   current_speed = lerp(current_speed, target_speed, delta)
+  
+  # Stopping breaking sound if trolley is stopped
+  if current_speed < 0.5 and breakingSfxPlayer:
+    Audio.sfxPlayer.stop_stream_player(breakingSfxPlayer)
+    breakingSfxPlayer = null
+  
   var posdeg = Util.positiveDeg(rotation_degrees.y)
   var posrad = deg_to_rad(posdeg)
   #print(posdeg)
@@ -133,6 +142,14 @@ func _process(delta: float) -> void:
           
 func on_acc_change(acceleration: int):
   target_speed = acceleration * max_speed
+  if acceleration == 0 and runningSfxPlayer:
+    Audio.sfxPlayer.stop_stream_player(runningSfxPlayer)
+    runningSfxPlayer = null
+    breakingSfxPlayer = Audio.sfxPlayer.play_sound("sfx/broken_breaks.mp3")
+  elif acceleration == 1 and !runningSfxPlayer:
+    Audio.sfxPlayer.stop_stream_player(breakingSfxPlayer)
+    breakingSfxPlayer = null
+    runningSfxPlayer = Audio.sfxPlayer.play_sound("sfx/trolley_running_ambiance.mp3", true)
 
 func on_direction_change(direction: Global.TrolleyDirection):
   if turn_lock:

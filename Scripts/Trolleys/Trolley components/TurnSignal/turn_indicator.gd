@@ -8,10 +8,10 @@ func _ready() -> void:
   
 func _on_trolley_direction_changed(direction: Global.TrolleyDirection):
   if direction == Global.TrolleyDirection.RIGHT:
-    print("turning right")
+    #print("turning right")
     arrow_left.turn_off()
     arrow_right.flash()
   else:
-    print("turning left")
+    #print("turning left")
     arrow_left.flash()
     arrow_right.turn_off()

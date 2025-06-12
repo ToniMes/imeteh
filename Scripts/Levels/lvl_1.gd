@@ -36,7 +36,6 @@ func play_slow_down():
 
 
 func _on_lever_switched(name: String, direction: Global.LeverDirectionEnum):
-  print(name)
   if name != "AccLever":
     return
 

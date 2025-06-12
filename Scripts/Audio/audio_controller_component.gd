@@ -6,12 +6,9 @@ var stream_players: Array[AudioStreamPlayer] = []
 func _init() -> void:
   # Adding a certain amount of stream players that will be used to play sound
   for i in range(self.max_polyphony):
-    var streamPlayer = AudioStreamPlayer.new()
-    streamPlayer.bus = bus
-    stream_players.append(streamPlayer)
-    add_child(streamPlayer)
+    add_stream_player()
 
-func play_sound(audioPath: String, loop: bool = false, freeUpPlayer: bool = true) -> void:
+func play_sound(audioPath: String, loop: bool = false, freeUpPlayer: bool = true) -> AudioStreamPlayer:
   if stream_players.is_empty():
     # Not playing the sound if no stream players are available
     if freeUpPlayer == false:
@@ -20,10 +17,7 @@ func play_sound(audioPath: String, loop: bool = false, freeUpPlayer: bool = true
 	# Freeing up a stream player by pausing the first child (oldest player) and then appending it to the back
     else:
       var first_child: AudioStreamPlayer = self.get_child(0)
-      first_child.stop()
-      self.remove_child(first_child)
-      self.add_child(first_child)
-      stream_players.push_front(first_child)
+      stop_stream_player(first_child)
 
     
   # Reserving a stream player
@@ -43,6 +37,20 @@ func play_sound(audioPath: String, loop: bool = false, freeUpPlayer: bool = true
   # Playing the sound effect
   print("playing sound " + audioPath)
   stream_player.play()
+  return stream_player
+
+func add_stream_player() -> void:
+  var streamPlayer = AudioStreamPlayer.new()
+  streamPlayer.bus = bus
+  stream_players.append(streamPlayer)
+  add_child(streamPlayer)
+
+func stop_stream_player(stream_player: AudioStreamPlayer) -> void:
+  if stream_player == null:
+    return
+  stream_player.stop()
+  remove_child(stream_player)
+  add_stream_player()
 
 func _on_loop_sound(stream_player: AudioStreamPlayer):
   stream_player.play()
