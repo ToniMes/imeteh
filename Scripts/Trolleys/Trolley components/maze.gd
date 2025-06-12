@@ -20,3 +20,9 @@ func left():
   
 func right():
   speed[0] = -AXIS_SPEED
+
+
+func _on_lab_exit_entered(body: Node3D) -> void:
+  if body != ball:
+    return
+  print("end maze")
