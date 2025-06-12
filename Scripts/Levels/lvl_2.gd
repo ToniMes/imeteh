@@ -11,7 +11,7 @@ func _ready() -> void:
   Global.current_level = 2
   Global.connectGlobalSignal(Global.lever_switched, _on_lever_switched)
   turn_lever.interactiveLever.snap(Global.LeverDirectionEnum.LEFT)
-  acc_lever.interactiveLever.snap(Global.LeverDirectionEnum.LEFT)
+  acc_lever.interactiveLever.snap(Global.LeverDirectionEnum.RIGHT)
 
 
 func _on_lever_switched(name: String, direction: Global.LeverDirectionEnum) -> void:
