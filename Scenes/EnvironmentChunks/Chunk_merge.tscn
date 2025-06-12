@@ -14,7 +14,7 @@ albedo_color = Color(0.263519, 0.451574, 0.238187, 1)
 [sub_resource type="QuadMesh" id="QuadMesh_ndu22"]
 material = SubResource("StandardMaterial3D_am7ck")
 
-[node name="Chunk_end" type="Node3D"]
+[node name="Chunk_end2" type="Node3D"]
 
 [node name="Grass floor2" type="MeshInstance3D" parent="."]
 transform = Transform3D(50, 0, 0, 0, -2.18557e-06, 50, 0, -50, -2.18557e-06, 0.0593872, 0, -25.2421)

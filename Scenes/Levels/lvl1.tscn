@@ -1,8 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://ytafeg0f0hci"]
+[gd_scene load_steps=4 format=3 uid="uid://dfyjvbwfe45o7"]
 
 [ext_resource type="Script" uid="uid://cs283upgtdy6e" path="res://Scripts/Levels/lvl_1.gd" id="1_2c3dr"]
+[ext_resource type="PackedScene" uid="uid://cd3nuoym3pjy7" path="res://Scenes/Trolleys/trolley1.tscn" id="1_bv1f1"]
 [ext_resource type="PackedScene" uid="uid://cxhortlyew845" path="res://Scenes/EnvironmentChunks/ChunkMover.tscn" id="3_2c3dr"]
-[ext_resource type="PackedScene" uid="uid://bwmwcclirpgvi" path="res://Scenes/Trolleys/trolley1.tscn" id="3_6q233"]
 
 [node name="Lvl" type="Node3D"]
 script = ExtResource("1_2c3dr")
@@ -13,5 +13,3 @@ script = ExtResource("1_2c3dr")
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
 
 [node name="ChunkMover" parent="." instance=ExtResource("3_2c3dr")]
-
-[node name="Trolley1" parent="." instance=ExtResource("3_6q233")]

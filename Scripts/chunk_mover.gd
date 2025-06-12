@@ -46,13 +46,12 @@ func _ready():
   chunk_parent.add_child(chunk2)
   #chunk_parent.add_child(chunk3)
   #chunk_parent.add_child(chunk4)
-  Global.connectGlobalSignal(Global.acc_lever_switched, on_acc_lever)
+  Global.connectGlobalSignal(Global.lever_switched, on_acc_lever)
   
 func _process(delta: float) -> void:
   current_speed = lerp(current_speed, target_speed, delta)
   var posdeg = Util.positiveDeg(rotation_degrees.y)
   var posrad = deg_to_rad(posdeg)
-  print(cos(posrad))
   for chunk in chunks:
     chunk.position.z -= current_speed * delta * cos(posrad)
   
@@ -98,5 +97,6 @@ func _process(delta: float) -> void:
     chunks.append(new_chunk)
 
 
-func on_acc_lever(state: bool):
-  target_speed = max_speed if state else 0
+func on_acc_lever(name:String, state: bool):
+  if name == "AccLever":
+    target_speed = max_speed if state else 0

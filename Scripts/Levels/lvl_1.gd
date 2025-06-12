@@ -1,9 +1,9 @@
 extends Node3D
 
 var lever_switched_count:int = 0
-@onready var trolley:Trolley = $Trolley1
-@onready var turnLeverButton:ClickableButton = $Trolley1/TrolleyBody/TurnLeverButton
-@onready var turnLever:StaticLever = $Trolley1/TrolleyBody/TurnLever
+@onready var trolley:Trolley = $Trolley
+@onready var turnLeverButton:ClickableButton = $Trolley/TrolleyBody/TurnLeverButton
+@onready var turnLever:StaticLever = $Trolley/TrolleyBody/TurnLever
 
 func _ready() -> void:
     Audio.narrator.play_voiceline("1_1") # Lvl11-FiddleWithTheLever
@@ -29,26 +29,27 @@ func prepareTurnLever():
   turnLever.targetPosition = turnLever.position + Vector3(0,0.19,0)
 
 
-func _on_lever_switched(name: String, state: bool):
-    if name != "AccLever":
-      return
-  
-    lever_switched_count += 1
-    if lever_switched_count == 1:
-        var timer12:Timer = Timer.new()
-        timer12.one_shot = true
-        timer12.wait_time = 1
-        timer12.timeout.connect(func(): play_speeding_up())
-        add_child(timer12)
-        timer12.start()
-        var timer13:Timer = Timer.new()
-        timer13.one_shot = true
-        timer13.wait_time = 7
-        timer13.timeout.connect(func(): play_slow_down())
-        add_child(timer13)
-        timer13.start()
-    elif lever_switched_count == 2:
-      Audio.narrator.play_voiceline("1_4") # Lvl14-You’reSupposedToBeSlowingDown
+func _on_lever_switched(name: String, state: int):
+  print(name)
+  if name != "AccLever":
+    return
+
+  lever_switched_count += 1
+  if lever_switched_count == 1:
+    var timer12:Timer = Timer.new()
+    timer12.one_shot = true
+    timer12.wait_time = 1
+    timer12.timeout.connect(func(): play_speeding_up())
+    add_child(timer12)
+    timer12.start()
+    var timer13:Timer = Timer.new()
+    timer13.one_shot = true
+    timer13.wait_time = 7
+    timer13.timeout.connect(func(): play_slow_down())
+    add_child(timer13)
+    timer13.start()
+  elif lever_switched_count == 2:
+    Audio.narrator.play_voiceline("1_4") # Lvl14-You’reSupposedToBeSlowingDown
 
 func _on_button_pressed(name: String) -> void:
   if name == "TurnLeverButton":
