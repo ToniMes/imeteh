@@ -23,7 +23,9 @@ func _ready():
 
 
 func play_voiceline(name: String):
-  animation_player.stop(true)
-  animation_player.clear_queue()
+  stop_narrator()
   animation_player.play(name)
   
+func stop_narrator():
+  animation_player.stop(true)
+  animation_player.clear_queue()

@@ -26,6 +26,9 @@ func connectGlobalSignal(sig: Signal, c: Callable):
 
 
 func start_next_level():
+  Audio.sfxPlayer.stop_all()
+  Audio.musicPlayer.stop_all()
+  Audio.narrator.stop_narrator()
   current_level += 1
   start_level(current_level)
   
