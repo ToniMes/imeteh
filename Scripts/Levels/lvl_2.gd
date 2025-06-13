@@ -9,9 +9,18 @@ var acc_lever_switch_counter = 0
 
 func _ready() -> void:
   Global.current_level = 2
+  
+  # Connecting signals
   Global.connectGlobalSignal(Global.lever_switched, _on_lever_switched)
+  
+  # Initializing levers
   turn_lever.interactiveLever.snap(Global.LeverDirectionEnum.LEFT)
   acc_lever.interactiveLever.snap(Global.LeverDirectionEnum.RIGHT)
+
+  # Adding chunk mover to the scene
+  var chunkMover:ChunkMover = load("res://Scenes/EnvironmentChunks/ChunkMover.tscn").instantiate()
+  chunkMover.force_split_count = 12
+  add_child(chunkMover)
 
 
 func _on_lever_switched(name: String, direction: Global.LeverDirectionEnum) -> void:

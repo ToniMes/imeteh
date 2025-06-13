@@ -6,6 +6,13 @@ extends Node3D
 
 func _ready() -> void:
   Global.current_level = 3
+  
+  # Adding chunk mover to the scene
+  var chunkMover:ChunkMover = load("res://Scenes/EnvironmentChunks/ChunkMover.tscn").instantiate()
+  chunkMover.force_split_count = 12
+  add_child(chunkMover)
+  
+  # Connecting signals
   Global.lever_switched.connect(_on_lever_switched)
   Global.trolley_acceleration_changed.emit(1)
 

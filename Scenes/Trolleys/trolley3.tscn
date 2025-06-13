@@ -73,7 +73,7 @@ skeleton = NodePath("../..")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.265176, -0.033088, 0.240205)
 
 [node name="Player" parent="TrolleyBody" instance=ExtResource("6_04rk6")]
-transform = Transform3D(-0.999999, 0, -8.74227e-08, 0, 1, 0, 8.74227e-08, 0, -0.999999, 0, 1.28277, 1.93559)
+transform = Transform3D(0.999999, 0, 0, 0, 1, 0, 0, 0, 0.999999, 0, 1.28277, 1.93559)
 
 [node name="RailwaySpawner" parent="TrolleyBody" instance=ExtResource("7_1m7lk")]
 transform = Transform3D(-0.999764, 0, -0.0217275, 0, 1, 0, 0.0217275, 0, -0.999764, -0.0161113, -0.22952, 0.0837665)
