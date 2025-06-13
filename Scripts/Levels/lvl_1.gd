@@ -12,11 +12,14 @@ var right_turn_count = 0
 func _ready() -> void:
     Audio.narrator.play_voiceline("1_1") # Lvl11-FiddleWithTheLever
     
+    # Disabling button until cabinet doors are opened
+    turnLeverButton.enabled = false
+    
     # Connecting all the signals
     Global.lever_switched.connect(_on_lever_switched)
+    Global.button_pressed.connect(_on_button_pressed)
     Global.cabinet_door_state_changed.connect(_on_cabinet_door_state_changed)
     Global.trolley_direction_changed.connect(_on_trolley_direction_changed)
-    turnLeverButton.connect("buttonPressed", trolley.prepareTurnLever)
     
     # Initializing levers
     turnLever.interactiveLever.enabled = false
@@ -63,12 +66,13 @@ func _on_lever_switched(name: String, direction: Global.LeverDirectionEnum):
 
 func _on_button_pressed(name: String) -> void:
   if name == "TurnLeverButton":
-    Global.trolley_direction_changed.emit(turnLever.state)
+    trolley.prepareTurnLever()
 
 func _on_cabinet_door_state_changed(state: Global.DoorState):
   if state == Global.DoorState.OPEN and cabinet_opened == false:
     Audio.narrator.play_voiceline("1_7") # Lvl17-YouFiguredOutTheCabinetDoor
     cabinet_opened = true
+    turnLeverButton.enabled = true
 
 func _on_trolley_direction_changed(direction: Global.TrolleyDirection):
   # Updating turn counters
