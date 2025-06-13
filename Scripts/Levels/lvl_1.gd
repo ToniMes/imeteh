@@ -5,6 +5,9 @@ var lever_switched_count:int = 0
 @onready var turnLeverButton:ClickableButton = $Trolley/TrolleyBody/TurnLeverButton
 @onready var turnLever:StaticLever = $Trolley/TrolleyBody/TurnLever
 @onready var accLever:StaticLever = $Trolley/TrolleyBody/AccLever
+var cabinet_opened = false
+var left_turn_count = 0
+var right_turn_count = 0
 
 func _ready() -> void:
     Audio.narrator.play_voiceline("1_1") # Lvl11-FiddleWithTheLever
@@ -62,16 +65,22 @@ func _on_button_pressed(name: String) -> void:
   if name == "TurnLeverButton":
     Global.trolley_direction_changed.emit(turnLever.state)
 
-var firstOpen = true
 func _on_cabinet_door_state_changed(state: Global.DoorState):
-  if state == Global.DoorState.OPEN and firstOpen:
+  if state == Global.DoorState.OPEN and cabinet_opened == false:
     Audio.narrator.play_voiceline("1_7") # Lvl17-YouFiguredOutTheCabinetDoor
-    firstOpen = false
+    cabinet_opened = true
 
-var firstTurn = true
 func _on_trolley_direction_changed(direction: Global.TrolleyDirection):
-  if firstTurn:
+  # Updating turn counters
+  if direction == Global.TrolleyDirection.LEFT:
+    left_turn_count += 1
+  elif direction == Global.TrolleyDirection.RIGHT:
+    right_turn_count += 1
+  
+  # If this is the first time user switched turn lever
+  if left_turn_count + right_turn_count == 1:
     Audio.narrator.play_voiceline("1_8") # Lvl18-You’veFoundAWayToTurn
-    firstTurn = false
-  elif firstTurn == false and direction == Global.TrolleyDirection.LEFT:
+  
+  # If this is the first time user switched turn lever left
+  elif left_turn_count == 1 and direction == Global.TrolleyDirection.LEFT:
     Audio.narrator.play_voiceline("1_8a") # Lvl18a-NowThisIsInteresting,You’reStillGoingLeft…Hmm…

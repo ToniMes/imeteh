@@ -70,16 +70,3 @@ func spawnNextRail():
   rail_parts_right.insert(0, rail_right)
   
   railCount+=1
-#  if railCount == 100:
-#    Audio.narrator.play_voiceline("1_5") # Lvl15-NowIsAGoodATimeAsAnyToTellYou…
-#  if railCount == 115:
-#    Audio.narrator.play_voiceline("1_6") # Lvl16-I’mHereForYou
-#  if railCount == 192:
-#    trolley.turn()
-#  if railCount == 193 and trolley.currentTrack == 0:
-#    trolley.bump()
-#  if railCount == 198:
-#    if trolley.currentTrack == 0:
-#      Audio.narrator.play_voiceline("1_9b") # Lvl19b-YouRanHerOver
-#    if trolley.currentTrack == 2:
-#      Audio.narrator.play_voiceline("1_9a") # Lvl19a-GrandmaLives
