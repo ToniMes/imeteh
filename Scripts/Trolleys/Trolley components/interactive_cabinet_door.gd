@@ -14,7 +14,7 @@ func _process(delta):
     physParent.rotation.z = 0
     
     # emitting event if door opened/closed
-    if physParent.global_rotation_degrees.y < 170:
+    if physParent.global_rotation_degrees.y > 0 and physParent.global_rotation_degrees.y < 170:
       doorState = Global.DoorState.OPEN
     else:
       doorState = Global.DoorState.CLOSED
