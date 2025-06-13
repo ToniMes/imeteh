@@ -8,6 +8,8 @@ var speed = Vector2(0,0)
 
 func _process(delta: float) -> void:
   ball.constant_force = Vector3(speed[0], 0, speed[1]) 
+  ball.position.y = 0
+  print(ball.position)
 
 func up():
   speed[1] = AXIS_SPEED

@@ -85,7 +85,7 @@ transform = Transform3D(2.12438e-10, 1, 4.37114e-08, 0.5, 3.7749e-08, -0.866025,
 transform = Transform3D(-1, -7.57103e-08, 4.37114e-08, -6.18172e-08, 0.258819, -0.965925, 6.18172e-08, -0.965925, -0.258819, -0.47, 0.753, -1.209)
 
 [node name="Maze" parent="TrolleyBody" instance=ExtResource("9_uie8p")]
-transform = Transform3D(1, 0, 0, 0, 0.965926, -0.258819, 0, 0.258819, 0.965926, 0, 0.765064, -1.19804)
+transform = Transform3D(1, 0, 0, 0, 0.948324, -0.317305, 0, 0.317305, 0.948324, 0, 0.821425, -1.19804)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("ConcavePolygonShape3D_f4x8e")
