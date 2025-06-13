@@ -1,0 +1,308 @@
+[gd_scene load_steps=10 format=3 uid="uid://ct55t22if0jw"]
+
+[ext_resource type="ArrayMesh" uid="uid://bebutr0tl5jxb" path="res://Resources/Models/Environment/grass-patch.obj" id="1_a7j8u"]
+[ext_resource type="Material" uid="uid://4sfhs6feohvq" path="res://Resources/Materials/AssetMaterial.tres" id="2_5ltp2"]
+[ext_resource type="ArrayMesh" uid="uid://mmpw8mj2giow" path="res://Resources/Models/Environment/grass.obj" id="3_n2hee"]
+[ext_resource type="ArrayMesh" uid="uid://bihht3ahtsvkf" path="res://Resources/Models/Environment/rocks-a.obj" id="4_55iir"]
+[ext_resource type="ArrayMesh" uid="uid://bvo8g1mbl1r2s" path="res://Resources/Models/Environment/patch-grass.obj" id="5_18m3h"]
+[ext_resource type="PackedScene" uid="uid://csh5lr3rpmqba" path="res://Scenes/Railway/RailWayYsplit.tscn" id="6_28yo3"]
+[ext_resource type="PackedScene" uid="uid://han7ypq5xxce" path="res://Scenes/Railway/Railway.tscn" id="7_o4sis"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_am7ck"]
+albedo_color = Color(0.263519, 0.451574, 0.238187, 1)
+
+[sub_resource type="QuadMesh" id="QuadMesh_ndu22"]
+material = SubResource("StandardMaterial3D_am7ck")
+
+[node name="Chunk_end" type="Node3D"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="Grass floor2" type="MeshInstance3D" parent="."]
+transform = Transform3D(50, 0, 0, 0, -2.18557e-06, 50, 0, -50, -2.18557e-06, 0.0593829, 0, 24.99)
+mesh = SubResource("QuadMesh_ndu22")
+
+[node name="Details2" type="Node3D" parent="."]
+transform = Transform3D(0.118231, 0, 0.992986, 0, 1, 0, -0.992986, 0, 0.118231, 18.5436, 0, -74.8604)
+
+[node name="Parches" type="Node3D" parent="Details2"]
+
+[node name="Grass-patch" type="MeshInstance3D" parent="Details2/Parches"]
+transform = Transform3D(-0.705934, 0, -0.708278, 0, 1, 0, 0.708278, 0, -0.705934, -96.3828, 0, -21.928)
+mesh = ExtResource("1_a7j8u")
+skeleton = NodePath("../../..")
+surface_material_override/0 = ExtResource("2_5ltp2")
+
+[node name="Grass-patch2" type="MeshInstance3D" parent="Details2/Parches"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -79.9918, 0, -3.98335)
+mesh = ExtResource("1_a7j8u")
+skeleton = NodePath("../../..")
+surface_material_override/0 = ExtResource("2_5ltp2")
+
+[node name="Grass-patch3" type="MeshInstance3D" parent="Details2/Parches"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -105.482, 0, 6.99881)
+mesh = ExtResource("1_a7j8u")
+skeleton = NodePath("../../..")
+surface_material_override/0 = ExtResource("2_5ltp2")
+
+[node name="Grass-patch4" type="MeshInstance3D" parent="Details2/Parches"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -82.7762, 0, -24.7037)
+mesh = ExtResource("1_a7j8u")
+skeleton = NodePath("../../..")
+surface_material_override/0 = ExtResource("2_5ltp2")
+
+[node name="Grass-patch5" type="MeshInstance3D" parent="Details2/Parches"]
+transform = Transform3D(0.119963, 0, 0.992778, 0, 1, 0, -0.992778, 0, 0.119963, -111.305, 0, -13.8926)
+mesh = ExtResource("1_a7j8u")
+skeleton = NodePath("../../..")
+surface_material_override/0 = ExtResource("2_5ltp2")
+
+[node name="Grass-patch6" type="MeshInstance3D" parent="Details2/Parches"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -104.401, 0, -11.1012)
+mesh = ExtResource("1_a7j8u")
+skeleton = NodePath("../../..")
+surface_material_override/0 = ExtResource("2_5ltp2")
+
+[node name="Grass2" type="MeshInstance3D" parent="Details2/Parches"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -114.816, 0.0417337, 2.79949)
+mesh = ExtResource("3_n2hee")
+skeleton = NodePath("../../..")
+surface_material_override/1 = ExtResource("2_5ltp2")
+
+[node name="Grass3" type="MeshInstance3D" parent="Details2/Parches"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -88.2655, 0.0417337, 2.79948)
+mesh = ExtResource("3_n2hee")
+skeleton = NodePath("../../..")
+surface_material_override/1 = ExtResource("2_5ltp2")
+
+[node name="Grass4" type="MeshInstance3D" parent="Details2/Parches"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -89.2983, 0.0417337, -16.1434)
+mesh = ExtResource("3_n2hee")
+skeleton = NodePath("../../..")
+surface_material_override/1 = ExtResource("2_5ltp2")
+
+[node name="Grass5" type="MeshInstance3D" parent="Details2/Parches"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -111.573, 0.0417337, -10.4945)
+mesh = ExtResource("3_n2hee")
+skeleton = NodePath("../../..")
+surface_material_override/1 = ExtResource("2_5ltp2")
+
+[node name="Grass6" type="MeshInstance3D" parent="Details2/Parches"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -85.3637, 0.0417337, -27.0847)
+mesh = ExtResource("3_n2hee")
+skeleton = NodePath("../../..")
+surface_material_override/1 = ExtResource("2_5ltp2")
+
+[node name="Grass7" type="MeshInstance3D" parent="Details2/Parches"]
+transform = Transform3D(0.395626, 0, -0.918412, 0, 1, 0, 0.918412, 0, 0.395626, -112.972, 0.0417337, -23.5778)
+mesh = ExtResource("3_n2hee")
+skeleton = NodePath("../../..")
+surface_material_override/1 = ExtResource("2_5ltp2")
+
+[node name="Rocks-a" type="MeshInstance3D" parent="Details2/Parches"]
+transform = Transform3D(0.188325, 0, -0.982108, 0, 1, 0, 0.982108, 0, 0.188325, -122.131, 0, -27.2759)
+mesh = ExtResource("4_55iir")
+surface_material_override/0 = ExtResource("2_5ltp2")
+
+[node name="Patch-grass" type="MeshInstance3D" parent="Details2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -90.6342, 0, -27.5496)
+mesh = ExtResource("5_18m3h")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("2_5ltp2")
+
+[node name="Patch-grass2" type="MeshInstance3D" parent="Details2"]
+transform = Transform3D(-0.640833, 0, 0.76768, 0, 1, 0, -0.76768, 0, -0.640833, -102.177, 0, -12.2375)
+mesh = ExtResource("5_18m3h")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("2_5ltp2")
+
+[node name="Patch-grass4" type="MeshInstance3D" parent="Details2"]
+transform = Transform3D(-0.640833, 0, 0.76768, 0, 1, 0, -0.76768, 0, -0.640833, -112.526, 0, -31.8206)
+mesh = ExtResource("5_18m3h")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("2_5ltp2")
+
+[node name="Patch-grass3" type="MeshInstance3D" parent="Details2"]
+transform = Transform3D(0.77398, -0.159253, -0.612857, 0.134444, 0.987119, -0.0867166, 0.618773, -0.0152783, 0.785422, -96.6128, 0.0136571, 1.64695)
+mesh = ExtResource("5_18m3h")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("2_5ltp2")
+
+[node name="Tracks" type="Node3D" parent="."]
+
+[node name="RailWayYsplit" parent="Tracks" instance=ExtResource("6_28yo3")]
+transform = Transform3D(1, 0, 0.000244379, 0, 1, 0, -0.000244379, 0, 1, 0.000843359, 0, 47.2097)
+
+[node name="Node3D" type="Node3D" parent="."]
+
+[node name="Railway" parent="Node3D" instance=ExtResource("7_o4sis")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.33815, 0, 40.3432)
+
+[node name="Railway15" parent="Node3D" instance=ExtResource("7_o4sis")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.33823e-06, 0, 47.2705)
+
+[node name="Railway2" parent="Node3D" instance=ExtResource("7_o4sis")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.33815, 0, 37.2402)
+
+[node name="Railway3" parent="Node3D" instance=ExtResource("7_o4sis")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.33815, 0, 34.145)
+
+[node name="Railway4" parent="Node3D" instance=ExtResource("7_o4sis")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.33815, 0, 31.0419)
+
+[node name="Railway5" parent="Node3D" instance=ExtResource("7_o4sis")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.33815, 0, 27.8737)
+
+[node name="Railway6" parent="Node3D" instance=ExtResource("7_o4sis")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.33815, 0, 24.7707)
+
+[node name="Railway7" parent="Node3D" instance=ExtResource("7_o4sis")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.33815, 0, 21.6754)
+
+[node name="Railway8" parent="Node3D" instance=ExtResource("7_o4sis")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.33815, 0, 18.5724)
+
+[node name="Railway9" parent="Node3D" instance=ExtResource("7_o4sis")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.33815, 0, 15.458)
+
+[node name="Railway10" parent="Node3D" instance=ExtResource("7_o4sis")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.33815, 0, 12.355)
+
+[node name="Railway11" parent="Node3D" instance=ExtResource("7_o4sis")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.33815, 0, 9.25977)
+
+[node name="Railway12" parent="Node3D" instance=ExtResource("7_o4sis")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.33815, 0, 6.15668)
+
+[node name="Railway13" parent="Node3D" instance=ExtResource("7_o4sis")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.33815, 0, 2.98848)
+
+[node name="Railway14" parent="Node3D" instance=ExtResource("7_o4sis")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.33815, 0, -0.114527)
+
+[node name="Railway18" parent="Node3D" instance=ExtResource("7_o4sis")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.33815, 0, 40.3432)
+
+[node name="Railway19" parent="Node3D" instance=ExtResource("7_o4sis")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.33815, 0, 37.2402)
+
+[node name="Railway20" parent="Node3D" instance=ExtResource("7_o4sis")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.33815, 0, 34.145)
+
+[node name="Railway21" parent="Node3D" instance=ExtResource("7_o4sis")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.33815, 0, 31.0419)
+
+[node name="Railway22" parent="Node3D" instance=ExtResource("7_o4sis")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.33815, 0, 27.8737)
+
+[node name="Railway23" parent="Node3D" instance=ExtResource("7_o4sis")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.33815, 0, 24.7707)
+
+[node name="Railway24" parent="Node3D" instance=ExtResource("7_o4sis")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.33815, 0, 21.6754)
+
+[node name="Railway25" parent="Node3D" instance=ExtResource("7_o4sis")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.33815, 0, 18.5724)
+
+[node name="Railway26" parent="Node3D" instance=ExtResource("7_o4sis")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.33815, 0, 15.458)
+
+[node name="Railway27" parent="Node3D" instance=ExtResource("7_o4sis")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.33815, 0, 12.355)
+
+[node name="Railway28" parent="Node3D" instance=ExtResource("7_o4sis")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.33815, 0, 9.25977)
+
+[node name="Railway29" parent="Node3D" instance=ExtResource("7_o4sis")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.33815, 0, 6.15668)
+
+[node name="Railway30" parent="Node3D" instance=ExtResource("7_o4sis")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.33815, 0, 2.98848)
+
+[node name="Railway31" parent="Node3D" instance=ExtResource("7_o4sis")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.33815, 0, -0.114527)
+
+[node name="Node3D2" type="Node3D" parent="."]
+
+[node name="Railway" parent="Node3D2" instance=ExtResource("7_o4sis")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.35235, 0, 40.3432)
+
+[node name="Railway2" parent="Node3D2" instance=ExtResource("7_o4sis")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.35235, 0, 37.2402)
+
+[node name="Railway3" parent="Node3D2" instance=ExtResource("7_o4sis")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.35235, 0, 34.145)
+
+[node name="Railway4" parent="Node3D2" instance=ExtResource("7_o4sis")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.35235, 0, 31.0419)
+
+[node name="Railway5" parent="Node3D2" instance=ExtResource("7_o4sis")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.35235, 0, 27.8737)
+
+[node name="Railway6" parent="Node3D2" instance=ExtResource("7_o4sis")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.35235, 0, 24.7707)
+
+[node name="Railway7" parent="Node3D2" instance=ExtResource("7_o4sis")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.35235, 0, 21.6754)
+
+[node name="Railway8" parent="Node3D2" instance=ExtResource("7_o4sis")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.35235, 0, 18.5724)
+
+[node name="Railway9" parent="Node3D2" instance=ExtResource("7_o4sis")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.35235, 0, 15.458)
+
+[node name="Railway10" parent="Node3D2" instance=ExtResource("7_o4sis")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.35235, 0, 12.355)
+
+[node name="Railway11" parent="Node3D2" instance=ExtResource("7_o4sis")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.35235, 0, 9.25977)
+
+[node name="Railway12" parent="Node3D2" instance=ExtResource("7_o4sis")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.35235, 0, 6.15668)
+
+[node name="Railway13" parent="Node3D2" instance=ExtResource("7_o4sis")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.35235, 0, 2.98848)
+
+[node name="Railway14" parent="Node3D2" instance=ExtResource("7_o4sis")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.35235, 0, -0.114527)
+
+[node name="Railway18" parent="Node3D2" instance=ExtResource("7_o4sis")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.35235, 0, 40.3432)
+
+[node name="Railway19" parent="Node3D2" instance=ExtResource("7_o4sis")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.35235, 0, 37.2402)
+
+[node name="Railway20" parent="Node3D2" instance=ExtResource("7_o4sis")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.35235, 0, 34.145)
+
+[node name="Railway21" parent="Node3D2" instance=ExtResource("7_o4sis")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.35235, 0, 31.0419)
+
+[node name="Railway22" parent="Node3D2" instance=ExtResource("7_o4sis")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.35235, 0, 27.8737)
+
+[node name="Railway23" parent="Node3D2" instance=ExtResource("7_o4sis")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.35235, 0, 24.7707)
+
+[node name="Railway24" parent="Node3D2" instance=ExtResource("7_o4sis")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.35235, 0, 21.6754)
+
+[node name="Railway25" parent="Node3D2" instance=ExtResource("7_o4sis")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.35235, 0, 18.5724)
+
+[node name="Railway26" parent="Node3D2" instance=ExtResource("7_o4sis")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.35235, 0, 15.458)
+
+[node name="Railway27" parent="Node3D2" instance=ExtResource("7_o4sis")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.35235, 0, 12.355)
+
+[node name="Railway28" parent="Node3D2" instance=ExtResource("7_o4sis")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.35235, 0, 9.25977)
+
+[node name="Railway29" parent="Node3D2" instance=ExtResource("7_o4sis")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.35235, 0, 6.15668)
+
+[node name="Railway30" parent="Node3D2" instance=ExtResource("7_o4sis")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.35235, 0, 2.98848)
+
+[node name="Railway31" parent="Node3D2" instance=ExtResource("7_o4sis")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.35235, 0, -0.114527)

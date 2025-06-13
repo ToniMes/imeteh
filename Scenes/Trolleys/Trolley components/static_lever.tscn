@@ -71,9 +71,9 @@ mesh = ExtResource("1_2h03h")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("6_4s62t")
 
+[connection signal="lever_switched" from="." to="." method="_on_lever_switched"]
 [connection signal="body_entered" from="Lever/InteractiveLever" to="Lever/InteractiveLever" method="onHandEnter"]
 [connection signal="body_exited" from="Lever/InteractiveLever" to="Lever/InteractiveLever" method="onHandExit"]
-[connection signal="lever_switched" from="Lever/InteractiveLever" to="." method="_on_interactive_lever_lever_switched"]
-[connection signal="lever_switched" from="Lever/InteractiveLever" to="." method="disable_breaking_if_acc"]
+[connection signal="lever_switched" from="Lever/InteractiveLever" to="." method="_on_lever_switched"]
 [connection signal="body_entered" from="Lever/HiglightArea" to="." method="_on_higlight_area_body_entered"]
 [connection signal="body_exited" from="Lever/HiglightArea" to="." method="_on_higlight_area_body_exited"]

@@ -1,17 +1,35 @@
 extends Node3D
 
 var lever_switched_count:int = 0
-@onready var trolley:Trolley = $Trolley1
-@onready var turnLeverButton:ClickableButton = $Trolley1/TrolleyBody/TurnLeverButton
-@onready var turnLever:StaticLever = $Trolley1/TrolleyBody/TurnLever
+@onready var trolley:Trolley = $Trolley
+@onready var turnLeverButton:ClickableButton = $Trolley/TrolleyBody/TurnLeverButton
+@onready var turnLever:StaticLever = $Trolley/TrolleyBody/TurnLever
+@onready var accLever:StaticLever = $Trolley/TrolleyBody/AccLever
+var cabinet_opened = false
+var left_turn_count = 0
+var right_turn_count = 0
 
 func _ready() -> void:
     Audio.narrator.play_voiceline("1_1") # Lvl11-FiddleWithTheLever
+    
+    # Disabling button until cabinet doors are opened
+    turnLeverButton.enabled = false
+    
+    # Connecting all the signals
     Global.lever_switched.connect(_on_lever_switched)
+    Global.button_pressed.connect(_on_button_pressed)
     Global.cabinet_door_state_changed.connect(_on_cabinet_door_state_changed)
     Global.trolley_direction_changed.connect(_on_trolley_direction_changed)
+    
+    # Initializing levers
     turnLever.interactiveLever.enabled = false
-    turnLeverButton.connect("buttonPressed", prepareTurnLever)
+    turnLever.interactiveLever.snap(Global.LeverDirectionEnum.LEFT)
+    accLever.interactiveLever.snap(Global.LeverDirectionEnum.RIGHT)
+    
+    # Adding chunk mover to the scene
+    var chunkMover:ChunkMover = load("res://Scenes/EnvironmentChunks/ChunkMover.tscn").instantiate()
+    chunkMover.force_split_count = 12
+    add_child(chunkMover)
     
 
 func play_speeding_up():
@@ -23,47 +41,50 @@ func play_slow_down():
         Audio.narrator.play_voiceline("1_3") # Lvl13-Okay,NowTrySlowingDown
 
 
-func prepareTurnLever():
-  turnLever.interactiveLever.enabled = true
-  turnLever.visible = true
-  turnLever.targetPosition = turnLever.position + Vector3(0,0.19,0)
+func _on_lever_switched(name: String, direction: Global.LeverDirectionEnum):
+  if name != "AccLever":
+    return
 
+  Global.trolley_acceleration_changed.emit(1)
 
-func _on_lever_switched(name: String, state: bool):
-    if name != "AccLever":
-      return
-  
-    lever_switched_count += 1
-    if lever_switched_count == 1:
-        var timer12:Timer = Timer.new()
-        timer12.one_shot = true
-        timer12.wait_time = 1
-        timer12.timeout.connect(func(): play_speeding_up())
-        add_child(timer12)
-        timer12.start()
-        var timer13:Timer = Timer.new()
-        timer13.one_shot = true
-        timer13.wait_time = 7
-        timer13.timeout.connect(func(): play_slow_down())
-        add_child(timer13)
-        timer13.start()
-    elif lever_switched_count == 2:
-      Audio.narrator.play_voiceline("1_4") # Lvl14-You’reSupposedToBeSlowingDown
+  lever_switched_count += 1
+  if lever_switched_count == 1:
+    var timer12:Timer = Timer.new()
+    timer12.one_shot = true
+    timer12.wait_time = 1
+    timer12.timeout.connect(func(): play_speeding_up())
+    add_child(timer12)
+    timer12.start()
+    var timer13:Timer = Timer.new()
+    timer13.one_shot = true
+    timer13.wait_time = 7
+    timer13.timeout.connect(func(): play_slow_down())
+    add_child(timer13)
+    timer13.start()
+  elif lever_switched_count == 2:
+    Audio.narrator.play_voiceline("1_4") # Lvl14-You’reSupposedToBeSlowingDown
 
 func _on_button_pressed(name: String) -> void:
   if name == "TurnLeverButton":
-    Global.trolley_direction_changed.emit(turnLever.state)
+    trolley.prepareTurnLever()
 
-var firstOpen = true
 func _on_cabinet_door_state_changed(state: Global.DoorState):
-  if state == Global.DoorState.OPEN and firstOpen:
+  if state == Global.DoorState.OPEN and cabinet_opened == false:
     Audio.narrator.play_voiceline("1_7") # Lvl17-YouFiguredOutTheCabinetDoor
-    firstOpen = false
+    cabinet_opened = true
+    turnLeverButton.enabled = true
 
-var firstTurn = true
 func _on_trolley_direction_changed(direction: Global.TrolleyDirection):
-  if firstTurn:
+  # Updating turn counters
+  if direction == Global.TrolleyDirection.LEFT:
+    left_turn_count += 1
+  elif direction == Global.TrolleyDirection.RIGHT:
+    right_turn_count += 1
+  
+  # If this is the first time user switched turn lever
+  if left_turn_count + right_turn_count == 1:
     Audio.narrator.play_voiceline("1_8") # Lvl18-You’veFoundAWayToTurn
-    firstTurn = false
-  elif firstTurn == false and direction == Global.TrolleyDirection.LEFT:
+  
+  # If this is the first time user switched turn lever left
+  elif left_turn_count == 1 and direction == Global.TrolleyDirection.LEFT:
     Audio.narrator.play_voiceline("1_8a") # Lvl18a-NowThisIsInteresting,You’reStillGoingLeft…Hmm…

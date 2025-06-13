@@ -14,10 +14,10 @@ func _process(delta):
     physParent.rotation.z = 0
     
     # emitting event if door opened/closed
-    if physParent.global_rotation_degrees.y < 170:
-      doorState = Global.DoorState.CLOSED
-    else:
+    if physParent.global_rotation_degrees.y > 0 and physParent.global_rotation_degrees.y < 170:
       doorState = Global.DoorState.OPEN
+    else:
+      doorState = Global.DoorState.CLOSED
     if prevDoorState != doorState:
       Global.cabinet_door_state_changed.emit(doorState)
     prevDoorState = doorState
@@ -28,15 +28,3 @@ func _process(delta):
       physParent.rotation_degrees.y = 0
     elif posRotY < 225:
       physParent.rotation_degrees.y = 225
-
-  # if the lever is released in the -40 to 40 degree range,
-  # return it to neutral state
-  #elif physParent.rotation_degrees.y < 40 and physParent.rotation_degrees.y > -40:
-    #physParent.rotation.y = lerp_angle(physParent.rotation.y, 0, delta*8)
-  #
-  ## otherwise, snap it to left/right
-  #elif physParent.rotation_degrees.y > 40:
-    #physParent.rotation.y = lerp_angle(physParent.rotation.y, PI/4, delta*8)
-  #
-  #elif physParent.rotation_degrees.y < -40:
-    #physParent.rotation.y = lerp_angle(physParent.rotation.y, -PI/4, delta*8)

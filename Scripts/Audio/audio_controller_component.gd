@@ -1,18 +1,19 @@
 extends AudioStreamPlayer
 class_name AudioControllerComponent
 
-var stream_players: Array[AudioStreamPlayer] = []
+var free_stream_players: Array[AudioStreamPlayer] = []
+var busy_stream_players: Array[AudioStreamPlayer] = []
 
 func _init() -> void:
   # Adding a certain amount of stream players that will be used to play sound
   for i in range(self.max_polyphony):
     var streamPlayer = AudioStreamPlayer.new()
     streamPlayer.bus = bus
-    stream_players.append(streamPlayer)
+    free_stream_players.append(streamPlayer)
     add_child(streamPlayer)
 
-func play_sound(audioPath: String, loop: bool = false, freeUpPlayer: bool = true) -> void:
-  if stream_players.is_empty():
+func play_sound(audioPath: String, loop: bool = false, freeUpPlayer: bool = true) -> AudioStreamPlayer:
+  if free_stream_players.is_empty():
     # Not playing the sound if no stream players are available
     if freeUpPlayer == false:
       printerr("Can't play sound, not enough stream players free!")
@@ -20,10 +21,7 @@ func play_sound(audioPath: String, loop: bool = false, freeUpPlayer: bool = true
 	# Freeing up a stream player by pausing the first child (oldest player) and then appending it to the back
     else:
       var first_child: AudioStreamPlayer = self.get_child(0)
-      first_child.stop()
-      self.remove_child(first_child)
-      self.add_child(first_child)
-      stream_players.push_front(first_child)
+      stop_stream_player(first_child)
 
     
   # Reserving a stream player
@@ -31,7 +29,7 @@ func play_sound(audioPath: String, loop: bool = false, freeUpPlayer: bool = true
   if ResourceLoader.exists(resource_path) == false:
     print("Resource path " + resource_path + " does not exist!")
     return
-  var stream_player = stream_players.pop_front()
+  var stream_player = free_stream_players.pop_front()
   stream_player.stream = load(resource_path)
   
   # Looping if loop=true, freeing up stream_player otherwise
@@ -43,9 +41,22 @@ func play_sound(audioPath: String, loop: bool = false, freeUpPlayer: bool = true
   # Playing the sound effect
   print("playing sound " + audioPath)
   stream_player.play()
+  busy_stream_players.append(stream_player)
+  return stream_player
+
+func stop_stream_player(stream_player: AudioStreamPlayer) -> void:
+  if stream_player == null:
+    return
+  stream_player.stop()
+  busy_stream_players.remove_at(busy_stream_players.find(stream_player))
+  free_stream_players.append(stream_player)
+
+func stop_all() -> void:
+  while !busy_stream_players.is_empty():
+    stop_stream_player(busy_stream_players.get(0))
 
 func _on_loop_sound(stream_player: AudioStreamPlayer):
   stream_player.play()
 
 func _on_sound_finished(stream_player: AudioStreamPlayer):
-  stream_players.append(stream_player)
+  free_stream_players.append(stream_player)

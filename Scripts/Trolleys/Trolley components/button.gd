@@ -1,13 +1,14 @@
 extends Node3D
 class_name  ClickableButton
 
+var enabled = true # if false button is not clickable
 var button_pressed = false
 signal buttonPressed
 @onready var buttonTop = $PickableObject/ButtonTop
 
 func _process(delta):
-# when gripped, button gets pressed down and comes back up
-  if buttonTop and buttonTop.isGripped and buttonTop.hand:
+  # when gripped, button gets pressed down and comes back up
+  if enabled and buttonTop and buttonTop.isGripped and buttonTop.hand:
     start_button_press_animation()
   
   

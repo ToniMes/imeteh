@@ -3,30 +3,12 @@ class_name Trolley
 
 @onready var turnLever: StaticLever = $TrolleyBody/TurnLever
 @onready var accLever: StaticLever = $TrolleyBody/AccLever
-@onready var railWaySpawner: RailWaySpawner = $TrolleyBody/RailwaySpawner
 var currentTrack: int = 0
 var speed: float = 0
 var started: bool = false
 var target_x: float = 0
 var target_y: float = 0
 var max_speed: float = 10
-
-
-func _ready():
-  Global.lever_switched.connect(_on_lever_switched)
-
-
-func _process(delta):
-  #var target_speed = -(max_speed * accLever.state if accLever.breakingEnabled else max_speed)
-  #speed = lerp(speed, target_speed, delta)
-  #pass
-  #position.z -= delta * speed
-  #global_position.x = lerp(global_position.x, target_x, delta * 10)
-  #global_position.y = lerp(global_position.y, target_y, delta * 10)
-  #if speed > 2 and !started:
-    #started = true
-    #Audio.sfxPlayer.play_sound("sfx/trolley_running_ambiance.mp3", true)
-  pass
 
 
 func switchTrack(track: int):
@@ -50,11 +32,10 @@ func bump():
   target_y = 0
 
 
-func _on_lever_switched(name: String, state: bool) -> void:
-  if name == "TurnLever":
-    var direction: Global.TrolleyDirection
-    if state == false:
-      direction = Global.TrolleyDirection.LEFT
-    else:
-      direction = Global.TrolleyDirection.RIGHT
-    Global.trolley_direction_changed.emit(direction)
+func prepareTurnLever():
+  if turnLever.interactiveLever.enabled == true:
+    return
+  turnLever.interactiveLever.enabled = true
+  turnLever.visible = true
+  turnLever.targetPosition = turnLever.position + Vector3(0,0.19,0)
+  Global.trolley_direction_changed.emit(turnLever.interactiveLever.lever_direction)
