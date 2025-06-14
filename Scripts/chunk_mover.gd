@@ -79,6 +79,7 @@ func _process(delta: float) -> void:
   if split_tracker:
     if split_tracker.position.z < 53 and split_check:
       target_speed = max_speed/6
+      Global.trolley_track_changed.emit(turn_direction + 1)
     if split_tracker.position.z < 49.5 and split_check:
       turn_lock = true
       target_offset = turn_offset * turn_direction
@@ -129,6 +130,7 @@ func _process(delta: float) -> void:
     chunk_to_remove.queue_free()
     chunk_parent.remove_child(chunk_to_remove)
     chunks.append(new_chunk)
+    
     if Global.current_level == 1:
       if chunk_count == 11:
         Audio.narrator.play_voiceline("1_5") # Lvl15-NowIsAGoodATimeAsAnyToTellYou…
@@ -139,6 +141,11 @@ func _process(delta: float) -> void:
           Audio.narrator.play_voiceline("1_9b") # Lvl19b-YouRanHerOver
         else:
           Audio.narrator.play_voiceline("1_9a") # Lvl19a-GrandmaLives
+    
+    elif Global.current_level == 2:
+      if chunk_count == 10:
+        Audio.narrator.play_voiceline("2_6") # Lvl 2 6 - There will be kittens in front of you
+          
           
 func on_acc_change(acceleration: int):
   target_speed = acceleration * max_speed
