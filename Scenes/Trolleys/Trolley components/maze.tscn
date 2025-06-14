@@ -34,7 +34,7 @@ collision_layer = 16
 collision_mask = 196624
 
 [node name="Area3D" type="Area3D" parent="Box"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.12954, -0.0345958, 0.100077)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.164567, -0.0345958, -0.163318)
 collision_layer = 16
 collision_mask = 16
 
