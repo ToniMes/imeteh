@@ -16,6 +16,7 @@ func _ready() -> void:
   Global.lever_switched.connect(_on_lever_switched)
   Global.finished_maze.connect(_on_finished_maze)
   Global.trolley_acceleration_changed.emit(1)
+  Global.trolley_direction_changed.emit(Global.TrolleyDirection.LEFT)
 
 
 func _on_lever_switched(name: String, direction: Global.LeverDirectionEnum) -> void:
@@ -32,4 +33,4 @@ func _on_lever_switched(name: String, direction: Global.LeverDirectionEnum) -> v
 
 
 func _on_finished_maze() -> void:
-  print("maze finished")
+  Global.trolley_direction_changed.emit(Global.TrolleyDirection.RIGHT)
