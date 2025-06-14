@@ -14,7 +14,7 @@ size = Vector3(0.1, 0.05, 0.1)
 albedo_color = Color(0.241156, 0.241156, 0.241156, 1)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_iju5o"]
-radius = 0.15
+radius = 0.1
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_0kpiu"]
 top_radius = 0.025
@@ -49,7 +49,7 @@ script = ExtResource("1_xeg4x")
 metadata/_custom_type_script = "uid://c61m04lkimt5f"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PickableObject/ButtonTop"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000719011, 0.0203075, -0.000884593)
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0.000719011, 0.0203075, -0.000884593)
 shape = SubResource("SphereShape3D_iju5o")
 
 [node name="ButtonTopMesh" type="MeshInstance3D" parent="PickableObject/ButtonTop"]

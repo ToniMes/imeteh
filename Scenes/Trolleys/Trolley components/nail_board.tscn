@@ -23,13 +23,13 @@ mesh = SubResource("BoxMesh_4rqem")
 shape = SubResource("BoxShape3D_dn2gp")
 
 [node name="Nail" parent="." instance=ExtResource("1_dn2gp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0888481, -0.167637)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05, -0.168)
 
 [node name="Nail2" parent="." instance=ExtResource("1_dn2gp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0888481, -0.00385351)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05, -0.004)
 
 [node name="Nail3" parent="." instance=ExtResource("1_dn2gp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0888481, 0.159688)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05, 0.16)
 
 [connection signal="nailed" from="Nail" to="." method="onNailed"]
 [connection signal="nailed" from="Nail2" to="." method="onNailed"]

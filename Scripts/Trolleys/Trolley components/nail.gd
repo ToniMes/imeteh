@@ -1,9 +1,10 @@
 extends Node3D
+class_name Nail
 
 @onready var head: RigidBody3D = $Head
 @onready var base = head.position.y
 
-var nailedFlag = false
+var nailedFlag = true
 signal nailed
 
 

@@ -1,6 +1,7 @@
 extends Node3D
 
-@onready var trolley:Trolley  = $Trolley
+@onready var trolley:Trolley = $Trolley
+@onready var nail_board:NailBoard = $Trolley/NailBoard
 @onready var trolley_body:MeshInstance3D  = trolley.get_node("TrolleyBody")
 @onready var turn_lever:StaticLever  = trolley_body.get_node("TurnLever")
 @onready var acc_lever:StaticLever  = trolley_body.get_node("AccLever")
@@ -12,6 +13,7 @@ func _ready() -> void:
   
   # Connecting signals
   Global.connectGlobalSignal(Global.lever_switched, _on_lever_switched)
+  Global.button_pressed.connect(_on_button_pressed)
   
   # Initializing levers
   turn_lever.interactiveLever.snap(Global.LeverDirectionEnum.LEFT)
@@ -21,7 +23,26 @@ func _ready() -> void:
   var chunkMover:ChunkMover = load("res://Scenes/EnvironmentChunks/ChunkMover.tscn").instantiate()
   chunkMover.force_split_count = 12
   add_child(chunkMover)
+  
+  Audio.narrator.play_voiceline("2_1") # Lvl 2 1 - Intro
 
+func _on_button_pressed(name: String) -> void:
+  if name == "LeftNailButton":
+    nail_board.pop_up(0)
+  if name == "MiddleNailButton":
+    nail_board.pop_up(1)
+  if name == "RightNailButton":
+    nail_board.pop_up(2)
+
+func play_please_slow_down() -> void:
+  # only playing if user didn't break exactly once
+  if acc_lever_switch_counter < 2:
+    Audio.narrator.play_voiceline("2_2a") # Lvl 2 2a - (player did not listen) Please, slow us down now
+
+func play_give_juice() -> void:
+  # only playing if user broke only once
+  if acc_lever_switch_counter == 2:
+    Audio.narrator.play_voiceline("2_4") # Lvl 2 4 - Please, give this puppy some juice
 
 func _on_lever_switched(name: String, direction: Global.LeverDirectionEnum) -> void:
   if name != "AccLever":
@@ -29,6 +50,24 @@ func _on_lever_switched(name: String, direction: Global.LeverDirectionEnum) -> v
   
   Global.trolley_acceleration_changed.emit(1 if direction == Global.LeverDirectionEnum.LEFT else 0)
   acc_lever_switch_counter += 1
+  
+  if acc_lever_switch_counter == 1:
+    Audio.narrator.play_voiceline("2_2") # Lvl 2 2 - Okay, now we are speeding up, now please, slow us down
+    var slowDownTimer:Timer = Timer.new()
+    slowDownTimer.one_shot = true
+    slowDownTimer.wait_time = 10
+    slowDownTimer.timeout.connect(func(): play_please_slow_down())
+    add_child(slowDownTimer)
+    slowDownTimer.start()
+  
+  if acc_lever_switch_counter == 2:
+    Audio.narrator.play_voiceline("2_3") # Lvl 2 3 - See, we slowed down
+    var giveJuiceTimer:Timer = Timer.new()
+    giveJuiceTimer.one_shot = true
+    giveJuiceTimer.wait_time = 20
+    giveJuiceTimer.timeout.connect(func(): play_give_juice())
+    add_child(giveJuiceTimer)
+    giveJuiceTimer.start()
   
    # breaking the lever if this this is the third lever switch
   if acc_lever_switch_counter == 3:
@@ -44,3 +83,5 @@ func _on_lever_switched(name: String, direction: Global.LeverDirectionEnum) -> v
       player.left_pickup._pick_up_object(lever)
     else:
       player.right_pickup._pick_up_object(lever)
+      
+    Audio.narrator.play_voiceline("2_5") # Lvl 2 5 - Well that wasn’t supposed to happen
