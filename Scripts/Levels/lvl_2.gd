@@ -7,6 +7,7 @@ extends Node3D
 @onready var acc_lever:StaticLever  = trolley_body.get_node("AccLever")
 @onready var player:PlayerController = trolley_body.get_node("Player")
 var acc_lever_switch_counter = 0
+var button_press_counter = 0
 
 func _ready() -> void:
   Global.current_level = 2
@@ -27,6 +28,13 @@ func _ready() -> void:
   Audio.narrator.play_voiceline("2_1") # Lvl 2 1 - Intro
 
 func _on_button_pressed(name: String) -> void:
+  button_press_counter += 1
+  
+  # Playing audio on first button press
+  if button_press_counter == 1:
+    Audio.narrator.play_voiceline("2_7") # Lvl 2 7 - Hmm.. It seems that when you press those little buttons…
+  
+  # Popping out the nail when a button is pressed
   if name == "LeftNailButton":
     nail_board.pop_up(0)
   if name == "MiddleNailButton":

@@ -10,7 +10,6 @@ enum TrolleyDirection { LEFT, NONE, RIGHT }
 enum LeverDirectionEnum { LEFT, NONE, RIGHT }
 enum DoorState { OPEN, CLOSED }
 var current_level: int = 0
-@export var audio_controller: AudioController = load("res://Scenes/Audio/audio_controller.tscn").instantiate()
 
 func _ready() -> void:
   pass
