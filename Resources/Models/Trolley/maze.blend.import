@@ -4,12 +4,11 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://cquyirgu815e8"
-path="res://.godot/imported/maze.blend-7c5c9e65591ddc7bfcf8962c6f6a24d2.scn"
+valid=false
 
 [deps]
 
 source_file="res://Resources/Models/Trolley/maze.blend"
-dest_files=["res://.godot/imported/maze.blend-7c5c9e65591ddc7bfcf8962c6f6a24d2.scn"]
 
 [params]
 
