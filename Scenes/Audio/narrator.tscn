@@ -1,17 +1,17 @@
-[gd_scene load_steps=50 format=3 uid="uid://dp07bx5qmqn8o"]
+[gd_scene load_steps=62 format=3 uid="uid://dp07bx5qmqn8o"]
 
 [ext_resource type="Script" uid="uid://csb80qnbfhur4" path="res://Scripts/narrator.gd" id="1_dd1pa"]
-[ext_resource type="AudioStream" uid="uid://beca6ij76jorw" path="res://Resources/Audio/narrator/Lvl1/Lvl 1 1 - fiddle with the lever.mp3" id="2_18b45"]
-[ext_resource type="AudioStream" uid="uid://xfpr8s7uha6n" path="res://Resources/Audio/narrator/Lvl1/Lvl 1 2  - now we’re speeding up.mp3" id="3_i656x"]
-[ext_resource type="AudioStream" uid="uid://brqlqwqx1d5nl" path="res://Resources/Audio/narrator/Lvl1/Lvl 1 3 - okay, now try slowing down.mp3" id="4_pfmkl"]
-[ext_resource type="AudioStream" uid="uid://diwidjxkychc5" path="res://Resources/Audio/narrator/Lvl1/Lvl 1 4 - you’re supposed to be slowing down.mp3" id="5_pegxl"]
-[ext_resource type="AudioStream" uid="uid://cfuhlhxx4kb5s" path="res://Resources/Audio/narrator/Lvl1/Lvl 1 5 - Now is a good a time as any to tell you….mp3" id="6_j4svu"]
-[ext_resource type="AudioStream" uid="uid://dga5jmcfj4a5q" path="res://Resources/Audio/narrator/Lvl1/Lvl 1 6 - I’m here for you.mp3" id="7_mw0vf"]
-[ext_resource type="AudioStream" uid="uid://bmbnyyrnhe7yu" path="res://Resources/Audio/narrator/Lvl1/Lvl 1 7 - you figured out the cabinet door.mp3" id="8_xxq3u"]
-[ext_resource type="AudioStream" uid="uid://dnajcyxvc34kq" path="res://Resources/Audio/narrator/Lvl1/Lvl 1 8- you’ve found a way to turn.mp3" id="9_3w3vl"]
-[ext_resource type="AudioStream" uid="uid://dmfushpbkqamj" path="res://Resources/Audio/narrator/Lvl1/Lvl 1 8a - Now this is interesting, you’re still going left… hmm….mp3" id="10_21emf"]
-[ext_resource type="AudioStream" uid="uid://ewvak4h7ygil" path="res://Resources/Audio/narrator/Lvl1/Lvl 1 9a - Grandma lives.mp3" id="11_ym5mg"]
-[ext_resource type="AudioStream" uid="uid://dl6pwpk1vefgk" path="res://Resources/Audio/narrator/Lvl1/Lvl 1 9b - you ran her over.mp3" id="12_0oyqt"]
+[ext_resource type="AudioStream" uid="uid://beca6ij76jorw" path="res://Resources/Audio/narrator/Lvl 1/Lvl 1 1 - fiddle with the lever.mp3" id="2_18b45"]
+[ext_resource type="AudioStream" uid="uid://xfpr8s7uha6n" path="res://Resources/Audio/narrator/Lvl 1/Lvl 1 2  - now we’re speeding up.mp3" id="3_i656x"]
+[ext_resource type="AudioStream" uid="uid://brqlqwqx1d5nl" path="res://Resources/Audio/narrator/Lvl 1/Lvl 1 3 - okay, now try slowing down.mp3" id="4_pfmkl"]
+[ext_resource type="AudioStream" uid="uid://diwidjxkychc5" path="res://Resources/Audio/narrator/Lvl 1/Lvl 1 4 - you’re supposed to be slowing down.mp3" id="5_pegxl"]
+[ext_resource type="AudioStream" uid="uid://cfuhlhxx4kb5s" path="res://Resources/Audio/narrator/Lvl 1/Lvl 1 5 - Now is a good a time as any to tell you….mp3" id="6_j4svu"]
+[ext_resource type="AudioStream" uid="uid://dga5jmcfj4a5q" path="res://Resources/Audio/narrator/Lvl 1/Lvl 1 6 - I’m here for you.mp3" id="7_mw0vf"]
+[ext_resource type="AudioStream" uid="uid://bmbnyyrnhe7yu" path="res://Resources/Audio/narrator/Lvl 1/Lvl 1 7 - you figured out the cabinet door.mp3" id="8_xxq3u"]
+[ext_resource type="AudioStream" uid="uid://dnajcyxvc34kq" path="res://Resources/Audio/narrator/Lvl 1/Lvl 1 8- you’ve found a way to turn.mp3" id="9_3w3vl"]
+[ext_resource type="AudioStream" uid="uid://dmfushpbkqamj" path="res://Resources/Audio/narrator/Lvl 1/Lvl 1 8a - Now this is interesting, you’re still going left… hmm….mp3" id="10_21emf"]
+[ext_resource type="AudioStream" uid="uid://ewvak4h7ygil" path="res://Resources/Audio/narrator/Lvl 1/Lvl 1 9a - Grandma lives.mp3" id="11_ym5mg"]
+[ext_resource type="AudioStream" uid="uid://dl6pwpk1vefgk" path="res://Resources/Audio/narrator/Lvl 1/Lvl 1 9b - you ran her over.mp3" id="12_0oyqt"]
 [ext_resource type="AudioStream" uid="uid://crjn47o1eoay3" path="res://Resources/Audio/narrator/Lvl 2/Lvl 2 1 - Intro.mp3" id="13_i656x"]
 [ext_resource type="AudioStream" uid="uid://d4if36ncefffo" path="res://Resources/Audio/narrator/Lvl 2/Lvl 2 2 - Okay, now we are speeding up, now please, slow us down.mp3" id="13_xbqli"]
 [ext_resource type="AudioStream" uid="uid://cm57i0psuuk3r" path="res://Resources/Audio/narrator/Lvl 2/Lvl 2 2a - (player did not listen) Please, slow us down now.mp3" id="14_0dxa6"]
@@ -24,6 +24,12 @@
 [ext_resource type="AudioStream" uid="uid://dr2l0784facb1" path="res://Resources/Audio/narrator/Lvl 2/Lvl 2 8a - Just making sure you’re aware that you’re still headed to the left, right_.mp3" id="21_ben2q"]
 [ext_resource type="AudioStream" uid="uid://dywmbntspdmv8" path="res://Resources/Audio/narrator/Lvl 2/Lvl 2 9a - You know what they say….mp3" id="22_wy1ry"]
 [ext_resource type="AudioStream" uid="uid://dnof6rs1sv7jr" path="res://Resources/Audio/narrator/Lvl 2/Lvl 2 9b - The kittens live.mp3" id="23_5sw8k"]
+[ext_resource type="AudioStream" uid="uid://yc3x7n35ryw5" path="res://Resources/Audio/narrator/Lvl 3/Lvl 3 2 - Now the way you solve this maze.mp3" id="25_nhsgq"]
+[ext_resource type="AudioStream" uid="uid://cib0m2iywk3q1" path="res://Resources/Audio/narrator/Lvl 3/Lvl 3 1 - There is a maze that you should solve.mp3" id="25_qalyr"]
+[ext_resource type="AudioStream" uid="uid://cdsenin10dywg" path="res://Resources/Audio/narrator/Lvl 3/Lvl 3 3 - now is a good time as any.mp3" id="26_qalyr"]
+[ext_resource type="AudioStream" uid="uid://b8jskjx268072" path="res://Resources/Audio/narrator/Lvl 3/Lvl 3 4 - Huzzah, you solved the maze.mp3" id="27_hkasu"]
+[ext_resource type="AudioStream" uid="uid://cuhhevk3djjyi" path="res://Resources/Audio/narrator/Lvl 3/Lvl 3 5a - See, you turned right and saved Thesius.mp3" id="28_fc8sp"]
+[ext_resource type="AudioStream" uid="uid://clipugxaa0neh" path="res://Resources/Audio/narrator/Lvl 3/Lvl 3 5b - Ooh, that was quite ugly.mp3" id="29_af0sw"]
 
 [sub_resource type="Animation" id="Animation_upn4r"]
 resource_name = "1_1"
@@ -781,6 +787,106 @@ tracks/1/keys = {
 }
 tracks/1/use_blend = true
 
+[sub_resource type="Animation" id="Animation_olbqx"]
+resource_name = "3_1"
+length = 14.0
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Subtitles:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.8, 2.5, 3, 5.9, 6.5, 10.8, 13.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": ["", "Yes, hi hi", "", "this time around you are already moving", "", "and in front of you on your little control board", " there is a maze that you should solve.", ""]
+}
+tracks/1/type = "audio"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Lvl3/Lvl31-ThereIsAMazeThatYouShouldSolve")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("25_qalyr")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/1/use_blend = true
+
+[sub_resource type="Animation" id="Animation_qalyr"]
+resource_name = "3_2"
+length = 17.0
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Subtitles:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.2, 2.9, 3.9, 11.7, 12.1, 14.3, 14.6, 16.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": ["", "Now, the way you solve this maze,", "basically,", "there is a lever to your left, it moves the little ball left or right, 
+and there is a lever to your right, which moves the little ball up or down.", "", "Get the little ball to the end of the maze.", "", "That's all you have to do. ", ""]
+}
+tracks/1/type = "audio"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Lvl3/Lvl32-NowTheWayYouSolveThisMaze")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("25_nhsgq")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/1/use_blend = true
+
+[sub_resource type="Animation" id="Animation_hkasu"]
+resource_name = "3_3"
+length = 36.0
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Subtitles:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.9, 4.9, 8.1, 11.9, 12.7, 17.2, 17.6, 21, 22, 24.7, 26.2, 29, 30.5, 32.6, 33.9, 34.7, 35.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": ["", "And given that we've already been here,", "I suppose now is a good time as any to tell you that", "in front of you in about, oh, a 
+minute or two there will be a Y split.", "", "To your left, where you were headed, once more, is Theseus.", "", "That's right, the Greek hero who 
+solved the maze.", "So", "I suppose you should look up to him, do as he did,", "and save his life", "so that you may turn to the 
+right once that the maze is solved.", "", " Unless, of course, you're into", "running people over.", "", "But that's up to you. ", ""]
+}
+tracks/1/type = "audio"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Lvl3/Lvl33-NowIsAGoodTimeAsAny")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("26_qalyr")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/1/use_blend = true
+
 [sub_resource type="Animation" id="Animation_0522o"]
 length = 0.001
 tracks/0/type = "value"
@@ -795,6 +901,103 @@ tracks/0/keys = {
 "update": 1,
 "values": [""]
 }
+
+[sub_resource type="Animation" id="Animation_fc8sp"]
+resource_name = "3_4"
+length = 4.0
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Subtitles:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.8, 3.7),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": ["", "Huzzah! You've solved the maze.", ""]
+}
+tracks/1/type = "audio"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Lvl3/Lvl34-Huzzah,YouSolvedTheMaze")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("27_hkasu")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/1/use_blend = true
+
+[sub_resource type="Animation" id="Animation_af0sw"]
+resource_name = "3_5"
+length = 12.0
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Subtitles:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.2, 2.2, 4.8, 7.2, 7.9, 9.8, 10.5, 12.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": ["", "See?", "You turned right and Theseus lives.", "He's gonna go on and save Greece or something...", "", "whatever it is that Greek heroes do.", "", "Good job.", ""]
+}
+tracks/1/type = "audio"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Lvl3/Lvl35a-See,YouTurnedRightAndSavedThesius")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("28_fc8sp")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/1/use_blend = true
+
+[sub_resource type="Animation" id="Animation_u5xt2"]
+resource_name = "3_5b"
+length = 15.0
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Subtitles:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 3.6, 6.1, 10.5, 11.1, 12.9, 14, 15),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": ["", "Ooh, that was quite ugly.", "It would have been better for the minotaur to eat him.", "This was a gruesome, 
+gruesome death for a hero of Greece.", "", "Who are you gonna run over next? Hercules?", "Zeus?", "Hera?", ""]
+}
+tracks/1/type = "audio"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Lvl3/Lvl35b-Ooh,ThatWasQuiteUgly")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("29_af0sw")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/1/use_blend = true
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_uljr8"]
 _data = {
@@ -821,6 +1024,12 @@ _data = {
 &"2_8a": SubResource("Animation_ben2q"),
 &"2_9a": SubResource("Animation_wy1ry"),
 &"2_9b": SubResource("Animation_5sw8k"),
+&"3_1": SubResource("Animation_olbqx"),
+&"3_2": SubResource("Animation_qalyr"),
+&"3_3": SubResource("Animation_hkasu"),
+&"3_4": SubResource("Animation_fc8sp"),
+&"3_5a": SubResource("Animation_af0sw"),
+&"3_5b": SubResource("Animation_u5xt2"),
 &"RESET": SubResource("Animation_0522o")
 }
 
@@ -920,3 +1129,15 @@ bus = &"Narrator"
 bus = &"Narrator"
 
 [node name="Lvl3" type="Node" parent="."]
+
+[node name="Lvl31-ThereIsAMazeThatYouShouldSolve" type="AudioStreamPlayer" parent="Lvl3"]
+
+[node name="Lvl32-NowTheWayYouSolveThisMaze" type="AudioStreamPlayer" parent="Lvl3"]
+
+[node name="Lvl33-NowIsAGoodTimeAsAny" type="AudioStreamPlayer" parent="Lvl3"]
+
+[node name="Lvl34-Huzzah,YouSolvedTheMaze" type="AudioStreamPlayer" parent="Lvl3"]
+
+[node name="Lvl35a-See,YouTurnedRightAndSavedThesius" type="AudioStreamPlayer" parent="Lvl3"]
+
+[node name="Lvl35b-Ooh,ThatWasQuiteUgly" type="AudioStreamPlayer" parent="Lvl3"]
