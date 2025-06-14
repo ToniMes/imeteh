@@ -5,6 +5,7 @@ signal button_pressed(name: String)
 signal trolley_direction_changed(direction: TrolleyDirection)
 signal trolley_acceleration_changed(accelration: int)
 signal cabinet_door_state_changed(state: DoorState)
+signal finished_maze
 enum TrolleyDirection { LEFT, NONE, RIGHT }
 enum LeverDirectionEnum { LEFT, NONE, RIGHT }
 enum DoorState { OPEN, CLOSED }
