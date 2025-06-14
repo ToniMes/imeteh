@@ -1,0 +1,38 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://da8oi2pd78hoa"
+path.s3tc="res://.godot/imported/Low_poly_grandma_blo_0614144250_texture_0.png-d39a64313ce83a0dfdee0c21ab0831e8.s3tc.ctex"
+metadata={
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
+}
+generator_parameters={
+"md5": "62e36828cc28deb82ee0537f40b44c06"
+}
+
+[deps]
+
+source_file="res://Resources/Models/Grandma/Low_poly_grandma_blo_0614144250_texture_0.png"
+dest_files=["res://.godot/imported/Low_poly_grandma_blo_0614144250_texture_0.png-d39a64313ce83a0dfdee0c21ab0831e8.s3tc.ctex"]
+
+[params]
+
+compress/mode=2
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/normal_map=0
+compress/channel_pack=0
+mipmaps/generate=true
+mipmaps/limit=-1
+roughness/mode=0
+roughness/src_normal=""
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=0
