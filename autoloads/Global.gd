@@ -28,4 +28,4 @@ func start_next_level():
 func start_level(level: int = current_level):
   current_level = level
   var level_scene = "res://Scenes/Levels/lvl" + str(current_level) + ".tscn"
-  get_tree().change_scene_to_file(level_scene)
+  TransitionManager.switch_to_level(level_scene)
