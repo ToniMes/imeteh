@@ -49,3 +49,4 @@ func snap(direction: Global.LeverDirectionEnum):
   elif direction == Global.LeverDirectionEnum.LEFT:
     rot = -PI/6
   physParent.rotation.y = rot
+  lever_direction = direction
