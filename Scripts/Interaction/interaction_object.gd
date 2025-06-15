@@ -2,6 +2,8 @@
 extends Area3D
 class_name InteractiveObject
 
+signal button_pressed
+
 var physParent: PhysicsBody3D # the physical object this InteractiveObject is tied to
 var hand: StaticBody3D # the hand currently interacting with this object
 var isGripped: bool
@@ -17,6 +19,7 @@ func onHandEnter(body: Node3D):
     hand = body
     #also assign self in the controller instance
     hand.get_parent().interactionObject = self
+    button_pressed.emit()
 
 
 # break the connection between self and hand on exit

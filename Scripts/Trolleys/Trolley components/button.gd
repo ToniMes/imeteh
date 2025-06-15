@@ -4,17 +4,16 @@ class_name  ClickableButton
 var enabled = true # if false button is not clickable
 var button_pressed = false
 signal buttonPressed
-@onready var buttonTop = $PickableObject/ButtonTop
+@onready var buttonTop = $ButtonBody/ButtonTop
 
-func _process(delta):
-  # when gripped, button gets pressed down and comes back up
-  if enabled and buttonTop and buttonTop.isGripped and buttonTop.hand:
-    start_button_press_animation()
-  
-  
-func start_button_press_animation():
+
+func _ready() -> void:
+  $ButtonBody/ButtonTop.connect("button_pressed", _on_button_pressed)
+
+
+func _on_button_pressed():
   # skipping animation if button animation is in progress
-  if button_pressed:
+  if !enabled or button_pressed:
     return
   
   button_pressed = true

@@ -1,7 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://c2j7c64ojidai"]
+[gd_scene load_steps=14 format=3 uid="uid://c2j7c64ojidai"]
 
 [ext_resource type="Script" uid="uid://dltsl12v7qoe0" path="res://Scripts/Trolleys/Trolley components/button.gd" id="1_1cmwl"]
 [ext_resource type="Script" uid="uid://c61m04lkimt5f" path="res://Scripts/Interaction/interaction_object.gd" id="1_xeg4x"]
+[ext_resource type="Script" uid="uid://dq52wsf137np1" path="res://Scripts/Trolleys/Trolley components/button_body.gd" id="2_1u6oo"]
+[ext_resource type="Script" uid="uid://bv2d1r7ven1av" path="res://addons/godot-xr-tools/objects/highlight/highlight_visible.gd" id="3_phtye"]
+[ext_resource type="Material" uid="uid://g8njdjfj8y2b" path="res://Resources/Materials/highlight_material.tres" id="4_1u6oo"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_smycg"]
 height = 0.04
@@ -24,39 +27,64 @@ height = 0.03
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0kpiu"]
 albedo_color = Color(0.733002, 1.64848e-06, 3.85046e-07, 1)
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_1u6oo"]
+radius = 0.2
+
+[sub_resource type="BoxMesh" id="BoxMesh_j5wn8"]
+material = ExtResource("4_1u6oo")
+flip_faces = true
+size = Vector3(0.11, 0.051, 0.11)
+
 [node name="Button" type="Node3D"]
 script = ExtResource("1_1cmwl")
 
-[node name="PickableObject" type="RigidBody3D" parent="."]
+[node name="ButtonBody" type="RigidBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.00457452, 0)
 collision_layer = 3
 collision_mask = 2
 gravity_scale = 0.0
+script = ExtResource("2_1u6oo")
 
-[node name="CollisionShape" type="CollisionShape3D" parent="PickableObject"]
+[node name="CollisionShape" type="CollisionShape3D" parent="ButtonBody"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0389582, 0)
 shape = SubResource("CylinderShape3D_smycg")
 
-[node name="ButtonBottomMesh" type="MeshInstance3D" parent="PickableObject"]
+[node name="ButtonBottomMesh" type="MeshInstance3D" parent="ButtonBody"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00457452, 0)
 mesh = SubResource("BoxMesh_lkjnc")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_1cmwl")
 
-[node name="ButtonTop" type="Area3D" parent="PickableObject"]
+[node name="ButtonTop" type="Area3D" parent="ButtonBody"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00457452, 0)
 script = ExtResource("1_xeg4x")
 metadata/_custom_type_script = "uid://c61m04lkimt5f"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="PickableObject/ButtonTop"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ButtonBody/ButtonTop"]
 transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0.000719011, 0.0203075, -0.000884593)
 shape = SubResource("SphereShape3D_iju5o")
 
-[node name="ButtonTopMesh" type="MeshInstance3D" parent="PickableObject/ButtonTop"]
+[node name="ButtonTopMesh" type="MeshInstance3D" parent="ButtonBody/ButtonTop"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0356148, 0)
 mesh = SubResource("CylinderMesh_0kpiu")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_0kpiu")
 
-[connection signal="body_entered" from="PickableObject/ButtonTop" to="PickableObject/ButtonTop" method="onHandEnter"]
-[connection signal="body_exited" from="PickableObject/ButtonTop" to="PickableObject/ButtonTop" method="onHandExit"]
+[node name="HighlightArea" type="Area3D" parent="ButtonBody"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ButtonBody/HighlightArea"]
+shape = SubResource("SphereShape3D_1u6oo")
+
+[node name="ButtonBottomHighlight" type="Node3D" parent="ButtonBody"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000602722, 0.00559972, -0.000512034)
+script = ExtResource("3_phtye")
+metadata/_custom_type_script = "uid://bv2d1r7ven1av"
+
+[node name="HiglightMesh" type="MeshInstance3D" parent="ButtonBody/ButtonBottomHighlight"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00498918, 0)
+mesh = SubResource("BoxMesh_j5wn8")
+
+[connection signal="body_entered" from="ButtonBody/ButtonTop" to="ButtonBody/ButtonTop" method="onHandEnter"]
+[connection signal="body_exited" from="ButtonBody/ButtonTop" to="ButtonBody/ButtonTop" method="onHandExit"]
+[connection signal="body_entered" from="ButtonBody/HighlightArea" to="ButtonBody" method="_on_highlight_area_body_entered"]
+[connection signal="body_exited" from="ButtonBody/HighlightArea" to="ButtonBody" method="_on_highlight_area_body_exited"]
