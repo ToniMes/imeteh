@@ -63,6 +63,7 @@ func _on_lever_switched(name: String, direction: Global.LeverDirectionEnum):
     timer13.start()
   elif lever_switched_count == 2:
     Audio.narrator.play_voiceline("1_4") # Lvl14-You’reSupposedToBeSlowingDown
+    Audio.sfxPlayer.play_sound("sfx/broken_breaks.mp3", true)
 
 func _on_button_pressed(name: String) -> void:
   if name == "TurnLeverButton":
