@@ -112,7 +112,7 @@ func _process(delta: float) -> void:
     var nextLevelTimer = Timer.new()
     nextLevelTimer.one_shot = true
     nextLevelTimer.wait_time = 20
-    nextLevelTimer.timeout.connect(func(): Global.start_next_level())
+    nextLevelTimer.timeout.connect(func(): Global.level_finished.emit())
     add_child(nextLevelTimer)
     nextLevelTimer.start()
       

@@ -8,6 +8,7 @@ signal cabinet_door_state_changed(state: DoorState)
 signal finished_maze
 signal trolley_track_changed(direction: TrolleyDirection)
 signal nail_nailed(nailed_count: int, total_nail_count: int)
+signal level_finished
 enum TrolleyDirection { LEFT, NONE, RIGHT }
 enum LeverDirectionEnum { LEFT, NONE, RIGHT }
 enum DoorState { OPEN, CLOSED }
@@ -17,6 +18,7 @@ var endVoiceTimer:Timer = Timer.new()
 
 func _ready() -> void:
   trolley_track_changed.connect(_on_trolley_track_changed)
+  level_finished.connect(_on_level_finished)
   endVoiceTimer.one_shot = true
   endVoiceTimer.wait_time = 5
   add_child(endVoiceTimer)
@@ -24,6 +26,10 @@ func _ready() -> void:
 
 func connectGlobalSignal(sig: Signal, c: Callable):
   connect(sig.get_name(), c)
+
+
+func _on_level_finished():
+  start_next_level()
 
 
 func start_next_level():
