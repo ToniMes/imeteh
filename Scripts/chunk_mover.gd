@@ -88,7 +88,6 @@ func _process(delta: float) -> void:
       split_check = false
   
   if merge_tracker:
-    print (merge_tracker.position.z)
     if merge_tracker.position.z < 11.5 and merge_check:
       target_speed = max_speed/6
     if merge_tracker.position.z < 7 and merge_check:
@@ -97,9 +96,14 @@ func _process(delta: float) -> void:
       target_rotation = turn_rotation * -turn_direction
       merge_check = false
   
+  # Starting next level a couple of seconds after trolley merges back into single rail
   if !merge_tracker and !merge_check:
-    Global.start_next_level()
-    #queue_free()
+    var nextLevelTimer = Timer.new()
+    nextLevelTimer.one_shot = true
+    nextLevelTimer.wait_time = 20
+    nextLevelTimer.timeout.connect(func(): Global.start_next_level())
+    add_child(nextLevelTimer)
+    nextLevelTimer.start()
       
   #print(posrad, " ~ ", sin(posrad))
   position.x = lerp(position.x, target_offset, delta * current_speed * abs(sin(posrad)))
@@ -131,6 +135,7 @@ func _process(delta: float) -> void:
     chunk_parent.remove_child(chunk_to_remove)
     chunks.append(new_chunk)
     
+    print(chunk_count)
     if Global.current_level == 1:
       if chunk_count == 11:
         Audio.narrator.play_voiceline("1_5") # Lvl15-NowIsAGoodATimeAsAnyToTellYou…
@@ -153,10 +158,14 @@ func _process(delta: float) -> void:
           
 func on_acc_change(acceleration: int):
   target_speed = acceleration * max_speed
+  
+  # Playing breaking sfx if acc=0
   if acceleration == 0 and runningSfxPlayer:
     Audio.sfxPlayer.stop_stream_player(runningSfxPlayer)
     runningSfxPlayer = null
-    breakingSfxPlayer = Audio.sfxPlayer.play_sound("sfx/broken_breaks.mp3")
+    breakingSfxPlayer = Audio.sfxPlayer.play_sound("sfx/broken_breaks.mp3", true)
+  
+  # Playing trolley running sfx if acc=1
   elif acceleration == 1 and !runningSfxPlayer:
     Audio.sfxPlayer.stop_stream_player(breakingSfxPlayer)
     breakingSfxPlayer = null
