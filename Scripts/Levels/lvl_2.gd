@@ -16,7 +16,6 @@ func _ready() -> void:
   # Connecting signals
   Global.connectGlobalSignal(Global.lever_switched, _on_lever_switched)
   Global.button_pressed.connect(_on_button_pressed)
-  Global.trolley_track_changed.connect(_on_trolley_track_changed)
   
   # Initializing levers
   turn_lever.interactiveLever.snap(Global.LeverDirectionEnum.LEFT)
@@ -100,17 +99,3 @@ func _on_lever_switched(name: String, direction: Global.LeverDirectionEnum) -> v
         player.right_pickup._pick_up_object(lever)
         
       Audio.narrator.play_voiceline("2_5") # Lvl 2 5 - Well that wasn’t supposed to happen
-
-func _on_trolley_track_changed(direction: Global.TrolleyDirection) -> void:
-  var voiceline = ""
-  if direction == Global.TrolleyDirection.LEFT:
-    voiceline = "2_9a"
-  elif direction == Global.TrolleyDirection.RIGHT:
-    voiceline = "2_9b"
-    
-  var endVoiceTimer:Timer = Timer.new()
-  endVoiceTimer.one_shot = true
-  endVoiceTimer.wait_time = 5
-  endVoiceTimer.timeout.connect(func(): Audio.narrator.play_voiceline(voiceline))
-  add_child(endVoiceTimer)
-  endVoiceTimer.start()

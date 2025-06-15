@@ -57,6 +57,7 @@ func _ready():
   Global.connectGlobalSignal(Global.trolley_acceleration_changed, on_acc_change)
   Global.connectGlobalSignal(Global.trolley_direction_changed, on_direction_change)
   
+  
 func _process(delta: float) -> void:
   current_speed = lerp(current_speed, target_speed, delta)
   
@@ -135,17 +136,12 @@ func _process(delta: float) -> void:
     chunk_parent.remove_child(chunk_to_remove)
     chunks.append(new_chunk)
     
-    print(chunk_count)
+    print("loaded chunk ", chunk_count)
     if Global.current_level == 1:
       if chunk_count == 11:
         Audio.narrator.play_voiceline("1_5") # Lvl15-NowIsAGoodATimeAsAnyToTellYou…
       elif chunk_count == 13:
         Audio.narrator.play_voiceline("1_6") # Lvl16-I’mHereForYou
-      elif chunk_count == 17:
-        if turn_direction == -1:
-          Audio.narrator.play_voiceline("1_9b") # Lvl19b-YouRanHerOver
-        else:
-          Audio.narrator.play_voiceline("1_9a") # Lvl19a-GrandmaLives
     
     elif Global.current_level == 2:
       if chunk_count == 10:
@@ -170,6 +166,7 @@ func on_acc_change(acceleration: int):
     Audio.sfxPlayer.stop_stream_player(breakingSfxPlayer)
     breakingSfxPlayer = null
     runningSfxPlayer = Audio.sfxPlayer.play_sound("sfx/trolley_running_ambiance.mp3", true)
+
 
 func on_direction_change(direction: Global.TrolleyDirection):
   if turn_lock:
