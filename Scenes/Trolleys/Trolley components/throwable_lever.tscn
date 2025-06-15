@@ -76,7 +76,6 @@ script = ExtResource("5_fc0km")
 metadata/_custom_type_script = "uid://bv2d1r7ven1av"
 
 [node name="HighlightArea" type="Area3D" parent="Lever/Highlight"]
-visible = false
 
 [node name="HighlightCollisionShape" type="CollisionShape3D" parent="Lever/Highlight/HighlightArea"]
 transform = Transform3D(0.187982, 0, 0, 0, -8.21695e-09, 0.187982, 0, -0.187982, -8.21695e-09, 0, 0, -0.101999)

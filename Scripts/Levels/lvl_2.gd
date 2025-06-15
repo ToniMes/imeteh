@@ -88,6 +88,7 @@ func _on_lever_switched(name: String, direction: Global.LeverDirectionEnum) -> v
     # breaking the lever if this this is the third lever switch
     if acc_lever_switch_counter == 3:
       var throwable_lever:ThrowableLever = load("res://Scenes/Trolleys/Trolley components/throwable_lever.tscn").instantiate()
+      throwable_lever.disable_grab_points()
       var lever = throwable_lever.get_node("Lever")
       add_child(throwable_lever)
     
