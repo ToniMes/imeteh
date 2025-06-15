@@ -16,8 +16,10 @@ func _ready() -> void:
   # Connecting signals
   Global.connectGlobalSignal(Global.lever_switched, _on_lever_switched)
   Global.button_pressed.connect(_on_button_pressed)
+  Global.nail_nailed.connect(_on_nail_nailed)
   
   # Initializing levers
+  turn_lever.interactiveLever.enabled = false
   turn_lever.interactiveLever.snap(Global.LeverDirectionEnum.LEFT)
   acc_lever.interactiveLever.snap(Global.LeverDirectionEnum.RIGHT)
 
@@ -99,3 +101,8 @@ func _on_lever_switched(name: String, direction: Global.LeverDirectionEnum) -> v
         player.right_pickup._pick_up_object(lever)
         
       Audio.narrator.play_voiceline("2_5") # Lvl 2 5 - Well that wasn’t supposed to happen
+
+
+func _on_nail_nailed(nailed_count: int, total_nail_count: int):
+  if nailed_count == total_nail_count:
+    trolley.prepareTurnLever()

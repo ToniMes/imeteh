@@ -23,6 +23,11 @@ func pop_up(index: int):
 
 
 func onNailed():
-  print("Nailed!")
-  if nail1.nailed and nail2.nailed and nail3.nailed:
+  var nailed_count = 0
+  for n:Nail in nails:
+    if n.nailedFlag:
+      nailed_count += 1
+      
+  Global.nail_nailed.emit(nailed_count, nails.size())
+  if nailed_count == nails.size():
     all_nailed.emit()
