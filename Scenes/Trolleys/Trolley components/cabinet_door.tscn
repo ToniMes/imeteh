@@ -1,14 +1,25 @@
-[gd_scene load_steps=6 format=3 uid="uid://yiiwdyu0ycad"]
+[gd_scene load_steps=11 format=3 uid="uid://yiiwdyu0ycad"]
 
 [ext_resource type="Script" uid="uid://bxraihwt83ejl" path="res://Scripts/Trolleys/Trolley components/cabinet_door.gd" id="1_6fme5"]
 [ext_resource type="ArrayMesh" uid="uid://cvrv4c1mb1u3n" path="res://Resources/Models/Trolley/control_panel_door.obj" id="1_eaeyh"]
+[ext_resource type="Script" uid="uid://dq52wsf137np1" path="res://Scripts/Trolleys/Trolley components/button_body.gd" id="2_uep84"]
 [ext_resource type="Script" uid="uid://bhiwnqs8i0236" path="res://Scripts/Trolleys/Trolley components/interactive_cabinet_door.gd" id="3_8rps4"]
+[ext_resource type="Script" uid="uid://bv2d1r7ven1av" path="res://addons/godot-xr-tools/objects/highlight/highlight_visible.gd" id="5_4m4mq"]
+[ext_resource type="Material" uid="uid://g8njdjfj8y2b" path="res://Resources/Materials/highlight_material.tres" id="6_nrxyg"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_uep84"]
 size = Vector3(0.649182, 0.386328, 0.10752)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8rps4"]
 size = Vector3(0.365234, 0.207703, 0.455994)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_8rps4"]
+radius = 0.2
+
+[sub_resource type="BoxMesh" id="BoxMesh_ml72j"]
+material = ExtResource("6_nrxyg")
+flip_faces = true
+size = Vector3(0.12, 0.051, 0.11)
 
 [node name="CabinetDoor" type="Node3D"]
 script = ExtResource("1_6fme5")
@@ -20,6 +31,8 @@ axis_lock_linear_z = true
 axis_lock_angular_x = true
 axis_lock_angular_y = true
 axis_lock_angular_z = true
+script = ExtResource("2_uep84")
+metadata/_custom_type_script = "uid://dq52wsf137np1"
 
 [node name="Mesh" type="MeshInstance3D" parent="PhysicalCabinetDoor"]
 mesh = ExtResource("1_eaeyh")
@@ -38,5 +51,22 @@ script = ExtResource("3_8rps4")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.492608, -0.24743, -0.00057983)
 shape = SubResource("BoxShape3D_8rps4")
 
+[node name="HighlightArea" type="Area3D" parent="PhysicalCabinetDoor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.577286, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PhysicalCabinetDoor/HighlightArea"]
+shape = SubResource("SphereShape3D_8rps4")
+
+[node name="HingeHighlight" type="Node3D" parent="PhysicalCabinetDoor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.583888, 0, 0.0495981)
+script = ExtResource("5_4m4mq")
+metadata/_custom_type_script = "uid://bv2d1r7ven1av"
+
+[node name="HiglightMesh" type="MeshInstance3D" parent="PhysicalCabinetDoor/HingeHighlight"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00945818, 0.00498918, 0)
+mesh = SubResource("BoxMesh_ml72j")
+
 [connection signal="body_entered" from="PhysicalCabinetDoor/InteractiveCabinetDoor" to="PhysicalCabinetDoor/InteractiveCabinetDoor" method="onHandEnter"]
 [connection signal="body_exited" from="PhysicalCabinetDoor/InteractiveCabinetDoor" to="PhysicalCabinetDoor/InteractiveCabinetDoor" method="onHandExit"]
+[connection signal="body_entered" from="PhysicalCabinetDoor/HighlightArea" to="PhysicalCabinetDoor" method="_on_highlight_area_body_entered"]
+[connection signal="body_exited" from="PhysicalCabinetDoor/HighlightArea" to="PhysicalCabinetDoor" method="_on_highlight_area_body_exited"]

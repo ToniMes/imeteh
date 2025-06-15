@@ -1,4 +1,5 @@
 extends RigidBody3D
+class_name HighlightableBody
 
 signal highlight_updated(pickable, enable)
 
