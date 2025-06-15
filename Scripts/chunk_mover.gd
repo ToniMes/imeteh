@@ -26,8 +26,11 @@ var target_speed: float = 0
 var max_speed: float = 10
 var chunk_count = 4
 
-var target_offset: float = 0
-var target_rotation: float = 0
+var target_offset_x: float = 0
+var target_offset_y: float = 0
+var target_rotation_x: float = 0
+var target_rotation_y: float = 0
+var target_rotation_z: float = 0
 var turn_direction: int = -1
 var turn_lock: bool = false
 
@@ -36,6 +39,9 @@ var merge = false
 var split_check = true
 var merge_check = true
 # A class that moves, loads in and loads out chunks of the world
+
+var victims: Array[Victim]
+var shake_intensity: float = 0.5
 
 func _ready():
   var chunk1 = CHUNK_1.instantiate()
@@ -57,6 +63,10 @@ func _ready():
   Global.connectGlobalSignal(Global.trolley_acceleration_changed, on_acc_change)
   Global.connectGlobalSignal(Global.trolley_direction_changed, on_direction_change)
   
+  #test victims
+  #prepare_victims(["grandma", "grandma", "kittens"])
+  #force_split_count = 5
+  
   
 func _process(delta: float) -> void:
   current_speed = lerp(current_speed, target_speed, delta)
@@ -73,7 +83,7 @@ func _process(delta: float) -> void:
     chunk.position.z -= current_speed * delta * cos(posrad)
   
   if (posdeg > 35 and posdeg < 325):
-      target_rotation = 0
+      target_rotation_y = 0
       if !split_check:
         target_speed = max_speed
         
@@ -83,18 +93,18 @@ func _process(delta: float) -> void:
       Global.trolley_track_changed.emit(turn_direction + 1)
     if split_tracker.position.z < 49.5 and split_check:
       turn_lock = true
-      target_offset = turn_offset * turn_direction
+      target_offset_x = turn_offset * turn_direction
       target_speed = max_speed
-      target_rotation = turn_rotation * turn_direction
+      target_rotation_y = turn_rotation * turn_direction
       split_check = false
   
   if merge_tracker:
     if merge_tracker.position.z < 11.5 and merge_check:
       target_speed = max_speed/6
     if merge_tracker.position.z < 7 and merge_check:
-      target_offset = 0
+      target_offset_x = 0
       target_speed = max_speed
-      target_rotation = turn_rotation * -turn_direction
+      target_rotation_y = turn_rotation * -turn_direction
       merge_check = false
   
   # Starting next level a couple of seconds after trolley merges back into single rail
@@ -107,8 +117,13 @@ func _process(delta: float) -> void:
     nextLevelTimer.start()
       
   #print(posrad, " ~ ", sin(posrad))
-  position.x = lerp(position.x, target_offset, delta * current_speed * abs(sin(posrad)))
-  rotation.y = lerp(rotation.y, target_rotation, delta * current_speed / 3.5)
+  position.x = lerp(position.x, target_offset_x, delta * current_speed * abs(sin(posrad)))
+  rotation.y = lerp(rotation.y, target_rotation_y, delta * current_speed / 3.5)
+  
+  #relevant when shaking
+  position.y = lerp(position.y, target_offset_y, delta * current_speed * 2)
+  rotation.x = lerp(rotation.x, target_rotation_x, delta * current_speed * 2)
+  rotation.z = lerp(rotation.z, target_rotation_z, delta * current_speed * 2)
   
   if chunks[0].position.z <= 0:
     chunk_count += 1
@@ -121,6 +136,7 @@ func _process(delta: float) -> void:
     elif is_jover or chunk_count == force_split_count:
       new_chunk = CHUNK_SPLIT.instantiate()
       split_tracker = new_chunk
+      set_victims()
       merge = true
       is_jover = false
     elif r%3 == 0:
@@ -175,3 +191,34 @@ func on_direction_change(direction: Global.TrolleyDirection):
     turn_direction = 1
   else:
     turn_direction = -1
+
+
+func prepare_victims(victims: Array[String]):
+  for v in victims:
+    self.victims.append(load("res://Scenes/Victims/" + v + ".tscn").instantiate())
+
+
+func set_victims():
+  var c: int = 0
+  for v in victims:
+    v.ran_over.connect(shake)
+    split_tracker.add_child(v)
+    v.position.x -= 2.335
+    v.position.z -= 5 * c - 35
+    c += 1
+
+
+func shake():
+  var oldPosY = target_offset_y
+  var oldRotX = target_rotation_x
+  var oldRotZ = target_rotation_z
+  
+  for i in range(5):
+    target_offset_y = -0.3 - randf()/2 * shake_intensity
+    target_rotation_x = (randf() - 0.5) * PI/6 * shake_intensity
+    target_rotation_z = (randf() - 0.5) * PI/6 * shake_intensity
+    await get_tree().create_timer(0.5 / current_speed).timeout
+  
+  target_offset_y = oldPosY
+  target_rotation_x = oldRotX
+  target_rotation_z = oldRotZ

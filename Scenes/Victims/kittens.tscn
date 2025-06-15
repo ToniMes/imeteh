@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://diakxj51qj3a8"]
+
+[ext_resource type="PackedScene" uid="uid://bb4ky5s0lca31" path="res://Resources/Models/Box of Kittens/Cube.fbx" id="1_begrd"]
+[ext_resource type="Script" uid="uid://c6wfmc1n404ib" path="res://Scripts/Victims/victim.gd" id="1_wmj27"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wmj27"]
+size = Vector3(1.5, 1.5, 1.5)
+
+[node name="Kittens" type="Node3D"]
+script = ExtResource("1_wmj27")
+
+[node name="Model" parent="." instance=ExtResource("1_begrd")]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, 0.432155, 0)
+
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, 0.432155, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(-4.37114e-08, 1, 0, 4.37114e-08, 1.91069e-15, 1, 1, 4.37114e-08, -4.37114e-08, 0, 0.0131007, 0)
+shape = SubResource("BoxShape3D_wmj27")
+
+[connection signal="body_entered" from="Area3D" to="." method="rest_in_peace"]
