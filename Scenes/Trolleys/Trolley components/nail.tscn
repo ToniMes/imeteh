@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://15kl06rchejj"]
 
-[ext_resource type="Script" uid="uid://d0orny1yxqq2c" path="res://Scenes/nail.gd" id="1_ybgmx"]
+[ext_resource type="Script" uid="uid://d0orny1yxqq2c" path="res://Scripts/Trolleys/Trolley components/nail.gd" id="1_ybgmx"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nupcq"]
 albedo_color = Color(0.227451, 0, 0, 1)
