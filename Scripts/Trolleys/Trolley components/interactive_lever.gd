@@ -8,6 +8,7 @@ var lever_direction: Global.LeverDirectionEnum = Global.LeverDirectionEnum.NONE
 var initial_direction: Global.LeverDirectionEnum = Global.LeverDirectionEnum.NONE
 
 func _process(delta):
+  var new_direction = Global.LeverDirectionEnum.NONE
   if enabled == false:
     return
     
@@ -27,17 +28,18 @@ func _process(delta):
   # otherwise, snap it to left/right
   elif physParent.rotation_degrees.y > 0.01:
     physParent.rotation.y = lerp_angle(physParent.rotation.y, PI/6, delta*8)
+    new_direction = Global.LeverDirectionEnum.RIGHT
   elif physParent.rotation_degrees.y < -0.01:
     physParent.rotation.y = lerp_angle(physParent.rotation.y, -PI/6, delta*8)
-
-  var new_direction = Global.LeverDirectionEnum.RIGHT if physParent.rotation.y > 0 else Global.LeverDirectionEnum.LEFT
+    new_direction = Global.LeverDirectionEnum.LEFT
   
   # emitting lever_switched if lever switched from left to right or the opposite
-  if abs(physParent.rotation.y) - PI/6 < 0.01:
-    if lever_direction != Global.LeverDirectionEnum.NONE and new_direction != lever_direction:
+  var snapDiff = abs(abs(physParent.rotation.y) - PI/6)
+  if new_direction != Global.LeverDirectionEnum.NONE and snapDiff < 0.01:
+    if new_direction != lever_direction:
       lever_switched.emit(new_direction)
-  
-  lever_direction = new_direction
+      print("old_direction=", lever_direction, ";new_direction=", new_direction)
+    lever_direction = new_direction
 
 
 func snap(direction: Global.LeverDirectionEnum):
