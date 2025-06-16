@@ -54,15 +54,19 @@ func _on_trolley_track_changed(direction: TrolleyDirection) -> void:
   if direction == Global.TrolleyDirection.LEFT:
     match current_level:
       1:
-        voiceline = "2_9a"
-      2:
         voiceline = "1_9b"
+      2:
+        voiceline = "2_9a"
+      3:
+        voiceline = "3_5b"
   elif direction == Global.TrolleyDirection.RIGHT:
     match current_level:
       1:
-        voiceline = "1_9b"
+        voiceline = "1_9a"
       2:
-        voiceline = "2_9a"
+        voiceline = "2_9b"
+      3:
+        voiceline = "3_5a"
     
   endVoiceTimer.stop()
   endVoiceTimer.timeout.connect(func(): Audio.narrator.play_voiceline(voiceline))
