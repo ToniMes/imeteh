@@ -10,6 +10,7 @@ func _ready() -> void:
   # Adding chunk mover to the scene
   var chunkMover:ChunkMover = load("res://Scenes/EnvironmentChunks/ChunkMover.tscn").instantiate()
   chunkMover.force_split_count = 20
+  chunkMover.prepare_victims(["theseus"])
   add_child(chunkMover)
   
   # Connecting signals

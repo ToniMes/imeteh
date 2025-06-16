@@ -13,7 +13,7 @@ const turn_rotation = PI/4
 const turn_offset: float = 2.355
 const wide_render: bool = false
 const load_distance: int = 6
-const wide_load_distance = 4
+const wide_load_distance:int = 4
 
 @onready var chunk_parent: Node3D = $ChunkParent
 @onready var trolley: Node3D = $"../Trolley"
@@ -84,10 +84,6 @@ func _ready():
     
   Global.connectGlobalSignal(Global.trolley_acceleration_changed, on_acc_change)
   Global.connectGlobalSignal(Global.trolley_direction_changed, on_direction_change)
-  
-  #test victims
-  #prepare_victims(["grandma", "grandma", "kittens"])
-  #force_split_count = load_distance + 1
   
   
 func _process(delta: float) -> void:

@@ -26,6 +26,7 @@ func _ready() -> void:
   # Adding chunk mover to the scene
   var chunkMover:ChunkMover = load("res://Scenes/EnvironmentChunks/ChunkMover.tscn").instantiate()
   chunkMover.force_split_count = 20
+  chunkMover.prepare_victims(["kittens"])
   add_child(chunkMover)
   
   Audio.narrator.play_voiceline("2_1") # Lvl 2 1 - Intro
