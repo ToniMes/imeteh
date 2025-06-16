@@ -1,6 +1,7 @@
 extends StaticBody3D
 class_name Trolley
 
+@onready var player:PlayerController = $TrolleyBody/Player
 @onready var turnLever: StaticLever = $TrolleyBody/TurnLever
 @onready var accLever: StaticLever = $TrolleyBody/AccLever
 var currentTrack: int = 0
@@ -9,6 +10,11 @@ var started: bool = false
 var target_x: float = 0
 var target_y: float = 0
 var max_speed: float = 10
+
+
+func _ready() -> void:
+  player.left_hand_xr.button_pressed.connect(_on_xr_button_pressed)
+  player.right_hand_xr.button_pressed.connect(_on_xr_button_pressed)
 
 
 func switchTrack(track: int):
@@ -39,3 +45,13 @@ func prepareTurnLever():
   turnLever.visible = true
   turnLever.targetPosition = turnLever.position + Vector3(0,0.19,0)
   Global.trolley_direction_changed.emit(turnLever.interactiveLever.lever_direction)
+
+
+func resetCamera():
+  player.origin.global_position = Vector3(0,-0.5,0.5)
+
+
+func _on_xr_button_pressed(name: String) -> void:
+  if name != "trigger" and name != "trigger_click":
+    return
+  resetCamera()

@@ -7,6 +7,8 @@ class_name PlayerController
 @onready var right_hand: XRToolsHand = $XROrigin3D/RightHandXR/Hand/RightHand
 @onready var left_pickup: XRToolsFunctionPickup = $XROrigin3D/LeftHandXR/FunctionPickup
 @onready var right_pickup: XRToolsFunctionPickup = $XROrigin3D/RightHandXR/FunctionPickup
+@onready var camera:XRCamera3D = $XROrigin3D/XRCamera3D
+@onready var origin:XROrigin3D = $XROrigin3D
 
 func _ready():
   pass
