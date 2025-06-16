@@ -23,8 +23,9 @@ var force_split_count = 1
 var chunk_length: float = 49.5
 var current_speed: float = 0
 var target_speed: float = 0
-var max_speed: float = 10
-var chunk_count = 4
+var max_speed: float = 100
+var load_distance: int = 4
+var chunk_count: int = 0
 
 var target_offset_x: float = 0
 var target_offset_y: float = 0
@@ -44,22 +45,12 @@ var victims: Array[Victim]
 var shake_intensity: float = 0.5
 
 func _ready():
-  var chunk1 = CHUNK_1.instantiate()
-  var chunk2 = CHUNK_2.instantiate()
-  var chunk3 = CHUNK_2.instantiate()
-  var chunk4 = CHUNK_2.instantiate()
-  chunk1.position.z += chunk_length
-  chunk2.position.z += chunk_length * 2
-  chunk3.position.z += chunk_length * 3
-  chunk4.position.z += chunk_length * 4
-  chunks.append(chunk1)
-  chunks.append(chunk2)
-  chunks.append(chunk3)
-  chunks.append(chunk4)
-  chunk_parent.add_child(chunk1)
-  chunk_parent.add_child(chunk2)
-  chunk_parent.add_child(chunk3)
-  chunk_parent.add_child(chunk4)
+  for i in load_distance:
+    var chunk = CHUNK_1.instantiate()
+    chunk.position.z += chunk_length * i
+    chunks.append(chunk)
+    chunk_parent.add_child(chunk)
+    chunk_count += 1
   Global.connectGlobalSignal(Global.trolley_acceleration_changed, on_acc_change)
   Global.connectGlobalSignal(Global.trolley_direction_changed, on_direction_change)
   
@@ -145,7 +136,7 @@ func _process(delta: float) -> void:
       new_chunk = CHUNK_2.instantiate()
     elif r%3 == 2:
       new_chunk = CHUNK_3.instantiate()
-    new_chunk.position.z += chunk_length * 4
+    new_chunk.position.z += chunk_length * load_distance
     chunk_parent.add_child(new_chunk)
     var chunk_to_remove: Node = chunks.pop_front()
     chunk_to_remove.queue_free()

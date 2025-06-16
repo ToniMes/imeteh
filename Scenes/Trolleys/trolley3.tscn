@@ -1,11 +1,10 @@
-[gd_scene load_steps=14 format=4 uid="uid://mwl8jmg5x5jg"]
+[gd_scene load_steps=13 format=4 uid="uid://mwl8jmg5x5jg"]
 
 [ext_resource type="Script" uid="uid://dduokwtci7wxb" path="res://Scripts/Trolleys/trolley.gd" id="1_uie8p"]
 [ext_resource type="ArrayMesh" uid="uid://dw4ikh4350kof" path="res://Resources/Models/Trolley/control_panel_body_1.obj" id="2_0pyd5"]
 [ext_resource type="ArrayMesh" uid="uid://j5427occ3uv7" path="res://Resources/Models/Trolley/control_panel_speed_lever.obj" id="3_otbv6"]
 [ext_resource type="PackedScene" uid="uid://yiiwdyu0ycad" path="res://Scenes/Trolleys/Trolley components/cabinet_door.tscn" id="4_y8ib4"]
 [ext_resource type="PackedScene" uid="uid://2ikbp3ayxqae" path="res://Scenes/player.tscn" id="6_04rk6"]
-[ext_resource type="PackedScene" uid="uid://7p562hvbyx17" path="res://Scenes/Trolleys/Trolley components/RailwaySpawner.tscn" id="7_1m7lk"]
 [ext_resource type="PackedScene" uid="uid://fxrdjxq50p37" path="res://Scenes/Trolleys/Trolley components/static_lever.tscn" id="8_wvfgl"]
 [ext_resource type="PackedScene" uid="uid://jiclc63cgbgq" path="res://Scenes/Trolleys/Trolley components/TurnIndicator/TurnIndicator.tscn" id="9_uca18"]
 [ext_resource type="PackedScene" uid="uid://b44m6vihrtt6u" path="res://Scenes/Trolleys/Trolley components/maze.tscn" id="9_uie8p"]
@@ -74,9 +73,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.265176, -0.033088, 0.24020
 
 [node name="Player" parent="TrolleyBody" instance=ExtResource("6_04rk6")]
 transform = Transform3D(0.999999, 0, 0, 0, 1, 0, 0, 0, 0.999999, 0, 1.28277, 1.93559)
-
-[node name="RailwaySpawner" parent="TrolleyBody" instance=ExtResource("7_1m7lk")]
-transform = Transform3D(-0.999764, 0, -0.0217275, 0, 1, 0, 0.0217275, 0, -0.999764, -0.0161113, -0.22952, 0.0837665)
 
 [node name="VerticalDirectionLever" parent="TrolleyBody" instance=ExtResource("8_wvfgl")]
 transform = Transform3D(2.12438e-10, 1, 4.37114e-08, 0.5, 3.7749e-08, -0.866025, -0.866025, 2.20397e-08, -0.5, 0.470127, 0.752809, -1.21074)
