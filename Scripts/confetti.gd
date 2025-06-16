@@ -1,4 +1,5 @@
 extends Node3D
+class_name Confetti
 
 @onready var red: CPUParticles3D = $Red
 @onready var blue: CPUParticles3D = $Blue

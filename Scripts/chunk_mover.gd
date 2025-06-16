@@ -16,7 +16,7 @@ const load_distance: int = 6
 const wide_load_distance:int = 4
 
 @onready var chunk_parent: Node3D = $ChunkParent
-@onready var trolley: Node3D = $"../Trolley"
+@onready var trolley: Trolley = $"../Trolley"
 
 var runningSfxPlayer: AudioStreamPlayer
 var breakingSfxPlayer: AudioStreamPlayer
@@ -268,3 +268,6 @@ func shake():
   target_offset_y = oldPosY
   target_rotation_x = oldRotX
   target_rotation_z = oldRotZ
+  
+  # playing confetti on kill
+  trolley.confetti.explode()

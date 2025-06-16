@@ -4,6 +4,7 @@ class_name Trolley
 @onready var player:PlayerController = $TrolleyBody/Player
 @onready var turnLever: StaticLever = $TrolleyBody/TurnLever
 @onready var accLever: StaticLever = $TrolleyBody/AccLever
+@onready var confetti: Confetti = $Confetti
 var currentTrack: int = 0
 var speed: float = 0
 var started: bool = false
