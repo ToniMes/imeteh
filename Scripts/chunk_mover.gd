@@ -30,7 +30,7 @@ var force_split_count = 1
 var chunk_length: float = 50
 var current_speed: float = 0
 var target_speed: float = 0
-var max_speed: float = 25
+var max_speed: float = 10
 var chunk_count: int = 0
 
 var target_offset_x: float = 0
@@ -202,7 +202,7 @@ func _process(delta: float) -> void:
     if Global.current_level == 1:
       if chunk_count == 11:
         Audio.narrator.play_voiceline("1_5") # Lvl15-NowIsAGoodATimeAsAnyToTellYou…
-      elif chunk_count == 13:
+      elif chunk_count == 20:
         Audio.narrator.play_voiceline("1_6") # Lvl16-I’mHereForYou
     
     elif Global.current_level == 2:
