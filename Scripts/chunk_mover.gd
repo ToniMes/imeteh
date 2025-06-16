@@ -4,10 +4,16 @@ class_name ChunkMover
 const CHUNK_1 = preload("res://Scenes/EnvironmentChunks/Chunk1.tscn")
 const CHUNK_2 = preload("res://Scenes/EnvironmentChunks/Chunk2.tscn")
 const CHUNK_3 = preload("res://Scenes/EnvironmentChunks/Chunk3.tscn")
+const GRASS_1 = preload("res://Scenes/EnvironmentChunks/Grass1.tscn")
+const GRASS_2 = preload("res://Scenes/EnvironmentChunks/Grass2.tscn")
+const GRASS_3 = preload("res://Scenes/EnvironmentChunks/Grass3.tscn")
 const CHUNK_SPLIT = preload("res://Scenes/EnvironmentChunks/Chunk_split.tscn")
 const CHUNK_MERGE = preload("res://Scenes/EnvironmentChunks/Chunk_merge.tscn")
 const turn_rotation = PI/4
 const turn_offset: float = 2.355
+const wide_render: bool = false
+const load_distance: int = 6
+const wide_load_distance = 4
 
 @onready var chunk_parent: Node3D = $ChunkParent
 @onready var trolley: Node3D = $"../Trolley"
@@ -18,13 +24,13 @@ var breakingSfxPlayer: AudioStreamPlayer
 var split_tracker: Node3D
 var merge_tracker: Node3D
 var chunks: Array[Node3D]
+var side_chunks: Array[Node3D]
 
 var force_split_count = 1
 var chunk_length: float = 50
 var current_speed: float = 0
 var target_speed: float = 0
-var max_speed: float = 10
-var load_distance: int = 4
+var max_speed: float = 25
 var chunk_count: int = 0
 
 var target_offset_x: float = 0
@@ -45,18 +51,43 @@ var victims: Array[Victim]
 var shake_intensity: float = 0.5
 
 func _ready():
-  for i in load_distance:
-    var chunk = CHUNK_1.instantiate()
-    chunk.position.z += chunk_length * i
-    chunks.append(chunk)
-    chunk_parent.add_child(chunk)
+  for k in load_distance:
+    var r = randi()
+    var new_chunk: Node3D
+    if r%3 == 0:
+      new_chunk = CHUNK_1.instantiate()
+    elif r%3 == 1:
+      new_chunk = CHUNK_2.instantiate()
+    elif r%3 == 2:
+      new_chunk = CHUNK_3.instantiate()
+    new_chunk.position.z += chunk_length * k
+    chunks.append(new_chunk)
+    chunk_parent.add_child(new_chunk)
     chunk_count += 1
+    
+    if wide_render:
+      for i in wide_load_distance * 2:
+        r = randi()
+        if r%3 == 0:
+          new_chunk = GRASS_1.instantiate()
+        elif r%3 == 1:
+          new_chunk = GRASS_2.instantiate()
+        elif r%3 == 2:
+          new_chunk = GRASS_3.instantiate()
+        
+        new_chunk.position.z = chunks[chunks.size()-2].position.z + chunk_length
+        var posx = i * chunk_length - wide_load_distance * chunk_length
+        if posx >= 0: posx += chunk_length
+        new_chunk.position.x = posx
+        chunk_parent.add_child(new_chunk)
+        side_chunks.append(new_chunk)
+    
   Global.connectGlobalSignal(Global.trolley_acceleration_changed, on_acc_change)
   Global.connectGlobalSignal(Global.trolley_direction_changed, on_direction_change)
   
   #test victims
   #prepare_victims(["grandma", "grandma", "kittens"])
-  #force_split_count = 5
+  #force_split_count = load_distance + 1
   
   
 func _process(delta: float) -> void:
@@ -71,6 +102,8 @@ func _process(delta: float) -> void:
   var posrad = deg_to_rad(posdeg)
   #print(posdeg)
   for chunk in chunks:
+    chunk.position.z -= current_speed * delta * cos(posrad)
+  for chunk in side_chunks:
     chunk.position.z -= current_speed * delta * cos(posrad)
   
   if (posdeg > 35 and posdeg < 325):
@@ -147,6 +180,28 @@ func _process(delta: float) -> void:
     chunk_parent.remove_child(chunk_to_remove)
     chunks.append(new_chunk)
     
+    if wide_render:
+      for i in wide_load_distance * 2:
+        r = randi()
+        if r%3 == 0:
+          new_chunk = GRASS_1.instantiate()
+        elif r%3 == 1:
+          new_chunk = GRASS_2.instantiate()
+        elif r%3 == 2:
+          new_chunk = GRASS_3.instantiate()
+        
+        new_chunk.position.z = chunks[chunks.size()-2].position.z + chunk_length + offset_fix
+        var posx = i * chunk_length - wide_load_distance * chunk_length
+        if posx >= 0: posx += chunk_length
+        new_chunk.position.x = posx
+        chunk_parent.add_child(new_chunk)
+        side_chunks.append(new_chunk)
+        
+      for i in wide_load_distance * 2:
+        var to_remove = side_chunks.pop_front()
+        to_remove.queue_free()
+        chunk_parent.remove_child(to_remove)
+        
     print("loaded chunk ", chunk_count)
     if Global.current_level == 1:
       if chunk_count == 11:

@@ -1,0 +1,130 @@
+[gd_scene load_steps=9 format=3 uid="uid://csaup0c5ee5vt"]
+
+[ext_resource type="ArrayMesh" uid="uid://bebutr0tl5jxb" path="res://Resources/Models/Environment/grass-patch.obj" id="1_f3cdc"]
+[ext_resource type="Material" uid="uid://4sfhs6feohvq" path="res://Resources/Materials/AssetMaterial.tres" id="2_f8fy4"]
+[ext_resource type="ArrayMesh" uid="uid://mmpw8mj2giow" path="res://Resources/Models/Environment/grass.obj" id="3_d7m1w"]
+[ext_resource type="ArrayMesh" uid="uid://bihht3ahtsvkf" path="res://Resources/Models/Environment/rocks-a.obj" id="4_6ifml"]
+[ext_resource type="ArrayMesh" uid="uid://cihk7cpbt8xi6" path="res://Resources/Models/Environment/rocks-b.obj" id="5_8q71r"]
+[ext_resource type="ArrayMesh" uid="uid://bvo8g1mbl1r2s" path="res://Resources/Models/Environment/patch-grass.obj" id="6_m66qo"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_am7ck"]
+albedo_color = Color(0.263519, 0.451574, 0.238187, 1)
+
+[sub_resource type="QuadMesh" id="QuadMesh_ndu22"]
+material = SubResource("StandardMaterial3D_am7ck")
+
+[node name="Chunk2" type="Node3D"]
+
+[node name="Grass floor" type="MeshInstance3D" parent="."]
+transform = Transform3D(50, 0, 0, 0, -2.18557e-06, 50, 0, -50, -2.18557e-06, 0.0593872, 0, -24.964)
+mesh = SubResource("QuadMesh_ndu22")
+
+[node name="Details" type="Node3D" parent="."]
+
+[node name="Parches" type="Node3D" parent="Details"]
+
+[node name="Grass-patch" type="MeshInstance3D" parent="Details/Parches"]
+transform = Transform3D(-0.705934, 0, -0.708278, 0, 1, 0, 0.708278, 0, -0.705934, -5.98955, 0, -33.7066)
+mesh = ExtResource("1_f3cdc")
+skeleton = NodePath("../../..")
+surface_material_override/0 = ExtResource("2_f8fy4")
+
+[node name="Grass-patch2" type="MeshInstance3D" parent="Details/Parches"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.2958, 0, -15.762)
+mesh = ExtResource("1_f3cdc")
+skeleton = NodePath("../../..")
+surface_material_override/0 = ExtResource("2_f8fy4")
+
+[node name="Grass-patch3" type="MeshInstance3D" parent="Details/Parches"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.55711, 0, -4.77984)
+mesh = ExtResource("1_f3cdc")
+skeleton = NodePath("../../..")
+surface_material_override/0 = ExtResource("2_f8fy4")
+
+[node name="Grass-patch4" type="MeshInstance3D" parent="Details/Parches"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.1491, 0, -36.4823)
+mesh = ExtResource("1_f3cdc")
+skeleton = NodePath("../../..")
+surface_material_override/0 = ExtResource("2_f8fy4")
+
+[node name="Grass-patch5" type="MeshInstance3D" parent="Details/Parches"]
+transform = Transform3D(0.877305, 0, 0.479933, 0, 1, 0, -0.479933, 0, 0.877305, -8.41796, 0, -40.5816)
+mesh = ExtResource("1_f3cdc")
+skeleton = NodePath("../../..")
+surface_material_override/0 = ExtResource("2_f8fy4")
+
+[node name="Grass-patch6" type="MeshInstance3D" parent="Details/Parches"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.22607, 0, -22.8799)
+mesh = ExtResource("1_f3cdc")
+skeleton = NodePath("../../..")
+surface_material_override/0 = ExtResource("2_f8fy4")
+
+[node name="Grass" type="MeshInstance3D" parent="Details/Parches"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.5185, -677.689, -5.68278)
+mesh = ExtResource("3_d7m1w")
+skeleton = NodePath("../../..")
+surface_material_override/1 = ExtResource("2_f8fy4")
+
+[node name="Grass2" type="MeshInstance3D" parent="Details/Parches"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.7737, 0.0417337, -8.97917)
+mesh = ExtResource("3_d7m1w")
+skeleton = NodePath("../../..")
+surface_material_override/1 = ExtResource("2_f8fy4")
+
+[node name="Grass3" type="MeshInstance3D" parent="Details/Parches"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.6598, 0.0417337, -8.97917)
+mesh = ExtResource("3_d7m1w")
+skeleton = NodePath("../../..")
+surface_material_override/1 = ExtResource("2_f8fy4")
+
+[node name="Grass4" type="MeshInstance3D" parent="Details/Parches"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.6598, 0.0417337, -22.2731)
+mesh = ExtResource("3_d7m1w")
+skeleton = NodePath("../../..")
+surface_material_override/1 = ExtResource("2_f8fy4")
+
+[node name="Grass5" type="MeshInstance3D" parent="Details/Parches"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.6473, 0.0417337, -22.2731)
+mesh = ExtResource("3_d7m1w")
+skeleton = NodePath("../../..")
+surface_material_override/1 = ExtResource("2_f8fy4")
+
+[node name="Grass6" type="MeshInstance3D" parent="Details/Parches"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.5616, 0.0417337, -38.8633)
+mesh = ExtResource("3_d7m1w")
+skeleton = NodePath("../../..")
+surface_material_override/1 = ExtResource("2_f8fy4")
+
+[node name="Grass7" type="MeshInstance3D" parent="Details/Parches"]
+transform = Transform3D(0.395626, 0, -0.918412, 0, 1, 0, 0.918412, 0, 0.395626, -14.0462, 0.0417337, -35.3564)
+mesh = ExtResource("3_d7m1w")
+skeleton = NodePath("../../..")
+surface_material_override/1 = ExtResource("2_f8fy4")
+
+[node name="Rocks-a" type="MeshInstance3D" parent="Details/Parches"]
+transform = Transform3D(0.962862, 0, 0.269996, 0, 1, 0, -0.269996, 0, 0.962862, -15.0064, 0, -29.9674)
+mesh = ExtResource("4_6ifml")
+surface_material_override/0 = ExtResource("2_f8fy4")
+
+[node name="Rocks-b" type="MeshInstance3D" parent="Details/Parches"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.6722, 0, -0.668574)
+mesh = ExtResource("5_8q71r")
+surface_material_override/0 = ExtResource("2_f8fy4")
+
+[node name="Patch-grass" type="MeshInstance3D" parent="Details"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.29115, 0, -39.3282)
+mesh = ExtResource("6_m66qo")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("2_f8fy4")
+
+[node name="Patch-grass2" type="MeshInstance3D" parent="Details"]
+transform = Transform3D(0.882398, 0, 0.470503, 0, 1, 0, -0.470503, 0, 0.882398, 17.8378, 0, -24.0161)
+mesh = ExtResource("6_m66qo")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("2_f8fy4")
+
+[node name="Patch-grass3" type="MeshInstance3D" parent="Details"]
+transform = Transform3D(0.77398, -0.159253, -0.612857, 0.134444, 0.987119, -0.0867166, 0.618773, -0.0152783, 0.785422, -15.1237, 0.0136571, -10.1317)
+mesh = ExtResource("6_m66qo")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("2_f8fy4")
