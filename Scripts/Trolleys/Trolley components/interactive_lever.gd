@@ -26,7 +26,7 @@ func _process(delta):
       physParent.rotation.y = -PI/6
   
   # otherwise, snap it to left/right
-  elif physParent.rotation_degrees.y > 0.01:
+  if physParent.rotation_degrees.y > 0.01:
     physParent.rotation.y = lerp_angle(physParent.rotation.y, PI/6, delta*8)
     new_direction = Global.LeverDirectionEnum.RIGHT
   elif physParent.rotation_degrees.y < -0.01:
