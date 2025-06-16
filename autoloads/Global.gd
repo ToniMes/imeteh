@@ -9,11 +9,14 @@ signal finished_maze
 signal trolley_track_changed(direction: TrolleyDirection)
 signal nail_nailed(nailed_count: int, total_nail_count: int)
 signal level_finished
+signal should_play_voiceline(vl_name: String)
+signal should_stop_narrator
 enum TrolleyDirection { LEFT, NONE, RIGHT }
 enum LeverDirectionEnum { LEFT, NONE, RIGHT }
 enum DoorState { OPEN, CLOSED }
 var current_level: int = 0
 var endVoiceTimer:Timer = Timer.new()
+
 
 
 func _ready() -> void:

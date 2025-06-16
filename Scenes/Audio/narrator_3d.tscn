@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://cye40yju28v68"]
+
+[ext_resource type="Script" uid="uid://bxownhy5jrvxp" path="res://Scripts/narrator_3d.gd" id="1_ntusv"]
+[ext_resource type="PackedScene" uid="uid://clujaf3u776a3" path="res://addons/godot-xr-tools/objects/viewport_2d_in_3d.tscn" id="2_c1gdn"]
+[ext_resource type="PackedScene" uid="uid://dp07bx5qmqn8o" path="res://Scenes/Audio/narrator.tscn" id="2_ntusv"]
+
+[node name="Narrator3d" type="Node3D"]
+script = ExtResource("1_ntusv")
+
+[node name="NarratorPanel" parent="." groups=["MainMenuPanel"] instance=ExtResource("2_c1gdn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.61534)
+enabled = false
+scene = ExtResource("2_ntusv")
+viewport_size = Vector2(1125, 648)
+input_keyboard = false
+unshaded = true
+filter = false
+scene_properties_keys = PackedStringArray("narrator.gd")

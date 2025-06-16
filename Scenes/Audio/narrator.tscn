@@ -1,4 +1,4 @@
-[gd_scene load_steps=62 format=3 uid="uid://dp07bx5qmqn8o"]
+[gd_scene load_steps=63 format=3 uid="uid://dp07bx5qmqn8o"]
 
 [ext_resource type="Script" uid="uid://csb80qnbfhur4" path="res://Scripts/narrator.gd" id="1_dd1pa"]
 [ext_resource type="AudioStream" uid="uid://beca6ij76jorw" path="res://Resources/Audio/narrator/Lvl 1/Lvl 1 1 - fiddle with the lever.mp3" id="2_18b45"]
@@ -30,6 +30,7 @@
 [ext_resource type="AudioStream" uid="uid://b8jskjx268072" path="res://Resources/Audio/narrator/Lvl 3/Lvl 3 4 - Huzzah, you solved the maze.mp3" id="27_hkasu"]
 [ext_resource type="AudioStream" uid="uid://cuhhevk3djjyi" path="res://Resources/Audio/narrator/Lvl 3/Lvl 3 5a - See, you turned right and saved Thesius.mp3" id="28_fc8sp"]
 [ext_resource type="AudioStream" uid="uid://clipugxaa0neh" path="res://Resources/Audio/narrator/Lvl 3/Lvl 3 5b - Ooh, that was quite ugly.mp3" id="29_af0sw"]
+[ext_resource type="Texture2D" uid="uid://cov0qhv775db6" path="res://Resources/Models/Textures/colormap.png" id="31_hkasu"]
 
 [sub_resource type="Animation" id="Animation_upn4r"]
 resource_name = "1_1"
@@ -1033,10 +1034,17 @@ _data = {
 &"RESET": SubResource("Animation_0522o")
 }
 
-[node name="Narrator" type="CanvasLayer"]
+[node name="Narrator" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_dd1pa")
 
 [node name="Subtitles" type="Label" parent="."]
+layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
@@ -1047,6 +1055,8 @@ offset_top = -136.0
 offset_right = 487.0
 grow_horizontal = 2
 grow_vertical = 0
+theme_override_colors/font_color = Color(0.941806, 0.718459, 0.241529, 1)
+theme_override_colors/font_outline_color = Color(0.123087, 0.000209357, 0.24918, 1)
 theme_override_font_sizes/font_size = 23
 horizontal_alignment = 1
 
@@ -1141,3 +1151,8 @@ bus = &"Narrator"
 [node name="Lvl35a-See,YouTurnedRightAndSavedThesius" type="AudioStreamPlayer" parent="Lvl3"]
 
 [node name="Lvl35b-Ooh,ThatWasQuiteUgly" type="AudioStreamPlayer" parent="Lvl3"]
+
+[node name="Colormap" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(585, 321)
+texture = ExtResource("31_hkasu")

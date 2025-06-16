@@ -1,4 +1,4 @@
-extends CanvasLayer
+extends Control
 class_name Narrator
 
 # How to use:
@@ -20,9 +20,13 @@ var enabled_subtitles: bool = true
 func _ready():
   if !enabled_subtitles:
     subtitles.visible = false
+  
+  Global.should_play_voiceline.connect(play_voiceline)
+  Global.should_stop_narrator.connect(stop_narrator)
 
 
 func play_voiceline(name: String):
+  print_debug("Should be playing the voiceline")
   stop_narrator()
   animation_player.play(name)
   
