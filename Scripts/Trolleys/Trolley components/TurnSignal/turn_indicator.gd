@@ -5,6 +5,7 @@ extends Node3D
 
 func _ready() -> void:
   Global.connect("trolley_direction_changed", _on_trolley_direction_changed)
+  _on_trolley_direction_changed(Global.TrolleyDirection.LEFT)
   
 func _on_trolley_direction_changed(direction: Global.TrolleyDirection):
   if direction == Global.TrolleyDirection.RIGHT:
