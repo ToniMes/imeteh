@@ -10,7 +10,7 @@ signal nailed
 
 
 func _process(delta):
-  if head.position.y < -0.035:
+  if head.position.y < -0.025:
     head.axis_lock_linear_y = true
     head.position.y = -0.035
     if !nailedFlag:
