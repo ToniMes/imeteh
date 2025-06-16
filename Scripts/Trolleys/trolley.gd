@@ -14,8 +14,6 @@ var max_speed: float = 10
 
 
 func _ready() -> void:
-  player.left_hand_xr.button_pressed.connect(_on_xr_button_pressed)
-  player.right_hand_xr.button_pressed.connect(_on_xr_button_pressed)
   resetCamera()
 
 
@@ -50,10 +48,4 @@ func prepareTurnLever():
 
 
 func resetCamera():
-  player.origin.global_position = Vector3(0,-0.5,0.5)
-
-
-func _on_xr_button_pressed(name: String) -> void:
-  if name != "trigger" and name != "trigger_click":
-    return
-  resetCamera()
+  player.origin.global_position = Vector3(0,0,0.5)
