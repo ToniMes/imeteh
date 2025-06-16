@@ -36,7 +36,7 @@ show_laser = 2
 laser_length = 1
 
 [node name="MainMenuPanel" parent="." groups=["MainMenuPanel"] instance=ExtResource("5_kry3j")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.61534)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, -1.615)
 scene = ExtResource("6_21xkr")
 viewport_size = Vector2(1125, 648)
 transparent = 0
