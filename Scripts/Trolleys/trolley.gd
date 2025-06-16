@@ -15,6 +15,7 @@ var max_speed: float = 10
 func _ready() -> void:
   player.left_hand_xr.button_pressed.connect(_on_xr_button_pressed)
   player.right_hand_xr.button_pressed.connect(_on_xr_button_pressed)
+  resetCamera()
 
 
 func switchTrack(track: int):
