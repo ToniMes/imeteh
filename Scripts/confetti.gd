@@ -6,6 +6,6 @@ extends Node3D
 
 
 func explode():
-  red.emitting = true
-  blue.emitting = true
-  green.emitting = true
+  red.restart()
+  blue.restart()
+  green.restart()

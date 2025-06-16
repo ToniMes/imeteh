@@ -5,31 +5,36 @@
 
 [sub_resource type="QuadMesh" id="QuadMesh_p8rf8"]
 material = ExtResource("2_58dpd")
+size = Vector2(0.2, 0.2)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ifdrt"]
-albedo_color = Color(0.638069, 0, 0.0394268, 1)
+albedo_color = Color(1, 0, 0, 1)
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_kljd0"]
+[sub_resource type="QuadMesh" id="QuadMesh_kljd0"]
 material = SubResource("StandardMaterial3D_ifdrt")
+size = Vector2(0.2, 0.2)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_58dpd"]
 albedo_color = Color(0.182015, 0.444803, 1, 1)
 
 [sub_resource type="QuadMesh" id="QuadMesh_ifdrt"]
 material = SubResource("StandardMaterial3D_58dpd")
+size = Vector2(0.2, 0.2)
 
 [node name="Confetti" type="Node3D"]
 script = ExtResource("1_rgi67")
 
 [node name="Green" type="CPUParticles3D" parent="."]
+transform = Transform3D(0, -1, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0)
 emitting = false
-amount = 12
-lifetime = 0.7
+amount = 36
+lifetime = 0.5
 one_shot = true
 explosiveness = 1.0
 mesh = SubResource("QuadMesh_p8rf8")
-spread = 180.0
-initial_velocity_min = 25.0
+spread = 30.0
+gravity = Vector3(0, -3, 0)
+initial_velocity_min = 10.0
 initial_velocity_max = 50.0
 linear_accel_min = -46.47
 linear_accel_max = 28.28
@@ -37,31 +42,34 @@ tangential_accel_min = -1.25
 tangential_accel_max = 1.25
 
 [node name="Red" type="CPUParticles3D" parent="."]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
 emitting = false
-lifetime = 0.35
+amount = 36
+lifetime = 0.5
 one_shot = true
 explosiveness = 1.0
-mesh = SubResource("PlaneMesh_kljd0")
-particle_flag_rotate_y = true
-spread = 180.0
-initial_velocity_min = 50.0
-initial_velocity_max = 75.0
+mesh = SubResource("QuadMesh_kljd0")
+spread = 30.0
+gravity = Vector3(0, -3, 0)
+initial_velocity_min = 10.0
+initial_velocity_max = 50.0
 angular_velocity_min = -189.09
 angular_velocity_max = 320.0
 tangential_accel_min = -0.55
 tangential_accel_max = 1.0
 
 [node name="Blue" type="CPUParticles3D" parent="."]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
 emitting = false
-lifetime = 0.3
+amount = 36
+lifetime = 0.5
 one_shot = true
 explosiveness = 1.0
-randomness = 1.0
 mesh = SubResource("QuadMesh_ifdrt")
-particle_flag_rotate_y = true
-spread = 180.0
-initial_velocity_min = 50.0
-initial_velocity_max = 75.0
+spread = 30.0
+gravity = Vector3(0, -3, 0)
+initial_velocity_min = 10.0
+initial_velocity_max = 50.0
 angular_velocity_min = -247.27
 angular_velocity_max = 261.82
 linear_accel_max = 38.38
