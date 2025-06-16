@@ -271,3 +271,4 @@ func shake():
   
   # playing confetti on kill
   trolley.confetti.explode()
+  Audio.sfxPlayer.play_sound("sfx/confetti.mp3")
