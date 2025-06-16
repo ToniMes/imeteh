@@ -48,12 +48,18 @@ func stop_stream_player(stream_player: AudioStreamPlayer) -> void:
   if stream_player == null:
     return
   stream_player.stop()
+  remove_child(stream_player)
   busy_stream_players.remove_at(busy_stream_players.find(stream_player))
   free_stream_players.append(stream_player)
 
 func stop_all() -> void:
   while !busy_stream_players.is_empty():
     stop_stream_player(busy_stream_players.get(0))
+  busy_stream_players = []
+  free_stream_players = []
+  for c in get_children():
+    remove_child(c)
+  _init()
 
 func _on_loop_sound(stream_player: AudioStreamPlayer):
   stream_player.play()
