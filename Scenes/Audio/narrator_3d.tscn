@@ -8,7 +8,7 @@
 script = ExtResource("1_ntusv")
 
 [node name="NarratorPanel" parent="." groups=["MainMenuPanel"] instance=ExtResource("2_c1gdn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.61534)
+transform = Transform3D(0.198535, 0, 0, 0, 0.192747, 0, 0, 0, 1, 0, 0, -1.61534)
 enabled = false
 scene = ExtResource("2_ntusv")
 viewport_size = Vector2(1125, 648)

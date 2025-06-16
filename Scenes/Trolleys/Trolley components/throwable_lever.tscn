@@ -56,6 +56,7 @@ collision_layer = 4
 collision_mask = 196615
 freeze_mode = 1
 script = ExtResource("2_6r5ig")
+picked_up_layer = 65540
 metadata/_custom_type_script = "uid://ipgq1xtt6inr"
 
 [node name="LeverMesh" type="MeshInstance3D" parent="Lever"]

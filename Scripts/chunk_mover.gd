@@ -206,11 +206,11 @@ func _process(delta: float) -> void:
         Audio.narrator.play_voiceline("1_6") # Lvl16-I’mHereForYou
     
     elif Global.current_level == 2:
-      if chunk_count == 10:
+      if chunk_count == 20:
         Audio.narrator.play_voiceline("2_6") # Lvl 2 6 - There will be kittens in front of you
         
     elif Global.current_level == 3:
-      if chunk_count == 10:
+      if chunk_count == 22:
         Audio.narrator.play_voiceline("3_3") # Lvl 3 3 - now is a good time as any
           
           

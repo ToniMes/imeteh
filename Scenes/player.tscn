@@ -243,7 +243,7 @@ script = ExtResource("1_fkybt")
 [node name="XRCamera3D" type="XRCamera3D" parent="XROrigin3D"]
 
 [node name="Narrator3d" parent="XROrigin3D/XRCamera3D" instance=ExtResource("13_ukyrk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.971009)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.15802)
 
 [node name="LeftHandXR" type="XRController3D" parent="XROrigin3D"]
 tracker = &"left_hand"

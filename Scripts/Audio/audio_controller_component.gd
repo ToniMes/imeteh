@@ -18,7 +18,7 @@ func play_sound(audioPath: String, loop: bool = false, freeUpPlayer: bool = true
     if freeUpPlayer == false:
       printerr("Can't play sound, not enough stream players free!")
       return
-	# Freeing up a stream player by pausing the first child (oldest player) and then appending it to the back
+  # Freeing up a stream player by pausing the first child (oldest player) and then appending it to the back
     else:
       var first_child: AudioStreamPlayer = self.get_child(0)
       stop_stream_player(first_child)
