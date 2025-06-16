@@ -20,10 +20,10 @@ var merge_tracker: Node3D
 var chunks: Array[Node3D]
 
 var force_split_count = 1
-var chunk_length: float = 49.5
+var chunk_length: float = 50
 var current_speed: float = 0
 var target_speed: float = 0
-var max_speed: float = 100
+var max_speed: float = 10
 var load_distance: int = 4
 var chunk_count: int = 0
 
@@ -120,6 +120,7 @@ func _process(delta: float) -> void:
     chunk_count += 1
     var r = randi()
     var new_chunk
+    var offset_fix = 0
     if merge:
       new_chunk = CHUNK_MERGE.instantiate()
       merge_tracker = new_chunk
@@ -136,7 +137,10 @@ func _process(delta: float) -> void:
       new_chunk = CHUNK_2.instantiate()
     elif r%3 == 2:
       new_chunk = CHUNK_3.instantiate()
-    new_chunk.position.z += chunk_length * load_distance
+      
+    if chunks.back() == merge_tracker:
+      offset_fix = -0.115
+    new_chunk.position.z = chunks.back().position.z + chunk_length + offset_fix
     chunk_parent.add_child(new_chunk)
     var chunk_to_remove: Node = chunks.pop_front()
     chunk_to_remove.queue_free()

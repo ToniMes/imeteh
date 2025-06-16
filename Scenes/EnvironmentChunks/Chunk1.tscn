@@ -165,8 +165,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -43.7514)
 [node name="Railway15" parent="Tracks" instance=ExtResource("6_1482g")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -46.8466)
 
-[node name="Railway16" parent="Tracks" instance=ExtResource("6_1482g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -49.9497)
-
 [node name="Railway17" parent="Tracks" instance=ExtResource("6_1482g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -50.8687)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -49.9616)
