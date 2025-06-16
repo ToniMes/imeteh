@@ -1,15 +1,24 @@
-[gd_scene load_steps=4 format=3 uid="uid://bw1vwuewwwrro"]
+[gd_scene load_steps=7 format=3 uid="uid://bw1vwuewwwrro"]
 
 [ext_resource type="Script" uid="uid://oa6r0neu0ps0" path="res://Scripts/Levels/lvl_2.gd" id="1_kkuei"]
+[ext_resource type="Texture2D" uid="uid://i6o10ch7cdrv" path="res://Resources/Models/Environment/Skies/cloudy_sunset_4k.png" id="2_kkuei"]
 [ext_resource type="PackedScene" uid="uid://pfdtp3m2y8us" path="res://Scenes/Trolleys/trolley2.tscn" id="3_3m47l"]
 
-[sub_resource type="Environment" id="Environment_6h8pu"]
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_3m47l"]
+panorama = ExtResource("2_kkuei")
+
+[sub_resource type="Sky" id="Sky_arcla"]
+sky_material = SubResource("PanoramaSkyMaterial_3m47l")
+
+[sub_resource type="Environment" id="Environment_vtb3w"]
+background_mode = 2
+sky = SubResource("Sky_arcla")
 
 [node name="Lvl2" type="Node3D"]
 script = ExtResource("1_kkuei")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_6h8pu")
+environment = SubResource("Environment_vtb3w")
 
 [node name="Trolley" parent="." instance=ExtResource("3_3m47l")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0)
